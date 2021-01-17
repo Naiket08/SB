@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0B0B0B"
+    tools:context=".TermsAndConditions">
+
+    <TextView
+        android:id="@+id/textViewTermsAndConditions"
+        android:layout_width="@dimen/_190sdp"
+        android:layout_height="@dimen/_21sdp"
+        android:layout_marginStart="@dimen/_14sdp"
+        android:layout_marginTop="@dimen/_112sdp"
+        android:layout_marginEnd="@dimen/_84sdp"
+        android:layout_marginBottom="@dimen/_429sdp"
+        android:fontFamily="@font/muli"
+        android:text="Terms and Conditions"
+        android:textColor="#F8B109"
+        android:textSize="@dimen/_17ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewWaveTop"
+        android:layout_width="1440dp"
+        android:layout_height="281.55dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="@dimen/_425sdp"
+        app:srcCompat="@drawable/wave" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
