@@ -1,3 +1,29 @@
 <resources>
+
     <string name="app_name">SB</string>
+
+    <string name="terms_and_conditions">Terms and Conditions</string>
+
+    <string name="t_and_c_1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis, auctor
+        consequat urna.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis, auctor
+        consequat urna.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis, auctor
+        consequat urna.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis, auctor
+        consequat urna.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis, auctor
+        consequat urna.</string>
+
+    <string name="t_and_c_2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis,
+        auctor consequat urna</string>
+
+    <string name="t_and_c_3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis,
+        auctor consequat urna.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis,
+        auctor consequat urna.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis,
+        auctor consequat urna.Lorem ipsum dolor sit amet,</string>
+
+    <string name="t_and_c_4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis,
+        auctor consequat urna.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis,
+        auctor consequat urna.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis,
+        auctor consequat urna.Lorem ipsum dolor sit amet,</string>
+    <string name="accept_terms_and_conditions">Accept Terms and Conditions</string>
+    <string name="submit">Submit</string>
+
 </resources>

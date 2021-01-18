@@ -67,4 +67,14 @@
         app:layout_constraintTop_toTopOf="@id/imageViewEllipse15"
         app:srcCompat="@drawable/ellipse_16" />
 
+    <ImageView
+        android:id="@+id/imageViewLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"
+        app:layout_constraintTop_toTopOf="@id/imageViewEllipse16"
+        app:layout_constraintStart_toStartOf="@id/imageViewEllipse16"
+        app:layout_constraintEnd_toEndOf="@id/imageViewEllipse16"
+        app:layout_constraintBottom_toBottomOf="@id/imageViewEllipse16"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

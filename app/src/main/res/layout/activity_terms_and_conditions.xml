@@ -7,33 +7,130 @@
     android:background="#0B0B0B"
     tools:context=".TermsAndConditions">
 
-    <TextView
-        android:id="@+id/textViewTermsAndConditions"
-        android:layout_width="@dimen/_190sdp"
-        android:layout_height="@dimen/_21sdp"
-        android:layout_marginStart="@dimen/_14sdp"
-        android:layout_marginTop="@dimen/_112sdp"
-        android:layout_marginEnd="@dimen/_84sdp"
-        android:layout_marginBottom="@dimen/_429sdp"
-        android:fontFamily="@font/muli"
-        android:text="Terms and Conditions"
-        android:textColor="#F8B109"
-        android:textSize="@dimen/_17ssp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
-        android:id="@+id/imageViewWaveTop"
+        android:id="@+id/imageViewWaveTopTandC"
         android:layout_width="1440dp"
-        android:layout_height="281.55dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="@dimen/_210sdp"
+        android:background="@drawable/ic_wave"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewTermsandConditions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/terms_and_conditions"
+        android:fontFamily="@font/muli"
+        android:textSize="@dimen/_18ssp"
+        android:textColor="#F8B109"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginBottom="@dimen/_425sdp"
-        app:srcCompat="@drawable/wave" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/_150sdp"
+        android:layout_marginStart="@dimen/_14sdp"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadeScrollbars="false"
+            android:scrollbarThumbVertical="@color/grey"
+            android:scrollbarStyle="outsideInset"
+            android:paddingRight="@dimen/_20sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_180sdp"
+            android:layout_marginBottom="@dimen/_90sdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewtandc1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/t_and_c_1"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/muli_semibold"
+                    android:textSize="@dimen/_10ssp"/>
+
+                <TextView
+                    android:id="@+id/textViewtandc2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/t_and_c_2"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/muli_semibold"
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_marginTop="@dimen/_10sdp"/>
+
+                <TextView
+                    android:id="@+id/textViewtandc3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/t_and_c_3"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/muli_semibold"
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_marginTop="@dimen/_10sdp"/>
+
+                <TextView
+                    android:id="@+id/textViewtandc4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/t_and_c_4"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/muli_semibold"
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_marginTop="@dimen/_10sdp"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    <CheckBox
+        android:id="@+id/checkBoxAccept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/yellow"
+        android:scaleX="1.0"
+        android:scaleY="1.0"
+        app:layout_constraintStart_toStartOf="@id/buttonSubmit"
+        app:layout_constraintBottom_toTopOf="@id/buttonSubmit"/>
+
+    <TextView
+        android:id="@+id/textVeiwAcceptTandC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/accept_terms_and_conditions"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_10ssp"
+        android:fontFamily="@font/muli_semibold"
+        app:layout_constraintStart_toEndOf="@id/checkBoxAccept"
+        app:layout_constraintBottom_toTopOf="@id/buttonSubmit"
+        android:layout_marginBottom="@dimen/_5sdp"/>
+
+    <Button
+        android:id="@+id/buttonSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_43sdp"
+        android:backgroundTint="@color/yellow"
+        android:text="@string/submit"
+        android:textColor="#202020"
+        android:textSize="@dimen/_12ssp"
+        android:fontFamily="@font/muli"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="20dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
