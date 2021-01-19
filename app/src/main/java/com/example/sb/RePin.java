@@ -3,10 +3,13 @@ package com.example.sb;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -16,7 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class RePin extends AppCompatActivity {
-    ImageView imageViewWaveRePinOne,lineRepin1,lineRepin2,lineRepin3,lineRepin4;
+    ImageView imageViewWaveRePinOne,lineRepin1,lineRepin2,lineRepin3,lineRepin4,touch;
     TextView textViewRePin,textViewRePintwo;
     EditText numberRepin1,numberRepin2,numberRepin3,numberRepin4;
     ImageButton create,oneRepin,twoRepin,threeRepin,fourRepin,fiveRepin ,sixRepin,sevenRepin,eightRepin,nineRepin,zeroRepin,emptyRepin,erazeRepin,correctsucesspin;
@@ -56,6 +59,8 @@ public class RePin extends AppCompatActivity {
         zeroRepin=(ImageButton)findViewById(R.id.zeroRepin);
         erazeRepin=(ImageButton)findViewById(R.id.erazeRepin);
 
+        touch=(ImageView)findViewById(R.id.touch);
+
 
         create.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +69,13 @@ public class RePin extends AppCompatActivity {
                 {
 
                     setContentView(R.layout.activity_re_pin_two);
+
+                            Intent intent = new Intent(RePin.this,FinalPin.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                            startActivity(intent);
+                            overridePendingTransition(0,0);
+
+                    //dialog();
 
 
 
@@ -76,8 +88,6 @@ public class RePin extends AppCompatActivity {
             }
 
         });
-
-
 
         if(i<4) {
             oneRepin.setOnClickListener(new View.OnClickListener() {
@@ -202,6 +212,17 @@ public class RePin extends AppCompatActivity {
             Toast.makeText(this, "Entry FUll", Toast.LENGTH_SHORT).show();
 
         }
+
+
+
+    }
+///demoo
+    private void dialog() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(RePin.this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        View team = inflater.inflate(R.layout.activity_re_pin_two, null);
+        alert.setView(team);
+        alert.show();
 
 
 
