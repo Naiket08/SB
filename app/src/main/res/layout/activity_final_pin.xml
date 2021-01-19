@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0B0B0B"
+    tools:context=".FinalPin">
+
+
+
+    <ImageView
+        android:id="@+id/imageViewWaveFinalPin"
+        android:layout_width="1440dp"
+        android:layout_height="@dimen/_210sdp"
+        android:background="@drawable/ic_wave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="TODO" />
+
+    <TextView
+        android:id="@+id/textViewFinalPin"
+        android:layout_width="@dimen/_178sdp"
+        android:layout_height="@dimen/_70sdp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="188dp"
+        android:fontFamily="@font/muli"
+        android:text="Welcome to the Application"
+        android:textColor="#F8B109"
+        android:textSize="@dimen/_18ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewFinalPintwo"
+        android:layout_width="@dimen/_108sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="36dp"
+        android:fontFamily="@font/muli"
+        android:text="Enter Pin"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/_18ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFinalPin" />
+
+    <EditText
+        android:id="@+id/edittextFinalPin1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_55sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:fontFamily="@font/muli"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/_24sdp"
+        android:inputType="number"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFinalPintwo"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/edittextFinalPin2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:inputType="number"
+        android:fontFamily="@font/muli"
+        android:textColor="#FFFFFF"
+
+        android:textSize="@dimen/_24sdp"
+        app:layout_constraintStart_toEndOf="@+id/edittextFinalPin1"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFinalPintwo"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/edittextFinalPin3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:fontFamily="@font/muli"
+        android:layout_marginStart="@dimen/_40sdp"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/_24sdp"
+        android:inputType="number"
+
+        app:layout_constraintStart_toEndOf="@+id/edittextFinalPin2"
+        android:layout_marginLeft="@dimen/_50sdp"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFinalPintwo"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/edittextFinalPin4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_85sdp"
+        android:fontFamily="@font/muli"
+        android:textColor="#FFFFFF"
+        android:inputType="number"
+        android:textSize="@dimen/_24sdp"
+        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintStart_toEndOf="@+id/edittextFinalPin3"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFinalPintwo"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/lineFinalPin1"
+        android:layout_width="@dimen/_41sdp"
+        android:layout_height="@dimen/_3sdp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/line"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="@dimen/_47sdp"
+        app:layout_constraintTop_toBottomOf="@+id/edittextFinalPin1"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/lineFinalPin2"
+        android:layout_width="@dimen/_41sdp"
+        android:layout_height="@dimen/_3sdp"
+        android:layout_marginLeft="@dimen/_8sdp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toEndOf="@+id/lineFinalPin1"
+        app:layout_constraintTop_toBottomOf="@+id/edittextFinalPin2"
+        tools:ignore="MissingConstraints" />
+
+
+    <ImageView
+        android:id="@+id/lineFinalPin3"
+        android:layout_width="@dimen/_41sdp"
+        android:layout_height="@dimen/_3sdp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/line"
+        app:layout_constraintStart_toEndOf="@+id/lineFinalPin2"
+        app:layout_constraintTop_toBottomOf="@+id/edittextFinalPin3"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/lineFinalPin4"
+        android:layout_width="@dimen/_41sdp"
+        android:layout_height="@dimen/_3sdp"
+        android:layout_marginLeft="@dimen/_13sdp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.097"
+        app:layout_constraintStart_toEndOf="@+id/lineFinalPin3"
+        app:layout_constraintTop_toBottomOf="@+id/edittextFinalPin4"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/submitFinalPin"
+        android:layout_width="112dp"
+        android:layout_height="38dp"
+
+        android:layout_marginTop="28dp"
+        android:background="@drawable/submit"
+        android:foregroundGravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lineFinalPin2" />
+
+    <ImageButton
+        android:id="@+id/oneFinalPin"
+        android:layout_width="@dimen/_49sdp"
+        android:layout_height="@dimen/_49sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@drawable/one"
+        android:layout_marginLeft="@dimen/_30sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/submitFinalPin"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/twoFinalPin"
+        android:layout_width="@dimen/_49sdp"
+        android:layout_height="@dimen/_49sdp"
+        android:layout_marginStart="@dimen/_50sdp"
+        android:background="@drawable/two"
+        android:foregroundGravity="center"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:layout_constraintStart_toEndOf="@id/oneFinalPin"
+        app:layout_constraintTop_toBottomOf="@+id/submitFinalPin"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/threeFinalPin"
+        android:layout_width="@dimen/_49sdp"
+        android:layout_height="@dimen/_49sdp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/three"
+        android:foregroundGravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.241"
+        app:layout_constraintStart_toEndOf="@id/twoFinalPin"
+        app:layout_constraintTop_toBottomOf="@+id/submitFinalPin"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/fourFinalPin"
+        android:layout_width="@dimen/_49sdp"
+        android:layout_height="@dimen/_49sdp"
+        android:background="@drawable/four"
+        android:layout_marginLeft="@dimen/_30sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/oneFinalPin"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/fiveFinalPin"
+        android:layout_width="@dimen/_49sdp"
+        android:layout_height="@dimen/_49sdp"
+        android:layout_marginStart="@dimen/_50sdp"
+        android:background="@drawable/five"
+        android:foregroundGravity="center"
+        app:layout_constraintTop_toBottomOf="@id/twoFinalPin"
+        app:layout_constraintStart_toEndOf="@id/fourFinalPin"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="501dp" />
+
+
+    <ImageButton
+        android:id="@+id/sixFinalPin"
+        android:layout_width="@dimen/_49sdp"
+        android:layout_height="@dimen/_49sdp"
+        android:layout_marginStart="56dp"
+        android:background="@drawable/six"
+        android:foregroundGravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.224"
+        app:layout_constraintStart_toEndOf="@id/fiveFinalPin"
+        app:layout_constraintTop_toBottomOf="@id/threeFinalPin"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/sevenFinalPin"
+        android:layout_width="@dimen/_49sdp"
+        android:layout_height="@dimen/_49sdp"
+        android:background="@drawable/seven"
+        android:layout_marginLeft="@dimen/_30sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fourFinalPin"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/eightFinalPin"
+        android:layout_width="@dimen/_49sdp"
+        android:layout_height="@dimen/_49sdp"
+        android:layout_marginStart="@dimen/_50sdp"
+        android:background="@drawable/eight"
+        android:foregroundGravity="center"
+        app:layout_constraintTop_toBottomOf="@id/fiveFinalPin"
+        app:layout_constraintStart_toEndOf="@id/sevenFinalPin"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="501dp" />
+
+    <ImageButton
+        android:id="@+id/nineFinalPin"
+        android:layout_width="@dimen/_49sdp"
+        android:layout_height="@dimen/_49sdp"
+        android:layout_marginStart="56dp"
+        android:background="@drawable/nine"
+        android:foregroundGravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.206"
+        app:layout_constraintStart_toEndOf="@id/eightFinalPin"
+        app:layout_constraintTop_toBottomOf="@id/sixFinalPin"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/emptyFinalPin"
+        android:layout_width="@dimen/_49sdp"
+        android:layout_height="@dimen/_49sdp"
+        android:background="@drawable/empty"
+        android:layout_marginLeft="@dimen/_30sdp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sevenFinalPin"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/zeroFinalPin"
+        android:layout_width="@dimen/_49sdp"
+        android:layout_height="@dimen/_49sdp"
+        android:layout_marginStart="@dimen/_50sdp"
+        android:background="@drawable/zero"
+        android:foregroundGravity="center"
+        app:layout_constraintTop_toBottomOf="@id/eightFinalPin"
+        app:layout_constraintStart_toEndOf="@id/emptyFinalPin"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="501dp" />
+
+    <ImageButton
+        android:id="@+id/erazeFinalPin"
+        android:layout_width="@dimen/_49sdp"
+        android:layout_height="@dimen/_49sdp"
+        android:layout_marginStart="56dp"
+        android:background="@drawable/eraze"
+        android:foregroundGravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.189"
+        app:layout_constraintStart_toEndOf="@id/zeroFinalPin"
+        app:layout_constraintTop_toBottomOf="@id/nineFinalPin"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
