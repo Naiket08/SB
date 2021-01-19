@@ -25,5 +25,7 @@
         auctor consequat urna.Lorem ipsum dolor sit amet,</string>
     <string name="accept_terms_and_conditions">Accept Terms and Conditions</string>
     <string name="submit">Submit</string>
+    <string name="menu_general">General</string>
+    <string name="menu_rooms">Rooms</string>
 
 </resources>

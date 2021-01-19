@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_general"
+        android:icon="@drawable/ic_icon_material_star"
+        android:title="@string/menu_general"/>
+
+    <item
+        android:id="@+id/navigation_rooms"
+        android:icon="@drawable/ic_group_47"
+        android:title="@string/menu_rooms"/>
+</menu>
