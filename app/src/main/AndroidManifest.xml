@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SB">
         <activity android:name=".Home"></activity>
+        <activity android:name=".Login"></activity>
         <activity android:name=".FinalPin" />
         <activity android:name=".RePin" />
         <activity android:name=".PinOne" />
