@@ -27,5 +27,16 @@
     <string name="submit">Submit</string>
     <string name="menu_general">General</string>
     <string name="menu_rooms">Rooms</string>
+    <string name="about_us">ABOUT US</string>
+    <string name="contact_us">CONTACT US</string>
+    <string name="contact_no_1">+91 0126358214</string>
+    <string name="contact_no_2">+91 9585625447</string>
+    <string name="email_id">abcxyz123@gmail.com</string>
+    <string name="favourite">FAVOURITE</string>
+    <string name="other_title">OTHER TITLE</string>
+    <string name="add_rooms">Add Rooms</string>
+    <string name="about_us_button">About Us</string>
+    <string name="category_button">Category</string>
+    <string name="contact_us_button">Contact Us</string>
 
 </resources>
