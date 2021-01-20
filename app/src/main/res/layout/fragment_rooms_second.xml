@@ -52,7 +52,7 @@
                     android:layout_width="@dimen/_120sdp"
                     android:layout_height="@dimen/_150sdp"
                     android:background="@drawable/bedroom"
-                    android:layout_marginLeft="@dimen/_30sdp"
+                    android:layout_marginLeft="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginBottom="@dimen/_10sdp"
                     ></Button>
@@ -83,7 +83,7 @@
                     android:layout_width="@dimen/_120sdp"
                     android:layout_height="@dimen/_150sdp"
                     android:background="@drawable/kitchen"
-                    android:layout_marginLeft="@dimen/_30sdp"
+                    android:layout_marginLeft="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginBottom="@dimen/_10sdp"
                     ></Button>
@@ -112,7 +112,7 @@
                 android:layout_width="@dimen/_120sdp"
                 android:layout_height="@dimen/_150sdp"
                 android:background="@drawable/custom"
-                android:layout_marginLeft="@dimen/_30sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_20sdp"
                 ></Button>
