@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -68,17 +69,31 @@ public class RePin extends AppCompatActivity {
                 if(i==4)
                 {
 
-                    setContentView(R.layout.activity_re_pin_two);
+                    //setContentView(R.layout.activity_re_pin_two);
+/*
 
+*/
+                  //  dialog();
+                    final Dialog myDialog = new Dialog(RePin.this);
+                    myDialog.setContentView(R.layout.activity_re_pin_two);
+
+                    ImageView touch=(ImageView)myDialog.findViewById(R.id.touch);
+                    touch.setOnClickListener(this);
+
+                    touch.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
                             Intent intent = new Intent(RePin.this,FinalPin.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                             startActivity(intent);
-                            overridePendingTransition(0,0);
+                            overridePendingTransition(10,0);
 
-                    //dialog();
+                        }
+                    });
 
 
 
+                    myDialog.show();
                 }
                 else
                 {
@@ -216,17 +231,8 @@ public class RePin extends AppCompatActivity {
 
 
     }
-///demoo
-    private void dialog() {
-        AlertDialog.Builder alert = new AlertDialog.Builder(RePin.this);
-        LayoutInflater inflater = this.getLayoutInflater();
-        View team = inflater.inflate(R.layout.activity_re_pin_two, null);
-        alert.setView(team);
-        alert.show();
 
 
-
-    }
     void enternumber()
     {
         if(i==1){
