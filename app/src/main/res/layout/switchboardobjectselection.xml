@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_200sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#0B0B0B">
+
+    <TextView
+        android:id="@+id/textViewSwitchBoard1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/switch_board_1"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_19ssp"
+        android:fontFamily="@font/ocr_abt"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/_18sdp"
+        android:layout_marginStart="@dimen/_15sdp"/>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textViewSwitchBoard1"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_28sdp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/buttonLight1"
+                        android:layout_width="@dimen/_72sdp"
+                        android:layout_height="@dimen/_97sdp"
+                        android:drawableTop="@drawable/ic_idea"
+                        android:text="@string/light_1"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12ssp"
+                        android:fontFamily="@font/muli"
+                        android:textAllCaps="false"
+
+                        android:background="@drawable/button_pressed"
+                        android:paddingTop="@dimen/_10sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <ImageView
+                        android:layout_width="@dimen/_14sdp"
+                        android:layout_height="@dimen/_14sdp"
+                        android:src="@drawable/powerbuttongreen"
+                        app:layout_constraintEnd_toEndOf="@id/buttonLight1"
+                        app:layout_constraintTop_toTopOf="@id/buttonLight1"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp">
+
+                    <Button
+                        android:id="@+id/buttonLight2"
+                        android:layout_width="@dimen/_72sdp"
+                        android:layout_height="@dimen/_97sdp"
+                        android:drawableTop="@drawable/ic_idea"
+                        android:text="@string/light_1"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12ssp"
+                        android:fontFamily="@font/muli"
+                        android:textAllCaps="false"
+                        android:background="@drawable/button_pressed"
+                        android:paddingTop="@dimen/_10sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <ImageView
+                        android:layout_width="@dimen/_14sdp"
+                        android:layout_height="@dimen/_14sdp"
+                        android:src="@drawable/powerbuttonred"
+                        app:layout_constraintEnd_toEndOf="@id/buttonLight2"
+                        app:layout_constraintTop_toTopOf="@id/buttonLight2"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp">
+
+                    <Button
+                        android:id="@+id/buttonFan"
+                        android:layout_width="@dimen/_72sdp"
+                        android:layout_height="@dimen/_97sdp"
+                        android:drawableTop="@drawable/ic_fan"
+                        android:text="@string/fan_1"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12ssp"
+                        android:fontFamily="@font/muli"
+                        android:textAllCaps="false"
+                        android:background="@drawable/button_pressed"
+                        android:paddingTop="@dimen/_10sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <ImageView
+                        android:layout_width="@dimen/_14sdp"
+                        android:layout_height="@dimen/_14sdp"
+                        android:src="@drawable/powerbuttonred"
+                        app:layout_constraintEnd_toEndOf="@id/buttonFan"
+                        app:layout_constraintTop_toTopOf="@id/buttonFan"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp">
+
+                    <Button
+                        android:id="@+id/buttonLight3"
+                        android:layout_width="@dimen/_72sdp"
+                        android:layout_height="@dimen/_97sdp"
+                        android:drawableTop="@drawable/ic_idea"
+                        android:text="@string/light_3"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12ssp"
+                        android:fontFamily="@font/muli"
+                        android:textAllCaps="false"
+                        android:background="@drawable/button_pressed"
+                        android:paddingTop="@dimen/_10sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <ImageView
+                        android:layout_width="@dimen/_14sdp"
+                        android:layout_height="@dimen/_14sdp"
+                        android:src="@drawable/powerbuttonred"
+                        app:layout_constraintEnd_toEndOf="@id/buttonLight3"
+                        app:layout_constraintTop_toTopOf="@id/buttonLight3"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp">
+
+                    <Button
+                        android:id="@+id/buttonSwitchBoardAppliance"
+                        android:layout_width="@dimen/_72sdp"
+                        android:layout_height="@dimen/_97sdp"
+                        android:drawableTop="@drawable/ic_appliances"
+                        android:text="@string/ac"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12ssp"
+                        android:fontFamily="@font/muli"
+                        android:textAllCaps="false"
+                        android:background="@drawable/button_pressed"
+                        android:paddingTop="@dimen/_10sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <ImageView
+                        android:layout_width="@dimen/_14sdp"
+                        android:layout_height="@dimen/_14sdp"
+                        android:src="@drawable/powerbuttonred"
+                        app:layout_constraintEnd_toEndOf="@id/buttonSwitchBoardAppliance"
+                        app:layout_constraintTop_toTopOf="@id/buttonSwitchBoardAppliance"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </HorizontalScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,10 +42,6 @@ Button floatingbutton;
                 transaction.addToBackStack(null);
 
                 transaction.commit();
-
-
-
-
             }
         });
 

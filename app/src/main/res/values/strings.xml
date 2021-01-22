@@ -48,5 +48,10 @@
     <string name="light_2">Light 2</string>
     <string name="bathroom">Bathroom</string>
     <string name="kitchen">Kitchen</string>
+    <string name="switch_board_1">Switch Board 1</string>
+    <string name="room_no">Room 1</string>
+    <string name="fan_1">Fan 1</string>
+    <string name="light_3">Light 3</string>
+    <string name="ac">AC</string>
 
 </resources>
