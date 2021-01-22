@@ -38,5 +38,15 @@
     <string name="about_us_button">About Us</string>
     <string name="category_button">Category</string>
     <string name="contact_us_button">Contact Us</string>
+    <string name="lights">Lights</string>
+    <string name="all">ALL</string>
+    <string name="category">Category</string>
+    <string name="fans">Fans</string>
+    <string name="appliances">Appliances</string>
+    <string name="bedroom">Bedroom</string>
+    <string name="light_1">Light 1</string>
+    <string name="light_2">Light 2</string>
+    <string name="bathroom">Bathroom</string>
+    <string name="kitchen">Kitchen</string>
 
 </resources>

@@ -31,6 +31,19 @@ public class FragmentGeneral extends Fragment {
         buttonAboutUs = (Button)view.findViewById(R.id.buttonAboutUs);
         buttonContactUs = (Button)view.findViewById(R.id.buttonContactUs);
 
+        buttonCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment newFragment = new FragmentCategory();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                transaction.replace(R.id.fragment_container,newFragment);
+                transaction.addToBackStack(null);
+
+                transaction.commit();
+            }
+        });
+
         buttonAboutUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
