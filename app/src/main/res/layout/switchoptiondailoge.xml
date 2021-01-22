@@ -9,20 +9,20 @@
     android:layout_marginTop="@dimen/_330sdp">
 
     <TextView
-        android:id="@+id/textviewab"
+        android:id="@+id/textviewswitchdailog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_40sdp"
         android:fontFamily="@font/muli_semibold"
-        android:text="Add Room Here"
+        android:text="Add Key"
         android:textColor="#FFFFFF"
-        android:textSize="@dimen/_17sdp"
+        android:textSize="@dimen/_24sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="@dimen/_29sdp"/>
 
     <ImageView
-        android:id="@+id/cancelab"
+        android:id="@+id/cancelswitchdailog"
         android:layout_width="@dimen/_50sdp"
         android:layout_height="@dimen/_50sdp"
         android:background="@drawable/iconaddingbox"
@@ -32,32 +32,32 @@
         android:layout_marginTop="@dimen/_10sdp"/>
 
     <EditText
-        android:id="@+id/editTextab"
+        android:id="@+id/editTextswitchdailog"
         android:layout_width="@dimen/_250sdp"
         android:layout_height="@dimen/_50sdp"
         android:layout_marginStart="@dimen/_29sdp"
         android:layout_marginTop="@dimen/_12sdp"
         android:background="@drawable/editboxbedrroom"
         android:fontFamily="@font/muli"
-        android:hint="Type here"
+        android:hint="Add Key Here"
         android:paddingStart="@dimen/_10sdp"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         android:textSize="@dimen/_14sdp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textviewab"></EditText>
+        app:layout_constraintTop_toBottomOf="@+id/textviewswitchdailog"></EditText>
 
     <Button
-        android:id="@+id/buttonab"
+        android:id="@+id/buttonswitchdailog"
         android:layout_width="@dimen/_250sdp"
         android:layout_height="@dimen/_50sdp"
         android:layout_marginLeft="@dimen/_29sdp"
+        android:layout_marginBottom="@dimen/_50sdp"
         android:background="@drawable/next"
-        android:layout_marginTop="@dimen/_20sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextab"
-        android:layout_marginBottom="@dimen/_50sdp"/>
+        app:layout_constraintTop_toBottomOf="@+id/editTextswitchdailog"
+        android:layout_marginTop="@dimen/_20sdp"/>
 
 
 

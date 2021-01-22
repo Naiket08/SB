@@ -8,7 +8,7 @@
     android:background="@color/black">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewswitchboard"
         android:layout_width="@dimen/_200sdp"
         android:layout_height="@dimen/_230sdp"
         android:background="@drawable/bulbs"
@@ -26,7 +26,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="@dimen/_25sdp"
         android:layout_marginLeft="@dimen/_30sdp"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewswitchboard" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -50,25 +50,107 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/bedroom"
+                <LinearLayout
                     android:layout_width="@dimen/_120sdp"
                     android:layout_height="@dimen/_150sdp"
-                    android:background="@drawable/switchone"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    ></Button>
+                    android:orientation="vertical"
+                    android:background="@drawable/switchbackground"
+                    android:layout_marginStart="@dimen/_20sdp">
 
-                <Button
-                    android:id="@+id/bathroom"
+                    <ImageButton
+                        android:id="@+id/switchinfo1"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:background="@drawable/info"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginLeft="@dimen/_100sdp"/>
+
+                    <ImageButton
+                        android:id="@+id/switch1"
+                        android:layout_width="@dimen/_42sdp"
+                        android:layout_height="@dimen/_66sdp"
+                        android:background="@drawable/switchicon"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        />
+                    
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:text="Switch Board 1 "
+                        android:textColor="#FFFFFF"
+                        android:fontFamily="@font/muli"
+                        android:textSize="@dimen/_14sdp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:text="4 Lights and 1 fan"
+                        android:fontFamily="@font/muli"
+                        android:textSize="@dimen/_9sdp"
+                        android:textColor="#FFFFFF"/>
+
+
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="@dimen/_120sdp"
                     android:layout_height="@dimen/_150sdp"
-                    android:background="@drawable/switchtwo"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    ></Button>
+                    android:orientation="vertical"
+                    android:background="@drawable/switchbackground"
+                    android:layout_marginStart="@dimen/_20sdp">
+
+                    <ImageButton
+                        android:id="@+id/switchinfo2"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:background="@drawable/info"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginLeft="@dimen/_100sdp"/>
+
+                    <ImageButton
+                        android:id="@+id/switch2"
+                        android:layout_width="@dimen/_42sdp"
+                        android:layout_height="@dimen/_66sdp"
+                        android:background="@drawable/switchicon"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:text="Switch Board 2 "
+                        android:textColor="#FFFFFF"
+                        android:fontFamily="@font/muli"
+                        android:textSize="@dimen/_14sdp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:text="4 Lights and 2 fan"
+                        android:fontFamily="@font/muli"
+                        android:textSize="@dimen/_9sdp"
+                        android:textColor="#FFFFFF"/>
+
+
+
+
+
+                </LinearLayout>
+
+
 
 
             </LinearLayout>
@@ -79,27 +161,109 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_50sdp">
 
-                <Button
-                    android:id="@+id/kitchen"
+                <LinearLayout
                     android:layout_width="@dimen/_120sdp"
                     android:layout_height="@dimen/_150sdp"
-                    android:background="@drawable/switchthree"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    ></Button>
+                    android:orientation="vertical"
+                    android:background="@drawable/switchbackground"
+                    android:layout_marginStart="@dimen/_20sdp">
 
-                <Button
-                    android:id="@+id/dinningroom"
+                    <ImageButton
+                        android:id="@+id/switchinfo3"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:background="@drawable/info"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginLeft="@dimen/_100sdp"/>
+
+                    <ImageButton
+                        android:id="@+id/switch3"
+                        android:layout_width="@dimen/_42sdp"
+                        android:layout_height="@dimen/_66sdp"
+                        android:background="@drawable/switchicon"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:text="Switch Board 3 "
+                        android:textColor="#FFFFFF"
+                        android:fontFamily="@font/muli"
+                        android:textSize="@dimen/_14sdp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:text="2 Lights and 1 fan"
+                        android:fontFamily="@font/muli"
+                        android:textSize="@dimen/_9sdp"
+                        android:textColor="#FFFFFF"/>
+
+
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="@dimen/_120sdp"
                     android:layout_height="@dimen/_150sdp"
-                    android:background="@drawable/switchfour"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginBottom="@dimen/_100sdp"
-                    ></Button>
+                    android:orientation="vertical"
+                    android:background="@drawable/switchbackground"
+                    android:layout_marginStart="@dimen/_20sdp">
+
+                    <ImageButton
+                        android:id="@+id/switchinfo4"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:background="@drawable/info"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginLeft="@dimen/_100sdp"/>
+
+                    <ImageButton
+                        android:id="@+id/switch4"
+                        android:layout_width="@dimen/_52sdp"
+                        android:layout_height="@dimen/_63sdp"
+                        android:background="@drawable/idea"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:text="Custom "
+                        android:textColor="#FFFFFF"
+                        android:fontFamily="@font/muli"
+                        android:textSize="@dimen/_14sdp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:fontFamily="@font/muli"
+                        android:textSize="@dimen/_9sdp"
+                        android:textColor="#FFFFFF"/>
+
+
+
+
+
+                </LinearLayout>
+
 
 
             </LinearLayout>
