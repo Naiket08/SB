@@ -2,10 +2,7 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:state_pressed="true"
-        android:drawable="@color/yellow"/>
+        android:drawable="@drawable/button_shape_onpressed"/>
     <item
-        android:state_focused="true"
-        android:drawable="@color/yellow"/>
-    <item
-        android:drawable="@drawable/button_shape"/>
+        android:drawable="@drawable/button_shape_default"/>
 </selector>
