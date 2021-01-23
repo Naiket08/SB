@@ -123,7 +123,6 @@
                             android:textSize="@dimen/_12ssp"
                             android:fontFamily="@font/muli"
                             android:textAllCaps="false"
-
                             android:background="@drawable/button_pressed"
                             android:paddingTop="@dimen/_10sdp"
                             app:layout_constraintStart_toStartOf="parent"
