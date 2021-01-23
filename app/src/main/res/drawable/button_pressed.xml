@@ -7,5 +7,5 @@
         android:state_focused="true"
         android:drawable="@color/yellow"/>
     <item
-        android:drawable="#202020"/>
+        android:drawable="@drawable/button_shape"/>
 </selector>
