@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,9 +36,8 @@ Button floatingbutton;
             @Override
             public void onClick(View view) {
 
-                Fragment newFragment = new FragmentRoomsSecond();
+                Fragment newFragment = new FragmentSwitchboard();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
                 transaction.replace(R.id.fragment_container,newFragment);
                 transaction.addToBackStack(null);
 

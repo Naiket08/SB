@@ -1,64 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/dailogbackground"
-    android:layout_marginTop="@dimen/_330sdp">
+    android:background="@color/black"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:id="@+id/textviewab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_50sdp"
-        android:fontFamily="@font/muli_semibold"
-        android:text="Add Room Here"
-        android:textColor="#FFFFFF"
-        android:textSize="@dimen/_17sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="@dimen/_29sdp"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_240sdp"
+        android:background="@drawable/background_switchboard1"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-    <ImageView
-        android:id="@+id/cancelab"
-        android:layout_width="@dimen/_50sdp"
-        android:layout_height="@dimen/_50sdp"
-        android:background="@drawable/iconaddingbox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_10sdp"/>
+        <TextView
+            android:id="@+id/textviewab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:fontFamily="@font/muli_semibold"
+            android:text="Add Room Here"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/_17sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="@dimen/_29sdp"/>
 
-    <EditText
-        android:id="@+id/editTextab"
-        android:layout_width="@dimen/_250sdp"
-        android:layout_height="@dimen/_50sdp"
-        android:layout_marginStart="@dimen/_29sdp"
-        android:layout_marginTop="@dimen/_12sdp"
-        android:background="@drawable/editboxbedrroom"
-        android:fontFamily="@font/muli"
-        android:hint="Type here"
-        android:paddingStart="@dimen/_10sdp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:textSize="@dimen/_14sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textviewab"></EditText>
+        <ImageView
+            android:id="@+id/cancelab"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:background="@drawable/iconaddingbox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"/>
 
-    <Button
-        android:id="@+id/buttonab"
-        android:layout_width="@dimen/_250sdp"
-        android:layout_height="@dimen/_50sdp"
-        android:layout_marginLeft="@dimen/_29sdp"
-        android:background="@drawable/next"
-        android:layout_marginTop="@dimen/_20sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextab"
-        android:layout_marginBottom="@dimen/_50sdp"/>
+        <EditText
+            android:id="@+id/editTextab"
+            android:layout_width="@dimen/_250sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginStart="@dimen/_29sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:background="@drawable/editboxbedrroom"
+            android:fontFamily="@font/muli"
+            android:hint="Type here"
+            android:paddingStart="@dimen/_10sdp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="@dimen/_14sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textviewab"/>
+
+        <Button
+            android:id="@+id/buttonab"
+            android:layout_width="@dimen/_250sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginLeft="@dimen/_29sdp"
+            android:background="@drawable/next"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextab"
+            android:layout_marginBottom="@dimen/_50sdp"/>
 
 
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
