@@ -5,6 +5,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/black">
 
+    <!--This Portion for AppBar-->
+
+    <Button
+        android:id="@+id/buttonBackGeneral"
+        android:layout_width="@dimen/_18sdp"
+        android:layout_height="@dimen/_12sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@drawable/back_button_white"/>
+
+    <Button
+        android:id="@+id/buttonHamburgerGeneral"
+        android:layout_width="@dimen/_18sdp"
+        android:layout_height="@dimen/_12sdp"
+        app:layout_constraintTop_toTopOf="@id/buttonBackGeneral"
+        app:layout_constraintBottom_toBottomOf="@id/buttonBackGeneral"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:background="@drawable/hamburger"/>
+    
+    <Button
+        android:id="@+id/buttonKillGeneral"
+        android:layout_width="@dimen/_42sdp"
+        android:layout_height="@dimen/_28sdp"
+        android:text="Kill"
+        android:textColor="#FF2121"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toTopOf="@id/buttonBackGeneral"
+        app:layout_constraintBottom_toBottomOf="@id/buttonBackGeneral"
+        app:layout_constraintEnd_toStartOf="@id/buttonHamburgerGeneral"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:background="@drawable/border_kill_button"/>
+
+
     <TextView
         android:id="@+id/textViewFavourite"
         android:layout_width="wrap_content"

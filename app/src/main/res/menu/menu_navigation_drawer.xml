@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/logout_icon"
+        android:title="Logout"/>
+
+    <item
+        android:id="@+id/change_pin"
+        android:icon="@drawable/change_password"
+        android:title="Change Pin"/>
+
+    <item
+        android:id="@+id/forgot_password"
+        android:icon="@drawable/change_password"
+        android:title="Forgot Password"/>
+
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/user_profile"
+        android:title="Profile"/>
+</menu>
