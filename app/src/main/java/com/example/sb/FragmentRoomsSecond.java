@@ -100,6 +100,11 @@ public class FragmentRoomsSecond  extends DialogFragment {
             }
         });
 
+        nextbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+            }
+        });
     }
 }
