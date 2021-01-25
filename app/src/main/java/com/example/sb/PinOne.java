@@ -12,7 +12,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+
 public class PinOne extends AppCompatActivity {
+    private FirebaseAuth mAuth;
     ImageView imageViewWaveTopPinOne,line1,line2,line3,line4;
     TextView textViewPinOne,textViewPinOnetwo;
     EditText number1,number2,number3,number4;
@@ -52,8 +61,7 @@ public class PinOne extends AppCompatActivity {
         empty=(ImageButton)findViewById(R.id.empty);
         zero=(ImageButton)findViewById(R.id.zero);
         eraze=(ImageButton)findViewById(R.id.eraze);
-
-
+        mAuth = FirebaseAuth.getInstance();
 
 
         nextbuttonpinone.setOnClickListener(new View.OnClickListener() {
@@ -61,16 +69,26 @@ public class PinOne extends AppCompatActivity {
             public void onClick(View view) {
                 if(i==4)
                 {
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    String userID;
+                    userID = user.getUid();
                     String num1,num2,num3,num4;
                     num1 = number1.getText().toString().trim();
                     num2 = number2.getText().toString().trim();
                     num3 = number3.getText().toString().trim();
                     num4 = number4.getText().toString().trim();
+                    HashMap<String,Object> pin = new HashMap<>();
+                    pin.put("Pin1",num1);
+                    pin.put("Pin2",num2);
+                    pin.put("Pin3",num3);
+                    pin.put("Pin4",num4);
+                    FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("Pin").setValue(pin).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(PinOne.this, "Pin added", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                     Intent intent = new Intent(PinOne.this,RePin.class);
-                    intent.putExtra("number1",num1);
-                    intent.putExtra("number2",num2);
-                    intent.putExtra("number3",num3);
-                    intent.putExtra("number4",num4);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(intent);
                     overridePendingTransition(0,0);

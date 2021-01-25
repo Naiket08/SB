@@ -9,7 +9,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class SplashScreen extends AppCompatActivity {
+
+    private FirebaseAuth mAuth;
 
     ImageView imageViewEllipse11,imageViewEllipse12,imageViewEllipse13,imageViewEllipse14,imageViewEllipse15,imageViewEllipse16,imageViewLogo;
 
@@ -28,13 +33,21 @@ public class SplashScreen extends AppCompatActivity {
         imageViewEllipse16 = (ImageView)findViewById(R.id.imageViewEllipse16);
         imageViewLogo = (ImageView)findViewById(R.id.imageViewLogo);
 
+        mAuth = FirebaseAuth.getInstance();
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(SplashScreen.this,PinOne.class);
-                startActivity(i);
-                finish();
+                FirebaseUser user = mAuth.getCurrentUser();
+                if(user!=null){
+                    startActivity(new Intent(SplashScreen.this,Home.class));
+                    finish();
+                }
+                else{
+                    startActivity(new Intent(SplashScreen.this,RegisterScreen.class));
+                    finish();
+                }
             }
-        },1000);
+        },4000);
     }
 }

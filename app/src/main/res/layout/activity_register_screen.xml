@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0B0B0B"
-    tools:context=".Login">
+    tools:context=".RegisterScreen">
 
     <ImageView
-        android:id="@+id/imageViewWaveTopPinOne"
+        android:id="@+id/imageViewWaveTopRegister"
         android:layout_width="1440dp"
         android:layout_height="@dimen/_210sdp"
         android:background="@drawable/ic_wave"
@@ -19,20 +19,20 @@
         android:contentDescription="TODO" />
 
     <TextView
-        android:id="@+id/textViewPinOne"
-        android:layout_width="@dimen/_126sdp"
-        android:layout_height="@dimen/_60sdp"
+        android:id="@+id/textViewRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_25sdp"
         android:layout_marginTop="@dimen/_135sdp"
         android:fontFamily="@font/muli"
-        android:text="Login"
+        android:text="Register"
         android:textColor="#F8B109"
         android:textSize="@dimen/_37ssp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewPinOnetwo"
+        android:id="@+id/textViewRegisterTwo"
         android:layout_width="@dimen/_178sdp"
         android:layout_height="@dimen/_60sdp"
         android:layout_marginStart="@dimen/_25sdp"
@@ -41,58 +41,79 @@
         android:textColor="#FFFFFF"
         android:textSize="@dimen/_18ssp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPinOne" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewRegister" />
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/editTextRegisterMobileNo"
         android:layout_width="@dimen/_229sdp"
         android:layout_height="@dimen/_50sdp"
         android:layout_marginStart="@dimen/_25sdp"
-        android:layout_marginTop="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:background="@drawable/username"
         android:fontFamily="@font/muli"
-        android:hint="Username"
+        android:inputType="textEmailAddress"
+        android:hint="Mobile Number"
         android:paddingStart="@dimen/_12sdp"
         android:textColor="#FFFFFF"
         android:textSize="@dimen/_12sdp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewPinOnetwo" />
+        app:layout_constraintTop_toBottomOf="@id/textViewRegisterTwo" />
 
     <EditText
-        android:id="@+id/Password"
+        android:id="@+id/editTextRegisterEmail"
         android:layout_width="@dimen/_229sdp"
         android:layout_height="@dimen/_50sdp"
         android:layout_marginStart="@dimen/_25sdp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/_12sdp"
         android:background="@drawable/username"
         android:fontFamily="@font/muli"
-        android:hint="password"
+        android:inputType="textEmailAddress"
+        android:hint="Email ID"
         android:paddingStart="@dimen/_12sdp"
         android:textColor="#FFFFFF"
         android:textSize="@dimen/_12sdp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/username" />
+        app:layout_constraintTop_toBottomOf="@id/editTextRegisterMobileNo" />
+
+    <EditText
+        android:id="@+id/editTextRegisterPassword"
+        android:layout_width="@dimen/_229sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:background="@drawable/username"
+        android:fontFamily="@font/muli"
+        android:inputType="textPassword"
+        android:hint="Password"
+        android:paddingStart="@dimen/_12sdp"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextRegisterEmail" />
 
     <TextView
-        android:id="@+id/forgetpassword"
+        android:id="@+id/textViewAlreadyAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
-        android:background="@drawable/forgetpassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginRight="@dimen/_55sdp"
+        android:text="Already have an Account? Login here"
+        android:textColor="@color/yellow"
+        android:fontFamily="@font/muli_semibold"
+        app:layout_constraintEnd_toEndOf="@id/editTextRegisterPassword"
+        app:layout_constraintTop_toBottomOf="@id/editTextRegisterPassword" />
 
-        app:layout_constraintTop_toBottomOf="@id/Password" />
-
-    <ImageButton
-        android:id="@+id/SubmitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/buttonRegisterSubmitButton"
+        android:layout_width="@dimen/_229sdp"
+        android:layout_height="@dimen/_50sdp"
         android:layout_marginStart="@dimen/_25sdp"
-        android:background="@drawable/login"
+        android:text="Register"
+        android:textAllCaps="false"
+        android:textSize="@dimen/_16ssp"
+        android:fontFamily="@font/muli_semibold"
+        android:background="@color/yellow"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="@dimen/_10sdp"
-        app:layout_constraintTop_toBottomOf="@id/forgetpassword" />
-
+        app:layout_constraintTop_toBottomOf="@id/textViewAlreadyAccount" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

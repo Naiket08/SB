@@ -1,5 +1,6 @@
 package com.example.sb;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -21,7 +22,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class RePin extends AppCompatActivity {
+    private FirebaseAuth mAuth;
     ImageView imageViewWaveRePinOne,lineRepin1,lineRepin2,lineRepin3,lineRepin4,touch;
     TextView textViewRePin,textViewRePintwo;
     EditText numberRepin1,numberRepin2,numberRepin3,numberRepin4;
@@ -29,6 +39,7 @@ public class RePin extends AppCompatActivity {
     public int i=0,y=0;
     String s;
     public Drawable linedone,line;
+    String num1,num2,num3,num4;
 
 
     @Override
@@ -64,22 +75,29 @@ public class RePin extends AppCompatActivity {
 
         touch=(ImageView)findViewById(R.id.touch);
 
+        mAuth = FirebaseAuth.getInstance();
 
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(i==4)
                 {
-                    String num1 = null,num2 = null,num3 = null,num4 = null;
-                    Intent ib = getIntent();
-                    Bundle extras = ib.getExtras();
+                    DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("Pin");
+                    db.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            num1 = dataSnapshot.child("Pin1").getValue(String.class);
+                            num2 = dataSnapshot.child("Pin2").getValue(String.class);
+                            num3 = dataSnapshot.child("Pin3").getValue(String.class);
+                            num4 = dataSnapshot.child("Pin4").getValue(String.class);
+                        }
 
-                    if(extras!=null){
-                        num1 = extras.getString("number1");
-                        num2 = extras.getString("number2");
-                        num3 = extras.getString("number3");
-                        num4 = extras.getString("number4");
-                    }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
                     //setContentView(R.layout.activity_re_pin_two);
 
                     String nr1,nr2,nr3,nr4;

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "18826247046",
+    "firebase_url": "https://switchboard-f6b8c-default-rtdb.firebaseio.com",
+    "project_id": "switchboard-f6b8c",
+    "storage_bucket": "switchboard-f6b8c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:18826247046:android:8f5c9642a6b7ceb9ae8a07",
+        "android_client_info": {
+          "package_name": "com.example.sb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "18826247046-tcqmem90uc5du26o8o66d7vb1sc1safq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYsBG1YYq5NIUG60uLjSx8m6SZHnWJXYY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "18826247046-tcqmem90uc5du26o8o66d7vb1sc1safq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

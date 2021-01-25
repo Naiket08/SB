@@ -10,8 +10,10 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Home extends AppCompatActivity {
+    private FirebaseAuth mAuth;
 
     NavigationView navigationView;
 
@@ -19,6 +21,7 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        mAuth = FirebaseAuth.getInstance();
 
         navigationView = (NavigationView)findViewById(R.id.navigation_view);
 
@@ -28,6 +31,9 @@ public class Home extends AppCompatActivity {
 
                 switch (item.getItemId()){
                     case R.id.logout:
+                        mAuth.signOut();
+                        startActivity(new Intent(Home.this,Login.class));
+                        finish();
                         break;
                     case R.id.change_pin:
                         startActivity(new Intent(Home.this,PinOne.class));
