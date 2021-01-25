@@ -8,10 +8,12 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -68,32 +70,57 @@ public class RePin extends AppCompatActivity {
             public void onClick(View view) {
                 if(i==4)
                 {
+                    String num1 = null,num2 = null,num3 = null,num4 = null;
+                    Intent ib = getIntent();
+                    Bundle extras = ib.getExtras();
 
+                    if(extras!=null){
+                        num1 = extras.getString("number1");
+                        num2 = extras.getString("number2");
+                        num3 = extras.getString("number3");
+                        num4 = extras.getString("number4");
+                    }
                     //setContentView(R.layout.activity_re_pin_two);
-/*
 
-*/
-                  //  dialog();
-                    final Dialog myDialog = new Dialog(RePin.this);
-                    myDialog.setContentView(R.layout.activity_re_pin_two);
+                    String nr1,nr2,nr3,nr4;
+                    nr1 = numberRepin1.getText().toString().trim();
+                    nr2 = numberRepin2.getText().toString().trim();
+                    nr3 = numberRepin3.getText().toString().trim();
+                    nr4 = numberRepin4.getText().toString().trim();
 
-                    ImageView touch=(ImageView)myDialog.findViewById(R.id.touch);
-                    touch.setOnClickListener(this);
+                    if(nr1.equals(num1)&&nr2.equals(num2)&&nr3.equals(num3)&&nr4.equals(num4)){
+                        //dialog();
+                        final Dialog myDialog = new Dialog(RePin.this);
+                        myDialog.setContentView(R.layout.activity_re_pin_two);
 
-                    touch.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(RePin.this,FinalPin.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                            startActivity(intent);
-                            overridePendingTransition(10,0);
+                        ImageView touch=(ImageView)myDialog.findViewById(R.id.touch);
+                        touch.setOnClickListener(this);
 
-                        }
-                    });
+                        touch.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                String n1,n2,n3,n4;
+                                n1 = numberRepin1.getText().toString().trim();
+                                n2 = numberRepin2.getText().toString().trim();
+                                n3 = numberRepin3.getText().toString().trim();
+                                n4 = numberRepin4.getText().toString().trim();
+                                Intent intent = new Intent(RePin.this,Home.class);
+                                intent.putExtra("Finalnumber1",n1);
+                                intent.putExtra("Finalnumber2",n2);
+                                intent.putExtra("Finalnumber3",n3);
+                                intent.putExtra("Finalnumber4",n4);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                startActivity(intent);
+                                overridePendingTransition(10,0);
+                                finish();
 
-
-
-                    myDialog.show();
+                            }
+                        });
+                        myDialog.show();
+                    }
+                    else{
+                        Toast.makeText(RePin.this, "Pin does not match", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else
                 {

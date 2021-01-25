@@ -9,9 +9,6 @@
     android:background="#0B0B0B"
     tools:context=".RePin">
 
-
-
-
     <ImageView
         android:id="@+id/imageViewWaveRePinOne"
         android:layout_width="1440dp"
@@ -163,7 +160,6 @@
         android:id="@+id/create"
         android:layout_width="112dp"
         android:layout_height="38dp"
-
         android:layout_marginTop="28dp"
         android:background="@drawable/create"
         android:foregroundGravity="center"

@@ -4,17 +4,44 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
 public class Home extends AppCompatActivity {
+
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        navigationView = (NavigationView)findViewById(R.id.navigation_view);
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()){
+                    case R.id.logout:
+                        break;
+                    case R.id.change_pin:
+                        startActivity(new Intent(Home.this,PinOne.class));
+                        finish();
+                        break;
+                    case R.id.forgot_password:
+                        break;
+                    case R.id.profile:
+                        break;
+                }
+
+                return true;
+            }
+        });
 
         //loading the default fragment
         loadFragment(new FragmentGeneral());

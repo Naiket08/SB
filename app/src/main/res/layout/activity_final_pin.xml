@@ -7,8 +7,6 @@
     android:background="#0B0B0B"
     tools:context=".FinalPin">
 
-
-
     <ImageView
         android:id="@+id/imageViewWaveFinalPin"
         android:layout_width="1440dp"

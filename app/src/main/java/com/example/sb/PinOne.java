@@ -61,10 +61,20 @@ public class PinOne extends AppCompatActivity {
             public void onClick(View view) {
                 if(i==4)
                 {
+                    String num1,num2,num3,num4;
+                    num1 = number1.getText().toString().trim();
+                    num2 = number2.getText().toString().trim();
+                    num3 = number3.getText().toString().trim();
+                    num4 = number4.getText().toString().trim();
                     Intent intent = new Intent(PinOne.this,RePin.class);
+                    intent.putExtra("number1",num1);
+                    intent.putExtra("number2",num2);
+                    intent.putExtra("number3",num3);
+                    intent.putExtra("number4",num4);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(intent);
                     overridePendingTransition(0,0);
+                    finish();
                 }
                 else
                 {
