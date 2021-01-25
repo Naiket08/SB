@@ -25,7 +25,7 @@ public class RePin extends AppCompatActivity {
     ImageView imageViewWaveRePinOne,lineRepin1,lineRepin2,lineRepin3,lineRepin4,touch;
     TextView textViewRePin,textViewRePintwo;
     EditText numberRepin1,numberRepin2,numberRepin3,numberRepin4;
-    ImageButton create,oneRepin,twoRepin,threeRepin,fourRepin,fiveRepin ,sixRepin,sevenRepin,eightRepin,nineRepin,zeroRepin,emptyRepin,erazeRepin,correctsucesspin;
+    ImageButton create,oneRepin,twoRepin,threeRepin,fourRepin,fiveRepin ,sixRepin,sevenRepin,eightRepin,nineRepin,zeroRepin,emptyRepin,erazeRepin,imageButtonclickable;
     public int i=0,y=0;
     String s;
     public Drawable linedone,line;
@@ -62,7 +62,7 @@ public class RePin extends AppCompatActivity {
         zeroRepin=(ImageButton)findViewById(R.id.zeroRepin);
         erazeRepin=(ImageButton)findViewById(R.id.erazeRepin);
 
-        touch=(ImageView)findViewById(R.id.touch);
+        touch=(ImageButton)findViewById(R.id.imageButtonclickable);
 
 
         create.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +93,7 @@ public class RePin extends AppCompatActivity {
                         final Dialog myDialog = new Dialog(RePin.this);
                         myDialog.setContentView(R.layout.activity_re_pin_two);
 
-                        ImageView touch=(ImageView)myDialog.findViewById(R.id.touch);
+                        ImageView touch=(ImageButton)myDialog.findViewById(R.id.imageButtonclickable);
                         touch.setOnClickListener(this);
 
                         touch.setOnClickListener(new View.OnClickListener() {
@@ -104,7 +104,7 @@ public class RePin extends AppCompatActivity {
                                 n2 = numberRepin2.getText().toString().trim();
                                 n3 = numberRepin3.getText().toString().trim();
                                 n4 = numberRepin4.getText().toString().trim();
-                                Intent intent = new Intent(RePin.this,Home.class);
+                                Intent intent = new Intent(RePin.this,FinalPin.class);
                                 intent.putExtra("Finalnumber1",n1);
                                 intent.putExtra("Finalnumber2",n2);
                                 intent.putExtra("Finalnumber3",n3);
