@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -160,6 +161,7 @@ public class FragmentSwitchboard extends DialogFragment {
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getContext());
         View parentView = getLayoutInflater().inflate(R.layout.switchoptiondailoge, null);
         ImageView cancelab = (ImageView) parentView.findViewById(R.id.cancelswitchdailog);
+        Button buttonswitchdailog=(Button)parentView.findViewById(R.id.buttonswitchdailog);
 
 
         bottomSheetDialog.setContentView(parentView);
@@ -169,6 +171,21 @@ public class FragmentSwitchboard extends DialogFragment {
             @Override
             public void onClick(View view) {
                 bottomSheetDialog.cancel();
+            }
+        });
+
+        buttonswitchdailog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Fragment newFragment = new FragmentPredefine();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container,newFragment);
+                transaction.addToBackStack(null);
+
+                transaction.commit();
+                bottomSheetDialog.cancel();
+
             }
         });
     }

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/_270sdp"
+    android:layout_height="@dimen/_50sdp"
+    android:foregroundGravity="center"
+    android:layout_marginStart="@dimen/_15sdp"
+    android:layout_marginTop="@dimen/_20sdp"
+    >
+
+    <LinearLayout
+        android:id="@+id/llmain"
+        android:layout_width="@dimen/_270sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:background="@drawable/editboxbedrroom"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/imageviewmain"
+            android:layout_width="@dimen/_12sdp"
+            android:layout_height="@dimen/_18sdp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:background="@drawable/switchicon">
+
+        </ImageView>
+
+        <EditText
+
+            android:id="@+id/edittextmain"
+            android:layout_width="@dimen/_111sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:background="@android:color/transparent"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/_14sdp"
+            android:inputType="none"
+            android:maxLines="1"
+            android:ems="10"
+            android:lines="1"
+            android:maxLength="15"
+            android:enabled="false"
+            android:singleLine="true"
+            android:scrollbars="none">
+
+
+        </EditText>
+
+        <Button
+            android:id="@+id/buttonmain"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_50sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:background="@drawable/editicon"/>
+
+
+        <ImageView
+            android:id="@+id/imageviewmain1"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_gravity="center"
+            android:background="@drawable/ideaicon">
+
+        </ImageView>
+
+        <Button
+            android:id="@+id/buttonmain2"
+            android:layout_width="@dimen/_6sdp"
+            android:layout_height="@dimen/_3sdp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:background="@drawable/downarrow"></Button>
+
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
