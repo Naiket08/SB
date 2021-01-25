@@ -12,9 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.zip.Inflater;
 
-public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
     ArrayList roomNames;
     ArrayList roomImages;
     Context context;
@@ -34,12 +35,25 @@ public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.name.setText((CharSequence) roomNames.get(position));
+        holder.imageViewIconMyRoom.setImageResource((Integer)roomImages.get(position));
+        // implement setOnClickListener event on item view.
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               /* // open another activity on item click
+                Intent intent = new Intent(context, SecondActivity.class);
+                intent.putExtra("image", personImages.get(position)); // put image data in Intent
+                context.startActivity(intent); // start Intent*/
+            }
+        });
 
     }
 
 
-    @Override
+
+
     /*public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         holder.name.setText((CharSequence) roomNames.get(position));
         holder.imageViewIconMyRoom.setImageResource((Integer)roomImages.get(position));

@@ -36,7 +36,7 @@ Button floatingbutton;
             @Override
             public void onClick(View view) {
 
-                Fragment newFragment = new FragmentSwitchboard();
+                Fragment newFragment = new FragmentMyRoom();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment_container,newFragment);
                 transaction.addToBackStack(null);

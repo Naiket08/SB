@@ -42,7 +42,7 @@ public class FragmentMyRoom extends Fragment {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
         recyclerViewMyRoom.setLayoutManager(gridLayoutManager); // set LayoutManager to RecyclerView
         //  call the constructor of CustomAdapter to send the reference and data to Adapter
-        CustomAdapter customAdapter = new CustomAdapter(getActivity(), roomNames,roomImages);
+        CustomAdapter customAdapter = new CustomAdapter(getActivity(),roomNames,roomImages);
         recyclerViewMyRoom.setAdapter(customAdapter); // set the Adapter to RecyclerView
 
         return view;
