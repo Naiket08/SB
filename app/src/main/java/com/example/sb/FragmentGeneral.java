@@ -15,20 +15,19 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.material.navigation.NavigationView;
+
 import org.w3c.dom.Text;
 
 public class FragmentGeneral extends Fragment {
 
     TextView textViewFavourite,textViewOtherTitle;
     Button buttonAddRooms,buttonCategory,buttonAboutUs,buttonContactUs,buttonBackGeneral,buttonHamburgerGeneral,buttonKillGeneral;
-    DrawerLayout drawerLayout;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_general,container,false);
-
-        drawerLayout = (DrawerLayout)view.findViewById(R.id.drawer_layout);
 
         textViewFavourite = (TextView)view.findViewById(R.id.textViewFavourite);
         textViewOtherTitle = (TextView)view.findViewById(R.id.textViewOtherTitle);

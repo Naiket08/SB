@@ -86,7 +86,7 @@ public class FinalPin extends AppCompatActivity {
                                 n2 = edittextFinalPin2.getText().toString().trim();
                                 n3 = edittextFinalPin3.getText().toString().trim();
                                 n4 = edittextFinalPin4.getText().toString().trim();
-                                Intent intent = new Intent(FinalPin.this,Login.class);
+                                Intent intent = new Intent(FinalPin.this,Home.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                 startActivity(intent);
                                 overridePendingTransition(10,0);

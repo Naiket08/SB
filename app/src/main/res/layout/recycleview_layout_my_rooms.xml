@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/_120sdp"
     android:layout_height="@dimen/_150sdp"
-    android:layout_margin="@dimen/_15sdp"
+    android:layout_marginBottom="@dimen/_10sdp"
     android:background="@drawable/background_switch_board_inner_room">
 
     <ImageView
