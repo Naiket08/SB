@@ -76,13 +76,28 @@ public class RePin extends AppCompatActivity {
         touch=(ImageButton)findViewById(R.id.imageButtonclickable);
 
         mAuth = FirebaseAuth.getInstance();
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("Pin");
+        db.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                num1 = dataSnapshot.child("Pin1").getValue(String.class);
+                num2 = dataSnapshot.child("Pin2").getValue(String.class);
+                num3 = dataSnapshot.child("Pin3").getValue(String.class);
+                num4 = dataSnapshot.child("Pin4").getValue(String.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(i==4)
                 {
-                    DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("Pin");
+                    /*DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("Pin");
                     db.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -96,7 +111,7 @@ public class RePin extends AppCompatActivity {
                         public void onCancelled(@NonNull DatabaseError databaseError) {
 
                         }
-                    });
+                    });*/
 
                     //setContentView(R.layout.activity_re_pin_two);
 

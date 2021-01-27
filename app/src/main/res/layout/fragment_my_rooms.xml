@@ -71,9 +71,9 @@
         android:layout_width="@dimen/_50sdp"
         android:layout_height="@dimen/_50sdp"
         android:background="@drawable/floatingbutton"
-        app:layout_constraintTop_toBottomOf="@id/recyclerViewMyRoom"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_10sdp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -48,6 +48,13 @@ public class RegisterScreen extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        textViewAlreadyAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RegisterScreen.this,Login.class));
+            }
+        });
+
         buttonRegisterSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

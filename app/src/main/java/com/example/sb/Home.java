@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -42,6 +43,7 @@ public class Home extends AppCompatActivity {
                     case R.id.forgot_password:
                         break;
                     case R.id.profile:
+                        startActivity(new Intent(Home.this, UserProfile.class));
                         break;
                 }
 
