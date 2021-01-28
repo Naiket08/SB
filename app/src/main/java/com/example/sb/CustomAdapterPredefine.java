@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -48,7 +49,8 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
                 holder.edittextmain.setCursorVisible(true);
                 holder.edittextmain.requestFocus();
                 holder.edittextmain.setCursorVisible(true);
-                //predefineRoomedit.setSelection(0);
+                holder.edittextmain.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
             }
         });
 
@@ -60,6 +62,7 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
                     holder.edittextmain.setEnabled(false);
                     holder.edittextmain.requestFocus();
                     holder.edittextmain.setCursorVisible(false);
+                    holder.edittextmain.setImeOptions(EditorInfo.IME_ACTION_DONE);
                 }
 
 

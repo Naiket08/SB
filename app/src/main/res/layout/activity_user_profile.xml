@@ -25,7 +25,7 @@
             android:layout_marginTop="@dimen/_20sdp"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:background="@drawable/back_button_white"/>
+            android:background="@drawable/backbutton_black"/>
 
         <Button
             android:id="@+id/buttonLogoutUserProfile"
@@ -35,7 +35,7 @@
             android:layout_alignBottom="@id/buttonBackUserProfile"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="@dimen/_15sdp"
-            android:background="@drawable/hamburger_black"/>
+            android:background="@drawable/logout_black"/>
 
         <Button
             android:id="@+id/buttonKillUserProfile"
