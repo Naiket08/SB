@@ -13,10 +13,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Home extends AppCompatActivity {
 
@@ -27,6 +35,8 @@ public class Home extends AppCompatActivity {
     NavigationView navigationView;
     DrawerLayout drawer;
     FrameLayout fragment_container;
+
+    String UserEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +53,7 @@ public class Home extends AppCompatActivity {
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                finishAffinity();
                 onBackPressed();
             }
         });
@@ -55,6 +66,18 @@ public class Home extends AppCompatActivity {
         });
 
         mAuth = FirebaseAuth.getInstance();
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("User Details");
+        db.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                UserEmail = dataSnapshot.child("EmailID").getValue(String.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         navigationView = (NavigationView)findViewById(R.id.navigation_view);
 
@@ -74,6 +97,18 @@ public class Home extends AppCompatActivity {
                         drawer.closeDrawer(navigationView,false);
                         break;
                     case R.id.forgot_password:
+                        mAuth.sendPasswordResetEmail(UserEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful()){
+                                    Toast.makeText(Home.this, "Reset link sent to registered email id", Toast.LENGTH_SHORT).show();
+                                }
+                                else {
+                                    Toast.makeText(Home.this, "Error "+task.getException(), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                        drawer.closeDrawer(navigationView,false);
                         break;
                     case R.id.profile:
                         startActivity(new Intent(Home.this, UserProfile.class));
@@ -116,5 +151,10 @@ public class Home extends AppCompatActivity {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

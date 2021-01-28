@@ -90,7 +90,7 @@ public class RegisterScreen extends AppCompatActivity {
                                 HashMap<String,Object> userDetails = new HashMap<>();
                                 userDetails.put("MobileNo",mobileno);
                                 userDetails.put("EmailID",email);
-                                userDetails.put("Password",password);
+                                //userDetails.put("Password",password);
                                 FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("User Details").setValue(userDetails).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {

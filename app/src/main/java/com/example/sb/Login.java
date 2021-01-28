@@ -42,6 +42,29 @@ public class Login extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        //Forgot Password Functionality
+        forgetpassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(TextUtils.isEmpty(username.getText().toString().trim())){
+                    Toast.makeText(Login.this, "Please provide valid email address", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    mAuth.sendPasswordResetEmail(username.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(Login.this, "We have sent reset link to provided email address", Toast.LENGTH_SHORT).show();
+                            }
+                            else{
+                                Toast.makeText(Login.this, "Error "+task.getException(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
+            }
+        });
+
         submitbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
