@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.sb.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -103,7 +104,13 @@ public class FragmentRoomsSecond  extends DialogFragment {
         nextbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Fragment newFragment = new FragmentSwitchboard();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container,newFragment);
+                transaction.addToBackStack(null);
 
+                transaction.commit();
+                bottomSheetDialog.cancel();
             }
         });
     }

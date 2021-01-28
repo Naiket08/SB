@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,6 +42,32 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         holder.name.setText((CharSequence) roomNames.get(position));
         holder.imageViewIconMyRoom.setImageResource((Integer)roomImages.get(position));
         // implement setOnClickListener event on item view.
+        holder.imageViewRecycleViewMyRoomEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context,"Clicked",Toast.LENGTH_SHORT).show();
+                holder.name.setEnabled(true);
+                holder.name.setCursorVisible(true);
+                holder.name.requestFocus();
+                holder.name.setCursorVisible(true);
+                holder.name.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
+            }
+        });
+        holder.imageViewRecycleViewMyRoomEdit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+
+                if (!b) {
+                    holder.name.setEnabled(false);
+                    holder.name.requestFocus();
+                    holder.name.setCursorVisible(false);
+                    holder.name.setImeOptions(EditorInfo.IME_ACTION_DONE);
+                }
+
+
+            }
+        });
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,12 +106,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     }
     public class ViewHolder extends RecyclerView.ViewHolder {
         // init the item view's
-        TextView name;
+        EditText name;
         ImageView imageViewRecycleViewMyRoomEdit,imageViewIconMyRoom;
         public ViewHolder(View itemView) {
             super(itemView);
             // get the reference of item view's
-            name = (TextView)itemView.findViewById(R.id.textViewRecycleViewMyRoom);
+            name = (EditText) itemView.findViewById(R.id.EdittextRecycleViewMyRoom);
             imageViewRecycleViewMyRoomEdit = (ImageView)itemView.findViewById(R.id.imageViewRecycleViewMyRoomEdit);
             imageViewIconMyRoom = (ImageView)itemView.findViewById(R.id. imageViewIconMyRoom);
         }
