@@ -19,7 +19,7 @@ import java.util.Arrays;
 
 public class FragmentMyRoom extends Fragment {
 
-    Button buttonBackMyRoom,buttonHamburgerMyRoom,buttonKillMyRoom,buttonAddRoomsMyRoom;
+    Button buttonAddRoomsMyRoom;
     TextView textViewTopText;
     RecyclerView recyclerViewMyRoom;
 
@@ -33,9 +33,6 @@ public class FragmentMyRoom extends Fragment {
         View view = inflater.inflate(R.layout.fragment_my_rooms,container,false);
 
         buttonAddRoomsMyRoom = (Button)view.findViewById(R.id.buttonAddRoomsMyRoom);
-        buttonBackMyRoom = (Button)view.findViewById(R.id.buttonBackMyRoom);
-        buttonHamburgerMyRoom = (Button)view.findViewById(R.id.buttonHamburgerMyRoom);
-        buttonKillMyRoom = (Button)view.findViewById(R.id.buttonKillMyRoom);
         textViewTopText = (TextView)view.findViewById(R.id.textViewTopText);
         recyclerViewMyRoom = (RecyclerView)view.findViewById(R.id.recyclerViewMyRoom);
 

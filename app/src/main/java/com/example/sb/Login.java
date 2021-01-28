@@ -1,14 +1,22 @@
 package com.example.sb;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity {
 
@@ -16,6 +24,9 @@ public class Login extends AppCompatActivity {
     TextView textViewPinOne,textViewPinOnetwo,forgetpassword;
     EditText username,Password;
     ImageButton submitbutton;
+
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,14 +40,45 @@ public class Login extends AppCompatActivity {
         Password=(EditText)findViewById(R.id.Password);
         submitbutton=(ImageButton)findViewById(R.id.SubmitButton);
 
+        mAuth = FirebaseAuth.getInstance();
+
         submitbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Login.this,Home.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(intent);
-                overridePendingTransition(10,0);
-                finish();
+
+                if(TextUtils.isEmpty(username.getText().toString().trim())){
+                    username.setError("Username is Required");
+                }
+                else if(TextUtils.isEmpty(Password.getText().toString().trim())){
+                    Password.setError("Password is Required");
+                }
+                else if(TextUtils.isEmpty(username.getText().toString().trim())&&TextUtils.isEmpty(Password.getText().toString().trim())){
+                    username.setError("Username is Required");
+                    Password.setError("Password is Required");
+                }
+                else {
+
+                    String email,password;
+
+                    email = username.getText().toString().trim();
+                    password = Password.getText().toString().trim();
+
+                    mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                                Intent intent = new Intent(Login.this,Home.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                startActivity(intent);
+                                overridePendingTransition(10,0);
+                                finish();
+                            }
+                            else{
+                                Toast.makeText(Login.this, "Error "+task.getException(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
             }
         });
 

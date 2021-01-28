@@ -7,6 +7,41 @@
     android:layout_height="match_parent"
     tools:context=".Home">
 
+    <!--This Portion for AppBar-->
+
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="@dimen/_18sdp"
+        android:layout_height="@dimen/_12sdp"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/back_button_white"/>
+
+    <Button
+        android:id="@+id/buttonHamburger"
+        android:layout_width="@dimen/_18sdp"
+        android:layout_height="@dimen/_12sdp"
+        android:layout_alignTop="@id/buttonBack"
+        android:layout_alignBottom="@id/buttonBack"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:background="@drawable/hamburger"/>
+
+    <Button
+        android:id="@+id/buttonKill"
+        android:layout_width="@dimen/_42sdp"
+        android:layout_height="@dimen/_28sdp"
+        android:text="Kill"
+        android:textColor="#FF2121"
+        android:textAllCaps="false"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@id/buttonHamburger"
+        android:layout_marginTop="@dimen/_13sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:background="@drawable/border_kill_button"/>
+
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"

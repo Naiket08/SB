@@ -52,6 +52,10 @@ public class RegisterScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(RegisterScreen.this,Login.class));
+                editTextRegisterMobileNo.getText().clear();
+                editTextRegisterEmail.getText().clear();
+                editTextRegisterPassword.getText().clear();
+                editTextRegisterMobileNo.requestFocus();
             }
         });
 
@@ -83,12 +87,6 @@ public class RegisterScreen extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
-                                /*FirebaseUser user = mAuth.getCurrentUser();
-                                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                DatabaseReference myRef = database.getReference();
-                                myRef.child(user.getUid()).child("User Details").child("MobileNo").setValue(mobileno);
-                                myRef.child(user.getUid()).child("User Details").child("Email ID").setValue(email);
-                                myRef.child(user.getUid()).child("User Details").child("Password").setValue(password);*/
                                 HashMap<String,Object> userDetails = new HashMap<>();
                                 userDetails.put("MobileNo",mobileno);
                                 userDetails.put("EmailID",email);
@@ -101,6 +99,7 @@ public class RegisterScreen extends AppCompatActivity {
                                 });
                                 Toast.makeText(RegisterScreen.this, "User Registered", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(RegisterScreen.this,PinOne.class));
+                                finish();
                             }
                             else{
                                 Toast.makeText(RegisterScreen.this, "Authentication Failed"+task.getException(), Toast.LENGTH_SHORT).show();

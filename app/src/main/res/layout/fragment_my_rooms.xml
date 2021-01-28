@@ -7,41 +7,6 @@
     android:layout_height="match_parent"
     android:background="#0B0B0B">
 
-    <!--This Portion for AppBar-->
-
-    <Button
-        android:id="@+id/buttonBackMyRoom"
-        android:layout_width="@dimen/_18sdp"
-        android:layout_height="@dimen/_12sdp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="@dimen/_15sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:background="@drawable/back_button_white"/>
-
-    <Button
-        android:id="@+id/buttonHamburgerMyRoom"
-        android:layout_width="@dimen/_18sdp"
-        android:layout_height="@dimen/_12sdp"
-        android:layout_alignTop="@id/buttonBackMyRoom"
-        android:layout_alignBottom="@id/buttonBackMyRoom"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="@dimen/_15sdp"
-        android:background="@drawable/hamburger"/>
-
-    <Button
-        android:id="@+id/buttonKillMyRoom"
-        android:layout_width="@dimen/_42sdp"
-        android:layout_height="@dimen/_28sdp"
-        android:text="Kill"
-        android:textColor="#FF2121"
-        android:textAllCaps="false"
-        android:layout_alignParentTop="true"
-        android:layout_toStartOf="@id/buttonHamburgerMyRoom"
-        android:layout_marginTop="@dimen/_13sdp"
-        android:layout_marginEnd="@dimen/_15sdp"
-        android:background="@drawable/border_kill_button"/>
-
     <TextView
         android:id="@+id/textViewTopText"
         android:layout_width="wrap_content"

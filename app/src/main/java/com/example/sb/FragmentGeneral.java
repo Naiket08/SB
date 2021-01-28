@@ -22,7 +22,7 @@ import org.w3c.dom.Text;
 public class FragmentGeneral extends Fragment {
 
     TextView textViewFavourite,textViewOtherTitle;
-    Button buttonAddRooms,buttonCategory,buttonAboutUs,buttonContactUs,buttonBackGeneral,buttonHamburgerGeneral,buttonKillGeneral;
+    Button buttonAddRooms,buttonCategory,buttonAboutUs,buttonContactUs;
 
     @Nullable
     @Override
@@ -35,18 +35,6 @@ public class FragmentGeneral extends Fragment {
         buttonCategory = (Button)view.findViewById(R.id.buttonCategory);
         buttonAboutUs = (Button)view.findViewById(R.id.buttonAboutUs);
         buttonContactUs = (Button)view.findViewById(R.id.buttonContactUs);
-
-        //AppBar Buttons
-        buttonBackGeneral = (Button)view.findViewById(R.id.buttonBackGeneral);
-        buttonHamburgerGeneral = (Button)view.findViewById(R.id.buttonHamburgerGeneral);
-        buttonKillGeneral = (Button)view.findViewById(R.id.buttonKillGeneral);
-
-        buttonBackGeneral.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().onBackPressed();
-            }
-        });
 
         buttonCategory.setOnClickListener(new View.OnClickListener() {
             @Override

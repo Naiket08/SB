@@ -28,7 +28,7 @@
             android:background="@drawable/back_button_white"/>
 
         <Button
-            android:id="@+id/buttonHamburgerUserProfile"
+            android:id="@+id/buttonLogoutUserProfile"
             android:layout_width="@dimen/_18sdp"
             android:layout_height="@dimen/_12sdp"
             android:layout_alignTop="@id/buttonBackUserProfile"
@@ -45,7 +45,7 @@
             android:textColor="#FF2121"
             android:textAllCaps="false"
             android:layout_alignParentTop="true"
-            android:layout_toStartOf="@id/buttonHamburgerUserProfile"
+            android:layout_toStartOf="@id/buttonLogoutUserProfile"
             android:layout_marginEnd="@dimen/_15sdp"
             android:layout_marginTop="@dimen/_13sdp"
             android:background="@drawable/border_kill_button"/>
