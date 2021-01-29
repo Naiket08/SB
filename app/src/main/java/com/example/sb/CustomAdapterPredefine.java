@@ -15,6 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.Inflater;
@@ -44,30 +46,39 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
         holder.buttonmain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context,"Clicked",Toast.LENGTH_SHORT).show();
-                holder.edittextmain.setEnabled(true);
-                holder.edittextmain.setCursorVisible(true);
-                holder.edittextmain.requestFocus();
-                holder.edittextmain.setCursorVisible(true);
-                holder.edittextmain.setImeOptions(EditorInfo.IME_ACTION_DONE);
+                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
+                View parentView = LayoutInflater.from(context).inflate(R.layout.dailogue_predefine, null);
+                //View parentView = getLayoutInflater().inflate(R.layout.dailogue_predefine, null);
+                ImageView canceldailogpredefine = (ImageView) parentView.findViewById(R.id.canceldailogpredefine);
+                Button buttondailogprtedefine=(Button)parentView.findViewById(R.id.buttondailogpredefine);
+                EditText editTextdailogpredefine=(EditText)parentView.findViewById(R.id.editTextdailogpredefine);
+                bottomSheetDialog.setContentView(parentView);
+                bottomSheetDialog.show();
+
+                canceldailogpredefine.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        bottomSheetDialog.cancel();
+                    }
+                });
+
+                buttondailogprtedefine.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        holder.edittextmain.setEnabled(true);
+                        String s2= editTextdailogpredefine.getText().toString();
+                        holder.edittextmain.setText(s2);
+                        holder.edittextmain.setEnabled(false);
+                        bottomSheetDialog.cancel();
+
+                    }
+                });
+
 
             }
         });
 
-        holder.edittextmain.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
 
-                if (!b) {
-                    holder.edittextmain.setEnabled(false);
-                    holder.edittextmain.requestFocus();
-                    holder.edittextmain.setCursorVisible(false);
-                    holder.edittextmain.setImeOptions(EditorInfo.IME_ACTION_DONE);
-                }
-
-
-            }
-        });
         // implement setOnClickListener event on item view.
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

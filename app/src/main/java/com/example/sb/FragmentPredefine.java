@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
@@ -18,9 +19,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,26 +48,39 @@ public class FragmentPredefine extends Fragment {
         recyclerViewPredefine = (RecyclerView)v.findViewById(R.id.recyclerViewPredefine);
         layout1=(LinearLayout)v.findViewById(R.id.ll1);
 
-        layout1.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                predefineRoomedit.setEnabled(false);
-                predefineRoomedit.requestFocus();
-                predefineRoomedit.setCursorVisible(false);
-                return false;
-            }
-        });
-
         predefinebuttonedit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(),"Clicked",Toast.LENGTH_SHORT).show();
-                predefineRoomedit.setEnabled(true);
-                predefineRoomedit.setCursorVisible(true);
-                predefineRoomedit.requestFocus();
-                predefineRoomedit.setCursorVisible(true);
-                //predefineRoomedit.setSelection(0);
-                predefineRoomedit.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
+                // Main Logic
+
+                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getContext());
+                View parentView = getLayoutInflater().inflate(R.layout.dailogue_predefine, null);
+                ImageView canceldailogpredefine = (ImageView) parentView.findViewById(R.id.canceldailogpredefine);
+                Button buttondailogprtedefine=(Button)parentView.findViewById(R.id.buttondailogpredefine);
+                EditText editTextdailogpredefine=(EditText)parentView.findViewById(R.id.editTextdailogpredefine);
+                bottomSheetDialog.setContentView(parentView);
+                bottomSheetDialog.show();
+
+                canceldailogpredefine.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        bottomSheetDialog.cancel();
+                    }
+                });
+
+                buttondailogprtedefine.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        predefineRoomedit.setEnabled(true);
+                       String s2= editTextdailogpredefine.getText().toString();
+                      predefineRoomedit.setText(s2);
+                        predefineRoomedit.setEnabled(false);
+                        bottomSheetDialog.cancel();
+
+                    }
+                });
+
 
 
             }
