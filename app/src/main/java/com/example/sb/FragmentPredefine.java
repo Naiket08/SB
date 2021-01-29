@@ -32,7 +32,7 @@ import java.util.Arrays;
 public class FragmentPredefine extends Fragment {
 
    public EditText predefineRoomedit;
-    Button predefinebuttonedit,buttonmain2;
+    Button predefinebuttonedit,saveboardbutton;
     RecyclerView recyclerViewPredefine;
     ArrayList itemnames= new ArrayList<>(Arrays.asList("Light 1", "Light 2", "Light 3", "Light 4", "Fan 1"));
     LinearLayout layout1;
@@ -44,9 +44,9 @@ public class FragmentPredefine extends Fragment {
 
         predefineRoomedit =(EditText)v.findViewById(R.id.predefineRoomedit);
         predefinebuttonedit=(Button)v.findViewById(R.id.predefinebuttonedit);
-        buttonmain2=(Button)v.findViewById(R.id.buttonmain2);
         recyclerViewPredefine = (RecyclerView)v.findViewById(R.id.recyclerViewPredefine);
         layout1=(LinearLayout)v.findViewById(R.id.ll1);
+        saveboardbutton=(Button)v.findViewById(R.id.saveboardbutton);
 
         predefinebuttonedit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +101,17 @@ public class FragmentPredefine extends Fragment {
             }
         });*/
 
+        saveboardbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment newFragment = new FragmentRoomInner();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container,newFragment);
+                transaction.addToBackStack(null);
+
+                transaction.commit();
+            }
+        });
 
         GridLayoutManager gridLayoutManager1 = new GridLayoutManager(getContext(),1);
         recyclerViewPredefine.setLayoutManager(gridLayoutManager1); // set LayoutManager to RecyclerView

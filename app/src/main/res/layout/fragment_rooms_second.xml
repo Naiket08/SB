@@ -19,7 +19,7 @@
         app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_59sdp"
         android:layout_marginLeft="@dimen/_10sdp"/>
 
 
@@ -31,11 +31,11 @@
         android:scrollbarThumbVertical="@color/grey"
         android:scrollbarStyle="outsideInset"
         android:paddingRight="@dimen/_20sdp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textviewfragmentroom2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginTop="@dimen/_70sdp">
+        android:layout_marginTop="@dimen/_100sdp">
 
         <LinearLayout
             android:layout_width="match_parent"
