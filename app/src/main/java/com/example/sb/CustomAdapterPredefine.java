@@ -92,15 +92,15 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
                 switch (item.getItemId()) {
                     case R.id.lightpredefine:
                         //handle menu1 click
-                        holder.imageviewmain1.setImageResource(R.drawable.idea_predefine);
+                        holder.imageviewmain1.setImageResource(R.drawable.idea);
                         break;
                     case R.id.fanpredefine:
                         //handle menu2 click
-                        holder.imageviewmain1.setImageResource(R.drawable.fan);
+                        holder.imageviewmain1.setImageResource(R.drawable.fan_icon);
                         break;
                     case R.id.appliancePredefine:
                         //handle menu3 click
-                        holder.imageviewmain1.setImageResource(R.drawable.appliances);
+                        holder.imageviewmain1.setImageResource(R.drawable.appliances_icon);
                         break;
                 }
                 return false;
