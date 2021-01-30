@@ -53,7 +53,7 @@ public class Home extends AppCompatActivity {
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finishAffinity();
+                //finishAffinity();
                 onBackPressed();
             }
         });
@@ -155,6 +155,11 @@ public class Home extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        if(drawer.isDrawerOpen(navigationView)){
+            drawer.closeDrawer(navigationView);
+        }
+        else{
+            super.onBackPressed();
+        }
     }
 }

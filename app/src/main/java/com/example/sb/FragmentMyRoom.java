@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -23,7 +25,7 @@ public class FragmentMyRoom extends Fragment {
     TextView textViewTopText;
     RecyclerView recyclerViewMyRoom;
 
-    ArrayList roomNames = new ArrayList<>(Arrays.asList("Bed Room", "BathRoom", "Kitchen", "Dining Room", "Custom Room"));
+    ArrayList roomNames = new ArrayList<>(Arrays.asList("Bedroom", "Bathroom", "Kitchen", "Dining Room", "Custom Room"));
     ArrayList roomImages = new ArrayList<>(Arrays.asList(R.drawable.double_bed_icon, R.drawable.bathtub_icon, R.drawable.kitchen_icon,
             R.drawable.dining_table_icon, R.drawable.house_icon));
 
