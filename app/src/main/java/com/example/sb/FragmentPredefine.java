@@ -1,5 +1,7 @@
 package com.example.sb;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.KeyListener;
 import android.view.KeyEvent;
@@ -25,6 +27,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,6 +41,8 @@ public class FragmentPredefine extends Fragment {
     RecyclerView recyclerViewPredefine;
     ArrayList itemnames= new ArrayList<>(Arrays.asList("Light 1", "Light 2", "Light 3", "Light 4", "Fan 1"));
     LinearLayout layout1;
+    SharedPreferences roompref;
+    private FirebaseAuth mAuth;
 
     @Nullable
     @Override
@@ -47,6 +54,7 @@ public class FragmentPredefine extends Fragment {
         recyclerViewPredefine = (RecyclerView)v.findViewById(R.id.recyclerViewPredefine);
         layout1=(LinearLayout)v.findViewById(R.id.ll1);
         saveboardbutton=(Button)v.findViewById(R.id.saveboardbutton);
+        mAuth = FirebaseAuth.getInstance();
 
         predefinebuttonedit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,6 +112,11 @@ public class FragmentPredefine extends Fragment {
         saveboardbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                roompref = getContext().getSharedPreferences("roomPreference", Context.MODE_PRIVATE);
+                String rname = roompref.getString("RoomName","");
+                DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid())
+                        .child(rname);
+                
                 Fragment newFragment = new FragmentRoomInner();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment_container,newFragment);

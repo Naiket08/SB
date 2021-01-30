@@ -1,10 +1,13 @@
 package com.example.sb;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,13 +26,21 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.sb.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class FragmentRoomsSecond  extends DialogFragment {
     Button bedroom,bathroom,kitchen,dinningroom,custom;
 
     private FirebaseAuth mAuth;
+    SharedPreferences roompref;
 
     @Nullable
     @Override
@@ -45,6 +56,8 @@ public class FragmentRoomsSecond  extends DialogFragment {
 
         mAuth = FirebaseAuth.getInstance();
 
+
+
         //BottomSheet Dialog Box Declaration
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getContext());
         View parentView = getLayoutInflater().inflate(R.layout.addingroombox,null);
@@ -52,6 +65,7 @@ public class FragmentRoomsSecond  extends DialogFragment {
         Button nextbutton=(Button)parentView.findViewById(R.id.buttonab);
         ImageView cancelab=(ImageView)parentView.findViewById(R.id.cancelab);
         bottomSheetDialog.setContentView(parentView);
+
 
         bedroom.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,8 +82,14 @@ public class FragmentRoomsSecond  extends DialogFragment {
                 nextbutton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid());
+                        DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid())
+                                .child("Rooms").child("Bedroom");
                         String roomname = edittextab.getText().toString().trim();
+
+                        roompref = getContext().getSharedPreferences("roomPreference", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = roompref.edit();
+                        editor.putString("RoomName",roomname);
+                        editor.commit();
 
                         if(TextUtils.isEmpty(roomname)){
                             Toast.makeText(getContext(), "Enter Roomname", Toast.LENGTH_SHORT).show();
@@ -102,7 +122,8 @@ public class FragmentRoomsSecond  extends DialogFragment {
                 nextbutton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid());
+                        DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid())
+                                .child("Rooms").child("Bathroom");
                         String roomname = edittextab.getText().toString().trim();
 
                         if(TextUtils.isEmpty(roomname)){
@@ -136,7 +157,8 @@ public class FragmentRoomsSecond  extends DialogFragment {
                 nextbutton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid());
+                        DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid())
+                                .child("Rooms").child("Kitchen");
                         String roomname = edittextab.getText().toString().trim();
 
                         if(TextUtils.isEmpty(roomname)){
@@ -170,7 +192,8 @@ public class FragmentRoomsSecond  extends DialogFragment {
                 nextbutton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid());
+                        DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid())
+                                .child("Rooms").child("Dining Room");
                         String roomname = edittextab.getText().toString().trim();
 
                         if(TextUtils.isEmpty(roomname)){

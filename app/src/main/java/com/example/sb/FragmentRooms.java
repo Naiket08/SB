@@ -2,6 +2,7 @@ package com.example.sb;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +16,19 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class FragmentRooms extends Fragment {
 
 ImageView imgeviewfragmentroom,noroom;
 TextView textViewfragmentroom;
 Button floatingbutton;
+private FirebaseAuth mAuth;
 
     @Nullable
     @Override
@@ -31,6 +40,22 @@ Button floatingbutton;
         noroom=(ImageView)v.findViewById(R.id.noroom);
         textViewfragmentroom=(TextView)v.findViewById(R.id.textViewfragmentroom);
         floatingbutton=(Button)v.findViewById(R.id.floatigbutton);
+        mAuth = FirebaseAuth.getInstance();
+
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users");
+        db.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    Toast.makeText(getContext(), "Child "+snapshot.getValue().toString(), Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         floatingbutton.setOnClickListener(new View.OnClickListener() {
             @Override

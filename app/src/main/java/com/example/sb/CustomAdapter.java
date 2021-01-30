@@ -39,7 +39,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.name.setText((CharSequence) roomNames.get(position));
+        holder.name.setText(String.valueOf(roomNames.get(position)));
+
         holder.imageViewIconMyRoom.setImageResource((Integer)roomImages.get(position));
         // implement setOnClickListener event on item view.
         holder.imageViewRecycleViewMyRoomEdit.setOnClickListener(new View.OnClickListener() {
