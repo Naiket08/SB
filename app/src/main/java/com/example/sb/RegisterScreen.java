@@ -20,6 +20,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 
@@ -32,6 +34,11 @@ public class RegisterScreen extends AppCompatActivity {
     EditText editTextRegisterMobileNo,editTextRegisterEmail,editTextRegisterPassword;
     Button buttonRegisterSubmitButton;
 
+    //------------
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();;
+    String userId;
+    String status="false";
+   //-----------------
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,10 +94,25 @@ public class RegisterScreen extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
+                                //this part added-----------
+                                userId = mAuth.getCurrentUser().getUid();
+                                DocumentReference documentReference = db.collection("users").document(userId);
+                                //------------
+
+
                                 HashMap<String,Object> userDetails = new HashMap<>();
                                 userDetails.put("MobileNo",mobileno);
                                 userDetails.put("EmailID",email);
+
                                 //userDetails.put("Password",password);
+                                //------------
+                                documentReference.set(userDetails).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Toast.makeText(RegisterScreen.this, "Your Details are entered in Database", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                                //---------------
                                 FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("User Details").setValue(userDetails).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {

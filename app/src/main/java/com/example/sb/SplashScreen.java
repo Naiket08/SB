@@ -40,7 +40,7 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
                 FirebaseUser user = mAuth.getCurrentUser();
                 if(user!=null){
-                    startActivity(new Intent(SplashScreen.this,Home.class));
+                    startActivity(new Intent(SplashScreen.this,RegisterScreen.class));
                     finish();
                 }
                 else{

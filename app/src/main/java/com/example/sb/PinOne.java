@@ -17,6 +17,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
 
@@ -29,6 +32,12 @@ public class PinOne extends AppCompatActivity {
     public int i=0,y=0;
     public String s;
     public Drawable linedone,line;
+
+    //------------
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();;
+    String userId;
+    String status="false";
+    //-----------------
 
 
     @Override
@@ -72,6 +81,11 @@ public class PinOne extends AppCompatActivity {
                     FirebaseUser user = mAuth.getCurrentUser();
                     String userID;
                     userID = user.getUid();
+                    //this part added-----------
+                    userId = mAuth.getCurrentUser().getUid();
+                    DocumentReference documentReference = db.collection("users").document(userId);
+                    //------------
+
                     String num1,num2,num3,num4;
                     num1 = number1.getText().toString().trim();
                     num2 = number2.getText().toString().trim();
@@ -82,6 +96,12 @@ public class PinOne extends AppCompatActivity {
                     pin.put("Pin2",num2);
                     pin.put("Pin3",num3);
                     pin.put("Pin4",num4);
+                    db.collection("users").document(userId).set(pin, SetOptions.merge());
+                    //userDetails.put("Password",password);
+
+
+
+
                     FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("Pin").setValue(pin).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
