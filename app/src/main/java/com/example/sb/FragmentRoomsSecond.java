@@ -1,9 +1,11 @@
 package com.example.sb;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.media.Image;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -24,6 +26,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.sb.R;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -31,6 +34,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
 import java.util.List;
@@ -41,7 +48,15 @@ public class FragmentRoomsSecond  extends DialogFragment {
 
     private FirebaseAuth mAuth;
     SharedPreferences roompref;
+//cloudbase
 
+    private FirebaseFirestore db1 = FirebaseFirestore.getInstance();;
+    String userId;
+    String status="false";
+    public int i=1;
+    private String k;
+
+    ///
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -55,6 +70,7 @@ public class FragmentRoomsSecond  extends DialogFragment {
         custom=(Button)v.findViewById(R.id.custom);
 
         mAuth = FirebaseAuth.getInstance();
+
 
 
 
@@ -78,13 +94,44 @@ public class FragmentRoomsSecond  extends DialogFragment {
                         bottomSheetDialog.cancel();
                     }
                 });
+                ///////////////////////////////////////////////////////
+                userId = mAuth.getCurrentUser().getUid();
+                DocumentReference documentReference = db1.collection("users").document(userId);
+
+                db1.collection("users").document(mAuth.getCurrentUser().getUid()).get()
+                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @SuppressLint("SetTextI18n")
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                String zz = documentSnapshot.getString("Renumbers");
+                                i=Integer.parseInt(zz);
+                            }
+                        });
+////////////////////////////////////////////////////////////////////////////////
 
                 nextbutton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        //cloud
+
+
+
+
                         DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid())
                                 .child("Rooms").child("Bedroom");
                         String roomname = edittextab.getText().toString().trim();
+
+                        /////
+                        Map<String, Object> user = new HashMap<>();
+                        user.put("Room"+i,roomname);
+                        user.put("RoomType"+i,"Bedroom");
+                        Map<String, Object> user2 = new HashMap<>();
+                        k=String.valueOf(++i);
+                        user2.put("Renumbers",k);
+                        user2.put("Roomfragment","false");
+                        db1.collection("users").document(userId).set(user2, SetOptions.merge());
+                        db1.collection("users").document(userId).collection("Rooms").document("RoomName").set(user, SetOptions.merge());
+                        /////
 
                         roompref = getContext().getSharedPreferences("roomPreference", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = roompref.edit();
@@ -118,6 +165,21 @@ public class FragmentRoomsSecond  extends DialogFragment {
                         bottomSheetDialog.cancel();
                     }
                 });
+                ///////////////////////////////////////////////////////
+                userId = mAuth.getCurrentUser().getUid();
+                DocumentReference documentReference = db1.collection("users").document(userId);
+
+                db1.collection("users").document(mAuth.getCurrentUser().getUid()).get()
+                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @SuppressLint("SetTextI18n")
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                String zz = documentSnapshot.getString("Renumbers");
+                                i=Integer.parseInt(zz);
+                            }
+                        });
+////////////////////////////////////////////////////////////////////////////////
+
 
                 nextbutton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -125,6 +187,17 @@ public class FragmentRoomsSecond  extends DialogFragment {
                         DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid())
                                 .child("Rooms").child("Bathroom");
                         String roomname = edittextab.getText().toString().trim();
+                        /////
+                        Map<String, Object> user = new HashMap<>();
+                        user.put("Room"+i,roomname);
+                        user.put("RoomType"+i,"BathRoom");
+                        Map<String, Object> user2 = new HashMap<>();
+                        k=String.valueOf(++i);
+                        user2.put("Renumbers",k);
+                        db1.collection("users").document(userId).set(user2, SetOptions.merge());
+                        db1.collection("users").document(userId).collection("Rooms").document("RoomName").set(user, SetOptions.merge());
+                        /////
+
 
                         if(TextUtils.isEmpty(roomname)){
                             Toast.makeText(getContext(), "Enter Roomname", Toast.LENGTH_SHORT).show();
@@ -153,6 +226,21 @@ public class FragmentRoomsSecond  extends DialogFragment {
                         bottomSheetDialog.cancel();
                     }
                 });
+                ///////////////////////////////////////////////////////
+                userId = mAuth.getCurrentUser().getUid();
+                DocumentReference documentReference = db1.collection("users").document(userId);
+
+                db1.collection("users").document(mAuth.getCurrentUser().getUid()).get()
+                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @SuppressLint("SetTextI18n")
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                String zz = documentSnapshot.getString("Renumbers");
+                                i=Integer.parseInt(zz);
+                            }
+                        });
+////////////////////////////////////////////////////////////////////////////////
+
 
                 nextbutton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -160,6 +248,17 @@ public class FragmentRoomsSecond  extends DialogFragment {
                         DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid())
                                 .child("Rooms").child("Kitchen");
                         String roomname = edittextab.getText().toString().trim();
+                        /////
+                        Map<String, Object> user = new HashMap<>();
+                        user.put("Room"+i,roomname);
+                        user.put("RoomType"+i,"Kitchen");
+                        Map<String, Object> user2 = new HashMap<>();
+                        k=String.valueOf(++i);
+                        user2.put("Renumbers",k);
+                        db1.collection("users").document(userId).set(user2, SetOptions.merge());
+                        db1.collection("users").document(userId).collection("Rooms").document("RoomName").set(user, SetOptions.merge());
+                        /////
+
 
                         if(TextUtils.isEmpty(roomname)){
                             Toast.makeText(getContext(), "Enter Roomname", Toast.LENGTH_SHORT).show();
@@ -188,6 +287,20 @@ public class FragmentRoomsSecond  extends DialogFragment {
                         bottomSheetDialog.cancel();
                     }
                 });
+                ///////////////////////////////////////////////////////
+                userId = mAuth.getCurrentUser().getUid();
+                DocumentReference documentReference = db1.collection("users").document(userId);
+
+                db1.collection("users").document(mAuth.getCurrentUser().getUid()).get()
+                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @SuppressLint("SetTextI18n")
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                String zz = documentSnapshot.getString("Renumbers");
+                                i=Integer.parseInt(zz);
+                            }
+                        });
+////////////////////////////////////////////////////////////////////////////////
 
                 nextbutton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -195,6 +308,17 @@ public class FragmentRoomsSecond  extends DialogFragment {
                         DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid())
                                 .child("Rooms").child("Dining Room");
                         String roomname = edittextab.getText().toString().trim();
+                        /////
+                        Map<String, Object> user = new HashMap<>();
+                        user.put("Room"+i,roomname);
+                        user.put("RoomType"+i,"DinningRoom");
+                        Map<String, Object> user2 = new HashMap<>();
+                        k=String.valueOf(++i);
+                        user2.put("Renumbers",k);
+                        db1.collection("users").document(userId).set(user2, SetOptions.merge());
+                        db1.collection("users").document(userId).collection("Rooms").document("RoomName").set(user, SetOptions.merge());
+                        /////
+
 
                         if(TextUtils.isEmpty(roomname)){
                             Toast.makeText(getContext(), "Enter Roomname", Toast.LENGTH_SHORT).show();

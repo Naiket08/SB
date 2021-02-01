@@ -17,8 +17,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -38,7 +36,8 @@ public class RegisterScreen extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();;
     String userId;
     String status="false";
-   //-----------------
+
+    //-----------------
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,6 +102,8 @@ public class RegisterScreen extends AppCompatActivity {
                                 HashMap<String,Object> userDetails = new HashMap<>();
                                 userDetails.put("MobileNo",mobileno);
                                 userDetails.put("EmailID",email);
+                                userDetails.put("Roomfragment","true");
+                                userDetails.put("Renumbers","0");
 
                                 //userDetails.put("Password",password);
                                 //------------

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -16,6 +17,7 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -25,6 +27,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Home extends AppCompatActivity {
 
@@ -35,6 +44,12 @@ public class Home extends AppCompatActivity {
     NavigationView navigationView;
     DrawerLayout drawer;
     FrameLayout fragment_container;
+    ///
+    private FirebaseFirestore db1 = FirebaseFirestore.getInstance();;
+    String userId;
+    String status="false";
+    public String roomcheck;
+    ////
 
     String UserEmail;
 
@@ -42,12 +57,28 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        mAuth = FirebaseAuth.getInstance();
         buttonBack = (Button)findViewById(R.id.buttonBack);
         buttonHamburger = (Button)findViewById(R.id.buttonHamburger);
         buttonKill = (Button)findViewById(R.id.buttonKill);
         drawer = (DrawerLayout)findViewById(R.id.drawer);
         fragment_container = (FrameLayout)findViewById(R.id.fragment_container);
+
+        /////
+        userId = mAuth.getCurrentUser().getUid();
+        DocumentReference documentReference = db1.collection("users").document(userId);
+        ///calling
+
+        final String currentID = mAuth.getCurrentUser().getUid();
+        db1.collection("users").document(mAuth.getCurrentUser().getUid()).get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @SuppressLint("SetTextI18n")
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        String finalProfileText2 = documentSnapshot.getString("Roomfragment");
+                        roomcheck=finalProfileText2;
+                    }
+                });
 
         //AppBar Button OnPressed
         buttonBack.setOnClickListener(new View.OnClickListener() {
@@ -131,16 +162,38 @@ public class Home extends AppCompatActivity {
 
                 switch (item.getItemId()){
                     case R.id.navigation_general:
-                        fragment = new FragmentGeneral();
+                            fragment = new FragmentGeneral();
+
                         break;
                     case R.id.navigation_rooms:
-                        fragment = new FragmentRooms();
+                        recheck();
+                        if(roomcheck.equals("true")) {
+
+                            fragment = new FragmentRooms();
+                        }
+                        else if(roomcheck.equals("false"))
+                        {
+                            fragment = new FragmentMyRoom();
+                        }
                         break;
                 }
                 return loadFragment(fragment);
             }
         });
     }
+
+void  recheck(){
+    final String currentID = mAuth.getCurrentUser().getUid();
+    db1.collection("users").document(mAuth.getCurrentUser().getUid()).get()
+            .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @SuppressLint("SetTextI18n")
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    String finalProfileText2 = documentSnapshot.getString("Roomfragment");
+                    roomcheck=finalProfileText2;
+                }
+            });
+}
 
     private boolean loadFragment(Fragment fragment){
         if(fragment!=null){
