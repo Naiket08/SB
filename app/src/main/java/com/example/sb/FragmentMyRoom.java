@@ -100,8 +100,8 @@ public class FragmentMyRoom extends Fragment {
                             else  if(rimg.equals("Kitchen")){
                                 roomImages.add(R.drawable.kitchen_icon);
                             }
-                            else  if(rimg.equals("Bom")){
-                                roomImages.add(R.drawable.double_bed_icon);
+                            else  if(rimg.equals("DinningRoom")){
+                                roomImages.add(R.drawable.dining_table_icon);
                             }
 
                         }
