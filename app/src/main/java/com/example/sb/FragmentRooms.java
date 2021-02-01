@@ -42,35 +42,16 @@ private FirebaseAuth mAuth;
         floatingbutton=(Button)v.findViewById(R.id.floatigbutton);
         mAuth = FirebaseAuth.getInstance();
 
-        DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users");
-        db.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    Toast.makeText(getContext(), "Child "+snapshot.getValue().toString(), Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
         floatingbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Fragment newFragment = new FragmentRoomsSecond();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment_container,newFragment);
                 transaction.addToBackStack(null);
-
                 transaction.commit();
             }
         });
-
-
-       return v;
+        return v;
     }
 }

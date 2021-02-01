@@ -71,9 +71,6 @@ public class FragmentRoomsSecond  extends DialogFragment {
 
         mAuth = FirebaseAuth.getInstance();
 
-
-
-
         //BottomSheet Dialog Box Declaration
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getContext());
         View parentView = getLayoutInflater().inflate(R.layout.addingroombox,null);
@@ -113,10 +110,6 @@ public class FragmentRoomsSecond  extends DialogFragment {
                     @Override
                     public void onClick(View view) {
                         //cloud
-
-
-
-
                         DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid())
                                 .child("Rooms").child("Bedroom");
                         String roomname = edittextab.getText().toString().trim();
