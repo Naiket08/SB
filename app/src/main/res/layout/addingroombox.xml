@@ -47,9 +47,15 @@
             android:fontFamily="@font/muli"
             android:hint="Type here"
             android:paddingStart="@dimen/_10sdp"
+            android:maxLines="1"
+            android:ems="10"
+            android:lines="1"
+            android:maxLength="15"
+            android:singleLine="true"
+            android:textSize="@dimen/_14sdp"
+            android:scrollbars="none"
             android:textColor="#FFFFFF"
             android:textColorHint="@color/grey"
-            android:textSize="@dimen/_14sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textviewab"/>
 

@@ -86,13 +86,13 @@ public class FragmentMyRoom extends Fragment {
                             String txt = documentSnapshot.getString("Room"+j);
                             rtext=txt;
                             roomNames.add(rtext);
-                            Toast.makeText(getContext(),rtext, Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getContext(),rtext, Toast.LENGTH_SHORT).show();
                             String ig = documentSnapshot.getString("RoomType"+j);
                             rimg=ig;
-                            Toast.makeText(getContext(),rimg, Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(getContext(),rimg, Toast.LENGTH_SHORT).show();
                             if(rimg.equals("Bedroom")){
                                 roomImages.add(R.drawable.double_bed_icon);
-                                Toast.makeText(getContext(),"Entered inside", Toast.LENGTH_SHORT).show();
+                               // Toast.makeText(getContext(),"Entered inside", Toast.LENGTH_SHORT).show();
                             }
                             else  if(rimg.equals("BathRoom")){
                                 roomImages.add(R.drawable.bathtub_icon);
