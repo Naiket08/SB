@@ -61,9 +61,13 @@ public class FragmentMyRoom extends Fragment {
 
         ArrayList dynamicroomname = new ArrayList<>();
 
+        if((roomNames!=null&&roomImages!=null&&roomNames.size()>0&&roomImages.size()>0)){
+            roomNames.clear();
+            roomImages.clear();
+        }
+
         //////////////////////////////////////////////////
         //firecloud
-
         mAuth = FirebaseAuth.getInstance();
         userId = mAuth.getCurrentUser().getUid();
         db1.collection("users").document(userId).get()
