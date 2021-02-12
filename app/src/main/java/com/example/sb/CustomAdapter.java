@@ -13,7 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -81,6 +83,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
             }
         });
+        holder.imageViewIconMyRoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment newFragment = new FragmentRoomInner();
+                FragmentManager manager = ((AppCompatActivity)context).getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.container,newFragment)
+                        .commit();
+            }
+        });
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -117,7 +128,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     public int getItemCount() {
         return roomNames.size();
     }
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         // init the item view's
         EditText name;
         ImageView imageViewRecycleViewMyRoomEdit,imageViewIconMyRoom;

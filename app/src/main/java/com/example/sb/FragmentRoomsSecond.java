@@ -119,9 +119,12 @@ public class FragmentRoomsSecond  extends DialogFragment {
                         user.put("Room"+i,roomname);
                         user.put("RoomType"+i,"Bedroom");
                         Map<String, Object> user2 = new HashMap<>();
+                        Map<String, Object> user3 = new HashMap<>();
                         k=String.valueOf(++i);
                         user2.put("Renumbers",k);
                         user2.put("Roomfragment","false");
+                        user3.put("switchcounter","1");
+                        db1.collection("users").document(userId).collection("Rooms").document(""+i).set(user3, SetOptions.merge());
                         db1.collection("users").document(userId).set(user2, SetOptions.merge());
                         db1.collection("users").document(userId).collection("Rooms").document("RoomName").set(user, SetOptions.merge());
                         /////
@@ -185,8 +188,11 @@ public class FragmentRoomsSecond  extends DialogFragment {
                         user.put("Room"+i,roomname);
                         user.put("RoomType"+i,"BathRoom");
                         Map<String, Object> user2 = new HashMap<>();
+                        Map<String, Object> user3 = new HashMap<>();
                         k=String.valueOf(++i);
                         user2.put("Renumbers",k);
+                        user3.put("switchcounter","1");
+                        db1.collection("users").document(userId).collection("Rooms").document(""+i).set(user3, SetOptions.merge());
                         db1.collection("users").document(userId).set(user2, SetOptions.merge());
                         db1.collection("users").document(userId).collection("Rooms").document("RoomName").set(user, SetOptions.merge());
                         /////
@@ -246,8 +252,11 @@ public class FragmentRoomsSecond  extends DialogFragment {
                         user.put("Room"+i,roomname);
                         user.put("RoomType"+i,"Kitchen");
                         Map<String, Object> user2 = new HashMap<>();
+                        Map<String, Object> user3 = new HashMap<>();
                         k=String.valueOf(++i);
                         user2.put("Renumbers",k);
+                        user3.put("switchcounter","1");
+                        db1.collection("users").document(userId).collection("Rooms").document(""+i).set(user3, SetOptions.merge());
                         db1.collection("users").document(userId).set(user2, SetOptions.merge());
                         db1.collection("users").document(userId).collection("Rooms").document("RoomName").set(user, SetOptions.merge());
                         /////
@@ -306,8 +315,11 @@ public class FragmentRoomsSecond  extends DialogFragment {
                         user.put("Room"+i,roomname);
                         user.put("RoomType"+i,"DinningRoom");
                         Map<String, Object> user2 = new HashMap<>();
+                        Map<String, Object> user3 = new HashMap<>();
                         k=String.valueOf(++i);
                         user2.put("Renumbers",k);
+                        user3.put("switchcounter","1");
+                        db1.collection("users").document(userId).collection("Rooms").document(""+i).set(user3, SetOptions.merge());
                         db1.collection("users").document(userId).set(user2, SetOptions.merge());
                         db1.collection("users").document(userId).collection("Rooms").document("RoomName").set(user, SetOptions.merge());
                         /////
