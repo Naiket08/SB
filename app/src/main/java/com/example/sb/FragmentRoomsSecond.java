@@ -118,6 +118,7 @@ public class FragmentRoomsSecond  extends DialogFragment {
                         Map<String, Object> user = new HashMap<>();
                         user.put("Room"+i,roomname);
                         user.put("RoomType"+i,"Bedroom");
+                        db1.collection("users").document(userId).collection("Rooms").document("RoomName").set(user, SetOptions.merge());
                         Map<String, Object> user2 = new HashMap<>();
                         Map<String, Object> user3 = new HashMap<>();
                         k=String.valueOf(++i);
@@ -126,7 +127,7 @@ public class FragmentRoomsSecond  extends DialogFragment {
                         user3.put("switchcounter","1");
                         db1.collection("users").document(userId).collection("Rooms").document(""+i).set(user3, SetOptions.merge());
                         db1.collection("users").document(userId).set(user2, SetOptions.merge());
-                        db1.collection("users").document(userId).collection("Rooms").document("RoomName").set(user, SetOptions.merge());
+
                         /////
 
                         roompref = getContext().getSharedPreferences("roomPreference", Context.MODE_PRIVATE);

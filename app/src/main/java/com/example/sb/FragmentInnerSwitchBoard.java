@@ -1,5 +1,6 @@
 package com.example.sb;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +15,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class FragmentInnerSwitchBoard extends Fragment {
 
@@ -42,6 +48,7 @@ public class FragmentInnerSwitchBoard extends Fragment {
         buttonLight3 = (Button)view.findViewById(R.id.buttonLight3);
         buttonFan = (Button)view.findViewById(R.id.buttonFan);
         buttonSwitchBoardApppliance = (Button)view.findViewById(R.id.buttonSwitchBoardAppliance);
+
 
         buttonLight1.setOnClickListener(new View.OnClickListener() {
             @Override

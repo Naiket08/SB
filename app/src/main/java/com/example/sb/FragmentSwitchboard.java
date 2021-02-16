@@ -1,6 +1,8 @@
 package com.example.sb;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,15 +11,28 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.example.sb.R.id.content;
 import static com.example.sb.R.id.imageViewswitchboard;
 import static com.example.sb.R.id.info;
 
@@ -25,6 +40,14 @@ public class FragmentSwitchboard extends DialogFragment {
 
     ImageButton switchinfo1, switchinfo2, switchinfo3, switchinfo4, switch1, switch2, switch3, switch4;
     public int i;
+    ////////////////////////////////
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore db1 = FirebaseFirestore.getInstance();;
+    String userId;
+    String status="false";
+    public int o,j,f;
+    private String k,txt,demo1,demo2;
+    /////////////////////////////////////
 
     @Nullable
     @Override
@@ -40,6 +63,14 @@ public class FragmentSwitchboard extends DialogFragment {
         switch2 = (ImageButton) v.findViewById(R.id.switch2);
         switch3 = (ImageButton) v.findViewById(R.id.switch3);
         switch4 = (ImageButton) v.findViewById(R.id.switch4);
+/////////////////////
+        mAuth = FirebaseAuth.getInstance();
+
+
+
+
+
+//////////////////////////////////////
 
         switchinfo1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,24 +105,28 @@ public class FragmentSwitchboard extends DialogFragment {
         switch1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                f=1;
                 switchoptionaldailgue();
             }
         });
         switch2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                f=2;
                 switchoptionaldailgue();
             }
         });
         switch3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                f=3;
                 switchoptionaldailgue();
             }
         });
         switch4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                f=4;
                 switchoptionaldailgue();
             }
         });
@@ -156,38 +191,151 @@ public class FragmentSwitchboard extends DialogFragment {
     }
 
     public void switchoptionaldailgue() {
-
-
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getContext());
         View parentView = getLayoutInflater().inflate(R.layout.switchoptiondailoge, null);
-        ImageView cancelab = (ImageView) parentView.findViewById(R.id.cancelswitchdailog);
-        Button buttonswitchdailog=(Button)parentView.findViewById(R.id.buttonswitchdailog);
-
+        ImageView cancelab2 = (ImageView) parentView.findViewById(R.id.cancelswitchdailog);
+        Button buttonswitchdailog2=(Button)parentView.findViewById(R.id.buttonswitchdailog);
+        EditText editTextswitchdailog2=(EditText)parentView.findViewById(R.id.editTextswitchdailog);
 
         bottomSheetDialog.setContentView(parentView);
+
         bottomSheetDialog.show();
 
-        cancelab.setOnClickListener(new View.OnClickListener() {
+        cancelab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 bottomSheetDialog.cancel();
             }
         });
+        userId = mAuth.getCurrentUser().getUid();
+        // DocumentReference documentReference = db1.collection("users").document(userId);
 
-        buttonswitchdailog.setOnClickListener(new View.OnClickListener() {
+        db1.collection("users").document(mAuth.getCurrentUser().getUid()).get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @SuppressLint("SetTextI18n")
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        String z1 = documentSnapshot.getString("Renumbers");
+                        demo1=z1.toString();
+                        o=Integer.valueOf(demo1);
+                        Toast.makeText(getContext(),"value1 : "+ o , Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        Handler handler = new Handler();
+        Runnable runnable = new Runnable() {
             @Override
-            public void onClick(View view) {
-
-                Fragment newFragment = new FragmentPredefine();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container,newFragment);
-                transaction.addToBackStack(null);
-
-                transaction.commit();
-                bottomSheetDialog.cancel();
+            public void run() {
+                ////////////////////////////////
+                db1.collection("users").document(mAuth.getCurrentUser().getUid()).collection("Rooms").document(""+o).get()
+                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @SuppressLint("SetTextI18n")
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                String z2 = documentSnapshot.getString("switchcounter");
+                                demo2=z2.toString();
+                                j=Integer.valueOf(demo2);
+                                Toast.makeText(getContext(),"value2 : "+ j , Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                ////////////////////////////////
 
             }
-        });
+        };
+        handler.postDelayed(runnable, 500);
+
+
+
+
+
+
+               buttonswitchdailog2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        if(f==1) {
+                            /////
+                            String text1 = editTextswitchdailog2.getText().toString().trim();
+                            Map<String, Object> user = new HashMap<>();
+                            user.put("KeyName" + j, text1);
+                            user.put("Switchname" + j, "Switch board 1");
+                            user.put("E1", "Light 1");
+                            user.put("E2", "Light 2");
+                            user.put("E3", "Light 3");
+                            user.put("E4", "Light 4");
+                            user.put("E5", "Fan 1");
+                            Map<String, Object> user2 = new HashMap<>();
+                            db1.collection("users").document(userId).collection("Rooms").document("" + o).collection("Switch" + j).document("switch").set(user, SetOptions.merge());
+                            k = String.valueOf(++j);
+                            user2.put("switchcounter", k);
+                            db1.collection("users").document(userId).collection("Rooms").document("" + o).set(user2, SetOptions.merge());
+                            /////
+                        }
+                        else if(f==2){
+                            String text1 = editTextswitchdailog2.getText().toString().trim();
+                            Map<String, Object> user = new HashMap<>();
+                            user.put("KeyName" + j, text1);
+                            user.put("Switchname" + j, "Switch board 2");
+                            user.put("E1", "Light 1");
+                            user.put("E2", "Light 2");
+                            user.put("E3", "Light 3");
+                            user.put("E4", "Light 4");
+                            user.put("E5", "Fan 1");
+                            user.put("E6", "Fan 2");
+                            Map<String, Object> user2 = new HashMap<>();
+                            db1.collection("users").document(userId).collection("Rooms").document("" + o).collection("Switch" + j).document("switch").set(user, SetOptions.merge());
+                            k = String.valueOf(++j);
+                            user2.put("switchcounter", k);
+                            db1.collection("users").document(userId).collection("Rooms").document("" + o).set(user2, SetOptions.merge());
+                            /////
+
+                        } else if(f==3){
+                            String text1 = editTextswitchdailog2.getText().toString().trim();
+                            Map<String, Object> user = new HashMap<>();
+                            user.put("KeyName" + j, text1);
+                            user.put("Switchname" + j, "Switch board 3");
+                            user.put("E1", "Light 1");
+                            user.put("E2", "Light 2");
+                            user.put("E3", "Fan 1");
+                            Map<String, Object> user2 = new HashMap<>();
+                            db1.collection("users").document(userId).collection("Rooms").document("" + o).collection("Switch" + j).document("switch").set(user, SetOptions.merge());
+                            k = String.valueOf(++j);
+                            user2.put("switchcounter", k);
+                            db1.collection("users").document(userId).collection("Rooms").document("" + o).set(user2, SetOptions.merge());
+                            /////
+                        } else if(f==4){
+                            String text1 = editTextswitchdailog2.getText().toString().trim();
+                            Map<String, Object> user = new HashMap<>();
+                            user.put("KeyName" + j, text1);
+                            user.put("Switchname" + j, "Switch board 4");
+                            /*user.put("E1", "Light 1");
+                            user.put("E2", "Light 2");
+                            user.put("E3", "Light 3");
+                            user.put("E4", "Light 4");
+                            user.put("E5", "Fan 1");*/
+                            Map<String, Object> user2 = new HashMap<>();
+                            db1.collection("users").document(userId).collection("Rooms").document("" + o).collection("Switch" + j).document("switch").set(user, SetOptions.merge());
+                            k = String.valueOf(++j);
+                            user2.put("switchcounter", k);
+                            db1.collection("users").document(userId).collection("Rooms").document("" + o).set(user2, SetOptions.merge());
+                            /////
+
+                        }
+                        Fragment newFragment = new FragmentPredefine();
+                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                        transaction.replace(R.id.fragment_container,newFragment);
+                        transaction.addToBackStack(null);
+                        transaction.commit();
+                        bottomSheetDialog.cancel();
+
+                    }
+                });
+
+
+
+
+
     }
+
 
 }
