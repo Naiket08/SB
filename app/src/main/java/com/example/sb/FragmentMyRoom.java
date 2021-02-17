@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -49,7 +50,7 @@ public class FragmentMyRoom extends Fragment {
     String userId;
     String status="false";
     public int i=0;
-    public String rimg,rtext;
+    public String rtext,rimg;
 //////////////////////////////////////
     public ArrayList<String> roomNames = new ArrayList<String>();;
     public ArrayList<Integer> roomImages = new ArrayList<Integer>();
@@ -60,7 +61,7 @@ public class FragmentMyRoom extends Fragment {
         View view = inflater.inflate(R.layout.fragment_my_rooms,container,false);
 
         ArrayList dynamicroomname = new ArrayList<>();
-
+        CustomAdapter customAdapter = new CustomAdapter(getActivity(),roomNames,roomImages);
         if((roomNames!=null&&roomImages!=null&&roomNames.size()>0&&roomImages.size()>0)){
             roomNames.clear();
             roomImages.clear();
@@ -70,17 +71,87 @@ public class FragmentMyRoom extends Fragment {
         //firecloud
         mAuth = FirebaseAuth.getInstance();
         userId = mAuth.getCurrentUser().getUid();
-        db1.collection("users").document(userId).get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @SuppressLint("SetTextI18n")
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        String zz = documentSnapshot.getString("Renumbers");
-                        i=Integer.parseInt(zz);
-                    }
-                });
+        DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms");
+       itemsRef.addChildEventListener(new ChildEventListener() {
+           @Override
+           public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-        db1.collection("users").document(userId).collection("Rooms").document("RoomName").get()
+               String s1 = dataSnapshot.getKey();
+               roomNames.add(s1);
+               String s2 =dataSnapshot.child("roomtype").getValue(String.class);
+               if(s2.equals("Bedroom")){
+                   roomImages.add(R.drawable.double_bed_icon);
+                   //Toast.makeText(getContext(),"Entered inside", Toast.LENGTH_SHORT).show();
+               }
+               else  if(s2.equals("Bathroom")){
+                   roomImages.add(R.drawable.bathtub_icon);
+               }
+               else  if(s2.equals("Kitchen")){
+                   roomImages.add(R.drawable.kitchen_icon);
+               }
+               else  if(s2.equals("Dinning Room")){
+                   roomImages.add(R.drawable.dining_table_icon);
+               }
+               //Toast.makeText(getContext(), s1, Toast.LENGTH_SHORT).show();
+              // Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();
+               customAdapter.notifyDataSetChanged();
+           }
+
+           @Override
+           public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+           }
+
+           @Override
+           public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+           }
+
+           @Override
+           public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+           }
+
+           @Override
+           public void onCancelled(@NonNull DatabaseError databaseError) {
+
+           }
+       });
+        ////////////////////////////////////////
+
+       /* DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference().child("rooms");
+        ValueEventListener eventListener2 = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    String stext = ds.getValue(String.class);
+                    rimg=stext;
+                    Toast.makeText(getContext(), stext, Toast.LENGTH_SHORT).show();
+                    *//*if(rimg.equals("Bedroom")){
+                        roomImages.add(R.drawable.double_bed_icon);
+                        // Toast.makeText(getContext(),"Entered inside", Toast.LENGTH_SHORT).show();
+                    }
+                    else  if(rimg.equals("BathRoom")){
+                        roomImages.add(R.drawable.bathtub_icon);
+                    }
+                    else  if(rimg.equals("Kitchen")){
+                        roomImages.add(R.drawable.kitchen_icon);
+                    }
+                    else  if(rimg.equals("DinningRoom")){
+                        roomImages.add(R.drawable.dining_table_icon);
+                    }*//*
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("TAG", databaseError.getMessage()); //Don't ignore potential errors!
+            }
+        };
+        itemsRef2.addListenerForSingleValueEvent(eventListener2);*/
+/////////////////////////////////////////////////////////////////////
+        /*db1.collection("users").document(userId).collection("Rooms").document("RoomName").get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @SuppressLint("SetTextI18n")
                     @Override
@@ -110,7 +181,7 @@ public class FragmentMyRoom extends Fragment {
 
                         }
                     }
-                });
+                });*/
 
 
         //////////////////////////////////////////////////////
@@ -130,7 +201,6 @@ public class FragmentMyRoom extends Fragment {
                 GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
                 recyclerViewMyRoom.setLayoutManager(gridLayoutManager); // set LayoutManager to RecyclerView
                 //  call the constructor of CustomAdapter to send the reference and data to Adapter
-                CustomAdapter customAdapter = new CustomAdapter(getActivity(),roomNames,roomImages);
                 recyclerViewMyRoom.setAdapter(customAdapter); // set the Adapter to RecyclerView
                 getFragmentManager().beginTransaction().commit();
             }

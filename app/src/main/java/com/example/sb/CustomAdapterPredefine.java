@@ -19,22 +19,37 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.zip.Inflater;
 
 public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPredefine.ViewHolder> {
     ArrayList itemnames;
 
     Context context;
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();;
+    String userId;
+    String status="false";
+    public String Roomname,text1,s2="Light";
+    public int o=1;
 
-    public CustomAdapterPredefine(Context context, ArrayList itemnames) {
+    public CustomAdapterPredefine(Context context, ArrayList itemnames,String Roomname,String text1,FirebaseAuth mAuth) {
 
 
         this.context = context;
         this.itemnames = itemnames;
+        this.Roomname=Roomname;
+        this.text1=text1;
+        this.mAuth=mAuth;
 
     }
 
@@ -43,6 +58,8 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleview_layout_predefine, parent, false);
         // set the view's size, margins, paddings and layout parameters
         ViewHolder vh = new ViewHolder(v); // pass the view to View Holder
+
+
         return vh;
     }
 
@@ -72,8 +89,14 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
                     @Override
                     public void onClick(View view) {
                         holder.edittextmain.setEnabled(true);
-                        String s2 = editTextdailogpredefine.getText().toString();
+                        s2 = editTextdailogpredefine.getText().toString();
                         holder.edittextmain.setText(s2);
+                        //////////
+                        FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text1).setValue(s2).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            public void onSuccess(Void aVoid) {
+                            }
+                        });
+                        ///////////////
                         holder.edittextmain.setEnabled(false);
                         bottomSheetDialog.cancel();
 
@@ -92,17 +115,53 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
                 switch (item.getItemId()) {
                     case R.id.lightpredefine:
                         //handle menu1 click
+                        Map<String, Object> user = new HashMap<>();
+                        // String l = mAuth.getCurrentUser().getUid();
+                        String q=String.valueOf(o);
+                        //  user.put("UID",l);
+                        user.put("mode","on");
+                        user.put("number",q);
+                        user.put("category","Light");
                         holder.imageviewmain1.setImageResource(R.drawable.idea);
+                        FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text1).child(s2).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            public void onSuccess(Void aVoid) {
+                            }
+                        });
                         break;
                     case R.id.fanpredefine:
-                        //handle menu2 click
+                        /*//handle menu2 click
+                        Map<String, Object> user1 = new HashMap<>();
+                        //  String l1 = mAuth.getCurrentUser().getUid();
+                        String q1=String.valueOf(o);
+                        //   user1.put("UID",l1);
+                        user1.put("mode","on");
+                        user1.put("number",q1);
+                        user1.put("category","Fan");
                         holder.imageviewmain1.setImageResource(R.drawable.fan_icon);
+                        FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text1).child(s2).setValue(user1).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            public void onSuccess(Void aVoid) {
+                            }
+                        });*/
                         break;
                     case R.id.appliancePredefine:
-                        //handle menu3 click
+                       /* //handle menu3 click
+                        //handle menu2 click
+                        Map<String, Object> user3 = new HashMap<>();
+                        //  String l3 = mAuth.getCurrentUser().getUid();
+                        String q3=String.valueOf(o);
+                        //  user3.put("UID",l3);
+                        user3.put("mode","on");
+                        user3.put("number",q3);
+                        user3.put("category","Fan");
                         holder.imageviewmain1.setImageResource(R.drawable.appliances_icon);
+                        FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text1).child(s2).setValue(user3).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            public void onSuccess(Void aVoid) {
+                            }
+                        });
+*/
                         break;
                 }
+                o++;
                 return false;
             }
         });

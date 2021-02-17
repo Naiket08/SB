@@ -58,12 +58,14 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerViewRoomInner"
-                    android:layout_width="@dimen/_280sdp"
-                    android:layout_height="match_parent"
-                    android:scrollbars="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_18sdp"
                     android:layout_below="@id/textViewTopText"
                     android:layout_alignParentStart="true"
-                    android:layout_alignParentEnd="true"></androidx.recyclerview.widget.RecyclerView>
+                    android:layout_alignParentEnd="true">
+
+                </androidx.recyclerview.widget.RecyclerView>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="134dp"

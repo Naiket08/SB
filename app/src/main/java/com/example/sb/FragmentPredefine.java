@@ -3,6 +3,7 @@ package com.example.sb;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.method.KeyListener;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -26,22 +27,27 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class FragmentPredefine extends Fragment {
 
-   public EditText predefineRoomedit;
+    public EditText predefineRoomedit;
     Button predefinebuttonedit,saveboardbutton;
     RecyclerView recyclerViewPredefine;
-    ArrayList itemnames= new ArrayList<>(Arrays.asList("Light 1", "Light 2", "Light 3", "Light 4", "Fan 1"));
+    public ArrayList<String> itemnames = new ArrayList<String>();;
     LinearLayout layout1;
     SharedPreferences roompref;
+    public String Roomname,text1,s2="SwitchBoard",prenum;
     private FirebaseAuth mAuth;
 
     @Nullable
@@ -55,6 +61,33 @@ public class FragmentPredefine extends Fragment {
         layout1=(LinearLayout)v.findViewById(R.id.ll1);
         saveboardbutton=(Button)v.findViewById(R.id.saveboardbutton);
         mAuth = FirebaseAuth.getInstance();
+
+
+        Roomname = getArguments().getString("Roomname");
+       // Toast.makeText(getContext(),Roomname, Toast.LENGTH_SHORT).show();
+        text1 = getArguments().getString("Switchname");
+       // Toast.makeText(getContext(),text1, Toast.LENGTH_SHORT).show();
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text1);
+        db.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                prenum = dataSnapshot.child("combination").getValue(String.class);
+                Toast.makeText(getContext(), "Prenoun:"+prenum, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+        //////////////////////////////////////////////////////////////////////
+
+
+
+
+        //////////////////////////////////////////////////////////////////////
 
         predefinebuttonedit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,8 +114,8 @@ public class FragmentPredefine extends Fragment {
                     @Override
                     public void onClick(View view) {
                         predefineRoomedit.setEnabled(true);
-                       String s2= editTextdailogpredefine.getText().toString();
-                      predefineRoomedit.setText(s2);
+                        s2= editTextdailogpredefine.getText().toString().trim();
+                        predefineRoomedit.setText(s2);
                         predefineRoomedit.setEnabled(false);
                         bottomSheetDialog.cancel();
 
@@ -112,11 +145,11 @@ public class FragmentPredefine extends Fragment {
         saveboardbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                roompref = getContext().getSharedPreferences("roomPreference", Context.MODE_PRIVATE);
-                String rname = roompref.getString("RoomName","");
-                DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid())
-                        .child(rname);
-                
+
+                FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text1).child("type").setValue(s2).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    public void onSuccess(Void aVoid) {
+                    }
+                });
                 Fragment newFragment = new FragmentRoomInner();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment_container,newFragment);
@@ -126,14 +159,52 @@ public class FragmentPredefine extends Fragment {
             }
         });
 
-        GridLayoutManager gridLayoutManager1 = new GridLayoutManager(getContext(),1);
-        recyclerViewPredefine.setLayoutManager(gridLayoutManager1); // set LayoutManager to RecyclerView
-      /*  final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerViewPredefine.setLayoutManager(layoutManager); // set LayoutManager to RecyclerView*/
-        //  call the constructor of CustomAdapter to send the reference and data to Adapter
-        CustomAdapterPredefine customAdapterPredefine = new CustomAdapterPredefine(getActivity(),itemnames);
-        recyclerViewPredefine.setAdapter(customAdapterPredefine); // set the Adapter to RecyclerView
+
+        Handler handler = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                if(prenum.equals("4*1"))
+                {
+
+                    itemnames.add("Light 1");
+                    itemnames.add("Light 2");
+                    itemnames.add("Light 3");
+                    itemnames.add("Light 4");
+                    itemnames.add("Fan 1");
+                }
+                else if(prenum.equals("4*2"))
+                {
+                    itemnames.add("Light 1");
+                    itemnames.add("Light 2");
+                    itemnames.add("Light 3");
+                    itemnames.add("Light 4");
+                    itemnames.add("Fan 1");
+                    itemnames.add("Fan 2");
+
+                }else if(prenum.equals("2*1"))
+                {
+                    itemnames.add("Light 1");
+                    itemnames.add("Light 2");
+                    itemnames.add("Fan 1");
+                }
+                else if(prenum.equals("custom"))
+                {
+
+                }
+                GridLayoutManager gridLayoutManager1 = new GridLayoutManager(getContext(),1);
+                recyclerViewPredefine.setLayoutManager(gridLayoutManager1); // set LayoutManager to RecyclerView
+      /*        final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+                 layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                recyclerViewPredefine.setLayoutManager(layoutManager); // set LayoutManager to RecyclerView*/
+                //  call the constructor of CustomAdapter to send the reference and data to Adapter
+                CustomAdapterPredefine customAdapterPredefine = new CustomAdapterPredefine(getActivity(),itemnames,Roomname,text1,mAuth);
+                recyclerViewPredefine.setAdapter(customAdapterPredefine); // set the Adapter to RecyclerView
+            }
+        };
+        handler.postDelayed(runnable, 1000);
+
+
 
         return v;
     }

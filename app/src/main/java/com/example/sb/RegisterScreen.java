@@ -103,7 +103,6 @@ public class RegisterScreen extends AppCompatActivity {
                                 userDetails.put("MobileNo",mobileno);
                                 userDetails.put("EmailID",email);
                                 userDetails.put("Roomfragment","true");
-                                userDetails.put("Renumbers","0");
 
                                 //userDetails.put("Password",password);
                                 //------------

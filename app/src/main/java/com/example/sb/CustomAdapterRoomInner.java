@@ -45,12 +45,11 @@ public class CustomAdapterRoomInner extends RecyclerView.Adapter<CustomAdapterRo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.textViewRoomInnerSB1.setText((CharSequence) SwitchName.get(position));
         holder.textViewRoomInnerSBType.setText((CharSequence) SwitchType.get(position));
-        holder.roominnerbutton1.setOnClickListener(new View.OnClickListener() {
+        holder.imageViewRoomInnerEditSB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
                 View parentView = LayoutInflater.from(context).inflate(R.layout.dailogue_predefine, null);
-                //View parentView = getLayoutInflater().inflate(R.layout.dailogue_predefine, null);
                 ImageView canceldailogpredefine = (ImageView) parentView.findViewById(R.id.canceldailogpredefine);
                 Button buttondailogprtedefine = (Button) parentView.findViewById(R.id.buttondailogpredefine);
                 EditText editTextdailogpredefine = (EditText) parentView.findViewById(R.id.editTextdailogpredefine);

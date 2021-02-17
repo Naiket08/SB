@@ -46,6 +46,7 @@ public class Home extends AppCompatActivity {
     FrameLayout fragment_container;
     ///
     private FirebaseFirestore db1 = FirebaseFirestore.getInstance();;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();;
     String userId;
     String status="false";
     public String roomcheck;
@@ -66,11 +67,24 @@ public class Home extends AppCompatActivity {
 
         /////
         userId = mAuth.getCurrentUser().getUid();
-        DocumentReference documentReference = db1.collection("users").document(userId);
         ///calling
 
-        final String currentID = mAuth.getCurrentUser().getUid();
-        db1.collection("users").document(mAuth.getCurrentUser().getUid()).get()
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("User Details");
+        db.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String s = dataSnapshot.child("Roomfragment").getValue(String.class);
+                Toast.makeText(Home.this, s, Toast.LENGTH_SHORT).show();
+                roomcheck=s;
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+      /*  db1.collection("users").document(mAuth.getCurrentUser().getUid()).get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @SuppressLint("SetTextI18n")
                     @Override
@@ -78,7 +92,7 @@ public class Home extends AppCompatActivity {
                         String finalProfileText2 = documentSnapshot.getString("Roomfragment");
                         roomcheck=finalProfileText2;
                     }
-                });
+                });*/
 
         //AppBar Button OnPressed
         buttonBack.setOnClickListener(new View.OnClickListener() {
@@ -97,7 +111,7 @@ public class Home extends AppCompatActivity {
         });
 
         mAuth = FirebaseAuth.getInstance();
-        DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("User Details");
+        FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("User Details");
         db.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -183,16 +197,20 @@ public class Home extends AppCompatActivity {
     }
 
 void  recheck(){
-    final String currentID = mAuth.getCurrentUser().getUid();
-    db1.collection("users").document(mAuth.getCurrentUser().getUid()).get()
-            .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                @SuppressLint("SetTextI18n")
-                @Override
-                public void onSuccess(DocumentSnapshot documentSnapshot) {
-                    String finalProfileText2 = documentSnapshot.getString("Roomfragment");
-                    roomcheck=finalProfileText2;
-                }
-            });
+   DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("User Details");
+    db.addListenerForSingleValueEvent(new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            String s1 = dataSnapshot.child("Roomfragment").getValue(String.class);
+            roomcheck=s1;
+
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+        }
+    });
 }
 
     private boolean loadFragment(Fragment fragment){
