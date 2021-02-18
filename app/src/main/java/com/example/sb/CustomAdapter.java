@@ -2,6 +2,7 @@ package com.example.sb;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     ArrayList roomNames;
     ArrayList roomImages;
     Context context;
+    public String s2,s3;
+    EditText editTextdailogpredefine;
     public CustomAdapter(Context context, ArrayList roomNames, ArrayList roomImages) {
 
 
@@ -58,7 +61,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                 //View parentView = getLayoutInflater().inflate(R.layout.dailogue_predefine, null);
                 ImageView canceldailogpredefine = (ImageView) parentView.findViewById(R.id.canceldailogpredefine);
                 Button buttondailogprtedefine = (Button) parentView.findViewById(R.id.buttondailogpredefine);
-                EditText editTextdailogpredefine = (EditText) parentView.findViewById(R.id.editTextdailogpredefine);
+                editTextdailogpredefine = (EditText) parentView.findViewById(R.id.editTextdailogpredefine);
                 bottomSheetDialog.setContentView(parentView);
                 bottomSheetDialog.show();
 
@@ -73,7 +76,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                     @Override
                     public void onClick(View view) {
                         holder.name.setEnabled(true);
-                        String s2 = editTextdailogpredefine.getText().toString();
+                        s2 = editTextdailogpredefine.getText().toString();
                         holder.name.setText(s2);
                         holder.name.setEnabled(false);
                         bottomSheetDialog.cancel();
@@ -86,7 +89,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         holder.imageViewIconMyRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                s3=holder.name.getText().toString();
                 Fragment newFragment = new FragmentRoomInner();
+                Bundle arguments = new Bundle();
+                arguments.putString( "Roomname",s3);
+                newFragment.setArguments(arguments);
+
                 FragmentManager manager = ((AppCompatActivity)context).getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.container,newFragment)
                         .commit();
@@ -95,10 +103,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               /* // open another activity on item click
-                Intent intent = new Intent(context, SecondActivity.class);
-                intent.putExtra("image", personImages.get(position)); // put image data in Intent
-                context.startActivity(intent); // start Intent*/
+
+
             }
         });
 

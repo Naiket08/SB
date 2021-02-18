@@ -152,6 +152,10 @@ public class FragmentPredefine extends Fragment {
                     }
                 });
                 Fragment newFragment = new FragmentRoomInner();
+                Bundle arguments = new Bundle();
+                arguments.putString( "Roomname",Roomname);
+                arguments.putString( "Switchname",text1);
+                newFragment.setArguments(arguments);
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment_container,newFragment);
                 transaction.addToBackStack(null);

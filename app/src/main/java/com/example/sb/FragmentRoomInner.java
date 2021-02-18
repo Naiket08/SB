@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,6 +25,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -36,7 +42,7 @@ import java.util.ArrayList;
 public class FragmentRoomInner extends Fragment{
 
     private static final String TAG =  null;
-    ImageView imageViewRoomInnerLights,imageViewRoomInnerEditSB,imageViewRoomInnerInfo;
+    ImageView imageViewRoomInnerLights,imageViewRoomInnerEditSB,imageViewRoomInnerInfo,imageViewRoomInnerAddSB;
     TextView textViewControlSB,textViewRoomInnerRoomNo,textViewRoomInnerSB1,textViewRoomInnerSBType;
     ////////////////////////////////////
     RecyclerView recyclerViewRoominner;
@@ -50,7 +56,7 @@ public class FragmentRoomInner extends Fragment{
     String userId;
     String status="false";
     public int i=0,k=2;
-    public String Stext,Stype;
+    public String Roomname1,text3;
     public String innerd1,innerd2;
     public int o,j;
     ///////////////////////////////////////
@@ -59,8 +65,12 @@ public class FragmentRoomInner extends Fragment{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_room_inner,container,false);
 
+///////////////////////////////////////////////////////////////////
+        Roomname1 = getArguments().getString("Roomname");
+        Toast.makeText(getContext(),"Roomname " + Roomname1, Toast.LENGTH_SHORT).show();
+        text3 = getArguments().getString("Switchname");
 
-
+/////////////////////////////////////////////////////////////////////////
         imageViewRoomInnerInfo = (ImageView)view.findViewById(R.id.imageViewRoomInnerInfo);
         imageViewRoomInnerLights = (ImageView)view.findViewById(R.id.imageViewRoomInnerLights);
 
@@ -68,6 +78,8 @@ public class FragmentRoomInner extends Fragment{
         textViewRoomInnerRoomNo = (TextView)view.findViewById(R.id.textViewRoomInnerRoomNo);
         textViewRoomInnerSB1 = (TextView)view.findViewById(R.id.textViewRoomInnerSB1);
         textViewRoomInnerSBType = (TextView)view.findViewById(R.id.textViewRoomInnerSBType);
+        imageViewRoomInnerAddSB=(ImageView)view.findViewById(R.id.imageViewRoomInnerAddSB);
+        CustomAdapterRoomInner customAdapter1 = new CustomAdapterRoomInner(getActivity(),SwitchName,SwitchType);
 
         if((SwitchName!=null&&SwitchType!=null&&SwitchName.size()>0&&SwitchType.size()>0)){
             SwitchName.clear();
@@ -77,8 +89,67 @@ public class FragmentRoomInner extends Fragment{
 
         //////////////////////////////////////////////////
         //firecloud
+        //////////////////////////////////////////////////
+        //firecloud
         mAuth = FirebaseAuth.getInstance();
         userId = mAuth.getCurrentUser().getUid();
+        DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname1);
+        itemsRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                String s1 = dataSnapshot.getKey();
+                if(s1.equals("number")||s1.equals("roomtype")||s1.equals("")) {
+
+                }
+                else
+
+                {
+                    Toast.makeText(getContext(), s1, Toast.LENGTH_SHORT).show();
+                    SwitchName.add(s1);
+                    String s2 = dataSnapshot.child("combination").getValue(String.class);
+                    Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();
+               if(s2.equals("4*1")){
+                    SwitchType.add("4 Lights and 1 Fan");
+                    //Toast.makeText(getContext(),"Entered inside", Toast.LENGTH_SHORT).show();
+                }
+                else  if(s2.equals("4*2")){
+                    SwitchType.add("4 Lights and 2 Fan");
+                }
+                else  if(s2.equals("2*1")){
+                    SwitchType.add("2 Lights and 1 Fan");
+                }
+                else  if(s2.equals("custom")){
+                    SwitchType.add("Custom");
+                }
+                    //Toast.makeText(getContext(), s1, Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();
+                    customAdapter1.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        ////////////////////////////////////////
+
 
        /* db1.collection("users").document(mAuth.getCurrentUser().getUid()).get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -105,10 +176,6 @@ public class FragmentRoomInner extends Fragment{
                         });*/
                 ////////////////////////////////
                 //static values fior testing
-                SwitchName.add("Switch Board 1");
-                SwitchName.add("Switch Board 2");
-                SwitchType.add("4 Lights and 1 Fan");
-                SwitchType.add("4 Lights and 2 Fan");
 
 
 
@@ -165,12 +232,26 @@ public class FragmentRoomInner extends Fragment{
                 recyclerViewRoominner = (RecyclerView)view.findViewById(R.id.recyclerViewRoomInner);
                 recyclerViewRoominner.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true));
                 //  call the constructor of CustomAdapter to send the reference and data to Adapter
-                CustomAdapterRoomInner customAdapter1 = new CustomAdapterRoomInner(getActivity(),SwitchName,SwitchType);
                 recyclerViewRoominner.setAdapter(customAdapter1); // set the Adapter to RecyclerView
                 getFragmentManager().beginTransaction().commit();
             }
         };
         handler1.postDelayed(runnable1, 1000);
+
+        imageViewRoomInnerAddSB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment newFragment = new FragmentSwitchboard();
+                Bundle arguments = new Bundle();
+                arguments.putString( "Roomname",Roomname1);
+                arguments.putString( "Switchname",text3);
+                newFragment.setArguments(arguments);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container,newFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
 
 
         return view;
