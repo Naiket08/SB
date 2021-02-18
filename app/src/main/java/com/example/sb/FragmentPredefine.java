@@ -38,6 +38,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class FragmentPredefine extends Fragment {
 
@@ -47,7 +48,7 @@ public class FragmentPredefine extends Fragment {
     public ArrayList<String> itemnames = new ArrayList<String>();;
     LinearLayout layout1;
     SharedPreferences roompref;
-    public String Roomname,text1,s2="SwitchBoard",prenum;
+    public String Roomname,text1,s3="SwitchBoard",prenum;
     private FirebaseAuth mAuth;
 
     @Nullable
@@ -64,9 +65,9 @@ public class FragmentPredefine extends Fragment {
 
 
         Roomname = getArguments().getString("Roomname");
-       // Toast.makeText(getContext(),Roomname, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(),Roomname, Toast.LENGTH_SHORT).show();
         text1 = getArguments().getString("Switchname");
-       // Toast.makeText(getContext(),text1, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(),text1, Toast.LENGTH_SHORT).show();
         DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text1);
         db.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -114,8 +115,8 @@ public class FragmentPredefine extends Fragment {
                     @Override
                     public void onClick(View view) {
                         predefineRoomedit.setEnabled(true);
-                        s2= editTextdailogpredefine.getText().toString().trim();
-                        predefineRoomedit.setText(s2);
+                        s3= editTextdailogpredefine.getText().toString().trim();
+                        predefineRoomedit.setText(s3);
                         predefineRoomedit.setEnabled(false);
                         bottomSheetDialog.cancel();
 
@@ -146,7 +147,7 @@ public class FragmentPredefine extends Fragment {
             @Override
             public void onClick(View view) {
 
-                FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text1).child("type").setValue(s2).addOnSuccessListener(new OnSuccessListener<Void>() {
+                FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text1).child("type").setValue(s3).addOnSuccessListener(new OnSuccessListener<Void>() {
                     public void onSuccess(Void aVoid) {
                     }
                 });
@@ -202,7 +203,7 @@ public class FragmentPredefine extends Fragment {
                 recyclerViewPredefine.setAdapter(customAdapterPredefine); // set the Adapter to RecyclerView
             }
         };
-        handler.postDelayed(runnable, 1000);
+        handler.postDelayed(runnable, 500);
 
 
 

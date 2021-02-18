@@ -50,7 +50,6 @@ public class FragmentRoomsSecond  extends DialogFragment {
     SharedPreferences roompref;
 //cloudbase
 
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();;
     String userId;
     String status="false";
     private String k;
