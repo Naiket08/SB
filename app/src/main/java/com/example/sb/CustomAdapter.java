@@ -96,7 +96,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                 newFragment.setArguments(arguments);
 
                 FragmentManager manager = ((AppCompatActivity)context).getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.container,newFragment)
+                manager.beginTransaction().replace(R.id.fragment_container,newFragment).addToBackStack(null)
                         .commit();
             }
         });
