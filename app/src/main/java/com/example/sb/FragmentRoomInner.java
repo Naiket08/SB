@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -79,8 +81,6 @@ public class FragmentRoomInner extends Fragment{
         textViewRoomInnerSB1 = (TextView)view.findViewById(R.id.textViewRoomInnerSB1);
         textViewRoomInnerSBType = (TextView)view.findViewById(R.id.textViewRoomInnerSBType);
         imageViewRoomInnerAddSB=(ImageView)view.findViewById(R.id.imageViewRoomInnerAddSB);
-        CustomAdapterRoomInner customAdapter1 = new CustomAdapterRoomInner(getActivity(),SwitchName,SwitchType);
-
         if((SwitchName!=null&&SwitchType!=null&&SwitchName.size()>0&&SwitchType.size()>0)){
             SwitchName.clear();
             SwitchType.clear();
@@ -93,6 +93,7 @@ public class FragmentRoomInner extends Fragment{
         //firecloud
         mAuth = FirebaseAuth.getInstance();
         userId = mAuth.getCurrentUser().getUid();
+        CustomAdapterRoomInner customAdapter1 = new CustomAdapterRoomInner(getActivity(),SwitchName,SwitchType,mAuth,Roomname1);
         DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname1);
         itemsRef.addChildEventListener(new ChildEventListener() {
             @Override
@@ -217,6 +218,20 @@ public class FragmentRoomInner extends Fragment{
 
 
         //////////////////////////////////////////////////////
+        imageViewRoomInnerAddSB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(),"Clicked", Toast.LENGTH_SHORT).show();
+                Fragment newFragment = new FragmentSwitchboard();
+                Bundle arguments = new Bundle();
+                arguments.putString( "Roomname",Roomname1);
+                newFragment.setArguments(arguments);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container,newFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
 
 
 
@@ -236,22 +251,8 @@ public class FragmentRoomInner extends Fragment{
                 getFragmentManager().beginTransaction().commit();
             }
         };
-        handler1.postDelayed(runnable1, 1000);
+        handler1.postDelayed(runnable1, 500);
 
-        imageViewRoomInnerAddSB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Fragment newFragment = new FragmentSwitchboard();
-                Bundle arguments = new Bundle();
-                arguments.putString( "Roomname",Roomname1);
-                arguments.putString( "Switchname",text3);
-                newFragment.setArguments(arguments);
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container,newFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
-            }
-        });
 
 
         return view;

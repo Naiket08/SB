@@ -1,6 +1,7 @@
 package com.example.sb;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,24 +10,34 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class CustomAdapterRoomInner extends RecyclerView.Adapter<CustomAdapterRoomInner.ViewHolder> {
     ArrayList SwitchName;
     ArrayList SwitchType;
+    String Roomname1,s3;
+    private FirebaseAuth mAuth;
     Context context;
-    public CustomAdapterRoomInner(Context context, ArrayList SwitchName, ArrayList SwitchType) {
+    public CustomAdapterRoomInner(Context context, ArrayList SwitchName, ArrayList SwitchType,FirebaseAuth mAuth,String Roomname1) {
 
 
         this.context = context;
         this.SwitchName = SwitchName;
         this.SwitchType = SwitchType;
+        this.Roomname1=Roomname1;
+        this.mAuth=mAuth;
     }
 
 
@@ -54,6 +65,7 @@ public class CustomAdapterRoomInner extends RecyclerView.Adapter<CustomAdapterRo
                 Button buttondailogprtedefine = (Button) parentView.findViewById(R.id.buttondailogpredefine);
                 EditText editTextdailogpredefine = (EditText) parentView.findViewById(R.id.editTextdailogpredefine);
                 bottomSheetDialog.setContentView(parentView);
+                s3=holder.textViewRoomInnerSB1.getText().toString();
                 bottomSheetDialog.show();
 
                 canceldailogpredefine.setOnClickListener(new View.OnClickListener() {
@@ -70,8 +82,14 @@ public class CustomAdapterRoomInner extends RecyclerView.Adapter<CustomAdapterRo
                         String s2 = editTextdailogpredefine.getText().toString();
                         holder.textViewRoomInnerSB1.setText(s2);
                         holder.textViewRoomInnerSB1.setEnabled(false);
-                        bottomSheetDialog.cancel();
+                        if(TextUtils.isEmpty(s2)){
+                            Toast.makeText(context, "Enter Text", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            //  write code here
 
+                            bottomSheetDialog.cancel();
+                        }
                     }
                 });
 

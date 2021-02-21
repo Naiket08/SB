@@ -94,7 +94,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                 Bundle arguments = new Bundle();
                 arguments.putString( "Roomname",s3);
                 newFragment.setArguments(arguments);
-
                 FragmentManager manager = ((AppCompatActivity)context).getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.fragment_container,newFragment).addToBackStack(null)
                         .commit();
