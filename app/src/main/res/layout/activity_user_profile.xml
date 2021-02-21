@@ -30,9 +30,9 @@
         <Button
             android:id="@+id/buttonLogoutUserProfile"
             android:layout_width="@dimen/_18sdp"
-            android:layout_height="@dimen/_12sdp"
-            android:layout_alignTop="@id/buttonBackUserProfile"
-            android:layout_alignBottom="@id/buttonBackUserProfile"
+            android:layout_height="@dimen/_18sdp"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="@dimen/_15sdp"
             android:background="@drawable/logout_black"/>
@@ -134,7 +134,6 @@
                 android:id="@+id/textViewUserProfileMailValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="abcxyz123@gmail.com"
                 android:fontFamily="@font/muli_semibold"
                 android:textColor="@color/yellow"
                 android:textSize="@dimen/_10ssp"
@@ -173,7 +172,6 @@
                 android:id="@+id/textViewUserProfilePhoneValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="+91 91 02505635"
                 android:fontFamily="@font/muli_semibold"
                 android:textColor="@color/yellow"
                 android:textSize="@dimen/_10ssp"
