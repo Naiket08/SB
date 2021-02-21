@@ -10,17 +10,27 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
 
 public class FragmentInnerSwitchBoard extends Fragment {
 
@@ -29,12 +39,29 @@ public class FragmentInnerSwitchBoard extends Fragment {
 
     TextView textViewSwitchBoard1;
     Button buttonLight1,buttonLight2,buttonFan,buttonLight3,buttonSwitchBoardApppliance;
+    public String Roomname,text3;
+    ////////////////////////////////////
+    RecyclerView recyclerViewInnerSwitchboard;
+    //////////////////////
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore db1 = FirebaseFirestore.getInstance();;
+    String userId;
+    String status="false";
+    ////////////////////////
+    public ArrayList<String> LightName = new ArrayList<String>();
+    public ArrayList<Integer> LightType = new ArrayList<Integer>();
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_inner_switchboard,container,false);
-
+//////Done
+        Roomname = getArguments().getString("Roomname");
+      //  Toast.makeText(getContext(),Roomname, Toast.LENGTH_SHORT).show();
+        text3= getArguments().getString("Switchname");
+      //  Toast.makeText(getContext(),text3, Toast.LENGTH_SHORT).show();
+///////
         textViewRoomNo = (TextView)view.findViewById(R.id.textViewRoomNo);
         imageViewBrwonJacket = (ImageView)view.findViewById(R.id.imageViewBrownJacket);
         imageViewWhiteJacket = (ImageView)view.findViewById(R.id.imageViewWhiteJacket);
@@ -47,10 +74,79 @@ public class FragmentInnerSwitchBoard extends Fragment {
         buttonLight2 = (Button)view.findViewById(R.id.buttonLight2);
         buttonLight3 = (Button)view.findViewById(R.id.buttonLight3);
         buttonFan = (Button)view.findViewById(R.id.buttonFan);
+
+
         buttonSwitchBoardApppliance = (Button)view.findViewById(R.id.buttonSwitchBoardAppliance);
+        CustomAdapterInnerSwitchboard customAdapter2 = new CustomAdapterInnerSwitchboard(getActivity(),LightName,LightType,mAuth,Roomname,text3);
+        if((LightName!=null&&LightType!=null&&LightName.size()>0&&LightType.size()>0)){
+            LightName.clear();
+            LightType.clear();
+        }
+
+        //////////////////////////////////////////////////
+        //firecloud
+        //////////////////////////////////////////////////
+        //firecloud
+        mAuth = FirebaseAuth.getInstance();
+        userId = mAuth.getCurrentUser().getUid();
+
+        DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text3);
+        itemsRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                String s1 = dataSnapshot.getKey();
+                if(s1.equals("number")||s1.equals("roomtype")||s1.equals("")||s1.equals("SwitchBoardumber")||s1.equals("combination")||s1.equals("type")) {
+
+                }
+                else
+
+                {
+                     //Toast.makeText(getContext(), s1, Toast.LENGTH_SHORT).show();
+                    LightName.add(s1);
+                    String s2 = dataSnapshot.child("category").getValue(String.class);
+                      //Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();
+                    if(s2.equals("Light")){
+                        LightType.add(R.drawable.ic_idea);
+                       // Toast.makeText(getContext(),"Entered inside", Toast.LENGTH_SHORT).show();
+                    }
+                    else  if(s2.equals("Fan")){
+                        LightType.add(R.drawable.fan_icon);
+                    }
+                    else  if(s2.equals("Appliance")) {
+                        LightType.add(R.drawable.appliances_icon);
+                    }
+                    //Toast.makeText(getContext(), s1, Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();
+                    customAdapter2.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        ////////////////////////////////////////
 
 
-        buttonLight1.setOnClickListener(new View.OnClickListener() {
+
+      /*  buttonLight1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 imageViewBrwonJacket.setVisibility(View.VISIBLE);
@@ -103,7 +199,13 @@ public class FragmentInnerSwitchBoard extends Fragment {
                 imageViewRegulator.setVisibility(View.INVISIBLE);
                 imageViewWhiteJacket.setVisibility(View.INVISIBLE);
             }
-        });
+        });*/
+
+        recyclerViewInnerSwitchboard = (RecyclerView)view.findViewById(R.id.recyclerViewInnerSwitchboard);
+        recyclerViewInnerSwitchboard.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true));
+        //  call the constructor of CustomAdapter to send the reference and data to Adapter
+        recyclerViewInnerSwitchboard.setAdapter(customAdapter2); // set the Adapter to RecyclerView
+        getFragmentManager().beginTransaction().commit();
 
         return view;
     }

@@ -93,7 +93,7 @@ public class FragmentRoomInner extends Fragment{
         //firecloud
         mAuth = FirebaseAuth.getInstance();
         userId = mAuth.getCurrentUser().getUid();
-        CustomAdapterRoomInner customAdapter1 = new CustomAdapterRoomInner(getActivity(),SwitchName,SwitchType,mAuth,Roomname1);
+        CustomAdapterRoomInner customAdapter1 = new CustomAdapterRoomInner(getActivity(),SwitchName,SwitchType,mAuth,Roomname1,text3);
         DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname1);
         itemsRef.addChildEventListener(new ChildEventListener() {
             @Override
