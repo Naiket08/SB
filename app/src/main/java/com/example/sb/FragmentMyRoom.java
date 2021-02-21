@@ -190,10 +190,7 @@ public class FragmentMyRoom extends Fragment {
         textViewTopText = (TextView)view.findViewById(R.id.textViewTopText);
 
 
-        Handler handler = new Handler();
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
+
                 //Second fragment after 5 seconds appears
                 recyclerViewMyRoom = (RecyclerView)view.findViewById(R.id.recyclerViewMyRoom);
                 mAuth = FirebaseAuth.getInstance();
@@ -203,9 +200,8 @@ public class FragmentMyRoom extends Fragment {
                 //  call the constructor of CustomAdapter to send the reference and data to Adapter
                 recyclerViewMyRoom.setAdapter(customAdapter); // set the Adapter to RecyclerView
                 getFragmentManager().beginTransaction().commit();
-            }
-        };
-        handler.postDelayed(runnable, 1000);
+
+
 
         buttonAddRoomsMyRoom.setOnClickListener(new View.OnClickListener() {
             @Override

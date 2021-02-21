@@ -65,15 +65,15 @@ public class FragmentPredefine extends Fragment {
 
 
         Roomname = getArguments().getString("Roomname");
-        Toast.makeText(getContext(),Roomname, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(getContext(),Roomname, Toast.LENGTH_SHORT).show();
         text1 = getArguments().getString("Switchname");
-        Toast.makeText(getContext(),text1, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(getContext(),text1, Toast.LENGTH_SHORT).show();
         DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text1);
         db.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 prenum = dataSnapshot.child("combination").getValue(String.class);
-                Toast.makeText(getContext(), "Prenoun:"+prenum, Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(getContext(), "Prenoun:"+prenum, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -207,7 +207,7 @@ public class FragmentPredefine extends Fragment {
                 recyclerViewPredefine.setAdapter(customAdapterPredefine); // set the Adapter to RecyclerView
             }
         };
-        handler.postDelayed(runnable, 500);
+        handler.postDelayed(runnable, 50);
 
 
 

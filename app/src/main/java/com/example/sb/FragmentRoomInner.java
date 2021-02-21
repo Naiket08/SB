@@ -69,7 +69,7 @@ public class FragmentRoomInner extends Fragment{
 
 ///////////////////////////////////////////////////////////////////
         Roomname1 = getArguments().getString("Roomname");
-        Toast.makeText(getContext(),"Roomname " + Roomname1, Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(getContext(),"Roomname " + Roomname1, Toast.LENGTH_SHORT).show();
         text3 = getArguments().getString("Switchname");
 
 /////////////////////////////////////////////////////////////////////////
@@ -106,10 +106,10 @@ public class FragmentRoomInner extends Fragment{
                 else
 
                 {
-                    Toast.makeText(getContext(), s1, Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(getContext(), s1, Toast.LENGTH_SHORT).show();
                     SwitchName.add(s1);
                     String s2 = dataSnapshot.child("combination").getValue(String.class);
-                    Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();
+                 //  Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();
                if(s2.equals("4*1")){
                     SwitchType.add("4 Lights and 1 Fan");
                     //Toast.makeText(getContext(),"Entered inside", Toast.LENGTH_SHORT).show();
@@ -221,7 +221,7 @@ public class FragmentRoomInner extends Fragment{
         imageViewRoomInnerAddSB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(),"Clicked", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getContext(),"Clicked", Toast.LENGTH_SHORT).show();
                 Fragment newFragment = new FragmentSwitchboard();
                 Bundle arguments = new Bundle();
                 arguments.putString( "Roomname",Roomname1);
@@ -237,10 +237,10 @@ public class FragmentRoomInner extends Fragment{
 
 
 
-        Handler handler1 = new Handler();
+       /* Handler handler1 = new Handler();
         Runnable runnable1 = new Runnable() {
             @Override
-            public void run() {
+            public void run() {*/
 
 
                 //Second fragment after 5 seconds appears
@@ -249,10 +249,10 @@ public class FragmentRoomInner extends Fragment{
                 //  call the constructor of CustomAdapter to send the reference and data to Adapter
                 recyclerViewRoominner.setAdapter(customAdapter1); // set the Adapter to RecyclerView
                 getFragmentManager().beginTransaction().commit();
-            }
+         /*   }
         };
-        handler1.postDelayed(runnable1, 500);
-
+        handler1.postDelayed(runnable1, 50);
+*/
 
 
         return view;
