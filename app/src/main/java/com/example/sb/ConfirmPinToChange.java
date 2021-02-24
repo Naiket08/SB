@@ -1,5 +1,6 @@
 package com.example.sb;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -15,7 +16,11 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
@@ -33,11 +38,7 @@ public class ConfirmPinToChange extends AppCompatActivity {
     public String s;
     public Drawable linedone,line;
 
-    //------------
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();;
-    String userId;
-    String status="false";
-    //-----------------
+    String num1,num2,num3,num4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +71,23 @@ public class ConfirmPinToChange extends AppCompatActivity {
         emptyConfirmPin=(ImageButton)findViewById(R.id.emptyConfirmPin);
         zeroConfirmPin=(ImageButton)findViewById(R.id.zeroConfirmPin);
         erazeConfirmPin=(ImageButton)findViewById(R.id.erazeConfirmPin);
+
         mAuth = FirebaseAuth.getInstance();
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("Pin");
+        db.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                num1 = dataSnapshot.child("Pin1").getValue(String.class);
+                num2 = dataSnapshot.child("Pin2").getValue(String.class);
+                num3 = dataSnapshot.child("Pin3").getValue(String.class);
+                num4 = dataSnapshot.child("Pin4").getValue(String.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         //Confirm that entered pin is correct or not
         nextbuttonConfirmPin.setOnClickListener(new View.OnClickListener() {
@@ -78,41 +95,19 @@ public class ConfirmPinToChange extends AppCompatActivity {
             public void onClick(View view) {
                 if(i==4)
                 {
-                    FirebaseUser user = mAuth.getCurrentUser();
-                    String userID;
-                    userID = user.getUid();
-                    //this part added-----------
-                    userId = mAuth.getCurrentUser().getUid();
-                    DocumentReference documentReference = db.collection("users").document(userId);
-                    //------------
+                    String nr1,nr2,nr3,nr4;
+                    nr1 = number1ConfirmPin.getText().toString();
+                    nr2 = number2ConfirmPin.getText().toString();
+                    nr3 = number3ConfirmPin.getText().toString();
+                    nr4 = number4ConfirmPin.getText().toString();
 
-                    String num1,num2,num3,num4;
-                    num1 = number1ConfirmPin.getText().toString().trim();
-                    num2 = number2ConfirmPin.getText().toString().trim();
-                    num3 = number3ConfirmPin.getText().toString().trim();
-                    num4 = number4ConfirmPin.getText().toString().trim();
-                    HashMap<String,Object> pin = new HashMap<>();
-                    pin.put("Pin1",num1);
-                    pin.put("Pin2",num2);
-                    pin.put("Pin3",num3);
-                    pin.put("Pin4",num4);
-                    db.collection("users").document(userId).set(pin, SetOptions.merge());
-                    //userDetails.put("Password",password);
+                    if(nr1.equals(num1)&&nr2.equals(num2)&&nr3.equals(num3)&&nr4.equals(num4)){
+                        startActivity(new Intent(ConfirmPinToChange.this,PinOne.class));
+                    }
+                    else{
+                        Toast.makeText(ConfirmPinToChange.this, "Pin does not match", Toast.LENGTH_SHORT).show();
+                    }
 
-
-
-
-                    FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("Pin").setValue(pin).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(ConfirmPinToChange.this, "Pin added", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                    Intent intent = new Intent(ConfirmPinToChange.this,RePin.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                    startActivity(intent);
-                    overridePendingTransition(0,0);
-                    finish();
                 }
                 else
                 {
@@ -301,9 +296,13 @@ public class ConfirmPinToChange extends AppCompatActivity {
         }
         else
         {
-
             Toast.makeText(this, "EMPTY", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

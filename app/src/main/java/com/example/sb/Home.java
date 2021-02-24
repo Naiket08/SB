@@ -163,7 +163,7 @@ public class Home extends AppCompatActivity {
                         finish();
                         break;
                     case R.id.change_pin:
-                        startActivity(new Intent(Home.this,PinOne.class));
+                        startActivity(new Intent(Home.this,ConfirmPinToChange.class));
                         drawer.closeDrawer(navigationView,false);
                         break;
                     case R.id.forgot_password:
