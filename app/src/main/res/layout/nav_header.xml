@@ -8,7 +8,6 @@
         android:id="@+id/user_profile"
         android:layout_width="@dimen/_60sdp"
         android:layout_height="@dimen/_60sdp"
-        android:src="@drawable/default_image"
         android:background="@drawable/user_profile_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -16,6 +15,7 @@
         android:layout_marginStart="@dimen/_15sdp"/>
 
     <TextView
+        android:id="@+id/navheaderUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="User135836"

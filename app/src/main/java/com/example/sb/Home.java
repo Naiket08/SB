@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.Gravity;
@@ -14,8 +15,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -31,6 +35,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -38,8 +44,13 @@ import java.util.Map;
 public class Home extends AppCompatActivity {
 
     Button buttonBack,buttonHamburger,buttonKill;
+    ImageView imageViewUserProfile;
+    TextView textViewNavHeaderUserName;
 
     private FirebaseAuth mAuth;
+
+    FirebaseStorage storage;
+    StorageReference storageReference;
 
     NavigationView navigationView;
     DrawerLayout drawer;
@@ -107,6 +118,20 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 drawer.openDrawer(navigationView);
+                //Profile Image Code
+                storage = FirebaseStorage.getInstance();
+                storageReference = storage.getReference();
+                imageViewUserProfile = (ImageView)findViewById(R.id.user_profile);
+                textViewNavHeaderUserName = (TextView)findViewById(R.id.navheaderUserName);
+
+                StorageReference photoref = storageReference.child("images/"+mAuth.getCurrentUser().getUid().toString());
+                photoref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Glide.with(getApplicationContext()).load(uri).into(imageViewUserProfile);
+                        //Toast.makeText(UserProfile.this, "URI "+uri, Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 
