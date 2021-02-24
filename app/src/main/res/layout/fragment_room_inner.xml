@@ -69,7 +69,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="134dp"
-                    android:layout_height="157dp"
+                    android:layout_height="168dp"
                     android:background="@drawable/background_switch_board_inner_room"
                     android:layout_marginTop="@dimen/_18sdp"
                     android:layout_marginStart="@dimen/_10sdp">

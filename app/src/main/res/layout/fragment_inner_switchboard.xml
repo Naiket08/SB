@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -49,6 +50,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewRoomNo" />
 
+    <com.example.sb.DialView
+        android:id="@+id/dialView"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_180sdp"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@id/textViewRoomNo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingClass" />
+
     <ImageView
         android:id="@+id/imageViewRegulator"
         android:layout_width="@dimen/_500sdp"
@@ -64,10 +76,11 @@
         android:id="@+id/imageViewAppliances"
         android:layout_width="@dimen/_500sdp"
         android:layout_height="@dimen/_250sdp"
-        android:layout_marginTop="@dimen/_50sdp"
+        android:layout_marginTop="64dp"
         android:src="@drawable/ic_appliance"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewRoomNo" />
 

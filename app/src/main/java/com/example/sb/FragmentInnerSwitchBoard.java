@@ -35,13 +35,14 @@ import java.util.ArrayList;
 public class FragmentInnerSwitchBoard extends Fragment {
 
     TextView textViewRoomNo;
-    ImageView imageViewBrwonJacket,imageViewWhiteJacket,imageViewRegulator,imageViewAppliances,imageViewBulb;
+    ImageView imageViewBrownJacket,imageViewWhiteJacket,imageViewRegulator,imageViewAppliances,imageViewBulb;
 
     TextView textViewSwitchBoard1;
     Button buttonLight1,buttonLight2,buttonFan,buttonLight3,buttonSwitchBoardApppliance;
     public String Roomname,text3;
     ////////////////////////////////////
     RecyclerView recyclerViewInnerSwitchboard;
+    DialView mcustomlayout;
     //////////////////////
     private FirebaseAuth mAuth;
     private FirebaseFirestore db1 = FirebaseFirestore.getInstance();;
@@ -63,10 +64,10 @@ public class FragmentInnerSwitchBoard extends Fragment {
       //  Toast.makeText(getContext(),text3, Toast.LENGTH_SHORT).show();
 ///////
         textViewRoomNo = (TextView)view.findViewById(R.id.textViewRoomNo);
-        imageViewBrwonJacket = (ImageView)view.findViewById(R.id.imageViewBrownJacket);
+        imageViewBrownJacket = (ImageView)view.findViewById(R.id.imageViewBrownJacket);
         imageViewWhiteJacket = (ImageView)view.findViewById(R.id.imageViewWhiteJacket);
         imageViewBulb = (ImageView)view.findViewById(R.id.imageViewBulb);
-        imageViewRegulator = (ImageView)view.findViewById(R.id.imageViewRegulator);
+        mcustomlayout=(DialView)view.findViewById(R.id.dialView);
         imageViewAppliances = (ImageView)view.findViewById(R.id.imageViewAppliances);
 
         textViewSwitchBoard1 = (TextView)view.findViewById(R.id.textViewSwitchBoard1);

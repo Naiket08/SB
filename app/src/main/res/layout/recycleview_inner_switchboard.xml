@@ -9,20 +9,22 @@
 
     <ImageView
         android:id="@+id/imageViewInnerSwitchboard1"
-        android:layout_width="@dimen/_12sdp"
-        android:layout_height="@dimen/_12sdp"
+        android:layout_width="@dimen/_15sdp"
+        android:layout_height="@dimen/_15sdp"
         android:background="@drawable/powerbuttongreen"
+        android:layout_marginTop="@dimen/_3sdp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="@dimen/_3sdp"/>
 
     <ImageView
         android:id="@+id/imageViewInnerSwitchboardInfo"
-        android:layout_width="@dimen/_8sdp"
-        android:layout_height="@dimen/_8sdp"
+        android:layout_width="@dimen/_15sdp"
+        android:layout_height="@dimen/_15sdp"
         android:background="@drawable/star"
         app:layout_constraintEnd_toStartOf="@id/imageViewInnerSwitchboard1"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginEnd="@dimen/_2sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
         android:layout_marginTop="@dimen/_3sdp"/>
 
     <ImageButton

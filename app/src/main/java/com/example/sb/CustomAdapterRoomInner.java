@@ -31,7 +31,7 @@ import java.util.HashMap;
 public class CustomAdapterRoomInner extends RecyclerView.Adapter<CustomAdapterRoomInner.ViewHolder> {
     ArrayList SwitchName;
     ArrayList SwitchType;
-    String Roomname1,s3,text3;
+    String Roomname1,s3,text3,s4,s5;
     private FirebaseAuth mAuth;
     Context context;
     public CustomAdapterRoomInner(Context context, ArrayList SwitchName, ArrayList SwitchType,FirebaseAuth mAuth,String Roomname1,String text3) {
@@ -61,6 +61,20 @@ public class CustomAdapterRoomInner extends RecyclerView.Adapter<CustomAdapterRo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.textViewRoomInnerSB1.setText((CharSequence) SwitchName.get(position));
         holder.textViewRoomInnerSBType.setText((CharSequence) SwitchType.get(position));
+        /////////
+        holder.imageViewRoomInnerInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                s4=holder.textViewRoomInnerSBType.getText().toString();
+                s5=holder.textViewRoomInnerSB1.getText().toString();
+                //Toast.makeText(context,s4, Toast.LENGTH_SHORT).show();
+                switchboardinfo();
+
+
+
+
+            }
+        });
         holder.imageViewRoomInnerEditSB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,6 +115,7 @@ public class CustomAdapterRoomInner extends RecyclerView.Adapter<CustomAdapterRo
 
             }
         });
+
         holder.roominnerbutton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -122,6 +137,63 @@ public class CustomAdapterRoomInner extends RecyclerView.Adapter<CustomAdapterRo
     @Override
     public int getItemCount() {
         return SwitchName.size();
+    }
+    public void switchboardinfo() {
+
+
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        //LayoutInflater inflater = (LayoutInflater) context.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
+        View parentView = inflater.inflate(R.layout.switchboardinfo, null);
+        ImageView cancelab = (ImageView) parentView.findViewById(R.id.cancelswitchboardinfo);
+        TextView  info1 =(TextView)parentView.findViewById(R.id.textviewswitchboardinfo);
+        TextView  info2 =(TextView)parentView.findViewById(R.id.textviewswitchboardinfo2);
+        TextView  info3 =(TextView)parentView.findViewById(R.id.ideatextswitchboardinfo);
+        TextView  info4 =(TextView)parentView.findViewById(R.id.ideatextswitchboardinfo2);
+        if(s4.equals("4 Lights and 1 Fan")) {
+
+            info1.setText(s5);
+            info2.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis, auctor consequat urna.");
+            info3.setText("4 Lights");
+            info4.setText("1 Fan");
+
+        }
+        else if(s4.equals("4 Lights and 2 Fan"))
+        {
+            info1.setText(s5);
+            info2.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis, auctor consequat urna.");
+            info3.setText("4 Lights");
+            info4.setText("2 Fans");
+
+
+        }
+        else if(s4.equals("2 Lights and 1 Fan"))
+        {
+
+            info1.setText(s5);
+            info2.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis, auctor consequat urna.");
+            info3.setText(" 2 Lights");
+            info4.setText(" 1 Fan");
+
+        }
+        else if(s4.equals("custom"))
+        {
+
+            info1.setText(s5);
+            info2.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis, auctor consequat urna.");
+            info3.setText("  Lights");
+            info4.setText("  Fan");
+        }
+
+        bottomSheetDialog.setContentView(parentView);
+        bottomSheetDialog.show();
+
+        cancelab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bottomSheetDialog.cancel();
+            }
+        });
     }
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // init the item view's

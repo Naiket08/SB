@@ -157,6 +157,7 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
                                 user1.put("mode","on");
                                 user1.put("number",q1);
                                 user1.put("category","Fan");
+                                user1.put("speed","0");
                                 holder.imageviewmain1.setImageResource(R.drawable.fan_icon);
                                 db.setValue(user1);
                                 p++;

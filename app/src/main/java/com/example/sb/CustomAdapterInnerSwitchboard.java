@@ -34,9 +34,11 @@ import java.util.HashMap;
 public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAdapterInnerSwitchboard.ViewHolder> {
     ArrayList LightName;
     ArrayList LightType;
-    String Roomname,s3,text3,num1;
+    String Roomname,s3,text3,num1,num2;
     private FirebaseAuth mAuth;
     Context context;
+
+
     public CustomAdapterInnerSwitchboard(Context context, ArrayList LightName, ArrayList LightType,FirebaseAuth mAuth,String Roomname,String text3) {
 
 
@@ -66,7 +68,63 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
         holder.textViewInnerSwitchboardSB1.setText(String.valueOf(LightName.get(position)));
 
         holder.innerSwitchboardbutton1.setImageResource((Integer)LightType.get(position));
+        //icon display
         holder.innerSwitchboardbutton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Fan Selected", Toast.LENGTH_SHORT).show();
+                num2=holder.textViewInnerSwitchboardSB1.getText().toString();
+                Toast.makeText(context, num2, Toast.LENGTH_SHORT).show();
+
+                if(num2.equals("Fan 1")||num2.equals("Fan 2")){
+                    Toast.makeText(context,"enter inside", Toast.LENGTH_SHORT).show();
+
+
+
+                }
+
+
+            }
+        });
+
+        //favourite button
+        holder.imageViewInnerSwitchboardInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show();
+                s3=holder.textViewInnerSwitchboardSB1.getText().toString();
+               /* mAuth = FirebaseAuth.getInstance();
+                DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text3).child(s3);
+                db.addListenerForSingleValueEvent(new ValueEventListener() {
+                                                      @Override
+                                                      public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                          num2 = dataSnapshot.child("mode").getValue(String.class);
+                                                          //  Toast.makeText(context,num1, Toast.LENGTH_SHORT).show();
+                                                      }
+
+                                                      @Override
+                                                      public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                                      }
+                });
+*/
+                mAuth = FirebaseAuth.getInstance();
+                HashMap<String,Object> values = new HashMap<>();
+                values.put("mode","on");
+
+
+
+                FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("favorites").child(Roomname).child(text3).child(s3).setValue(values).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(context, "favorite added", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+            }
+        });
+        ////Info button
+        holder.imageViewInnerSwitchboard1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 s3=holder.textViewInnerSwitchboardSB1.getText().toString();
@@ -130,10 +188,14 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
         public ViewHolder(View itemView) {
             super(itemView);
             // get the reference of item view's
+
+
             imageViewInnerSwitchboard1=(ImageView)itemView.findViewById(R.id.imageViewInnerSwitchboard1);
             imageViewInnerSwitchboardInfo=(ImageView)itemView.findViewById(R.id.imageViewInnerSwitchboardInfo);
             textViewInnerSwitchboardSB1=(EditText)itemView.findViewById(R.id.textViewInnerSwitchboardSB1);
             innerSwitchboardbutton1=(ImageButton)itemView.findViewById(R.id.innerSwitchboardbutton1);
+
+
 
 
         }
