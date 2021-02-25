@@ -16,6 +16,7 @@ public class FragmentCategory extends Fragment {
 
     TextView textViewCategory,textViewAll;
     Button buttonLights,buttonFans,buttonAppliances;
+    public String ab;
 
     @Nullable
     @Override
@@ -31,8 +32,43 @@ public class FragmentCategory extends Fragment {
         buttonLights.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ab="Light";
                 Fragment newFragment = new FragmentInnerCategoryLights();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                Bundle arguments = new Bundle();
+                arguments.putString( "category",ab);
+                newFragment.setArguments(arguments);
+                transaction.replace(R.id.fragment_container,newFragment);
+                transaction.addToBackStack(null);
+
+                transaction.commit();
+            }
+        });
+        buttonFans.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ab="Fan";
+                Fragment newFragment = new FragmentInnerCategoryLights();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                Bundle arguments = new Bundle();
+                arguments.putString( "category",ab);
+                newFragment.setArguments(arguments);
+
+                transaction.replace(R.id.fragment_container,newFragment);
+                transaction.addToBackStack(null);
+
+                transaction.commit();
+            }
+        });
+        buttonAppliances.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ab="Appliance";
+                Fragment newFragment = new FragmentInnerCategoryLights();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                Bundle arguments = new Bundle();
+                arguments.putString( "category",ab);
+                newFragment.setArguments(arguments);
 
                 transaction.replace(R.id.fragment_container,newFragment);
                 transaction.addToBackStack(null);

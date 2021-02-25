@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_35sdp"
+    android:layout_marginTop="@dimen/_3sdp"
+    android:layout_marginBottom="@dimen/_3sdp">
+
+    <TextView
+        android:id="@+id/textViewInnerCategoryLight1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginStart="@dimen/_26sdp"
+        android:layout_marginEnd="@dimen/_26sdp"
+        android:gravity="center_vertical"
+        android:text="@string/light_1"
+        android:textSize="@dimen/_10ssp"
+        android:paddingStart="@dimen/_10sdp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/muli"
+        android:background="@drawable/text_view_background"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/buttonOnCategory1Light1"
+        android:layout_width="@dimen/_12sdp"
+        android:layout_height="@dimen/_12sdp"
+        android:background="@drawable/ic_path_93"
+        app:layout_constraintEnd_toEndOf="@id/textViewInnerCategoryLight1"
+        app:layout_constraintTop_toTopOf="@id/textViewInnerCategoryLight1"
+        app:layout_constraintBottom_toBottomOf="@id/textViewInnerCategoryLight1"
+        android:layout_marginEnd="@dimen/_10sdp"/>
+
+    <Button
+        android:id="@+id/buttonEditCategory1Light1"
+        android:layout_width="@dimen/_12sdp"
+        android:layout_height="@dimen/_12sdp"
+        android:background="@drawable/ic_group_31"
+        app:layout_constraintEnd_toStartOf="@id/buttonOnCategory1Light1"
+        app:layout_constraintTop_toTopOf="@id/textViewInnerCategoryLight1"
+        app:layout_constraintBottom_toBottomOf="@id/textViewInnerCategoryLight1"
+        android:layout_marginEnd="@dimen/_8sdp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
