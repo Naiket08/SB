@@ -24,8 +24,20 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewFavourite"
         android:src="@drawable/nofavadded"
+        android:visibility="visible"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleviewGeneral"
+        android:layout_below="@id/textViewFavourite"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+
+        android:layout_height="@dimen/_180sdp"
+        />
 
     <TextView
         android:id="@+id/textViewOtherTitle"

@@ -34,7 +34,7 @@ import java.util.HashMap;
 public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAdapterInnerSwitchboard.ViewHolder> {
     ArrayList LightName;
     ArrayList LightType;
-    String Roomname,s3,text3,num1,num2;
+    public String Roomname,s3,text3,num1,num2,x;
     private FirebaseAuth mAuth;
     Context context;
 
@@ -109,17 +109,33 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
                 });
 */
                 mAuth = FirebaseAuth.getInstance();
-                HashMap<String,Object> values = new HashMap<>();
-                values.put("mode","on");
-
-
-
-                FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("favorites").child(Roomname).child(text3).child(s3).setValue(values).addOnSuccessListener(new OnSuccessListener<Void>() {
+                DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text3).child(s3);
+                db.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(context, "favorite added", Toast.LENGTH_SHORT).show();
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                         x = dataSnapshot.child("name").getValue(String.class);
+                        HashMap<String,Object> values = new HashMap<>();
+                        values.put("name",x);
+                        values.put("mode","on");
+                        FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("favorites").child(Roomname).child(text3).child(s3).setValue(values).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(context, "favorite added", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
                     }
                 });
+
+
+
+
+
 
             }
         });

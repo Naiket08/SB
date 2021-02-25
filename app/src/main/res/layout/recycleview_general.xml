@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/_90sdp"
+    android:layout_height="@dimen/_128sdp"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:background="@drawable/background_switch_board_inner_room"
+    android:layout_marginLeft="@dimen/_5sdp">
+
+    <ImageView
+        android:id="@+id/imageViewGeneral1"
+        android:layout_width="@dimen/_15sdp"
+        android:layout_height="@dimen/_15sdp"
+        android:background="@drawable/powerbuttongreen"
+        android:layout_marginTop="@dimen/_3sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="@dimen/_3sdp"/>
+
+
+
+    <ImageButton
+        android:id="@+id/buttongeneral1"
+        android:layout_width="@dimen/_48sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:backgroundTint="@android:color/transparent"
+        app:layout_constraintBottom_toTopOf="@+id/textViewInnerSwitchboardSB1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/Edittextgeneral1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="124dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:enabled="false"
+        android:fontFamily="@font/muli"
+        android:gravity="center"
+        android:inputType="none"
+        android:lines="1"
+        android:maxLength="15"
+        android:maxLines="1"
+        android:paddingStart="@dimen/_9sdp"
+        android:scrollbars="none"
+        android:singleLine="true"
+        android:text="Light 1"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
