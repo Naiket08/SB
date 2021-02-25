@@ -15,7 +15,7 @@
         android:layout_marginStart="@dimen/_26sdp"
         android:layout_marginEnd="@dimen/_26sdp"
         android:gravity="center_vertical"
-        android:text="@string/light_1"
+        android:text=""
         android:textSize="@dimen/_10ssp"
         android:paddingStart="@dimen/_10sdp"
         android:textColor="@color/white"
