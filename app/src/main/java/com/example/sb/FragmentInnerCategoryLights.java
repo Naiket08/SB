@@ -46,7 +46,7 @@ public class FragmentInnerCategoryLights extends Fragment {
         View view = inflater.inflate(R.layout.fragment_inner_category_lights,container,false);
 
         category = getArguments().getString("category");
-        Toast.makeText(getContext(),category, Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(getContext(),category, Toast.LENGTH_SHORT).show();
         textViewCategoryLights = (TextView)view.findViewById(R.id.textViewCategoryLights);
         textViewInnerCategory1 = (TextView)view.findViewById(R.id.textViewInnerCategory1);
         textViewInnerCategory2 = (TextView)view.findViewById(R.id.textViewInnerCategory2);
@@ -71,7 +71,7 @@ public class FragmentInnerCategoryLights extends Fragment {
         ///for Light
 if(category.equals("Light")) {
 
-    Toast.makeText(getContext(), "Inside main", Toast.LENGTH_SHORT).show();
+ //   Toast.makeText(getContext(), "Inside main", Toast.LENGTH_SHORT).show();
     ////////////////////////
 
     DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms");
@@ -91,7 +91,7 @@ if(category.equals("Light")) {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     num1 = dataSnapshot.child("roomtype").getValue(String.class);
-                    Toast.makeText(getContext(),num1, Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(getContext(),num1, Toast.LENGTH_SHORT).show();
 
                     //This one
                     if(num1.equals("Bedroom")) {
@@ -178,7 +178,7 @@ if(category.equals("Light")) {
                     }
                     else if(num1.equals("Bathroom")){
 
-                        Toast.makeText(getContext(),"inside Bathroom", Toast.LENGTH_SHORT).show();
+                      //  Toast.makeText(getContext(),"inside Bathroom", Toast.LENGTH_SHORT).show();
                         ////////////////////////////////////////////////////////////////////////////
                         /////////////////////////////////////////////
                         DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
@@ -481,7 +481,7 @@ if(category.equals("Light")) {
         ///for Fan
         else if(category.equals("Fan")) {
 
-            Toast.makeText(getContext(), "Inside main", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(getContext(), "Inside main", Toast.LENGTH_SHORT).show();
             ////////////////////////
 
             DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms");
@@ -501,7 +501,7 @@ if(category.equals("Light")) {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             num1 = dataSnapshot.child("roomtype").getValue(String.class);
-                            Toast.makeText(getContext(),num1, Toast.LENGTH_SHORT).show();
+                          //  Toast.makeText(getContext(),num1, Toast.LENGTH_SHORT).show();
 
                             //This one
                             if(num1.equals("Bedroom")) {
@@ -588,7 +588,7 @@ if(category.equals("Light")) {
                             }
                             else if(num1.equals("Bathroom")){
 
-                                Toast.makeText(getContext(),"inside Bathroom", Toast.LENGTH_SHORT).show();
+                              //  Toast.makeText(getContext(),"inside Bathroom", Toast.LENGTH_SHORT).show();
                                 ////////////////////////////////////////////////////////////////////////////
                                 /////////////////////////////////////////////
                                 DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
@@ -891,7 +891,7 @@ if(category.equals("Light")) {
 ///for Fan
 else if(category.equals("Appliance")) {
 
-    Toast.makeText(getContext(), "Inside main", Toast.LENGTH_SHORT).show();
+ //  Toast.makeText(getContext(), "Inside main", Toast.LENGTH_SHORT).show();
     ////////////////////////
 
     DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms");
@@ -911,7 +911,7 @@ else if(category.equals("Appliance")) {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     num1 = dataSnapshot.child("roomtype").getValue(String.class);
-                    Toast.makeText(getContext(),num1, Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(getContext(),num1, Toast.LENGTH_SHORT).show();
 
                     //This one
                     if(num1.equals("Bedroom")) {
@@ -1001,7 +1001,7 @@ else if(category.equals("Appliance")) {
                     }
                     else if(num1.equals("Bathroom")){
 
-                        Toast.makeText(getContext(),"inside Bathroom", Toast.LENGTH_SHORT).show();
+                      //  Toast.makeText(getContext(),"inside Bathroom", Toast.LENGTH_SHORT).show();
                         ////////////////////////////////////////////////////////////////////////////
                         /////////////////////////////////////////////
                         DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
