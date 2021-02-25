@@ -172,7 +172,7 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
                                 user3.put("name",s2);
                                 user3.put("mode","on");
                                 user3.put("number",q3);
-                                user3.put("category","Fan");
+                                user3.put("category","Appliance");
                                 holder.imageviewmain1.setImageResource(R.drawable.appliances_icon);
                                 db.setValue(user3);
                                 m++;

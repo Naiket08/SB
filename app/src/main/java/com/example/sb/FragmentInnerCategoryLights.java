@@ -116,11 +116,13 @@ if(category.equals("Light")) {
 
                                             } else {
 
-                                                categoryname.add(s3);
-                                                Toast.makeText(getContext(), s3, Toast.LENGTH_SHORT).show();
+                                                String s5 = dataSnapshot.child("name").getValue(String.class);
+                                                String s6 = dataSnapshot.child("category").getValue(String.class);
 
-
-                                                customAdapter2.notifyDataSetChanged();
+                                                if(s6.equals("Light")) {
+                                                    categoryname.add(s5);
+                                                    customAdapter2.notifyDataSetChanged();
+                                                }
                                             }
 
                                         }
@@ -199,11 +201,13 @@ if(category.equals("Light")) {
 
                                             } else {
 
-                                                categoryname2.add(s3);
-                                                Toast.makeText(getContext(), s3, Toast.LENGTH_SHORT).show();
+                                                String s5 = dataSnapshot.child("name").getValue(String.class);
+                                                String s6 = dataSnapshot.child("category").getValue(String.class);
 
-
-                                                customAdapter3.notifyDataSetChanged();
+                                                if(s6.equals("Light")) {
+                                                    categoryname2.add(s5);
+                                                    customAdapter3.notifyDataSetChanged();
+                                                }
                                             }
 
                                         }
@@ -284,11 +288,13 @@ if(category.equals("Light")) {
 
                                             } else {
 
-                                                categoryname3.add(s3);
-                                                Toast.makeText(getContext(), s3, Toast.LENGTH_SHORT).show();
+                                                String s5 = dataSnapshot.child("name").getValue(String.class);
+                                                String s6 = dataSnapshot.child("category").getValue(String.class);
 
-
-                                                customAdapter4.notifyDataSetChanged();
+                                                if(s6.equals("Light")) {
+                                                    categoryname3.add(s5);
+                                                    customAdapter4.notifyDataSetChanged();
+                                                }
                                             }
 
                                         }
@@ -368,11 +374,836 @@ if(category.equals("Light")) {
 
                                             } else {
 
-                                                categoryname4.add(s3);
-                                                Toast.makeText(getContext(), s3, Toast.LENGTH_SHORT).show();
+                                                String s5 = dataSnapshot.child("name").getValue(String.class);
+                                                String s6 = dataSnapshot.child("category").getValue(String.class);
+
+                                                if(s6.equals("Light")) {
+                                                    categoryname4.add(s5);
+                                                    customAdapter5.notifyDataSetChanged();
+                                                }
+                                            }
+
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                    ////////////////////////////////////////
 
 
-                                                customAdapter5.notifyDataSetChanged();
+                                }
+
+
+                            }
+
+                            @Override
+                            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                            }
+
+                            @Override
+                            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                            }
+
+                            @Override
+                            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+                        ////////////////////////////////////////////////////////////////////////////
+
+                    }
+///////////////////
+// ////////////////////////////////////
+                    ////////////////////////////////////////////
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+
+
+
+
+        }//First ending
+
+        @Override
+        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+        }
+
+        @Override
+        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+        }
+
+        @Override
+        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+        }
+    });
+
+    ////////////////////////////////////////
+}
+
+        ///for Fan
+        else if(category.equals("Fan")) {
+
+            Toast.makeText(getContext(), "Inside main", Toast.LENGTH_SHORT).show();
+            ////////////////////////
+
+            DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms");
+            itemsRef.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                    String s1 = dataSnapshot.getKey();
+
+                    //Toast.makeText(getContext(), s1, Toast.LENGTH_SHORT).show();
+                    ////////////////////////               22222222222222222222222222222222222
+
+
+                    //////////////////////
+                    DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
+                    db.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            num1 = dataSnapshot.child("roomtype").getValue(String.class);
+                            Toast.makeText(getContext(),num1, Toast.LENGTH_SHORT).show();
+
+                            //This one
+                            if(num1.equals("Bedroom")) {
+                                /////////////////////////////////////////////
+                                DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
+                                itemsRef2.addChildEventListener(new ChildEventListener() {
+                                    @Override
+                                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                        String s2 = dataSnapshot.getKey();
+                                        if (s2.equals("roomtype") || s2.equals("number") || s2.equals("SwitchBoardumber") || s2.equals("combination") || s2.equals("type") || s2.equals("")) {
+                                        } else {
+                                            //Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();
+                                            //////////////////////// 333333333333333333333333333333333333333333
+                                            DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1).child(s2);
+                                            itemsRef2.addChildEventListener(new ChildEventListener() {
+                                                @Override
+                                                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                                    String s3 = dataSnapshot.getKey();
+                                                    if (s3.equals("roomtype") || s3.equals("number") || s3.equals("SwitchBoardumber") || s3.equals("combination") || s3.equals("type") || s3.equals("")) {
+
+                                                    } else {
+
+                                                        String s5 = dataSnapshot.child("name").getValue(String.class);
+                                                        String s6 = dataSnapshot.child("category").getValue(String.class);
+
+                                                        if(s6.equals("Fan")) {
+                                                            categoryname.add(s5);
+                                                            customAdapter2.notifyDataSetChanged();
+                                                        }
+                                                    }
+
+                                                }
+
+                                                @Override
+                                                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                                }
+
+                                                @Override
+                                                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                                                }
+
+                                                @Override
+                                                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                                }
+
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                                }
+                                            });
+                                            ////////////////////////////////////////
+
+
+                                        }
+
+
+                                    }
+
+                                    @Override
+                                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                    }
+
+                                    @Override
+                                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                                    }
+
+                                    @Override
+                                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+                            }
+                            else if(num1.equals("Bathroom")){
+
+                                Toast.makeText(getContext(),"inside Bathroom", Toast.LENGTH_SHORT).show();
+                                ////////////////////////////////////////////////////////////////////////////
+                                /////////////////////////////////////////////
+                                DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
+                                itemsRef2.addChildEventListener(new ChildEventListener() {
+                                    @Override
+                                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                        String s2 = dataSnapshot.getKey();
+                                        if (s2.equals("roomtype") || s2.equals("number") || s2.equals("SwitchBoardumber") || s2.equals("combination") || s2.equals("type") || s2.equals("")) {
+                                        } else {
+                                            //Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();
+                                            //////////////////////// 333333333333333333333333333333333333333333
+                                            DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1).child(s2);
+                                            itemsRef2.addChildEventListener(new ChildEventListener() {
+                                                @Override
+                                                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                                    String s3 = dataSnapshot.getKey();
+                                                    if (s3.equals("roomtype") || s3.equals("number") || s3.equals("SwitchBoardumber") || s3.equals("combination") || s3.equals("type") || s3.equals("")) {
+
+                                                    } else {
+
+                                                        String s5 = dataSnapshot.child("name").getValue(String.class);
+                                                        String s6 = dataSnapshot.child("category").getValue(String.class);
+
+                                                        if(s6.equals("Fan")) {
+                                                            categoryname2.add(s5);
+                                                            customAdapter3.notifyDataSetChanged();
+                                                        }
+                                                    }
+
+                                                }
+
+                                                @Override
+                                                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                                }
+
+                                                @Override
+                                                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                                                }
+
+                                                @Override
+                                                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                                }
+
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                                }
+                                            });
+                                            ////////////////////////////////////////
+
+
+                                        }
+
+
+                                    }
+
+                                    @Override
+                                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                    }
+
+                                    @Override
+                                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                                    }
+
+                                    @Override
+                                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+                                ////////////////////////////////////////////////////////////////////////////
+
+                            }
+                            else if(num1.equals("Kitchen")){
+
+
+                                ////////////////////////////////////////////////////////////////////////////
+                                /////////////////////////////////////////////
+                                DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
+                                itemsRef2.addChildEventListener(new ChildEventListener() {
+                                    @Override
+                                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                        String s2 = dataSnapshot.getKey();
+                                        if (s2.equals("roomtype") || s2.equals("number") || s2.equals("SwitchBoardumber") || s2.equals("combination") || s2.equals("type") || s2.equals("")) {
+                                        } else {
+                                            //Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();
+                                            //////////////////////// 333333333333333333333333333333333333333333
+                                            DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1).child(s2);
+                                            itemsRef2.addChildEventListener(new ChildEventListener() {
+                                                @Override
+                                                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                                    String s3 = dataSnapshot.getKey();
+                                                    if (s3.equals("roomtype") || s3.equals("number") || s3.equals("SwitchBoardumber") || s3.equals("combination") || s3.equals("type") || s3.equals("")) {
+
+                                                    } else {
+
+                                                        String s5 = dataSnapshot.child("name").getValue(String.class);
+                                                        String s6 = dataSnapshot.child("category").getValue(String.class);
+
+                                                        if(s6.equals("Fan")) {
+                                                            categoryname3.add(s5);
+                                                            customAdapter4.notifyDataSetChanged();
+                                                        }
+                                                    }
+
+                                                }
+
+                                                @Override
+                                                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                                }
+
+                                                @Override
+                                                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                                                }
+
+                                                @Override
+                                                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                                }
+
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                                }
+                                            });
+                                            ////////////////////////////////////////
+
+
+                                        }
+
+
+                                    }
+
+                                    @Override
+                                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                    }
+
+                                    @Override
+                                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                                    }
+
+                                    @Override
+                                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+                                ////////////////////////////////////////////////////////////////////////////
+
+                            }
+                            else if(num1.equals("Dinning Room")){
+
+                                /////////////////////////////////////////////////////////////////////////////
+                                /////////////////////////////////////////////
+                                DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
+                                itemsRef2.addChildEventListener(new ChildEventListener() {
+                                    @Override
+                                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                        String s2 = dataSnapshot.getKey();
+                                        if (s2.equals("roomtype") || s2.equals("number") || s2.equals("SwitchBoardumber") || s2.equals("combination") || s2.equals("type") || s2.equals("")) {
+                                        } else {
+                                            //Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();
+                                            //////////////////////// 333333333333333333333333333333333333333333
+                                            DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1).child(s2);
+                                            itemsRef2.addChildEventListener(new ChildEventListener() {
+                                                @Override
+                                                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                                    String s3 = dataSnapshot.getKey();
+                                                    if (s3.equals("roomtype") || s3.equals("number") || s3.equals("SwitchBoardumber") || s3.equals("combination") || s3.equals("type") || s3.equals("")) {
+
+                                                    } else {
+
+                                                        String s5 = dataSnapshot.child("name").getValue(String.class);
+                                                        String s6 = dataSnapshot.child("category").getValue(String.class);
+
+                                                        if(s6.equals("Fan")) {
+                                                            categoryname4.add(s5);
+                                                            customAdapter5.notifyDataSetChanged();
+                                                        }
+                                                    }
+
+                                                }
+
+                                                @Override
+                                                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                                }
+
+                                                @Override
+                                                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                                                }
+
+                                                @Override
+                                                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                                }
+
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                                }
+                                            });
+                                            ////////////////////////////////////////
+
+
+                                        }
+
+
+                                    }
+
+                                    @Override
+                                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                    }
+
+                                    @Override
+                                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                                    }
+
+                                    @Override
+                                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+                                ////////////////////////////////////////////////////////////////////////////
+
+                            }
+///////////////////
+// ////////////////////////////////////
+                            ////////////////////////////////////////////
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
+
+
+
+
+                }//First ending
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+            ////////////////////////////////////////
+        }
+
+///for Fan
+else if(category.equals("Appliance")) {
+
+    Toast.makeText(getContext(), "Inside main", Toast.LENGTH_SHORT).show();
+    ////////////////////////
+
+    DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms");
+    itemsRef.addChildEventListener(new ChildEventListener() {
+        @Override
+        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            String s1 = dataSnapshot.getKey();
+
+            //Toast.makeText(getContext(), s1, Toast.LENGTH_SHORT).show();
+            ////////////////////////               22222222222222222222222222222222222
+
+
+            //////////////////////
+            DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
+            db.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    num1 = dataSnapshot.child("roomtype").getValue(String.class);
+                    Toast.makeText(getContext(),num1, Toast.LENGTH_SHORT).show();
+
+                    //This one
+                    if(num1.equals("Bedroom")) {
+                        /////////////////////////////////////////////
+                        DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
+                        itemsRef2.addChildEventListener(new ChildEventListener() {
+                            @Override
+                            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                String s2 = dataSnapshot.getKey();
+                                if (s2.equals("roomtype") || s2.equals("number") || s2.equals("SwitchBoardumber") || s2.equals("combination") || s2.equals("type") || s2.equals("")) {
+                                } else {
+                                    //Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();
+                                    //////////////////////// 333333333333333333333333333333333333333333
+                                    DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1).child(s2);
+                                    itemsRef2.addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                            String s3 = dataSnapshot.getKey();
+                                            if (s3.equals("roomtype") || s3.equals("number") || s3.equals("SwitchBoardumber") || s3.equals("combination") || s3.equals("type") || s3.equals("")) {
+
+                                            } else {
+
+                                                String s5 = dataSnapshot.child("name").getValue(String.class);
+                                                String s6 = dataSnapshot.child("category").getValue(String.class);
+
+                                                if(s6.equals("Appliance")) {
+                                                    categoryname.add(s5);
+                                                    customAdapter2.notifyDataSetChanged();
+                                                }
+
+
+
+                                            }
+
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                    ////////////////////////////////////////
+
+
+                                }
+
+
+                            }
+
+                            @Override
+                            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                            }
+
+                            @Override
+                            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                            }
+
+                            @Override
+                            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+                    }
+                    else if(num1.equals("Bathroom")){
+
+                        Toast.makeText(getContext(),"inside Bathroom", Toast.LENGTH_SHORT).show();
+                        ////////////////////////////////////////////////////////////////////////////
+                        /////////////////////////////////////////////
+                        DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
+                        itemsRef2.addChildEventListener(new ChildEventListener() {
+                            @Override
+                            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                String s2 = dataSnapshot.getKey();
+                                if (s2.equals("roomtype") || s2.equals("number") || s2.equals("SwitchBoardumber") || s2.equals("combination") || s2.equals("type") || s2.equals("")) {
+                                } else {
+                                    //Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();
+                                    //////////////////////// 333333333333333333333333333333333333333333
+                                    DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1).child(s2);
+                                    itemsRef2.addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                            String s3 = dataSnapshot.getKey();
+                                            if (s3.equals("roomtype") || s3.equals("number") || s3.equals("SwitchBoardumber") || s3.equals("combination") || s3.equals("type") || s3.equals("")) {
+
+                                            } else {
+
+                                                String s5 = dataSnapshot.child("name").getValue(String.class);
+                                                String s6 = dataSnapshot.child("category").getValue(String.class);
+
+                                                if(s6.equals("Appliance")) {
+                                                    categoryname2.add(s5);
+                                                    customAdapter3.notifyDataSetChanged();
+                                                }
+                                            }
+
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                    ////////////////////////////////////////
+
+
+                                }
+
+
+                            }
+
+                            @Override
+                            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                            }
+
+                            @Override
+                            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                            }
+
+                            @Override
+                            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+                        ////////////////////////////////////////////////////////////////////////////
+
+                    }
+                    else if(num1.equals("Kitchen")){
+
+
+                        ////////////////////////////////////////////////////////////////////////////
+                        /////////////////////////////////////////////
+                        DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
+                        itemsRef2.addChildEventListener(new ChildEventListener() {
+                            @Override
+                            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                String s2 = dataSnapshot.getKey();
+                                if (s2.equals("roomtype") || s2.equals("number") || s2.equals("SwitchBoardumber") || s2.equals("combination") || s2.equals("type") || s2.equals("")) {
+                                } else {
+                                    //Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();
+                                    //////////////////////// 333333333333333333333333333333333333333333
+                                    DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1).child(s2);
+                                    itemsRef2.addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                            String s3 = dataSnapshot.getKey();
+                                            if (s3.equals("roomtype") || s3.equals("number") || s3.equals("SwitchBoardumber") || s3.equals("combination") || s3.equals("type") || s3.equals("")) {
+
+                                            } else {
+
+                                                String s5 = dataSnapshot.child("name").getValue(String.class);
+                                                String s6 = dataSnapshot.child("category").getValue(String.class);
+
+                                                if(s6.equals("Appliance")) {
+                                                    categoryname3.add(s5);
+                                                    customAdapter4.notifyDataSetChanged();
+                                                }
+                                            }
+
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                    ////////////////////////////////////////
+
+
+                                }
+
+
+                            }
+
+                            @Override
+                            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                            }
+
+                            @Override
+                            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                            }
+
+                            @Override
+                            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+                        ////////////////////////////////////////////////////////////////////////////
+
+                    }
+                    else if(num1.equals("Dinning Room")){
+
+                        /////////////////////////////////////////////////////////////////////////////
+                        /////////////////////////////////////////////
+                        DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
+                        itemsRef2.addChildEventListener(new ChildEventListener() {
+                            @Override
+                            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                String s2 = dataSnapshot.getKey();
+                                if (s2.equals("roomtype") || s2.equals("number") || s2.equals("SwitchBoardumber") || s2.equals("combination") || s2.equals("type") || s2.equals("")) {
+                                } else {
+                                    //Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();
+                                    //////////////////////// 333333333333333333333333333333333333333333
+                                    DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1).child(s2);
+                                    itemsRef2.addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                            String s3 = dataSnapshot.getKey();
+                                            if (s3.equals("roomtype") || s3.equals("number") || s3.equals("SwitchBoardumber") || s3.equals("combination") || s3.equals("type") || s3.equals("")) {
+
+                                            } else {
+
+                                                String s5 = dataSnapshot.child("name").getValue(String.class);
+                                                String s6 = dataSnapshot.child("category").getValue(String.class);
+
+                                                if(s6.equals("Appliance")) {
+                                                    categoryname4.add(s5);
+                                                    customAdapter5.notifyDataSetChanged();
+                                                }
                                             }
 
                                         }
