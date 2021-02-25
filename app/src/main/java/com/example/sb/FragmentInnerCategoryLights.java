@@ -68,6 +68,19 @@ public class FragmentInnerCategoryLights extends Fragment {
         CustomAdapterInnerCategory2 customAdapter3 = new CustomAdapterInnerCategory2(getActivity(),categoryname2,mAuth);
         CustomAdapterInnerCategory3 customAdapter4 = new CustomAdapterInnerCategory3(getActivity(),categoryname3,mAuth);
         CustomAdapterInnerCategory4 customAdapter5 = new CustomAdapterInnerCategory4(getActivity(),categoryname4,mAuth);
+
+        if((categoryname!=null&&categoryname.size()>0)){
+            categoryname.clear();
+        }
+        if((categoryname2!=null&&categoryname2.size()>0)){
+            categoryname2.clear();
+        }
+        if((categoryname3!=null&&categoryname3.size()>0)){
+            categoryname3.clear();
+        }
+        if((categoryname4!=null&&categoryname4.size()>0)){
+            categoryname4.clear();
+        }
         ///for Light
 if(category.equals("Light")) {
 

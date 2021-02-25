@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -34,18 +35,25 @@ import java.util.HashMap;
 public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAdapterInnerSwitchboard.ViewHolder> {
     ArrayList LightName;
     ArrayList LightType;
-    public String Roomname,s3,text3,num1,num2,x;
+    ImageView imageViewBrownJacket,imageViewWhiteJacket,imageViewAppliances,imageViewBulb;
+    DialView customdial;
+    public String Roomname,s3,text3,num1,num2,x,fanspeed;
     private FirebaseAuth mAuth;
     Context context;
 
 
-    public CustomAdapterInnerSwitchboard(Context context, ArrayList LightName, ArrayList LightType,FirebaseAuth mAuth,String Roomname,String text3) {
+    public CustomAdapterInnerSwitchboard(Context context, ArrayList LightName, ArrayList LightType,FirebaseAuth mAuth,String Roomname,String text3,ImageView imageViewBrownJacket,ImageView  imageViewWhiteJacket,ImageView imageViewAppliances,ImageView imageViewBulb,DialView customdial) {
 
 
         this.context = context;
         this.LightName = LightName;
         this.LightType = LightType;
         this.Roomname=Roomname;
+        this.imageViewBrownJacket=imageViewBrownJacket;
+        this.imageViewWhiteJacket=imageViewWhiteJacket;
+        this.imageViewAppliances=imageViewAppliances;
+        this.imageViewBulb=imageViewBulb;
+        this.customdial=customdial;
         this.text3=text3;
         this.mAuth=mAuth;
     }
@@ -72,17 +80,28 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
         holder.innerSwitchboardbutton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Fan Selected", Toast.LENGTH_SHORT).show();
                 num2=holder.textViewInnerSwitchboardSB1.getText().toString();
                 Toast.makeText(context, num2, Toast.LENGTH_SHORT).show();
 
-                if(num2.equals("Fan 1")||num2.equals("Fan 2")){
-                    Toast.makeText(context,"enter inside", Toast.LENGTH_SHORT).show();
+                if(num2.contains("Fan")){
+                   // Toast.makeText(context,"enter inside", Toast.LENGTH_SHORT).show();
+                    imageViewBrownJacket.setVisibility(View.INVISIBLE);
+                    imageViewBulb.setVisibility(View.INVISIBLE);
+                    imageViewAppliances.setVisibility(View.INVISIBLE);
+                    customdial.setVisibility(View.VISIBLE);
+                    imageViewWhiteJacket.setVisibility(View.VISIBLE);
 
 
 
                 }
-
+                else if(num2.contains("Light"))
+                {
+                    imageViewBrownJacket.setVisibility(View.VISIBLE);
+                    imageViewBulb.setVisibility(View.VISIBLE);
+                    imageViewAppliances.setVisibility(View.INVISIBLE);
+                    customdial.setVisibility(View.INVISIBLE);
+                    imageViewWhiteJacket.setVisibility(View.INVISIBLE);
+                }
 
             }
         });
@@ -216,4 +235,6 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
 
         }
     }
+
+
 }

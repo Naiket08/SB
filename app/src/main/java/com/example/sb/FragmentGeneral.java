@@ -65,6 +65,10 @@ public class FragmentGeneral extends Fragment {
 
 
         CustomAdapterGeneral customAdapter2 = new CustomAdapterGeneral(getActivity(),Generalname,GeneralType,mAuth);
+        if((Generalname!=null&&GeneralType!=null&&Generalname.size()>0&&GeneralType.size()>0)){
+            Generalname.clear();
+            GeneralType.clear();
+        }
 
         DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("favorites");
         itemsRef.addChildEventListener(new ChildEventListener() {

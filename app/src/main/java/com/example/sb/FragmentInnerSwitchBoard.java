@@ -35,11 +35,12 @@ import java.util.ArrayList;
 public class FragmentInnerSwitchBoard extends Fragment {
 
     TextView textViewRoomNo;
-    ImageView imageViewBrownJacket,imageViewWhiteJacket,imageViewRegulator,imageViewAppliances,imageViewBulb;
+    ImageView imageViewBrownJacket,imageViewWhiteJacket,imageViewAppliances,imageViewBulb;
+    DialView customdial;
 
     TextView textViewSwitchBoard1;
     Button buttonLight1,buttonLight2,buttonFan,buttonLight3,buttonSwitchBoardApppliance;
-    public String Roomname,text3;
+    public String Roomname,text3,fanspeed;
     ////////////////////////////////////
     RecyclerView recyclerViewInnerSwitchboard;
     DialView mcustomlayout;
@@ -75,10 +76,11 @@ public class FragmentInnerSwitchBoard extends Fragment {
         buttonLight2 = (Button)view.findViewById(R.id.buttonLight2);
         buttonLight3 = (Button)view.findViewById(R.id.buttonLight3);
         buttonFan = (Button)view.findViewById(R.id.buttonFan);
+        customdial=(DialView)view.findViewById(R.id.dialView);
 
 
         buttonSwitchBoardApppliance = (Button)view.findViewById(R.id.buttonSwitchBoardAppliance);
-        CustomAdapterInnerSwitchboard customAdapter2 = new CustomAdapterInnerSwitchboard(getActivity(),LightName,LightType,mAuth,Roomname,text3);
+        CustomAdapterInnerSwitchboard customAdapter2 = new CustomAdapterInnerSwitchboard(getActivity(),LightName,LightType,mAuth,Roomname,text3,imageViewBrownJacket,imageViewWhiteJacket,imageViewAppliances,imageViewBulb,mcustomlayout);
         if((LightName!=null&&LightType!=null&&LightName.size()>0&&LightType.size()>0)){
             LightName.clear();
             LightType.clear();

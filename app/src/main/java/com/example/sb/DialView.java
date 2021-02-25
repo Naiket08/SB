@@ -41,7 +41,7 @@ public class DialView extends View {
     // String buffer for dial labels and float for ComputeXY result.
     private final StringBuffer mTempLabel = new StringBuffer(8);
     private final float[] mTempResult = new float[2];
-    public String x;
+    public String fancontroller;
 
     /**
      * Standard constructor.
@@ -112,13 +112,15 @@ public class DialView extends View {
             public void onClick(View view) {
                 // Rotate selection forward to the next valid choice.
                 mActiveSelection = (mActiveSelection + 1) % SELECTION_COUNT;
-                x=String.valueOf(mActiveSelection);
+                fancontroller=String.valueOf(mActiveSelection);
+                Toast.makeText(getContext(), fancontroller, Toast.LENGTH_SHORT).show();
+
 
                 // Set dial background color to green if selection is >= 1.
                 if (mActiveSelection >= 1) {
-                    mDialPaint3.setColor(Color.GREEN);
+                  // mDialPaint3.setColor(Color.GREEN);
                 } else {
-                    mDialPaint3.setColor(Color.BLACK);
+                  //  mDialPaint3.setColor(Color.BLACK);
                 }
                 // Redraw the view.
                 invalidate();
