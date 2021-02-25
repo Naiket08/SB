@@ -97,6 +97,8 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
                 canceldailogpredefine.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        s3=s2;
+                    //    Toast.makeText(context,s3, Toast.LENGTH_SHORT).show();
                         bottomSheetDialog.cancel();
                     }
                 });
@@ -109,7 +111,7 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
                         holder.edittextmain.setEnabled(false);
                         //  Toast.makeText(context, s3, Toast.LENGTH_SHORT).show();
                         if(TextUtils.isEmpty(s3)){
-                            // Toast.makeText(context, "Enter Text", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Enter Text", Toast.LENGTH_SHORT).show();
                         }
                         else{
                             holder.edittextmain.setText(s3);
