@@ -113,7 +113,7 @@ public class DialView extends View {
                 // Rotate selection forward to the next valid choice.
                 mActiveSelection = (mActiveSelection + 1) % SELECTION_COUNT;
                 fancontroller=String.valueOf(mActiveSelection);
-                Toast.makeText(getContext(), fancontroller, Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(getContext(), fancontroller, Toast.LENGTH_SHORT).show();
 
 
                 // Set dial background color to green if selection is >= 1.

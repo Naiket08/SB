@@ -85,7 +85,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String s = dataSnapshot.child("Roomfragment").getValue(String.class);
-                Toast.makeText(Home.this, s, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Home.this, s, Toast.LENGTH_SHORT).show();
                 roomcheck=s;
 
             }

@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -23,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,13 +38,14 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
     ArrayList LightName;
     ArrayList LightType;
     ImageView imageViewBrownJacket,imageViewWhiteJacket,imageViewAppliances,imageViewBulb;
+    Button speedcontrol;
     DialView customdial;
     public String Roomname,s3,text3,num1,num2,x,fanspeed;
     private FirebaseAuth mAuth;
     Context context;
 
 
-    public CustomAdapterInnerSwitchboard(Context context, ArrayList LightName, ArrayList LightType,FirebaseAuth mAuth,String Roomname,String text3,ImageView imageViewBrownJacket,ImageView  imageViewWhiteJacket,ImageView imageViewAppliances,ImageView imageViewBulb,DialView customdial) {
+    public CustomAdapterInnerSwitchboard(Context context, ArrayList LightName, ArrayList LightType,FirebaseAuth mAuth,String Roomname,String text3,ImageView imageViewBrownJacket,ImageView  imageViewWhiteJacket,ImageView imageViewAppliances,ImageView imageViewBulb,DialView customdial,Button speedcontrol) {
 
 
         this.context = context;
@@ -54,6 +57,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
         this.imageViewAppliances=imageViewAppliances;
         this.imageViewBulb=imageViewBulb;
         this.customdial=customdial;
+        this.speedcontrol=speedcontrol;
         this.text3=text3;
         this.mAuth=mAuth;
     }
@@ -81,7 +85,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
             @Override
             public void onClick(View view) {
                 num2=holder.textViewInnerSwitchboardSB1.getText().toString();
-                Toast.makeText(context, num2, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, num2+" : Selected", Toast.LENGTH_SHORT).show();
 
                 if(num2.contains("Fan")){
                    // Toast.makeText(context,"enter inside", Toast.LENGTH_SHORT).show();
@@ -90,10 +94,164 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
                     imageViewAppliances.setVisibility(View.INVISIBLE);
                     customdial.setVisibility(View.VISIBLE);
                     imageViewWhiteJacket.setVisibility(View.VISIBLE);
+                    speedcontrol.setVisibility(View.VISIBLE);
 
+
+                    speedcontrol.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            fanspeed = customdial.fancontroller;
+                          //  Toast.makeText(context, fanspeed, Toast.LENGTH_SHORT).show();
+
+                            mAuth = FirebaseAuth.getInstance();
+                            String text = holder.textViewInnerSwitchboardSB1.getText().toString();
+                            ////////////////////////////////////////////////////////////////////////////////////
+                            DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms");
+                            itemsRef.addChildEventListener(new ChildEventListener() {
+                                @Override
+                                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                    String s1 = dataSnapshot.getKey();
+
+                                    //Toast.makeText(getContext(), s1, Toast.LENGTH_SHORT).show();
+                                    ////////////////////////               22222222222222222222222222222222222
+
+
+                                    //////////////////////
+                                    DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
+                                    db.addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                            // Toast.makeText(context,num1, Toast.LENGTH_SHORT).show();
+
+                                            //This one
+
+                                            /////////////////////////////////////////////
+                                            DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
+                                            itemsRef2.addChildEventListener(new ChildEventListener() {
+                                                @Override
+                                                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                                    String s2 = dataSnapshot.getKey();
+
+                                                    //Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();
+                                                    //////////////////////// 333333333333333333333333333333333333333333
+                                                    DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1).child(s2);
+                                                    itemsRef2.addChildEventListener(new ChildEventListener() {
+                                                        @Override
+                                                        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                                            String s3 = dataSnapshot.getKey();
+
+                                                            String s5 = dataSnapshot.child("speed").getValue(String.class);
+                                                            //String s6 = dataSnapshot.child("category").getValue(String.class);
+                                                            //  Toast.makeText(context, s5, Toast.LENGTH_SHORT).show();
+
+                                                            if (s3.equals(text)) {
+                                                                DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1).child(s2).child(s3);
+                                                                db.child("speed").setValue(fanspeed).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                    @Override
+                                                                    public void onSuccess(Void aVoid) {
+                                                                        Toast.makeText(context, "Speed Changed", Toast.LENGTH_SHORT).show();
+                                                                    }
+                                                                });
+
+                                                            }
+
+
+                                                        }
+
+                                                        @Override
+                                                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                                        }
+
+                                                        @Override
+                                                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                                                        }
+
+                                                        @Override
+                                                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                                        }
+
+                                                        @Override
+                                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                                        }
+                                                    });
+                                                    ////////////////////////////////////////
+
+
+                                                }
+
+                                                @Override
+                                                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                                }
+
+                                                @Override
+                                                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                                                }
+
+                                                @Override
+                                                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                                }
+
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                                }
+                                            });
+
+
+///////////////////
+// ////////////////////////////////////
+                                            ////////////////////////////////////////////
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                        }
+                                    });
+
+
+                                }//First ending
+
+                                @Override
+                                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                }
+
+                                @Override
+                                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                                }
+
+                                @Override
+                                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                }
+                            });
+
+
+                            ////////////////////////////////////////////////////////////////////////////////////
+                        }
+                    });
 
 
                 }
+
                 else if(num2.contains("Light"))
                 {
                     imageViewBrownJacket.setVisibility(View.VISIBLE);
@@ -101,6 +259,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
                     imageViewAppliances.setVisibility(View.INVISIBLE);
                     customdial.setVisibility(View.INVISIBLE);
                     imageViewWhiteJacket.setVisibility(View.INVISIBLE);
+                    speedcontrol.setVisibility(View.INVISIBLE);
                 }
 
             }

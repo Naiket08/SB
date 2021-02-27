@@ -37,13 +37,13 @@ public class FragmentInnerSwitchBoard extends Fragment {
     TextView textViewRoomNo;
     ImageView imageViewBrownJacket,imageViewWhiteJacket,imageViewAppliances,imageViewBulb;
     DialView customdial;
+    Button speedcontrol;
 
     TextView textViewSwitchBoard1;
     Button buttonLight1,buttonLight2,buttonFan,buttonLight3,buttonSwitchBoardApppliance;
     public String Roomname,text3,fanspeed;
     ////////////////////////////////////
     RecyclerView recyclerViewInnerSwitchboard;
-    DialView mcustomlayout;
     //////////////////////
     private FirebaseAuth mAuth;
     private FirebaseFirestore db1 = FirebaseFirestore.getInstance();;
@@ -68,7 +68,7 @@ public class FragmentInnerSwitchBoard extends Fragment {
         imageViewBrownJacket = (ImageView)view.findViewById(R.id.imageViewBrownJacket);
         imageViewWhiteJacket = (ImageView)view.findViewById(R.id.imageViewWhiteJacket);
         imageViewBulb = (ImageView)view.findViewById(R.id.imageViewBulb);
-        mcustomlayout=(DialView)view.findViewById(R.id.dialView);
+
         imageViewAppliances = (ImageView)view.findViewById(R.id.imageViewAppliances);
 
         textViewSwitchBoard1 = (TextView)view.findViewById(R.id.textViewSwitchBoard1);
@@ -76,11 +76,12 @@ public class FragmentInnerSwitchBoard extends Fragment {
         buttonLight2 = (Button)view.findViewById(R.id.buttonLight2);
         buttonLight3 = (Button)view.findViewById(R.id.buttonLight3);
         buttonFan = (Button)view.findViewById(R.id.buttonFan);
+        speedcontrol=(Button)view.findViewById(R.id.speedcontrol);
         customdial=(DialView)view.findViewById(R.id.dialView);
 
 
         buttonSwitchBoardApppliance = (Button)view.findViewById(R.id.buttonSwitchBoardAppliance);
-        CustomAdapterInnerSwitchboard customAdapter2 = new CustomAdapterInnerSwitchboard(getActivity(),LightName,LightType,mAuth,Roomname,text3,imageViewBrownJacket,imageViewWhiteJacket,imageViewAppliances,imageViewBulb,mcustomlayout);
+        CustomAdapterInnerSwitchboard customAdapter2 = new CustomAdapterInnerSwitchboard(getActivity(),LightName,LightType,mAuth,Roomname,text3,imageViewBrownJacket,imageViewWhiteJacket,imageViewAppliances,imageViewBulb,customdial,speedcontrol);
         if((LightName!=null&&LightType!=null&&LightName.size()>0&&LightType.size()>0)){
             LightName.clear();
             LightType.clear();
