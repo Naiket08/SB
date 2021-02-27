@@ -50,8 +50,7 @@ public class SplashScreen extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     check = dataSnapshot.child("Roomfragment").getValue(String.class);
-                    Toast.makeText(SplashScreen.this,check, Toast.LENGTH_SHORT).show();
-                    //Toast.makeText(SplashScreen.this,check, Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(SplashScreen.this,check, Toast.LENGTH_SHORT).show();
 
                 }
 

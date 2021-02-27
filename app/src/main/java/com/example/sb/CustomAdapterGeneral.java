@@ -109,6 +109,7 @@ public class CustomAdapterGeneral extends RecyclerView.Adapter<CustomAdapterGene
                                                       //  Toast.makeText(context, s5, Toast.LENGTH_SHORT).show();
 
                                                         if(s5.equals(text)) {
+                                                            DatabaseReference db2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1).child(s2).child(s3);
                                                             DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("favorites").child(s1).child(s2).child(s3);
                                                             db.addListenerForSingleValueEvent(new ValueEventListener() {
                                                                 @Override
@@ -124,10 +125,24 @@ public class CustomAdapterGeneral extends RecyclerView.Adapter<CustomAdapterGene
                                                                                 //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttonred);
                                                                             }
                                                                         });
+                                                                        db2.child("mode").setValue("off").addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                            @Override
+                                                                            public void onSuccess(Void aVoid) {
+                                                                                Toast.makeText(context, "OFF", Toast.LENGTH_SHORT).show();
+                                                                                //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttonred);
+                                                                            }
+                                                                        });
 
 
                                                                     } else {
                                                                         db.child("mode").setValue("on").addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                            @Override
+                                                                            public void onSuccess(Void aVoid) {
+                                                                                Toast.makeText(context, "ON", Toast.LENGTH_SHORT).show();
+                                                                                //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttongreen);
+                                                                            }
+                                                                        });
+                                                                        db2.child("mode").setValue("on").addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                             @Override
                                                                             public void onSuccess(Void aVoid) {
                                                                                 Toast.makeText(context, "ON", Toast.LENGTH_SHORT).show();

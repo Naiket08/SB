@@ -165,6 +165,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
                 s3=holder.textViewInnerSwitchboardSB1.getText().toString();
                 mAuth = FirebaseAuth.getInstance();
                 DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text3).child(s3);
+                DatabaseReference db2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("favorites").child(Roomname).child(text3).child(s3);
                 db.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -180,6 +181,12 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
                                     holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttonred);
                                 }
                             });
+                            db2.child("mode").setValue("off").addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    //  Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
+                                }
+                            });
 
 
 
@@ -191,6 +198,12 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
                                 public void onSuccess(Void aVoid) {
                                     //  Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
                                     holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttongreen);
+                                }
+                            });
+                            db2.child("mode").setValue("on").addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    //  Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
