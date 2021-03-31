@@ -36,7 +36,7 @@ public class FragmentCategory extends Fragment {
                 Fragment newFragment = new FragmentInnerCategoryLights();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 Bundle arguments = new Bundle();
-                arguments.putString( "category",ab);
+                arguments.putString("category",ab);
                 newFragment.setArguments(arguments);
                 transaction.replace(R.id.fragment_container,newFragment);
                 transaction.addToBackStack(null);
@@ -51,7 +51,7 @@ public class FragmentCategory extends Fragment {
                 Fragment newFragment = new FragmentInnerCategoryLights();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 Bundle arguments = new Bundle();
-                arguments.putString( "category",ab);
+                arguments.putString("category",ab);
                 newFragment.setArguments(arguments);
 
                 transaction.replace(R.id.fragment_container,newFragment);
@@ -67,7 +67,7 @@ public class FragmentCategory extends Fragment {
                 Fragment newFragment = new FragmentInnerCategoryLights();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 Bundle arguments = new Bundle();
-                arguments.putString( "category",ab);
+                arguments.putString("category",ab);
                 newFragment.setArguments(arguments);
 
                 transaction.replace(R.id.fragment_container,newFragment);

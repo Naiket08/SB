@@ -11,16 +11,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SB">
-        <activity android:name=".ConfirmPinToChange"></activity>
-        <activity android:name=".UserProfile" />
-        <activity android:name=".RegisterScreen" />
-        <activity android:name=".Home" />
-        <activity android:name=".Login" />
-        <activity android:name=".FinalPin" />
-        <activity android:name=".RePin" />
-        <activity android:name=".PinOne" />
-        <activity android:name=".TermsAndConditions" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".ConfirmPinToChange"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".UserProfile"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".RegisterScreen"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Home"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Login"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".FinalPin"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".RePin"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".PinOne"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".TermsAndConditions"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SplashScreen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -901,7 +901,7 @@ if(category.equals("Light")) {
             ////////////////////////////////////////
         }
 
-///for Fan
+///for Appliance
 else if(category.equals("Appliance")) {
 
  //  Toast.makeText(getContext(), "Inside main", Toast.LENGTH_SHORT).show();
