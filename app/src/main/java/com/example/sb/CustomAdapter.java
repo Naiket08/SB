@@ -21,12 +21,16 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.Inflater;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
+    FirebaseAuth mAuth;
     ArrayList roomNames;
     ArrayList roomImages;
     Context context;
@@ -49,6 +53,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        mAuth = FirebaseAuth.getInstance();
         holder.name.setText(String.valueOf(roomNames.get(position)));
 
         holder.imageViewIconMyRoom.setImageResource((Integer)roomImages.get(position));

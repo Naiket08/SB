@@ -216,41 +216,6 @@ public class FragmentSwitchboard extends DialogFragment {
             }
         });
         userId = mAuth.getCurrentUser().getUid();
-        // DocumentReference documentReference = db1.collection("users").document(userId);
-/*
-        db1.collection("users").document(mAuth.getCurrentUser().getUid()).get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @SuppressLint("SetTextI18n")
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        String z1 = documentSnapshot.getString("Renumbers");
-                        demo1=z1.toString();
-                        o=Integer.valueOf(demo1);
-                        Toast.makeText(getContext(),"value1 : "+ o , Toast.LENGTH_SHORT).show();
-                    }
-                });*/
-
-     /*   Handler handler = new Handler();
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                ////////////////////////////////
-                db1.collection("users").document(mAuth.getCurrentUser().getUid()).collection("Rooms").document(""+o).get()
-                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                            @SuppressLint("SetTextI18n")
-                            @Override
-                            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                String z2 = documentSnapshot.getString("switchcounter");
-                                demo2=z2.toString();
-                                j=Integer.valueOf(demo2);
-                                Toast.makeText(getContext(),"value2 : "+ j , Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                ////////////////////////////////
-
-            }
-        };
-        handler.postDelayed(runnable, 500);*/
 
         DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname);
         db.addListenerForSingleValueEvent(new ValueEventListener() {

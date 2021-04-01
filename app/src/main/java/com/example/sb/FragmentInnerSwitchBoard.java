@@ -62,9 +62,10 @@ public class FragmentInnerSwitchBoard extends Fragment {
         Roomname = getArguments().getString("Roomname");
       //  Toast.makeText(getContext(),Roomname, Toast.LENGTH_SHORT).show();
         text3= getArguments().getString("Switchname");
-      //  Toast.makeText(getContext(),text3, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(),text3, Toast.LENGTH_SHORT).show();
 ///////
         textViewRoomNo = (TextView)view.findViewById(R.id.textViewRoomNo);
+        textViewRoomNo.setText(Roomname);
         imageViewBrownJacket = (ImageView)view.findViewById(R.id.imageViewBrownJacket);
         imageViewWhiteJacket = (ImageView)view.findViewById(R.id.imageViewWhiteJacket);
         imageViewBulb = (ImageView)view.findViewById(R.id.imageViewBulb);
@@ -72,6 +73,7 @@ public class FragmentInnerSwitchBoard extends Fragment {
         imageViewAppliances = (ImageView)view.findViewById(R.id.imageViewAppliances);
 
         textViewSwitchBoard1 = (TextView)view.findViewById(R.id.textViewSwitchBoard1);
+        textViewSwitchBoard1.setText(text3);
         buttonLight1 = (Button)view.findViewById(R.id.buttonLight1);
         buttonLight2 = (Button)view.findViewById(R.id.buttonLight2);
         buttonLight3 = (Button)view.findViewById(R.id.buttonLight3);

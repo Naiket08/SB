@@ -67,6 +67,7 @@ public class FragmentPredefine extends Fragment {
         Roomname = getArguments().getString("Roomname");
        // Toast.makeText(getContext(),Roomname, Toast.LENGTH_SHORT).show();
         text1 = getArguments().getString("Switchname");
+        predefineRoomedit.setText(text1);
        // Toast.makeText(getContext(),text1, Toast.LENGTH_SHORT).show();
         DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text1);
         db.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -151,6 +152,7 @@ public class FragmentPredefine extends Fragment {
                     public void onSuccess(Void aVoid) {
                     }
                 });
+
                 Fragment newFragment = new FragmentRoomInner();
                 Bundle arguments = new Bundle();
                 arguments.putString( "Roomname",Roomname);

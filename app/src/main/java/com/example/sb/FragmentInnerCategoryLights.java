@@ -46,8 +46,9 @@ public class FragmentInnerCategoryLights extends Fragment {
         View view = inflater.inflate(R.layout.fragment_inner_category_lights,container,false);
 
         category = getArguments().getString("category");
-      //  Toast.makeText(getContext(),category, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(),category, Toast.LENGTH_SHORT).show();
         textViewCategoryLights = (TextView)view.findViewById(R.id.textViewCategoryLights);
+        textViewCategoryLights.setText(category);
         textViewInnerCategory1 = (TextView)view.findViewById(R.id.textViewInnerCategory1);
         textViewInnerCategory2 = (TextView)view.findViewById(R.id.textViewInnerCategory2);
         textViewInnerCategory3 = (TextView)view.findViewById(R.id.textViewInnerCategory3);

@@ -117,7 +117,7 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
                             holder.edittextmain.setText(s3);
                             s2=s3;
                             // Toast.makeText(context, "new s2"+s2, Toast.LENGTH_SHORT).show();
-                            db.setValue(s2);
+                            //db.setValue(s2);
                             bottomSheetDialog.cancel();
                         }
                     }
@@ -189,6 +189,7 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
 
             }
         });
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
