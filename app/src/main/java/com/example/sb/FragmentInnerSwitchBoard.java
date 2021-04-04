@@ -102,7 +102,7 @@ public class FragmentInnerSwitchBoard extends Fragment {
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
                 String s1 = dataSnapshot.getKey();
-                Toast.makeText(getContext(),s1, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getContext(),s1, Toast.LENGTH_SHORT).show();
                 if(s1.equals("number")||s1.equals("roomtype")||s1.equals("")||s1.equals("SwitchBoardumber")||s1.equals("combination")||s1.equals("type")) {
 
                 }
@@ -209,10 +209,12 @@ public class FragmentInnerSwitchBoard extends Fragment {
         });*/
 
         recyclerViewInnerSwitchboard = (RecyclerView)view.findViewById(R.id.recyclerViewInnerSwitchboard);
-        recyclerViewInnerSwitchboard.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true));
+        LinearLayoutManager layoutManager
+                = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         //  call the constructor of CustomAdapter to send the reference and data to Adapter
         recyclerViewInnerSwitchboard.setAdapter(customAdapter2); // set the Adapter to RecyclerView
-        getFragmentManager().beginTransaction().commit();
+        recyclerViewInnerSwitchboard.setLayoutManager(layoutManager);
+        //getFragmentManager().beginTransaction().commit();
 
         return view;
     }
