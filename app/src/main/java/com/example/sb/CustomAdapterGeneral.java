@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CustomAdapterGeneral extends RecyclerView.Adapter<CustomAdapterGeneral.ViewHolder> {
-    ArrayList Generalanme,GeneralType;
+    ArrayList Generalname,GeneralType;
     String Roomname,s3,text3,num1,num2;
     private FirebaseAuth mAuth;
     Context context;
@@ -37,7 +37,7 @@ public class CustomAdapterGeneral extends RecyclerView.Adapter<CustomAdapterGene
 
 
         this.context = context;
-        this.Generalanme =Generalname;
+        this.Generalname =Generalname;
         this.GeneralType=GeneralType;
         this.mAuth=mAuth;
     }
@@ -57,7 +57,7 @@ public class CustomAdapterGeneral extends RecyclerView.Adapter<CustomAdapterGene
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.Edittextgeneral1.setText(String.valueOf(Generalanme.get(position)));
+        holder.Edittextgeneral1.setText(String.valueOf(Generalname.get(position)));
         holder.buttongeneral1.setImageResource((Integer)GeneralType.get(position));
 
 
@@ -268,7 +268,7 @@ public class CustomAdapterGeneral extends RecyclerView.Adapter<CustomAdapterGene
 
     @Override
     public int getItemCount() {
-        return Generalanme.size();
+        return Generalname.size();
     }
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // init the item view's

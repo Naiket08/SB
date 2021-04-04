@@ -16,5 +16,10 @@
         android:icon="@drawable/appliances"
         android:title="Appliance"/>
 
+    <item
+        android:id="@+id/Unselect"
+        android:icon="@drawable/ideaicon"
+        android:title="Unselect"/>
+
 
 </menu>

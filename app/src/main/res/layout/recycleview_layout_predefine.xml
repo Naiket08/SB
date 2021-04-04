@@ -38,16 +38,16 @@
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/_10sdp"
             android:background="@android:color/transparent"
-            android:textColor="#FFFFFF"
-            android:textSize="@dimen/_14sdp"
-            android:inputType="none"
-            android:maxLines="1"
             android:ems="10"
+            android:enabled="false"
+            android:inputType="none"
             android:lines="1"
             android:maxLength="15"
-            android:enabled="false"
+            android:maxLines="1"
+            android:scrollbars="none"
             android:singleLine="true"
-            android:scrollbars="none">
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/_14sdp">
 
 
         </EditText>

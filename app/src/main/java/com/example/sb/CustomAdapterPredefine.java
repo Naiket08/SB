@@ -36,25 +36,26 @@ import java.util.Map;
 import java.util.zip.Inflater;
 
 public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPredefine.ViewHolder> {
-    ArrayList itemnames;
+    ArrayList itemnames,itemtypes;
 
     Context context;
     private FirebaseAuth mAuth;
     String userId;
     String status="false";
-    public String Roomname,text1,s2,s3;
+    public String Roomname,text1,s2,s3,s5;
     public String[] s4=new String[10];
     public int o=1,p=1,m=1;
     EditText editTextdailogpredefine;
     public PopupMenu popup;
-    DatabaseReference db;
+    DatabaseReference db,db2,db3;
 
 
-    public CustomAdapterPredefine(Context context, ArrayList itemnames,String Roomname,String text1,FirebaseAuth mAuth) {
+    public CustomAdapterPredefine(Context context, ArrayList itemnames,ArrayList itemtypes,String Roomname,String text1,FirebaseAuth mAuth) {
 
 
         this.context = context;
         this.itemnames = itemnames;
+        this.itemtypes=itemtypes;
         this.Roomname=Roomname;
         this.text1=text1;
         this.mAuth=mAuth;
@@ -76,7 +77,41 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.edittextmain.setText((CharSequence) itemnames.get(position));
+        holder. imageviewmain1.setImageResource((Integer)itemtypes.get(position));
         // implement setOnClickListener event on item view.
+        String ss=holder.edittextmain.getText().toString();
+        db =  FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text1).child(ss);
+        if(ss.contains("Light"))
+        {
+            Map<String, Object> user = new HashMap<>();
+            String l = mAuth.getCurrentUser().getUid();
+            String q=String.valueOf(o);
+            user.put("UID",l);
+            user.put("name",ss);
+            user.put("mode","on");
+            user.put("number",q);
+            user.put("category","Light");
+            db.setValue(user);
+            o++;
+        }
+        else
+            if(ss.contains("Fan"))
+            {
+                Map<String, Object> user1 = new HashMap<>();
+                String l1 = mAuth.getCurrentUser().getUid();
+                String q1=String.valueOf(p);
+                user1.put("UID",l1);
+                user1.put("name",ss);
+                user1.put("mode","on");
+                user1.put("number",q1);
+                user1.put("category","Fan");
+                user1.put("speed","0");
+                db.setValue(user1);
+                p++;
+
+            }
+
+
 
         ////Demo
         holder.buttonmain.setOnClickListener(new View.OnClickListener() {
@@ -89,15 +124,15 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
                 Button buttondailogprtedefine = (Button) parentView.findViewById(R.id.buttondailogpredefine);
                 editTextdailogpredefine = (EditText) parentView.findViewById(R.id.editTextdailogpredefine);
                 bottomSheetDialog.setContentView(parentView);
-                s2=holder.edittextmain.getText().toString();
+                s5=holder.edittextmain.getText().toString();
                // Toast.makeText(context,s2, Toast.LENGTH_SHORT).show();
-                db =  FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text1).child(s2);
+                db3 =  FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text1).child(s5);
                 bottomSheetDialog.show();
 
                 canceldailogpredefine.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        s3=s2;
+                        s5=ss;
                     //    Toast.makeText(context,s3, Toast.LENGTH_SHORT).show();
                         bottomSheetDialog.cancel();
                     }
@@ -114,81 +149,90 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
                             Toast.makeText(context, "Enter Text", Toast.LENGTH_SHORT).show();
                         }
                         else{
-                            holder.edittextmain.setText(s3);
-                            s2=s3;
+                           // holder.edittextmain.setText(s3);
+                            s5=s3;
+                            Toast.makeText(context, "Name Changed to : " + s5, Toast.LENGTH_SHORT).show();
                             // Toast.makeText(context, "new s2"+s2, Toast.LENGTH_SHORT).show();
-                            //db.setValue(s2);
+                            db3.child("name").setValue(s5);
                             bottomSheetDialog.cancel();
                         }
                     }
                 });
+
+
+            }
+
+        });
                 holder.buttonmain2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        s2=holder.edittextmain.getText().toString();
+                        Toast.makeText(context,s2, Toast.LENGTH_SHORT).show();
+                        db2 =  FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text1).child(s2);
+                        popup = new PopupMenu(context, holder.buttonmain2);
+                        popup.inflate(R.menu.menu_predefine);
+                        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                            @Override
+                            public boolean onMenuItemClick(MenuItem item) {
+                                switch (item.getItemId()) {
+                                    case R.id.lightpredefine:
+                                        //handle menu1 click
+                                        Map<String, Object> user = new HashMap<>();
+                                        String l = mAuth.getCurrentUser().getUid();
+                                        String q=String.valueOf(o);
+                                        user.put("UID",l);
+                                        user.put("name",s2);
+                                        user.put("mode","on");
+                                        user.put("number",q);
+                                        user.put("category","Light");
+                                        holder.imageviewmain1.setImageResource(R.drawable.idea);
+                                        db2.setValue(user);
+                                        break;
+                                    case R.id.fanpredefine:
+                                        //handle menu2 click
+                                        Map<String, Object> user1 = new HashMap<>();
+                                        String l1 = mAuth.getCurrentUser().getUid();
+                                        String q1=String.valueOf(p);
+                                        user1.put("UID",l1);
+                                        user1.put("name",s2);
+                                        user1.put("mode","on");
+                                        user1.put("number",q1);
+                                        user1.put("category","Fan");
+                                        user1.put("speed","0");
+                                        holder.imageviewmain1.setImageResource(R.drawable.fan_icon);
+                                        db2.setValue(user1);
+                                        break;
+                                    case R.id.appliancePredefine:
+                                        //handle menu3 click
+                                        //handle menu2 click
+                                        Map<String, Object> user3 = new HashMap<>();
+                                        String l3 = mAuth.getCurrentUser().getUid();
+                                        String q3=String.valueOf(m);
+                                        user3.put("UID",l3);
+                                        user3.put("name",s2);
+                                        user3.put("mode","on");
+                                        user3.put("number",q3);
+                                        user3.put("category","Appliance");
+                                        holder.imageviewmain1.setImageResource(R.drawable.appliances_icon);
+                                        db2.setValue(user3);
+                                        m++;
+                                        break;
+                                    case R.id.Unselect:
+                                        holder.imageviewmain1.setImageResource(R.drawable.ideaicon);
+                                        db2.removeValue();
+                                        break;
+                                }
+                                return false;
+                            }
+                        });
                         popup.show();
 
                     }
                 });
-                popup = new PopupMenu(context, holder.buttonmain2);
-                popup.inflate(R.menu.menu_predefine);
-                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-                        switch (item.getItemId()) {
-                            case R.id.lightpredefine:
-                                //handle menu1 click
-                                Map<String, Object> user = new HashMap<>();
-                                String l = mAuth.getCurrentUser().getUid();
-                                String q=String.valueOf(o);
-                                user.put("UID",l);
-                                user.put("name",s2);
-                                user.put("mode","on");
-                                user.put("number",q);
-                                user.put("category","Light");
-                                holder.imageviewmain1.setImageResource(R.drawable.idea);
-                                db.setValue(user);
-                                o++;
-                                break;
-                            case R.id.fanpredefine:
-                                //handle menu2 click
-                                Map<String, Object> user1 = new HashMap<>();
-                                String l1 = mAuth.getCurrentUser().getUid();
-                                String q1=String.valueOf(p);
-                                user1.put("UID",l1);
-                                user1.put("name",s2);
-                                user1.put("mode","on");
-                                user1.put("number",q1);
-                                user1.put("category","Fan");
-                                user1.put("speed","0");
-                                holder.imageviewmain1.setImageResource(R.drawable.fan_icon);
-                                db.setValue(user1);
-                                p++;
-                                break;
-                            case R.id.appliancePredefine:
-                                //handle menu3 click
-                                //handle menu2 click
-                                Map<String, Object> user3 = new HashMap<>();
-                                String l3 = mAuth.getCurrentUser().getUid();
-                                String q3=String.valueOf(m);
-                                user3.put("UID",l3);
-                                user3.put("name",s2);
-                                user3.put("mode","on");
-                                user3.put("number",q3);
-                                user3.put("category","Appliance");
-                                holder.imageviewmain1.setImageResource(R.drawable.appliances_icon);
-                                db.setValue(user3);
-                                m++;
-                                break;
-                        }
-                        return false;
-                    }
-                });
 
 
 
 
-            }
-        });
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

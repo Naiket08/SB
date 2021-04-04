@@ -45,7 +45,8 @@ public class FragmentPredefine extends Fragment {
     public EditText predefineRoomedit;
     Button predefinebuttonedit,saveboardbutton;
     RecyclerView recyclerViewPredefine;
-    public ArrayList<String> itemnames = new ArrayList<String>();;
+    public ArrayList<String> itemnames = new ArrayList<String>();
+    public ArrayList<Integer> itemtypes = new ArrayList<Integer>();
     LinearLayout layout1;
     SharedPreferences roompref;
     public String Roomname,text1,s3="SwitchBoard",prenum;
@@ -62,6 +63,12 @@ public class FragmentPredefine extends Fragment {
         layout1=(LinearLayout)v.findViewById(R.id.ll1);
         saveboardbutton=(Button)v.findViewById(R.id.saveboardbutton);
         mAuth = FirebaseAuth.getInstance();
+
+        if((itemnames!=null&&itemtypes!=null&&itemnames.size()>0&&itemtypes.size()>0)){
+            itemnames.clear();
+            itemtypes.clear();
+        }
+
 
 
         Roomname = getArguments().getString("Roomname");
@@ -175,25 +182,39 @@ public class FragmentPredefine extends Fragment {
                 {
 
                     itemnames.add("Light 1");
+                    itemtypes.add(R.drawable.idea);
                     itemnames.add("Light 2");
+                    itemtypes.add(R.drawable.idea);
                     itemnames.add("Light 3");
+                    itemtypes.add(R.drawable.idea);
                     itemnames.add("Light 4");
+                    itemtypes.add(R.drawable.idea);
                     itemnames.add("Fan 1");
+                    itemtypes.add(R.drawable.fan_icon);
                 }
                 else if(prenum.equals("4*2"))
                 {
                     itemnames.add("Light 1");
+                    itemtypes.add(R.drawable.idea);
                     itemnames.add("Light 2");
+                    itemtypes.add(R.drawable.idea);
                     itemnames.add("Light 3");
+                    itemtypes.add(R.drawable.idea);
                     itemnames.add("Light 4");
+                    itemtypes.add(R.drawable.idea);
                     itemnames.add("Fan 1");
+                    itemtypes.add(R.drawable.fan_icon);
                     itemnames.add("Fan 2");
+                    itemtypes.add(R.drawable.fan_icon);
 
                 }else if(prenum.equals("2*1"))
                 {
                     itemnames.add("Light 1");
+                    itemtypes.add(R.drawable.idea);
                     itemnames.add("Light 2");
+                    itemtypes.add(R.drawable.idea);
                     itemnames.add("Fan 1");
+                    itemtypes.add(R.drawable.fan_icon);
                 }
                 else if(prenum.equals("custom"))
                 {
@@ -205,7 +226,7 @@ public class FragmentPredefine extends Fragment {
                  layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
                 recyclerViewPredefine.setLayoutManager(layoutManager); // set LayoutManager to RecyclerView*/
                 //  call the constructor of CustomAdapter to send the reference and data to Adapter
-                CustomAdapterPredefine customAdapterPredefine = new CustomAdapterPredefine(getActivity(),itemnames,Roomname,text1,mAuth);
+                CustomAdapterPredefine customAdapterPredefine = new CustomAdapterPredefine(getActivity(),itemnames,itemtypes,Roomname,text1,mAuth);
                 recyclerViewPredefine.setAdapter(customAdapterPredefine); // set the Adapter to RecyclerView
             }
         };
