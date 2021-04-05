@@ -44,6 +44,7 @@ public class FragmentGeneral extends Fragment {
     private FirebaseFirestore db1 = FirebaseFirestore.getInstance();;
     public ArrayList<String> Generalname = new ArrayList<String>();
     public ArrayList<Integer> GeneralType = new ArrayList<Integer>();
+    public ArrayList<Integer> GeneralType2 = new ArrayList<Integer>();
 
     @Nullable
     @Override
@@ -64,10 +65,11 @@ public class FragmentGeneral extends Fragment {
         mAuth = FirebaseAuth.getInstance();
 
 
-        CustomAdapterGeneral customAdapter2 = new CustomAdapterGeneral(getActivity(),Generalname,GeneralType,mAuth);
-        if((Generalname!=null&&GeneralType!=null&&Generalname.size()>0&&GeneralType.size()>0)){
+        CustomAdapterGeneral customAdapter2 = new CustomAdapterGeneral(getActivity(),Generalname,GeneralType,GeneralType2,mAuth);
+        if((Generalname!=null&&GeneralType!=null&&GeneralType2!=null&&Generalname.size()>0&&GeneralType.size()>0&&GeneralType2.size()>0)){
             Generalname.clear();
             GeneralType.clear();
+            GeneralType2.clear();
         }
 
         DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("favorites");
@@ -118,6 +120,7 @@ public class FragmentGeneral extends Fragment {
 
                                            // Toast.makeText(getContext(), s3, Toast.LENGTH_SHORT).show();
                                                     String s5 = dataSnapshot.child("name").getValue(String.class);
+                                                    String s6 = dataSnapshot.child("mode").getValue(String.class);
                                                  //
                                           //  Toast.makeText(getContext(),s5, Toast.LENGTH_SHORT).show();
 
@@ -130,13 +133,31 @@ public class FragmentGeneral extends Fragment {
                                                 */
                                             if(s3.contains("Light")){
                                                 GeneralType.add(R.drawable.ic_idea);
+                                                if(s6.equals("on")){
+                                                   GeneralType2.add(R.drawable.powerbuttongreen);
+                                                }
+                                                else {
+                                                    GeneralType2.add(R.drawable.powerbuttonred);
+                                                }
                                                 // Toast.makeText(getContext(),"Entered inside", Toast.LENGTH_SHORT).show();
                                             }
                                             else  if(s3.contains("Fan")){
                                                 GeneralType.add(R.drawable.fan_icon);
+                                                if(s6.equals("on")){
+                                                    GeneralType2.add(R.drawable.powerbuttongreen);
+                                                }
+                                                else {
+                                                    GeneralType2.add(R.drawable.powerbuttonred);
+                                                }
                                             }
                                             else  if(s3.equals("Appliance")) {
                                                 GeneralType.add(R.drawable.appliances_icon);
+                                                if(s6.equals("on")){
+                                                    GeneralType2.add(R.drawable.powerbuttongreen);
+                                                }
+                                                else {
+                                                    GeneralType2.add(R.drawable.powerbuttonred);
+                                                }
                                             }
                                             //Toast.makeText(getContext(), s1, Toast.LENGTH_SHORT).show();
                                             // Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();

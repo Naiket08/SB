@@ -52,6 +52,7 @@ public class FragmentInnerSwitchBoard extends Fragment {
     ////////////////////////
     public ArrayList<String> LightName = new ArrayList<String>();
     public ArrayList<Integer> LightType = new ArrayList<Integer>();
+    public ArrayList<Integer> LightType2 = new ArrayList<Integer>();
 
 
     @Nullable
@@ -83,10 +84,11 @@ public class FragmentInnerSwitchBoard extends Fragment {
 
 
         buttonSwitchBoardApppliance = (Button)view.findViewById(R.id.buttonSwitchBoardAppliance);
-        CustomAdapterInnerSwitchboard customAdapter2 = new CustomAdapterInnerSwitchboard(getActivity(),LightName,LightType,mAuth,Roomname,text3,imageViewBrownJacket,imageViewWhiteJacket,imageViewAppliances,imageViewBulb,customdial,speedcontrol);
-        if((LightName!=null&&LightType!=null&&LightName.size()>0&&LightType.size()>0)){
+        CustomAdapterInnerSwitchboard customAdapter2 = new CustomAdapterInnerSwitchboard(getActivity(),LightName,LightType,LightType2,mAuth,Roomname,text3,imageViewBrownJacket,imageViewWhiteJacket,imageViewAppliances,imageViewBulb,customdial,speedcontrol);
+        if((LightName!=null&&LightType!=null&&LightType2!=null&&LightName.size()>0&&LightType.size()>0&&LightType2.size()>0)){
             LightName.clear();
             LightType.clear();
+            LightType2.clear();
         }
 
         //////////////////////////////////////////////////
@@ -112,16 +114,36 @@ public class FragmentInnerSwitchBoard extends Fragment {
                      //Toast.makeText(getContext(), s1, Toast.LENGTH_SHORT).show();
                     LightName.add(s1);
                     String s2 = dataSnapshot.child("category").getValue(String.class);
+                    String s3 = dataSnapshot.child("mode").getValue(String.class);
                       //Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();
                     if(s2.equals("Light")){
                         LightType.add(R.drawable.ic_idea);
+                        if(s3.equals("on")){
+                            LightType2.add(R.drawable.powerbuttongreen);
+                        }
+                        else {
+                            LightType2.add(R.drawable.powerbuttonred);
+                        }
                        // Toast.makeText(getContext(),"Entered inside", Toast.LENGTH_SHORT).show();
                     }
                     else  if(s2.equals("Fan")){
                         LightType.add(R.drawable.fan_icon);
+                        if(s3.equals("on")){
+                            LightType2.add(R.drawable.powerbuttongreen);
+                        }
+                        else {
+                            LightType2.add(R.drawable.powerbuttonred);
+                        }
+
                     }
                     else  if(s2.equals("Appliance")) {
                         LightType.add(R.drawable.appliances_icon);
+                        if(s3.equals("on")){
+                            LightType2.add(R.drawable.powerbuttongreen);
+                        }
+                        else {
+                            LightType2.add(R.drawable.powerbuttonred);
+                        }
                     }
                     //Toast.makeText(getContext(), s1, Toast.LENGTH_SHORT).show();
                     // Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();

@@ -50,6 +50,7 @@ public class FragmentRoomInner extends Fragment{
     RecyclerView recyclerViewRoominner;
     ////////////////////////
     public ArrayList<String> SwitchName = new ArrayList<String>();
+    public ArrayList<String> SwitchName2 = new ArrayList<String>();
     public ArrayList<String> SwitchType = new ArrayList<String>();
 
     //////////////////////
@@ -83,9 +84,10 @@ public class FragmentRoomInner extends Fragment{
         textViewRoomInnerSB1 = (TextView)view.findViewById(R.id.textViewRoomInnerSB1);
         textViewRoomInnerSBType = (TextView)view.findViewById(R.id.textViewRoomInnerSBType);
         imageViewRoomInnerAddSB=(ImageView)view.findViewById(R.id.imageViewRoomInnerAddSB);
-        if((SwitchName!=null&&SwitchType!=null&&SwitchName.size()>0&&SwitchType.size()>0)){
+        if((SwitchName!=null&&SwitchName2!=null&&SwitchType!=null&&SwitchName.size()>0&&SwitchName2.size()>0&&SwitchType.size()>0)){
             SwitchName.clear();
             SwitchType.clear();
+            SwitchName2.clear();
         }
 
 
@@ -95,21 +97,28 @@ public class FragmentRoomInner extends Fragment{
         //firecloud
         mAuth = FirebaseAuth.getInstance();
         userId = mAuth.getCurrentUser().getUid();
-        CustomAdapterRoomInner customAdapter1 = new CustomAdapterRoomInner(getActivity(),SwitchName,SwitchType,mAuth,Roomname1,text3);
+        CustomAdapterRoomInner customAdapter1 = new CustomAdapterRoomInner(getActivity(),SwitchName,SwitchName2,SwitchType,mAuth,Roomname1,text3);
         DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname1);
         itemsRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
                 String s1 = dataSnapshot.getKey();
+
+
+                String s3 = dataSnapshot.child("type").getValue(String.class);
+              //  Toast.makeText(getContext(),s3, Toast.LENGTH_SHORT).show();
+
+
                 if(s1.equals("number")||s1.equals("roomtype")||s1.equals("")) {
 
                 }
                 else
 
                 {
+                    SwitchName2.add(s1);
                    // Toast.makeText(getContext(), s1, Toast.LENGTH_SHORT).show();
-                    SwitchName.add(s1);
+                    SwitchName.add(s3);
                     String s2 = dataSnapshot.child("combination").getValue(String.class);
                  //  Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();
                if(s2.equals("4*1")){

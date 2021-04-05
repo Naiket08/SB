@@ -154,11 +154,11 @@ public class FragmentPredefine extends Fragment {
         saveboardbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text1).child("type").setValue(s3).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    public void onSuccess(Void aVoid) {
-                    }
-                });
+                String s4=predefineRoomedit.getText().toString().trim();
+                    FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text1).child("type").setValue(s4).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        public void onSuccess(Void aVoid) {
+                        }
+                    });
 
                 Fragment newFragment = new FragmentRoomInner();
                 Bundle arguments = new Bundle();

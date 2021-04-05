@@ -27,18 +27,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CustomAdapterGeneral extends RecyclerView.Adapter<CustomAdapterGeneral.ViewHolder> {
-    ArrayList Generalname,GeneralType;
+    ArrayList Generalname,GeneralType,GeneralType2;
     String Roomname,s3,text3,num1,num2;
     private FirebaseAuth mAuth;
     Context context;
 
 
-    public CustomAdapterGeneral(Context context, ArrayList Generalname,ArrayList GeneralType,FirebaseAuth mAuth) {
+    public CustomAdapterGeneral(Context context, ArrayList Generalname,ArrayList GeneralType,ArrayList GeneralType2,FirebaseAuth mAuth) {
 
 
         this.context = context;
         this.Generalname =Generalname;
         this.GeneralType=GeneralType;
+        this.GeneralType2=GeneralType2;
         this.mAuth=mAuth;
     }
 
@@ -59,6 +60,7 @@ public class CustomAdapterGeneral extends RecyclerView.Adapter<CustomAdapterGene
 
         holder.Edittextgeneral1.setText(String.valueOf(Generalname.get(position)));
         holder.buttongeneral1.setImageResource((Integer)GeneralType.get(position));
+        holder.imageViewGeneral1.setImageResource((Integer)GeneralType2.get(position));
 
 
         holder.imageViewGeneral1.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +77,7 @@ public class CustomAdapterGeneral extends RecyclerView.Adapter<CustomAdapterGene
                         String s1 = dataSnapshot.getKey();
 
                         //Toast.makeText(getContext(), s1, Toast.LENGTH_SHORT).show();
-                        ////////////////////////               22222222222222222222222222222222222
+                        ////////////////////////22222222222222222222222222222222222
 
 
                         //////////////////////
@@ -128,7 +130,6 @@ public class CustomAdapterGeneral extends RecyclerView.Adapter<CustomAdapterGene
                                                                         db2.child("mode").setValue("off").addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                             @Override
                                                                             public void onSuccess(Void aVoid) {
-                                                                                Toast.makeText(context, "OFF", Toast.LENGTH_SHORT).show();
                                                                                 //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttonred);
                                                                             }
                                                                         });
@@ -145,7 +146,6 @@ public class CustomAdapterGeneral extends RecyclerView.Adapter<CustomAdapterGene
                                                                         db2.child("mode").setValue("on").addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                             @Override
                                                                             public void onSuccess(Void aVoid) {
-                                                                                Toast.makeText(context, "ON", Toast.LENGTH_SHORT).show();
                                                                                 //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttongreen);
                                                                             }
                                                                         });

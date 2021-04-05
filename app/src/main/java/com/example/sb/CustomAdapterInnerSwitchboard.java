@@ -36,7 +36,7 @@ import java.util.HashMap;
 
 public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAdapterInnerSwitchboard.ViewHolder> {
     ArrayList LightName;
-    ArrayList LightType;
+    ArrayList LightType,LightType2;
     ImageView imageViewBrownJacket,imageViewWhiteJacket,imageViewAppliances,imageViewBulb;
     Button speedcontrol;
     DialView customdial;
@@ -45,12 +45,13 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
     Context context;
 
 
-    public CustomAdapterInnerSwitchboard(Context context, ArrayList LightName, ArrayList LightType,FirebaseAuth mAuth,String Roomname,String text3,ImageView imageViewBrownJacket,ImageView  imageViewWhiteJacket,ImageView imageViewAppliances,ImageView imageViewBulb,DialView customdial,Button speedcontrol) {
+    public CustomAdapterInnerSwitchboard(Context context, ArrayList LightName, ArrayList LightType,ArrayList LightType2,FirebaseAuth mAuth,String Roomname,String text3,ImageView imageViewBrownJacket,ImageView  imageViewWhiteJacket,ImageView imageViewAppliances,ImageView imageViewBulb,DialView customdial,Button speedcontrol) {
 
 
         this.context = context;
         this.LightName = LightName;
         this.LightType = LightType;
+        this.LightType2=LightType2;
         this.Roomname=Roomname;
         this.imageViewBrownJacket=imageViewBrownJacket;
         this.imageViewWhiteJacket=imageViewWhiteJacket;
@@ -80,6 +81,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
         holder.textViewInnerSwitchboardSB1.setText(String.valueOf(LightName.get(position)));
 
         holder.innerSwitchboardbutton1.setImageResource((Integer)LightType.get(position));
+        holder.imageViewInnerSwitchboard1.setImageResource((Integer)LightType2.get(position));
         //icon display
         holder.innerSwitchboardbutton1.setOnClickListener(new View.OnClickListener() {
             @Override

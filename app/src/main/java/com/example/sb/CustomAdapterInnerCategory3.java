@@ -28,7 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class CustomAdapterInnerCategory3 extends RecyclerView.Adapter<CustomAdapterInnerCategory3.ViewHolder> {
-    ArrayList categoryname3;
+    ArrayList categoryname3,categorytype3;
 
     Context context;
     private FirebaseAuth mAuth;
@@ -37,10 +37,11 @@ public class CustomAdapterInnerCategory3 extends RecyclerView.Adapter<CustomAdap
     DatabaseReference db;
 
 
-    public CustomAdapterInnerCategory3(Context context, ArrayList categoryname3,FirebaseAuth mAuth) {
+    public CustomAdapterInnerCategory3(Context context, ArrayList categoryname3,ArrayList categorytype3,FirebaseAuth mAuth) {
 
 
         this.context = context;
+        this.categorytype3=categorytype3;
         this.categoryname3=categoryname3;
         this.mAuth=mAuth;
 
@@ -61,6 +62,7 @@ public class CustomAdapterInnerCategory3 extends RecyclerView.Adapter<CustomAdap
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.textViewInnerCategoryLight1.setText((CharSequence) categoryname3.get(position));
+        holder.buttonOnCategory1Light1.setBackgroundResource((Integer)categorytype3.get(position));
         // implement setOnClickListener event on item view.
 
         ////Demo
@@ -760,6 +762,7 @@ public class CustomAdapterInnerCategory3 extends RecyclerView.Adapter<CustomAdap
 
                                                             if(s5.equals(text)) {
                                                                 DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1).child(s2).child(s3);
+                                                                DatabaseReference db2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("favorites").child(s1).child(s2).child(s3);
                                                                 db.addListenerForSingleValueEvent(new ValueEventListener() {
                                                                     @Override
                                                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -775,6 +778,11 @@ public class CustomAdapterInnerCategory3 extends RecyclerView.Adapter<CustomAdap
                                                                                     holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttonred);
                                                                                 }
                                                                             });
+                                                                            db2.child("mode").setValue("off").addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                                @Override
+                                                                                public void onSuccess(Void aVoid) {
+                                                                                }
+                                                                            });
 
 
 
@@ -786,6 +794,11 @@ public class CustomAdapterInnerCategory3 extends RecyclerView.Adapter<CustomAdap
                                                                                 public void onSuccess(Void aVoid) {
                                                                                     Toast.makeText(context, "ON", Toast.LENGTH_SHORT).show();
                                                                                     holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttongreen);
+                                                                                }
+                                                                            });
+                                                                            db2.child("mode").setValue("on").addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                                @Override
+                                                                                public void onSuccess(Void aVoid) {
                                                                                 }
                                                                             });
                                                                         }
@@ -882,6 +895,7 @@ public class CustomAdapterInnerCategory3 extends RecyclerView.Adapter<CustomAdap
 
                                                             if(s5.equals(text)) {
                                                                 DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1).child(s2).child(s3);
+                                                                DatabaseReference db2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("favorites").child(s1).child(s2).child(s3);
                                                                 db.addListenerForSingleValueEvent(new ValueEventListener() {
                                                                     @Override
                                                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -897,6 +911,11 @@ public class CustomAdapterInnerCategory3 extends RecyclerView.Adapter<CustomAdap
                                                                                     holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttonred);
                                                                                 }
                                                                             });
+                                                                            db2.child("mode").setValue("off").addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                                @Override
+                                                                                public void onSuccess(Void aVoid) {
+                                                                                }
+                                                                            });
 
 
 
@@ -908,6 +927,11 @@ public class CustomAdapterInnerCategory3 extends RecyclerView.Adapter<CustomAdap
                                                                                 public void onSuccess(Void aVoid) {
                                                                                     Toast.makeText(context, "ON", Toast.LENGTH_SHORT).show();
                                                                                     holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttongreen);
+                                                                                }
+                                                                            });
+                                                                            db2.child("mode").setValue("on").addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                                @Override
+                                                                                public void onSuccess(Void aVoid) {
                                                                                 }
                                                                             });
                                                                         }
@@ -1006,6 +1030,7 @@ public class CustomAdapterInnerCategory3 extends RecyclerView.Adapter<CustomAdap
 
                                                             if(s5.equals(text)) {
                                                                 DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1).child(s2).child(s3);
+                                                                DatabaseReference db2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("favorites").child(s1).child(s2).child(s3);
                                                                 db.addListenerForSingleValueEvent(new ValueEventListener() {
                                                                     @Override
                                                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -1021,6 +1046,11 @@ public class CustomAdapterInnerCategory3 extends RecyclerView.Adapter<CustomAdap
                                                                                     holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttonred);
                                                                                 }
                                                                             });
+                                                                            db2.child("mode").setValue("off").addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                                @Override
+                                                                                public void onSuccess(Void aVoid) {
+                                                                                }
+                                                                            });
 
 
 
@@ -1032,6 +1062,11 @@ public class CustomAdapterInnerCategory3 extends RecyclerView.Adapter<CustomAdap
                                                                                 public void onSuccess(Void aVoid) {
                                                                                     Toast.makeText(context, "ON", Toast.LENGTH_SHORT).show();
                                                                                     holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttongreen);
+                                                                                }
+                                                                            });
+                                                                            db2.child("mode").setValue("on").addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                                @Override
+                                                                                public void onSuccess(Void aVoid) {
                                                                                 }
                                                                             });
                                                                         }
@@ -1129,6 +1164,7 @@ public class CustomAdapterInnerCategory3 extends RecyclerView.Adapter<CustomAdap
 
                                                             if(s5.equals(text)) {
                                                                 DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1).child(s2).child(s3);
+                                                                DatabaseReference db2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("favorites").child(s1).child(s2).child(s3);
                                                                 db.addListenerForSingleValueEvent(new ValueEventListener() {
                                                                     @Override
                                                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -1144,6 +1180,11 @@ public class CustomAdapterInnerCategory3 extends RecyclerView.Adapter<CustomAdap
                                                                                     holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttonred);
                                                                                 }
                                                                             });
+                                                                            db2.child("mode").setValue("off").addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                                @Override
+                                                                                public void onSuccess(Void aVoid) {
+                                                                                }
+                                                                            });
 
 
 
@@ -1155,6 +1196,11 @@ public class CustomAdapterInnerCategory3 extends RecyclerView.Adapter<CustomAdap
                                                                                 public void onSuccess(Void aVoid) {
                                                                                     Toast.makeText(context, "ON", Toast.LENGTH_SHORT).show();
                                                                                     holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttongreen);
+                                                                                }
+                                                                            });
+                                                                            db2.child("mode").setValue("on").addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                                @Override
+                                                                                public void onSuccess(Void aVoid) {
                                                                                 }
                                                                             });
                                                                         }

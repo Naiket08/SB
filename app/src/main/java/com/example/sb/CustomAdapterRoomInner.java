@@ -22,23 +22,27 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CustomAdapterRoomInner extends RecyclerView.Adapter<CustomAdapterRoomInner.ViewHolder> {
-    ArrayList SwitchName;
+    ArrayList SwitchName,SwitchName2;
     ArrayList SwitchType;
-    String Roomname1,s3,text3,s4,s5;
+    String Roomname1,s3,text3,s4,s5,s6;
     private FirebaseAuth mAuth;
     Context context;
-    public CustomAdapterRoomInner(Context context, ArrayList SwitchName, ArrayList SwitchType,FirebaseAuth mAuth,String Roomname1,String text3) {
+    public CustomAdapterRoomInner(Context context, ArrayList SwitchName,ArrayList SwitchName2, ArrayList SwitchType,FirebaseAuth mAuth,String Roomname1,String text3) {
 
 
         this.context = context;
         this.SwitchName = SwitchName;
+        this.SwitchName2 = SwitchName2;
         this.SwitchType = SwitchType;
         this.Roomname1=Roomname1;
         this.text3=text3;
@@ -60,6 +64,7 @@ public class CustomAdapterRoomInner extends RecyclerView.Adapter<CustomAdapterRo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.textViewRoomInnerSB1.setText((CharSequence) SwitchName.get(position));
+        holder.impmain.setText((CharSequence) SwitchName2.get(position));
         holder.textViewRoomInnerSBType.setText((CharSequence) SwitchType.get(position));
         /////////
         holder.imageViewRoomInnerInfo.setOnClickListener(new View.OnClickListener() {
@@ -105,25 +110,33 @@ public class CustomAdapterRoomInner extends RecyclerView.Adapter<CustomAdapterRo
                             Toast.makeText(context, "Enter Text", Toast.LENGTH_SHORT).show();
                         }
                         else{
+                            //Toast.makeText(context,Roomname1, Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(context,s3, Toast.LENGTH_SHORT).show();
                             //  write code here
+                            s6 = holder.impmain.getText().toString();
 
+                            FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname1).child(s6).child("type").setValue(s2).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                public void onSuccess(Void aVoid) {
+                                }
+                            });
                             bottomSheetDialog.cancel();
                         }
                     }
                 });
-
-
             }
         });
 
         holder.roominnerbutton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                    ///////////IMP
+                s6 = holder.impmain.getText().toString();
+                ///////////////IMP
                 Fragment newFragment = new FragmentInnerSwitchBoard();
                 Bundle arguments = new Bundle();
                 s3=holder.textViewRoomInnerSB1.getText().toString();
                 arguments.putString( "Roomname",Roomname1);
-                arguments.putString( "Switchname",s3);
+                arguments.putString( "Switchname",s6);
                 newFragment.setArguments(arguments);
                 FragmentManager manager = ((AppCompatActivity)context).getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.fragment_container,newFragment).addToBackStack(null)
@@ -198,7 +211,7 @@ public class CustomAdapterRoomInner extends RecyclerView.Adapter<CustomAdapterRo
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // init the item view's
        ImageView imageViewRoomInnerInfo,imageViewRoomInnerEditSB;
-       TextView textViewRoomInnerSBType;
+       TextView textViewRoomInnerSBType,impmain;
         EditText textViewRoomInnerSB1;
        ImageButton roominnerbutton1;
         public ViewHolder(View itemView) {
@@ -209,7 +222,7 @@ public class CustomAdapterRoomInner extends RecyclerView.Adapter<CustomAdapterRo
             textViewRoomInnerSB1=(EditText) itemView.findViewById(R.id.textViewRoomInnerSB1);
             textViewRoomInnerSBType=(TextView)itemView.findViewById(R.id.textViewRoomInnerSBType);
             roominnerbutton1=(ImageButton)itemView.findViewById(R.id.roominnerbutton1);
-
+            impmain=(TextView)itemView.findViewById(R.id.impmain);
 
 
         }

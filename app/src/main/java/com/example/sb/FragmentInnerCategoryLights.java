@@ -35,9 +35,13 @@ public class FragmentInnerCategoryLights extends Fragment {
     Button buttonOnCategory1Light1,buttonOnCat1Light2,buttonEditCategory1Light1;
     RecyclerView recycleviewinnercategory1,recycleviewinnercategory2,recycleviewinnercategory3,recycleviewinnercategory4;
     public ArrayList<String> categoryname = new ArrayList<String>();;
+    public ArrayList<Integer> categorytype = new ArrayList<Integer>();;
     public ArrayList<String> categoryname2= new ArrayList<String>();;
+    public ArrayList<Integer> categorytype2 = new ArrayList<Integer>();;
     public ArrayList<String> categoryname3 = new ArrayList<String>();;
+    public ArrayList<Integer> categorytype3 = new ArrayList<Integer>();;
     public ArrayList<String> categoryname4 = new ArrayList<String>();;
+    public ArrayList<Integer> categorytype4 = new ArrayList<Integer>();;
     private FirebaseAuth mAuth;
     public String num1;
     @Nullable
@@ -65,22 +69,26 @@ public class FragmentInnerCategoryLights extends Fragment {
 
         }*/
 
-        CustomAdapterInnerCategory customAdapter2 = new CustomAdapterInnerCategory(getActivity(),categoryname,mAuth);
-        CustomAdapterInnerCategory2 customAdapter3 = new CustomAdapterInnerCategory2(getActivity(),categoryname2,mAuth);
-        CustomAdapterInnerCategory3 customAdapter4 = new CustomAdapterInnerCategory3(getActivity(),categoryname3,mAuth);
-        CustomAdapterInnerCategory4 customAdapter5 = new CustomAdapterInnerCategory4(getActivity(),categoryname4,mAuth);
+        CustomAdapterInnerCategory customAdapter2 = new CustomAdapterInnerCategory(getActivity(),categoryname,categorytype,mAuth);
+        CustomAdapterInnerCategory2 customAdapter3 = new CustomAdapterInnerCategory2(getActivity(),categoryname2,categorytype2,mAuth);
+        CustomAdapterInnerCategory3 customAdapter4 = new CustomAdapterInnerCategory3(getActivity(),categoryname3,categorytype3,mAuth);
+        CustomAdapterInnerCategory4 customAdapter5 = new CustomAdapterInnerCategory4(getActivity(),categoryname4,categorytype4,mAuth);
 
-        if((categoryname!=null&&categoryname.size()>0)){
+        if((categoryname!=null&&categorytype!=null&&categorytype.size()>0&&categoryname.size()>0)){
             categoryname.clear();
+            categorytype.clear();
         }
-        if((categoryname2!=null&&categoryname2.size()>0)){
+        if((categoryname2!=null&&categorytype2!=null&&categorytype2.size()>0&&categoryname2.size()>0)){
             categoryname2.clear();
+            categorytype2.clear();
         }
-        if((categoryname3!=null&&categoryname3.size()>0)){
+        if((categoryname3!=null&&categorytype3!=null&&categorytype3.size()>0&&categoryname3.size()>0)){
             categoryname3.clear();
+            categorytype3.clear();
         }
-        if((categoryname4!=null&&categoryname4.size()>0)){
+        if((categoryname4!=null&&categorytype4!=null&&categorytype4.size()>0&&categoryname4.size()>0)){
             categoryname4.clear();
+            categorytype4.clear();
         }
         ///for Light
 if(category.equals("Light")) {
@@ -132,9 +140,16 @@ if(category.equals("Light")) {
 
                                                 String s5 = dataSnapshot.child("name").getValue(String.class);
                                                 String s6 = dataSnapshot.child("category").getValue(String.class);
+                                                String s7 = dataSnapshot.child("mode").getValue(String.class);
 
                                                 if(s6.equals("Light")) {
                                                     categoryname.add(s5);
+                                                    if(s7.equals("on")){
+                                                        categorytype.add(R.drawable.powerbuttongreen);
+                                                    }
+                                                    else {
+                                                        categorytype.add(R.drawable.powerbuttonred);
+                                                    }
                                                     customAdapter2.notifyDataSetChanged();
                                                 }
                                             }
@@ -217,9 +232,16 @@ if(category.equals("Light")) {
 
                                                 String s5 = dataSnapshot.child("name").getValue(String.class);
                                                 String s6 = dataSnapshot.child("category").getValue(String.class);
+                                                String s7 = dataSnapshot.child("mode").getValue(String.class);
 
                                                 if(s6.equals("Light")) {
                                                     categoryname2.add(s5);
+                                                    if(s7.equals("on")){
+                                                        categorytype2.add(R.drawable.powerbuttongreen);
+                                                    }
+                                                    else {
+                                                        categorytype2.add(R.drawable.powerbuttonred);
+                                                    }
                                                     customAdapter3.notifyDataSetChanged();
                                                 }
                                             }
@@ -305,8 +327,16 @@ if(category.equals("Light")) {
                                                 String s5 = dataSnapshot.child("name").getValue(String.class);
                                                 String s6 = dataSnapshot.child("category").getValue(String.class);
 
+                                                String s7 = dataSnapshot.child("mode").getValue(String.class);
+
                                                 if(s6.equals("Light")) {
                                                     categoryname3.add(s5);
+                                                    if(s7.equals("on")){
+                                                        categorytype3.add(R.drawable.powerbuttongreen);
+                                                    }
+                                                    else {
+                                                        categorytype3.add(R.drawable.powerbuttonred);
+                                                    }
                                                     customAdapter4.notifyDataSetChanged();
                                                 }
                                             }
@@ -391,8 +421,16 @@ if(category.equals("Light")) {
                                                 String s5 = dataSnapshot.child("name").getValue(String.class);
                                                 String s6 = dataSnapshot.child("category").getValue(String.class);
 
+                                                String s7 = dataSnapshot.child("mode").getValue(String.class);
+
                                                 if(s6.equals("Light")) {
                                                     categoryname4.add(s5);
+                                                    if(s7.equals("on")){
+                                                        categorytype4.add(R.drawable.powerbuttongreen);
+                                                    }
+                                                    else {
+                                                        categorytype4.add(R.drawable.powerbuttonred);
+                                                    }
                                                     customAdapter5.notifyDataSetChanged();
                                                 }
                                             }
@@ -543,8 +581,16 @@ if(category.equals("Light")) {
                                                         String s5 = dataSnapshot.child("name").getValue(String.class);
                                                         String s6 = dataSnapshot.child("category").getValue(String.class);
 
+                                                        String s7 = dataSnapshot.child("mode").getValue(String.class);
+
                                                         if(s6.equals("Fan")) {
                                                             categoryname.add(s5);
+                                                            if(s7.equals("on")){
+                                                                categorytype.add(R.drawable.powerbuttongreen);
+                                                            }
+                                                            else {
+                                                                categorytype.add(R.drawable.powerbuttonred);
+                                                            }
                                                             customAdapter2.notifyDataSetChanged();
                                                         }
                                                     }
@@ -628,8 +674,16 @@ if(category.equals("Light")) {
                                                         String s5 = dataSnapshot.child("name").getValue(String.class);
                                                         String s6 = dataSnapshot.child("category").getValue(String.class);
 
+                                                        String s7 = dataSnapshot.child("mode").getValue(String.class);
+
                                                         if(s6.equals("Fan")) {
                                                             categoryname2.add(s5);
+                                                            if(s7.equals("on")){
+                                                                categorytype2.add(R.drawable.powerbuttongreen);
+                                                            }
+                                                            else {
+                                                                categorytype2.add(R.drawable.powerbuttonred);
+                                                            }
                                                             customAdapter3.notifyDataSetChanged();
                                                         }
                                                     }
@@ -715,8 +769,16 @@ if(category.equals("Light")) {
                                                         String s5 = dataSnapshot.child("name").getValue(String.class);
                                                         String s6 = dataSnapshot.child("category").getValue(String.class);
 
+                                                        String s7 = dataSnapshot.child("mode").getValue(String.class);
+
                                                         if(s6.equals("Fan")) {
                                                             categoryname3.add(s5);
+                                                            if(s7.equals("on")){
+                                                                categorytype3.add(R.drawable.powerbuttongreen);
+                                                            }
+                                                            else {
+                                                                categorytype3.add(R.drawable.powerbuttonred);
+                                                            }
                                                             customAdapter4.notifyDataSetChanged();
                                                         }
                                                     }
@@ -801,8 +863,16 @@ if(category.equals("Light")) {
                                                         String s5 = dataSnapshot.child("name").getValue(String.class);
                                                         String s6 = dataSnapshot.child("category").getValue(String.class);
 
+                                                        String s7 = dataSnapshot.child("mode").getValue(String.class);
+
                                                         if(s6.equals("Fan")) {
                                                             categoryname4.add(s5);
+                                                            if(s7.equals("on")){
+                                                                categorytype4.add(R.drawable.powerbuttongreen);
+                                                            }
+                                                            else {
+                                                                categorytype4.add(R.drawable.powerbuttonred);
+                                                            }
                                                             customAdapter5.notifyDataSetChanged();
                                                         }
                                                     }
@@ -953,8 +1023,16 @@ else if(category.equals("Appliance")) {
                                                 String s5 = dataSnapshot.child("name").getValue(String.class);
                                                 String s6 = dataSnapshot.child("category").getValue(String.class);
 
+                                                String s7 = dataSnapshot.child("mode").getValue(String.class);
+
                                                 if(s6.equals("Appliance")) {
                                                     categoryname.add(s5);
+                                                    if(s7.equals("on")){
+                                                        categorytype.add(R.drawable.powerbuttongreen);
+                                                    }
+                                                    else {
+                                                        categorytype.add(R.drawable.powerbuttonred);
+                                                    }
                                                     customAdapter2.notifyDataSetChanged();
                                                 }
 
@@ -1041,8 +1119,16 @@ else if(category.equals("Appliance")) {
                                                 String s5 = dataSnapshot.child("name").getValue(String.class);
                                                 String s6 = dataSnapshot.child("category").getValue(String.class);
 
+                                                String s7 = dataSnapshot.child("mode").getValue(String.class);
+
                                                 if(s6.equals("Appliance")) {
                                                     categoryname2.add(s5);
+                                                    if(s7.equals("on")){
+                                                        categorytype2.add(R.drawable.powerbuttongreen);
+                                                    }
+                                                    else {
+                                                        categorytype2.add(R.drawable.powerbuttonred);
+                                                    }
                                                     customAdapter3.notifyDataSetChanged();
                                                 }
                                             }
@@ -1128,8 +1214,16 @@ else if(category.equals("Appliance")) {
                                                 String s5 = dataSnapshot.child("name").getValue(String.class);
                                                 String s6 = dataSnapshot.child("category").getValue(String.class);
 
+                                                String s7 = dataSnapshot.child("mode").getValue(String.class);
+
                                                 if(s6.equals("Appliance")) {
                                                     categoryname3.add(s5);
+                                                    if(s7.equals("on")){
+                                                        categorytype3.add(R.drawable.powerbuttongreen);
+                                                    }
+                                                    else {
+                                                        categorytype3.add(R.drawable.powerbuttonred);
+                                                    }
                                                     customAdapter4.notifyDataSetChanged();
                                                 }
                                             }
@@ -1214,8 +1308,16 @@ else if(category.equals("Appliance")) {
                                                 String s5 = dataSnapshot.child("name").getValue(String.class);
                                                 String s6 = dataSnapshot.child("category").getValue(String.class);
 
+                                                String s7 = dataSnapshot.child("mode").getValue(String.class);
+
                                                 if(s6.equals("Appliance")) {
                                                     categoryname4.add(s5);
+                                                    if(s7.equals("on")){
+                                                        categorytype4.add(R.drawable.powerbuttongreen);
+                                                    }
+                                                    else {
+                                                        categorytype4.add(R.drawable.powerbuttonred);
+                                                    }
                                                     customAdapter5.notifyDataSetChanged();
                                                 }
                                             }

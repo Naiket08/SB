@@ -70,4 +70,18 @@
         android:layout_marginTop="@dimen/_3sdp"
         android:layout_marginStart="@dimen/_9sdp"/>
 
+
+    <TextView
+        android:id="@+id/impmain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_6ssp"
+        android:fontFamily="@font/muli"
+        app:layout_constraintTop_toBottomOf="@id/textViewRoomInnerSBType"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:layout_marginStart="@dimen/_9sdp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
