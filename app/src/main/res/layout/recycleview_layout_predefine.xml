@@ -52,12 +52,34 @@
 
         </EditText>
 
+        <EditText
+
+            android:id="@+id/edittexthint"
+            android:layout_width="@dimen/_10sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:visibility="invisible"
+            android:enabled="false"
+            android:inputType="none"
+            android:lines="1"
+            android:maxLength="15"
+            android:maxLines="1"
+            android:scrollbars="none"
+            android:singleLine="true"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/_14sdp">
+
+
+        </EditText>
         <Button
             android:id="@+id/buttonmain"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
             android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/_45sdp"
+            android:layout_marginLeft="@dimen/_22sdp"
             android:layout_marginRight="@dimen/_5sdp"
             android:background="@drawable/editicon"/>
 

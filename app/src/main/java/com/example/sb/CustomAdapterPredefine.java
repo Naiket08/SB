@@ -42,7 +42,7 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
     private FirebaseAuth mAuth;
     String userId;
     String status="false";
-    public String Roomname,text1,s2,s3,s5;
+    public String Roomname,text1,s2,s3,s5,s6;
     public String[] s4=new String[10];
     public int o=1,p=1,m=1;
     EditText editTextdailogpredefine;
@@ -77,9 +77,10 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.edittextmain.setText((CharSequence) itemnames.get(position));
+        holder.edittexthint.setText((CharSequence) itemnames.get(position));
         holder. imageviewmain1.setImageResource((Integer)itemtypes.get(position));
         // implement setOnClickListener event on item view.
-        String ss=holder.edittextmain.getText().toString();
+        String ss=holder.edittexthint.getText().toString();
         db =  FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text1).child(ss);
         if(ss.contains("Light"))
         {
@@ -88,7 +89,7 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
             String q=String.valueOf(o);
             user.put("UID",l);
             user.put("name",ss);
-            user.put("mode","on");
+            user.put("mode","off");
             user.put("number",q);
             user.put("category","Light");
             db.setValue(user);
@@ -102,7 +103,7 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
                 String q1=String.valueOf(p);
                 user1.put("UID",l1);
                 user1.put("name",ss);
-                user1.put("mode","on");
+                user1.put("mode","off");
                 user1.put("number",q1);
                 user1.put("category","Fan");
                 user1.put("speed","0");
@@ -149,7 +150,7 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
                             Toast.makeText(context, "Enter Text", Toast.LENGTH_SHORT).show();
                         }
                         else{
-                           // holder.edittextmain.setText(s3);
+                            holder.edittextmain.setText(s3);
                             s5=s3;
                             Toast.makeText(context, "Name Changed to : " + s5, Toast.LENGTH_SHORT).show();
                             // Toast.makeText(context, "new s2"+s2, Toast.LENGTH_SHORT).show();
@@ -166,8 +167,9 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
                 holder.buttonmain2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        s2=holder.edittextmain.getText().toString();
-                        Toast.makeText(context,s2, Toast.LENGTH_SHORT).show();
+                        s2=holder.edittexthint.getText().toString();
+                        s6=holder.edittextmain.getText().toString();
+                        //Toast.makeText(context,s2, Toast.LENGTH_SHORT).show();
                         db2 =  FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text1).child(s2);
                         popup = new PopupMenu(context, holder.buttonmain2);
                         popup.inflate(R.menu.menu_predefine);
@@ -179,10 +181,11 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
                                         //handle menu1 click
                                         Map<String, Object> user = new HashMap<>();
                                         String l = mAuth.getCurrentUser().getUid();
-                                        String q=String.valueOf(o);
+                                        String q=s2.replaceAll("[^0-9]", "");;
+                                        Toast.makeText(context,q, Toast.LENGTH_SHORT).show();
                                         user.put("UID",l);
-                                        user.put("name",s2);
-                                        user.put("mode","on");
+                                        user.put("name",s6);
+                                        user.put("mode","off");
                                         user.put("number",q);
                                         user.put("category","Light");
                                         holder.imageviewmain1.setImageResource(R.drawable.idea);
@@ -192,11 +195,11 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
                                         //handle menu2 click
                                         Map<String, Object> user1 = new HashMap<>();
                                         String l1 = mAuth.getCurrentUser().getUid();
-                                        String q1=String.valueOf(p);
+                                        String q2=s2.replaceAll("[^0-9]", "");;
                                         user1.put("UID",l1);
-                                        user1.put("name",s2);
-                                        user1.put("mode","on");
-                                        user1.put("number",q1);
+                                        user1.put("name",s6);
+                                        user1.put("mode","off");
+                                        user1.put("number",q2);
                                         user1.put("category","Fan");
                                         user1.put("speed","0");
                                         holder.imageviewmain1.setImageResource(R.drawable.fan_icon);
@@ -207,10 +210,10 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
                                         //handle menu2 click
                                         Map<String, Object> user3 = new HashMap<>();
                                         String l3 = mAuth.getCurrentUser().getUid();
-                                        String q3=String.valueOf(m);
+                                        String q3=s2.replaceAll("[^0-9]", "");;
                                         user3.put("UID",l3);
-                                        user3.put("name",s2);
-                                        user3.put("mode","on");
+                                        user3.put("name",s6);
+                                        user3.put("mode","off");
                                         user3.put("number",q3);
                                         user3.put("category","Appliance");
                                         holder.imageviewmain1.setImageResource(R.drawable.appliances_icon);
@@ -278,7 +281,7 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         // init the item view's
-        EditText edittextmain;
+        EditText edittextmain,edittexthint;
         Button buttonmain, buttonmain2;
         ImageView imageviewmain1;
 
@@ -286,6 +289,7 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
             super(itemView);
             // get the reference of item view's
             edittextmain = (EditText) itemView.findViewById(R.id.edittextmain);
+            edittexthint=(EditText)itemView.findViewById(R.id.edittexthint);
             buttonmain = (Button) itemView.findViewById(R.id.buttonmain);
             buttonmain2 = (Button) itemView.findViewById(R.id.buttonmain2);
             imageviewmain1=(ImageView)itemView.findViewById(R.id.imageviewmain1);

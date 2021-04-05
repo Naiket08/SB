@@ -157,7 +157,7 @@ public class CustomAdapterInnerCategory4 extends RecyclerView.Adapter<CustomAdap
                                                                                         @Override
                                                                                         public void onSuccess(Void aVoid) {
                                                                                             Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
-                                                                                            //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttonred);
+                                                                                            holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttonred);
                                                                                         }
                                                                                     });
                                                                                     bottomSheetDialog.cancel();
@@ -298,7 +298,7 @@ public class CustomAdapterInnerCategory4 extends RecyclerView.Adapter<CustomAdap
                                                                                         @Override
                                                                                         public void onSuccess(Void aVoid) {
                                                                                             Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
-                                                                                            //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttonred);
+                                                                                            holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttonred);
                                                                                         }
                                                                                     });
                                                                                     bottomSheetDialog.cancel();
@@ -441,7 +441,7 @@ public class CustomAdapterInnerCategory4 extends RecyclerView.Adapter<CustomAdap
                                                                                         @Override
                                                                                         public void onSuccess(Void aVoid) {
                                                                                             Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
-                                                                                            //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttonred);
+                                                                                            holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttonred);
                                                                                         }
                                                                                     });
                                                                                     bottomSheetDialog.cancel();
@@ -583,7 +583,7 @@ public class CustomAdapterInnerCategory4 extends RecyclerView.Adapter<CustomAdap
                                                                                         @Override
                                                                                         public void onSuccess(Void aVoid) {
                                                                                             Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
-                                                                                            //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttonred);
+                                                                                            holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttonred);
                                                                                         }
                                                                                     });
                                                                                     bottomSheetDialog.cancel();
@@ -772,7 +772,7 @@ public class CustomAdapterInnerCategory4 extends RecyclerView.Adapter<CustomAdap
                                                                                 @Override
                                                                                 public void onSuccess(Void aVoid) {
                                                                                     Toast.makeText(context, "OFF", Toast.LENGTH_SHORT).show();
-                                                                                    //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttonred);
+                                                                                    holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttonred);
                                                                                 }
                                                                             });
 
@@ -785,7 +785,7 @@ public class CustomAdapterInnerCategory4 extends RecyclerView.Adapter<CustomAdap
                                                                                 @Override
                                                                                 public void onSuccess(Void aVoid) {
                                                                                     Toast.makeText(context, "ON", Toast.LENGTH_SHORT).show();
-                                                                                    //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttongreen);
+                                                                                    holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttongreen);
                                                                                 }
                                                                             });
                                                                         }
@@ -894,7 +894,7 @@ public class CustomAdapterInnerCategory4 extends RecyclerView.Adapter<CustomAdap
                                                                                 @Override
                                                                                 public void onSuccess(Void aVoid) {
                                                                                     Toast.makeText(context, "OFF", Toast.LENGTH_SHORT).show();
-                                                                                    //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttonred);
+                                                                                    holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttonred);
                                                                                 }
                                                                             });
 
@@ -907,7 +907,7 @@ public class CustomAdapterInnerCategory4 extends RecyclerView.Adapter<CustomAdap
                                                                                 @Override
                                                                                 public void onSuccess(Void aVoid) {
                                                                                     Toast.makeText(context, "ON", Toast.LENGTH_SHORT).show();
-                                                                                    //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttongreen);
+                                                                                    holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttongreen);
                                                                                 }
                                                                             });
                                                                         }
@@ -1018,7 +1018,7 @@ public class CustomAdapterInnerCategory4 extends RecyclerView.Adapter<CustomAdap
                                                                                 @Override
                                                                                 public void onSuccess(Void aVoid) {
                                                                                     Toast.makeText(context, "OFF", Toast.LENGTH_SHORT).show();
-                                                                                    //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttonred);
+                                                                                    holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttonred);
                                                                                 }
                                                                             });
 
@@ -1031,7 +1031,7 @@ public class CustomAdapterInnerCategory4 extends RecyclerView.Adapter<CustomAdap
                                                                                 @Override
                                                                                 public void onSuccess(Void aVoid) {
                                                                                     Toast.makeText(context, "ON", Toast.LENGTH_SHORT).show();
-                                                                                    //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttongreen);
+                                                                                    holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttongreen);
                                                                                 }
                                                                             });
                                                                         }
@@ -1141,7 +1141,7 @@ public class CustomAdapterInnerCategory4 extends RecyclerView.Adapter<CustomAdap
                                                                                 @Override
                                                                                 public void onSuccess(Void aVoid) {
                                                                                     Toast.makeText(context, "OFF", Toast.LENGTH_SHORT).show();
-                                                                                    //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttonred);
+                                                                                    holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttonred);
                                                                                 }
                                                                             });
 
@@ -1154,7 +1154,7 @@ public class CustomAdapterInnerCategory4 extends RecyclerView.Adapter<CustomAdap
                                                                                 @Override
                                                                                 public void onSuccess(Void aVoid) {
                                                                                     Toast.makeText(context, "ON", Toast.LENGTH_SHORT).show();
-                                                                                    //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttongreen);
+                                                                                    holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttongreen);
                                                                                 }
                                                                             });
                                                                         }

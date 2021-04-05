@@ -175,7 +175,7 @@ public class CustomAdapterInnerCategory extends RecyclerView.Adapter<CustomAdapt
                                                                                         @Override
                                                                                         public void onSuccess(Void aVoid) {
                                                                                             Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
-                                                                                            //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttonred);
+                                                                                            holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttonred);
                                                                                         }
                                                                                     });
                                                                                     bottomSheetDialog.cancel();
@@ -315,8 +315,8 @@ public class CustomAdapterInnerCategory extends RecyclerView.Adapter<CustomAdapt
                                                                                     db.child("name").setValue(num3).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                                         @Override
                                                                                         public void onSuccess(Void aVoid) {
-                                                                                            Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
-                                                                                            //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttonred);
+                                                                                           // Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
+                                                                                            holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttonred);
                                                                                         }
                                                                                     });
                                                                                     bottomSheetDialog.cancel();
@@ -458,8 +458,8 @@ public class CustomAdapterInnerCategory extends RecyclerView.Adapter<CustomAdapt
                                                                                     db.child("name").setValue(num3).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                                         @Override
                                                                                         public void onSuccess(Void aVoid) {
-                                                                                            Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
-                                                                                            //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttonred);
+                                                                                           // Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
+                                                                                            holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttonred);
                                                                                         }
                                                                                     });
                                                                                     bottomSheetDialog.cancel();
@@ -600,7 +600,7 @@ public class CustomAdapterInnerCategory extends RecyclerView.Adapter<CustomAdapt
                                                                                     db.child("name").setValue(num3).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                                         @Override
                                                                                         public void onSuccess(Void aVoid) {
-                                                                                            Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
+                                                                                           // Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
                                                                                             //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttonred);
                                                                                         }
                                                                                     });
@@ -790,8 +790,8 @@ public class CustomAdapterInnerCategory extends RecyclerView.Adapter<CustomAdapt
                                                                             db.child("mode").setValue("off").addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                                 @Override
                                                                                 public void onSuccess(Void aVoid) {
-                                                                                     Toast.makeText(context, "OFF", Toast.LENGTH_SHORT).show();
-                                                                                    //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttonred);
+                                                                                    Toast.makeText(context, "OFF", Toast.LENGTH_SHORT).show();
+                                                                                    holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttonred);
                                                                                 }
                                                                             });
 
@@ -803,8 +803,8 @@ public class CustomAdapterInnerCategory extends RecyclerView.Adapter<CustomAdapt
                                                                             db.child("mode").setValue("on").addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                                 @Override
                                                                                 public void onSuccess(Void aVoid) {
-                                                                                     Toast.makeText(context, "ON", Toast.LENGTH_SHORT).show();
-                                                                                    //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttongreen);
+                                                                                    Toast.makeText(context, "ON", Toast.LENGTH_SHORT).show();
+                                                                                    holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttongreen);
                                                                                 }
                                                                             });
                                                                         }
@@ -913,7 +913,7 @@ public class CustomAdapterInnerCategory extends RecyclerView.Adapter<CustomAdapt
                                                                                 @Override
                                                                                 public void onSuccess(Void aVoid) {
                                                                                     Toast.makeText(context, "OFF", Toast.LENGTH_SHORT).show();
-                                                                                    //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttonred);
+                                                                                    holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttonred);
                                                                                 }
                                                                             });
 
@@ -926,7 +926,7 @@ public class CustomAdapterInnerCategory extends RecyclerView.Adapter<CustomAdapt
                                                                                 @Override
                                                                                 public void onSuccess(Void aVoid) {
                                                                                     Toast.makeText(context, "ON", Toast.LENGTH_SHORT).show();
-                                                                                    //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttongreen);
+                                                                                    holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttongreen);
                                                                                 }
                                                                             });
                                                                         }
@@ -1037,7 +1037,7 @@ public class CustomAdapterInnerCategory extends RecyclerView.Adapter<CustomAdapt
                                                                                 @Override
                                                                                 public void onSuccess(Void aVoid) {
                                                                                     Toast.makeText(context, "OFF", Toast.LENGTH_SHORT).show();
-                                                                                    //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttonred);
+                                                                                    holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttonred);
                                                                                 }
                                                                             });
 
@@ -1050,7 +1050,7 @@ public class CustomAdapterInnerCategory extends RecyclerView.Adapter<CustomAdapt
                                                                                 @Override
                                                                                 public void onSuccess(Void aVoid) {
                                                                                     Toast.makeText(context, "ON", Toast.LENGTH_SHORT).show();
-                                                                                    //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttongreen);
+                                                                                    holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttongreen);
                                                                                 }
                                                                             });
                                                                         }
@@ -1160,7 +1160,7 @@ public class CustomAdapterInnerCategory extends RecyclerView.Adapter<CustomAdapt
                                                                                 @Override
                                                                                 public void onSuccess(Void aVoid) {
                                                                                     Toast.makeText(context, "OFF", Toast.LENGTH_SHORT).show();
-                                                                                    //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttonred);
+                                                                                    holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttonred);
                                                                                 }
                                                                             });
 
@@ -1173,7 +1173,7 @@ public class CustomAdapterInnerCategory extends RecyclerView.Adapter<CustomAdapt
                                                                                 @Override
                                                                                 public void onSuccess(Void aVoid) {
                                                                                     Toast.makeText(context, "ON", Toast.LENGTH_SHORT).show();
-                                                                                    //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttongreen);
+                                                                                    holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerbuttongreen);
                                                                                 }
                                                                             });
                                                                         }
