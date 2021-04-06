@@ -41,7 +41,7 @@ public class FragmentInnerSwitchBoard extends Fragment {
 
     TextView textViewSwitchBoard1;
     Button buttonLight1,buttonLight2,buttonFan,buttonLight3,buttonSwitchBoardApppliance;
-    public String Roomname,text3,fanspeed;
+    public String Roomname,text3,fanspeed,textmain;
     ////////////////////////////////////
     RecyclerView recyclerViewInnerSwitchboard;
     //////////////////////
@@ -61,6 +61,7 @@ public class FragmentInnerSwitchBoard extends Fragment {
         View view = inflater.inflate(R.layout.fragment_inner_switchboard,container,false);
 //////Done
         Roomname = getArguments().getString("Roomname");
+        textmain = getArguments().getString("Switchnamemain");
       //  Toast.makeText(getContext(),Roomname, Toast.LENGTH_SHORT).show();
         text3= getArguments().getString("Switchname");
         Toast.makeText(getContext(),text3, Toast.LENGTH_SHORT).show();
@@ -74,7 +75,7 @@ public class FragmentInnerSwitchBoard extends Fragment {
         imageViewAppliances = (ImageView)view.findViewById(R.id.imageViewAppliances);
 
         textViewSwitchBoard1 = (TextView)view.findViewById(R.id.textViewSwitchBoard1);
-        textViewSwitchBoard1.setText(text3);
+        textViewSwitchBoard1.setText(textmain);
         buttonLight1 = (Button)view.findViewById(R.id.buttonLight1);
         buttonLight2 = (Button)view.findViewById(R.id.buttonLight2);
         buttonLight3 = (Button)view.findViewById(R.id.buttonLight3);

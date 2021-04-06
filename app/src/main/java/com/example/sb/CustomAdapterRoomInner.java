@@ -34,7 +34,7 @@ import java.util.HashMap;
 public class CustomAdapterRoomInner extends RecyclerView.Adapter<CustomAdapterRoomInner.ViewHolder> {
     ArrayList SwitchName,SwitchName2;
     ArrayList SwitchType;
-    String Roomname1,s3,text3,s4,s5,s6;
+    String Roomname1,s3,text3,s4,s5,s6,s2;
     private FirebaseAuth mAuth;
     Context context;
     public CustomAdapterRoomInner(Context context, ArrayList SwitchName,ArrayList SwitchName2, ArrayList SwitchType,FirebaseAuth mAuth,String Roomname1,String text3) {
@@ -103,8 +103,9 @@ public class CustomAdapterRoomInner extends RecyclerView.Adapter<CustomAdapterRo
                     @Override
                     public void onClick(View view) {
                         holder.textViewRoomInnerSB1.setEnabled(true);
-                        String s2 = editTextdailogpredefine.getText().toString();
+                        s2 = editTextdailogpredefine.getText().toString();
                         holder.textViewRoomInnerSB1.setText(s2);
+                        s3=s2;
                         holder.textViewRoomInnerSB1.setEnabled(false);
                         if(TextUtils.isEmpty(s2)){
                             Toast.makeText(context, "Enter Text", Toast.LENGTH_SHORT).show();
@@ -137,6 +138,7 @@ public class CustomAdapterRoomInner extends RecyclerView.Adapter<CustomAdapterRo
                 s3=holder.textViewRoomInnerSB1.getText().toString();
                 arguments.putString( "Roomname",Roomname1);
                 arguments.putString( "Switchname",s6);
+                arguments.putString( "Switchnamemain",s3);
                 newFragment.setArguments(arguments);
                 FragmentManager manager = ((AppCompatActivity)context).getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.fragment_container,newFragment).addToBackStack(null)
