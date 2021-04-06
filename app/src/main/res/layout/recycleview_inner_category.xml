@@ -25,8 +25,8 @@
 
     <Button
         android:id="@+id/buttonOnCategory1Light1"
-        android:layout_width="@dimen/_12sdp"
-        android:layout_height="@dimen/_12sdp"
+        android:layout_width="@dimen/_18sdp"
+        android:layout_height="@dimen/_18sdp"
         android:background="@drawable/ic_path_93"
         app:layout_constraintEnd_toEndOf="@id/textViewInnerCategoryLight1"
         app:layout_constraintTop_toTopOf="@id/textViewInnerCategoryLight1"
@@ -35,12 +35,12 @@
 
     <Button
         android:id="@+id/buttonEditCategory1Light1"
-        android:layout_width="@dimen/_12sdp"
-        android:layout_height="@dimen/_12sdp"
+        android:layout_width="@dimen/_18sdp"
+        android:layout_height="@dimen/_18sdp"
         android:background="@drawable/ic_group_31"
         app:layout_constraintEnd_toStartOf="@id/buttonOnCategory1Light1"
         app:layout_constraintTop_toTopOf="@id/textViewInnerCategoryLight1"
         app:layout_constraintBottom_toBottomOf="@id/textViewInnerCategoryLight1"
-        android:layout_marginEnd="@dimen/_8sdp"/>
+        android:layout_marginEnd="@dimen/_12sdp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
