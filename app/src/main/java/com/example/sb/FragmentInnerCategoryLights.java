@@ -118,6 +118,11 @@ if(category.equals("Light")) {
                     //This one
                     if(num1.equals("Bedroom")) {
                         /////////////////////////////////////////////
+
+                        /////////////////////////////////////////////IMPORTANT CODE
+                        textViewInnerCategory1.setVisibility(view.VISIBLE);
+                        recycleviewinnercategory1.setVisibility(view.VISIBLE);
+                        ////////////////////////////////////////////////////////
                         DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
                         itemsRef2.addChildEventListener(new ChildEventListener() {
                             @Override
@@ -210,6 +215,11 @@ if(category.equals("Light")) {
                       //  Toast.makeText(getContext(),"inside Bathroom", Toast.LENGTH_SHORT).show();
                         ////////////////////////////////////////////////////////////////////////////
                         /////////////////////////////////////////////
+                        /////////////////////////////////////////////IMPORTANT CODE
+                        textViewInnerCategory2.setVisibility(view.VISIBLE);
+                        recycleviewinnercategory2.setVisibility(view.VISIBLE);
+                        ////////////////////////////////////////////////////////
+
                         DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
                         itemsRef2.addChildEventListener(new ChildEventListener() {
                             @Override
@@ -304,6 +314,11 @@ if(category.equals("Light")) {
 
                         ////////////////////////////////////////////////////////////////////////////
                         /////////////////////////////////////////////
+                        /////////////////////////////////////////////IMPORTANT CODE
+                        textViewInnerCategory3.setVisibility(view.VISIBLE);
+                        recycleviewinnercategory3.setVisibility(view.VISIBLE);
+                        ////////////////////////////////////////////////////////
+
                         DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
                         itemsRef2.addChildEventListener(new ChildEventListener() {
                             @Override
@@ -398,6 +413,11 @@ if(category.equals("Light")) {
 
                         /////////////////////////////////////////////////////////////////////////////
                         /////////////////////////////////////////////
+                        /////////////////////////////////////////////IMPORTANT CODE
+                        textViewInnerCategory4.setVisibility(view.VISIBLE);
+                        recycleviewinnercategory4.setVisibility(view.VISIBLE);
+                        ////////////////////////////////////////////////////////
+
                         DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
                         itemsRef2.addChildEventListener(new ChildEventListener() {
                             @Override
@@ -558,6 +578,11 @@ if(category.equals("Light")) {
                             //This one
                             if(num1.equals("Bedroom")) {
                                 /////////////////////////////////////////////
+                                /////////////////////////////////////////////IMPORTANT CODE
+                                textViewInnerCategory1.setVisibility(view.VISIBLE);
+                                recycleviewinnercategory1.setVisibility(view.VISIBLE);
+                                ////////////////////////////////////////////////////////
+
                                 DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
                                 itemsRef2.addChildEventListener(new ChildEventListener() {
                                     @Override
@@ -651,6 +676,11 @@ if(category.equals("Light")) {
                               //  Toast.makeText(getContext(),"inside Bathroom", Toast.LENGTH_SHORT).show();
                                 ////////////////////////////////////////////////////////////////////////////
                                 /////////////////////////////////////////////
+                                /////////////////////////////////////////////IMPORTANT CODE
+                                textViewInnerCategory2.setVisibility(view.VISIBLE);
+                                recycleviewinnercategory2.setVisibility(view.VISIBLE);
+                                ////////////////////////////////////////////////////////
+
                                 DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
                                 itemsRef2.addChildEventListener(new ChildEventListener() {
                                     @Override
@@ -746,6 +776,11 @@ if(category.equals("Light")) {
 
                                 ////////////////////////////////////////////////////////////////////////////
                                 /////////////////////////////////////////////
+                                /////////////////////////////////////////////IMPORTANT CODE
+                                textViewInnerCategory3.setVisibility(view.VISIBLE);
+                                recycleviewinnercategory3.setVisibility(view.VISIBLE);
+                                ////////////////////////////////////////////////////////
+
                                 DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
                                 itemsRef2.addChildEventListener(new ChildEventListener() {
                                     @Override
@@ -840,6 +875,11 @@ if(category.equals("Light")) {
 
                                 /////////////////////////////////////////////////////////////////////////////
                                 /////////////////////////////////////////////
+                                /////////////////////////////////////////////IMPORTANT CODE
+                                textViewInnerCategory4.setVisibility(view.VISIBLE);
+                                recycleviewinnercategory4.setVisibility(view.VISIBLE);
+                                ////////////////////////////////////////////////////////
+
                                 DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
                                 itemsRef2.addChildEventListener(new ChildEventListener() {
                                     @Override
@@ -1000,6 +1040,11 @@ else if(category.equals("Appliance")) {
                     //This one
                     if(num1.equals("Bedroom")) {
                         /////////////////////////////////////////////
+                        /////////////////////////////////////////////IMPORTANT CODE
+                        textViewInnerCategory1.setVisibility(view.VISIBLE);
+                        recycleviewinnercategory1.setVisibility(view.VISIBLE);
+                        ////////////////////////////////////////////////////////
+
                         DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
                         itemsRef2.addChildEventListener(new ChildEventListener() {
                             @Override
@@ -1096,6 +1141,11 @@ else if(category.equals("Appliance")) {
                       //  Toast.makeText(getContext(),"inside Bathroom", Toast.LENGTH_SHORT).show();
                         ////////////////////////////////////////////////////////////////////////////
                         /////////////////////////////////////////////
+                        /////////////////////////////////////////////IMPORTANT CODE
+                        textViewInnerCategory2.setVisibility(view.VISIBLE);
+                        recycleviewinnercategory2.setVisibility(view.VISIBLE);
+                        ////////////////////////////////////////////////////////
+
                         DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
                         itemsRef2.addChildEventListener(new ChildEventListener() {
                             @Override
@@ -1191,6 +1241,11 @@ else if(category.equals("Appliance")) {
 
                         ////////////////////////////////////////////////////////////////////////////
                         /////////////////////////////////////////////
+                        /////////////////////////////////////////////IMPORTANT CODE
+                        textViewInnerCategory3.setVisibility(view.VISIBLE);
+                        recycleviewinnercategory3.setVisibility(view.VISIBLE);
+                        ////////////////////////////////////////////////////////
+
                         DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
                         itemsRef2.addChildEventListener(new ChildEventListener() {
                             @Override
@@ -1285,6 +1340,11 @@ else if(category.equals("Appliance")) {
 
                         /////////////////////////////////////////////////////////////////////////////
                         /////////////////////////////////////////////
+                        /////////////////////////////////////////////IMPORTANT CODE
+                        textViewInnerCategory4.setVisibility(view.VISIBLE);
+                        recycleviewinnercategory4.setVisibility(view.VISIBLE);
+                        ////////////////////////////////////////////////////////
+
                         DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
                         itemsRef2.addChildEventListener(new ChildEventListener() {
                             @Override

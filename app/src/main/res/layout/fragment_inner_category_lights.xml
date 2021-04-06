@@ -14,7 +14,7 @@
         android:layout_marginBottom="@dimen/_50sdp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
     <TextView
@@ -37,6 +37,7 @@
         android:text="@string/bedroom"
         android:textSize="@dimen/_10ssp"
         android:textColor="#404040"
+        android:visibility="gone"
         android:layout_marginTop="@dimen/_11sdp"
         android:layout_marginStart="@dimen/_26sdp"
         app:layout_constraintTop_toBottomOf="@id/textViewCategoryLights"
@@ -45,10 +46,11 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleviewinnercategory1"
-        android:layout_width="@dimen/_300sdp"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/_120sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone"
         android:orientation="vertical"
         android:layout_marginTop="@dimen/_5sdp"
         app:layout_constraintTop_toBottomOf="@+id/textViewInnerCategory1" />
@@ -61,6 +63,7 @@
         android:text="@string/bathroom"
         android:textSize="@dimen/_10ssp"
         android:textColor="#404040"
+        android:visibility="gone"
         android:layout_marginTop="@dimen/_11sdp"
         android:layout_marginStart="@dimen/_26sdp"
         app:layout_constraintTop_toBottomOf="@id/recycleviewinnercategory1"
@@ -68,8 +71,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleviewinnercategory2"
-        android:layout_width="@dimen/_300sdp"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/_120sdp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="@dimen/_5sdp"
@@ -83,6 +87,7 @@
         android:text="@string/kitchen"
         android:textSize="@dimen/_10ssp"
         android:textColor="#404040"
+        android:visibility="gone"
         android:layout_marginTop="@dimen/_11sdp"
         android:layout_marginStart="@dimen/_26sdp"
         app:layout_constraintTop_toBottomOf="@id/recycleviewinnercategory2"
@@ -90,8 +95,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleviewinnercategory3"
-        android:layout_width="@dimen/_300sdp"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/_120sdp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="@dimen/_5sdp"
@@ -104,6 +110,7 @@
                 android:text="Dinning Room"
                 android:textSize="@dimen/_10ssp"
                 android:textColor="#404040"
+                android:visibility="gone"
                 android:layout_marginTop="@dimen/_11sdp"
                 android:layout_marginStart="@dimen/_26sdp"
                 app:layout_constraintTop_toBottomOf="@id/recycleviewinnercategory3"
@@ -111,8 +118,9 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycleviewinnercategory4"
-                android:layout_width="@dimen/_300sdp"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/_120sdp"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="@dimen/_5sdp"
