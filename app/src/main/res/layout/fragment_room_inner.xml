@@ -47,32 +47,31 @@
         android:layout_marginStart="@dimen/_18sdp"
         android:layout_marginEnd="@dimen/_18sdp">
 
-        <ScrollView
+
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerViewRoomInner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_18sdp"
-                    android:layout_below="@id/textViewTopText"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentEnd="true">
-
-                </androidx.recyclerview.widget.RecyclerView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewRoomInner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true">
+        </androidx.recyclerview.widget.RecyclerView>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="134dp"
                     android:layout_height="168dp"
                     android:background="@drawable/background_switch_board_inner_room"
+                    android:layout_toEndOf="@id/recyclerViewRoomInner"
                     android:layout_marginTop="@dimen/_18sdp"
                     android:layout_marginStart="@dimen/_10sdp">
+
 
                     <ImageView
                         android:id="@+id/imageViewRoomInnerAddSB"
@@ -101,12 +100,9 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+        </RelativeLayout>
 
 
-
-            </LinearLayout>
-
-        </ScrollView>
 
     </HorizontalScrollView>
 
