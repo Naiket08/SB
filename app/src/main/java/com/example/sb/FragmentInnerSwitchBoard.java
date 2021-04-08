@@ -64,7 +64,7 @@ public class FragmentInnerSwitchBoard extends Fragment {
         textmain = getArguments().getString("Switchnamemain");
       //  Toast.makeText(getContext(),Roomname, Toast.LENGTH_SHORT).show();
         text3= getArguments().getString("Switchname");
-        Toast.makeText(getContext(),text3, Toast.LENGTH_SHORT).show();
+       //Toast.makeText(getContext(),text3, Toast.LENGTH_SHORT).show();
 ///////
         textViewRoomNo = (TextView)view.findViewById(R.id.textViewRoomNo);
         textViewRoomNo.setText(Roomname);

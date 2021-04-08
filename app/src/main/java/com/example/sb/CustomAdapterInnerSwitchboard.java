@@ -1,7 +1,10 @@
 package com.example.sb;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -43,6 +46,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
     public String Roomname,s3,text3,num1,num2,x,fanspeed;
     private FirebaseAuth mAuth;
     Context context;
+    ProgressDialog progressDoalog;
 
 
     public CustomAdapterInnerSwitchboard(Context context, ArrayList LightName, ArrayList LightType,ArrayList LightType2,FirebaseAuth mAuth,String Roomname,String text3,ImageView imageViewBrownJacket,ImageView  imageViewWhiteJacket,ImageView imageViewAppliances,ImageView imageViewBulb,DialView customdial,Button speedcontrol) {
@@ -87,7 +91,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
             @Override
             public void onClick(View view) {
                 num2=holder.textViewInnerSwitchboardSB1.getText().toString();
-                Toast.makeText(context, num2+" : Selected", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(context, num2+" : Selected", Toast.LENGTH_SHORT).show();
 
                 if(num2.contains("Fan")){
                    // Toast.makeText(context,"enter inside", Toast.LENGTH_SHORT).show();
@@ -256,12 +260,28 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
 
                 else if(num2.contains("Light"))
                 {
-                    imageViewBrownJacket.setVisibility(View.VISIBLE);
-                    imageViewBulb.setVisibility(View.VISIBLE);
+
+
+                    if(holder.imageViewInnerSwitchboard1.getDrawable().getConstantState()== holder.imageViewInnerSwitchboard1.getResources().getDrawable( R.drawable.powerbuttonred).getConstantState())
+                    {
+                    //    Toast.makeText(context, "RED", Toast.LENGTH_SHORT).show();
+                        imageViewBrownJacket.setVisibility(View.VISIBLE);
+                        imageViewBulb.setVisibility(View.VISIBLE);
+                        imageViewBulb.setImageResource(R.drawable.bulboff);
+                    }
+                    else
+                    {
+                     //   Toast.makeText(context, "Green", Toast.LENGTH_SHORT).show();
+                        imageViewBrownJacket.setVisibility(View.VISIBLE);
+                        imageViewBulb.setImageResource(R.drawable.bulbon);
+                        imageViewBulb.setVisibility(View.VISIBLE);
+
+                    }
                     imageViewAppliances.setVisibility(View.INVISIBLE);
                     customdial.setVisibility(View.INVISIBLE);
                     imageViewWhiteJacket.setVisibility(View.INVISIBLE);
                     speedcontrol.setVisibility(View.INVISIBLE);
+
                 }
 
             }
@@ -271,7 +291,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
         holder.imageViewInnerSwitchboardInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show();
                 s3=holder.textViewInnerSwitchboardSB1.getText().toString();
                /* mAuth = FirebaseAuth.getInstance();
                 DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text3).child(s3);
@@ -300,10 +320,42 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
                         FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("favorites").child(Roomname).child(text3).child(s3).setValue(values).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                Toast.makeText(context, "favorite added", Toast.LENGTH_SHORT).show();
+                                Handler handle = new Handler() {
+                                    @Override
+                                    public void handleMessage(Message msg) {
+                                        super.handleMessage(msg);
+                                        progressDoalog.incrementProgressBy(5);
+                                    }
+                                };
+                                progressDoalog = new ProgressDialog(context);
+                                progressDoalog.setMax(100);
+                                progressDoalog.setTitle("Favorite is Adding" +
+                                        "" +
+                                        "" +
+                                        "");
+                                progressDoalog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                                progressDoalog.show();
+                                new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            while (progressDoalog.getProgress() <= progressDoalog
+                                                    .getMax()) {
+                                                Thread.sleep(50);
+                                                handle.sendMessage(handle.obtainMessage());
+                                                if (progressDoalog.getProgress() == progressDoalog
+                                                        .getMax()) {
+                                                    progressDoalog.dismiss();
+                                                }
+                                            }
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                }).start();
+
                             }
                         });
-
                     }
 
                     @Override
@@ -311,11 +363,6 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
 
                     }
                 });
-
-
-
-
-
 
             }
         });
@@ -333,7 +380,57 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
                         num1 = dataSnapshot.child("mode").getValue(String.class);
                       //  Toast.makeText(context,num1, Toast.LENGTH_SHORT).show();
 
-                        if(num1.equals("on"))
+                        if(num1.equals("on")&&holder.innerSwitchboardbutton1.getDrawable().getConstantState()== holder.innerSwitchboardbutton1.getResources().getDrawable( R.drawable.ic_idea).getConstantState())
+                        {
+                            imageViewBrownJacket.setVisibility(View.VISIBLE);
+                            imageViewBulb.setImageResource(R.drawable.bulboff);
+                            imageViewBulb.setVisibility(View.VISIBLE);
+                            imageViewAppliances.setVisibility(View.INVISIBLE);
+                            customdial.setVisibility(View.INVISIBLE);
+                            imageViewWhiteJacket.setVisibility(View.INVISIBLE);
+                            speedcontrol.setVisibility(View.INVISIBLE);
+                            db.child("mode").setValue("off").addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    //  Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
+                                    holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttonred);
+                                }
+                            });
+                            db2.child("mode").setValue("off").addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    //  Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+
+
+                        }
+                        else if(num1.equals("off")&&holder.innerSwitchboardbutton1.getDrawable().getConstantState()== holder.innerSwitchboardbutton1.getResources().getDrawable( R.drawable.ic_idea).getConstantState())
+                        {
+                            imageViewBrownJacket.setVisibility(View.VISIBLE);
+                            imageViewBulb.setVisibility(View.VISIBLE);
+                            imageViewBulb.setImageResource(R.drawable.bulbon);
+                            imageViewAppliances.setVisibility(View.INVISIBLE);
+                            customdial.setVisibility(View.INVISIBLE);
+                            imageViewWhiteJacket.setVisibility(View.INVISIBLE);
+                            speedcontrol.setVisibility(View.INVISIBLE);
+                            db.child("mode").setValue("on").addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    //  Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
+                                    holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerbuttongreen);
+                                }
+                            });
+                            db2.child("mode").setValue("on").addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    //  Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+
+                      else  if(num1.equals("on"))
                         {
                             db.child("mode").setValue("off").addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
@@ -403,8 +500,6 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
             imageViewInnerSwitchboardInfo=(ImageView)itemView.findViewById(R.id.imageViewInnerSwitchboardInfo);
             textViewInnerSwitchboardSB1=(EditText)itemView.findViewById(R.id.textViewInnerSwitchboardSB1);
             innerSwitchboardbutton1=(ImageButton)itemView.findViewById(R.id.innerSwitchboardbutton1);
-
-
 
 
         }

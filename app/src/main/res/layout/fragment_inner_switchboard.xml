@@ -42,9 +42,9 @@
     <ImageView
         android:id="@+id/imageViewBulb"
         android:layout_width="@dimen/_500sdp"
-        android:layout_height="@dimen/_250sdp"
+        android:layout_height="@dimen/_230sdp"
         android:layout_marginTop="@dimen/_50sdp"
-        android:src="@drawable/nopath"
+        android:src="@drawable/bulboff"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

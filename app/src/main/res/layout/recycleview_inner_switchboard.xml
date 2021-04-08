@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/imageViewInnerSwitchboard1"
-        android:layout_width="@dimen/_15sdp"
-        android:layout_height="@dimen/_15sdp"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
         android:background="@drawable/powerbuttongreen"
         android:layout_marginTop="@dimen/_3sdp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,19 +19,19 @@
 
     <ImageView
         android:id="@+id/imageViewInnerSwitchboardInfo"
-        android:layout_width="@dimen/_15sdp"
-        android:layout_height="@dimen/_15sdp"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
         android:background="@drawable/star"
         app:layout_constraintEnd_toStartOf="@id/imageViewInnerSwitchboard1"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_6sdp"
         android:layout_marginTop="@dimen/_3sdp"/>
 
     <ImageButton
         android:id="@+id/innerSwitchboardbutton1"
         android:layout_width="@dimen/_48sdp"
         android:layout_height="@dimen/_60sdp"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_25sdp"
         android:backgroundTint="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/textViewInnerSwitchboardSB1"
         app:layout_constraintEnd_toEndOf="parent"
