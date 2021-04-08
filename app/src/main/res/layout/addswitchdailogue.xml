@@ -1,76 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_240sdp"
-        android:background="@drawable/dailogbackground"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:background="@drawable/background_switchboard1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textviewswitchdailog"
+            android:id="@+id/textviewdailogaddswitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_40sdp"
+            android:layout_marginLeft="@dimen/_29sdp"
+            android:layout_marginTop="@dimen/_50sdp"
             android:fontFamily="@font/muli_semibold"
-            android:text="Enter Key"
+            android:text="ENTER SWITCH NAME"
             android:textColor="#FFFFFF"
-            android:textSize="@dimen/_24sdp"
+            android:textSize="@dimen/_17sdp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginLeft="@dimen/_29sdp"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/cancelswitchdailog"
+            android:id="@+id/canceldailogaddswitch"
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
             android:background="@drawable/iconaddingbox"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editTextswitchdailog"
+            android:id="@+id/editTextdailogaddswitch"
             android:layout_width="@dimen/_250sdp"
             android:layout_height="@dimen/_50sdp"
             android:layout_marginStart="@dimen/_29sdp"
             android:layout_marginTop="@dimen/_12sdp"
             android:background="@drawable/editboxbedrroom"
-            android:fontFamily="@font/muli"
-            android:hint="Enter Key Here"
-            android:paddingStart="@dimen/_10sdp"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:maxLines="1"
             android:ems="10"
+            android:fontFamily="@font/muli"
+            android:hint="Type here"
             android:lines="1"
             android:maxLength="15"
-            android:singleLine="true"
+            android:maxLines="1"
+            android:paddingStart="@dimen/_10sdp"
             android:scrollbars="none"
+            android:singleLine="true"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             android:textSize="@dimen/_14sdp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textviewswitchdailog"></EditText>
+            app:layout_constraintTop_toBottomOf="@+id/textviewdailogaddswitch" />
 
         <Button
-            android:id="@+id/buttonswitchdailog"
+            android:id="@+id/buttondailogaddswitch"
             android:layout_width="@dimen/_250sdp"
             android:layout_height="@dimen/_50sdp"
             android:layout_marginLeft="@dimen/_29sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:layout_marginBottom="@dimen/_50sdp"
             android:background="@drawable/next"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextswitchdailog"
-            android:layout_marginTop="@dimen/_20sdp"/>
-
+            app:layout_constraintTop_toBottomOf="@+id/editTextdailogaddswitch" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

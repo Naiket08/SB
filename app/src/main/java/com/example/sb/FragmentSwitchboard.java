@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,6 +38,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,7 +56,8 @@ public class FragmentSwitchboard extends DialogFragment {
     String userId;
     String status="false";
     public int k,f;
-    public String num,Roomname,text1;
+    public String num,num1,Roomname,text1,switchname;
+    public ArrayList<String> list = new ArrayList<String>();
     /////////////////////////////////////
 
     @Nullable
@@ -73,12 +77,25 @@ public class FragmentSwitchboard extends DialogFragment {
 /////////////////////
         mAuth = FirebaseAuth.getInstance();
 
-
-
         Roomname = getArguments().getString("Roomname");
        // Toast.makeText(getContext(), Roomname, Toast.LENGTH_SHORT).show();
 
 //////////////////////////////////////
+            ///database calling
+                     dbchange();
+        DatabaseReference db3 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname);
+        db3.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                num1 = dataSnapshot.child("number").getValue(String.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+            ///////////////
 
         switchinfo1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -217,11 +234,12 @@ public class FragmentSwitchboard extends DialogFragment {
         });
         userId = mAuth.getCurrentUser().getUid();
 
-        DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname);
-        db.addListenerForSingleValueEvent(new ValueEventListener() {
+        DatabaseReference db2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid());
+        db2.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                num = dataSnapshot.child("number").getValue(String.class);
+                num = dataSnapshot.child("Key").getValue(String.class);
+              //  Toast.makeText(getContext(), num, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -231,164 +249,214 @@ public class FragmentSwitchboard extends DialogFragment {
         });
 
 
-
-
                buttonswitchdailog2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
-                        if(f==1) {
-                            /////
-                            k = Integer.valueOf(num);
-                            ++k;
-                            Map<String, Object> user = new HashMap<>();
-                            user.put("SwitchBoardumber",num);
-                            user.put("combination","4*1");
-                            user.put("type","SwitchBoard");
-                             text1 = editTextswitchdailog2.getText().toString().trim();
-
-                            if(TextUtils.isEmpty(text1)){
-                                Toast.makeText(getContext(), "Enter Switchname", Toast.LENGTH_SHORT).show();
-                            }
-                            else{  FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text1).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    //Toast.makeText(getContext(), "Room added", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-
-                                num=String.valueOf(k);
-                                FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child("number").setValue(num).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                      //  Toast.makeText(getContext(), "Room added", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                                Fragment newFragment = new FragmentPredefine();
-                                Bundle arguments = new Bundle();
-                                arguments.putString( "Roomname",Roomname);
-                                arguments.putString( "Switchname",text1);
-                                newFragment.setArguments(arguments);
-                                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                                transaction.replace(R.id.fragment_container,newFragment);
-                                transaction.addToBackStack(null);
-                                transaction.commit();
-                                bottomSheetDialog.cancel();
-                            }
-
-                            /////
+                        text1 = editTextswitchdailog2.getText().toString().trim();
+                        if(TextUtils.isEmpty(text1)){
+                            Toast.makeText(getContext(), "Enter Key", Toast.LENGTH_SHORT).show();
                         }
-                        else if(f==2){
-                            /////
-                            k = Integer.valueOf(num);
-                            ++k;
-                            Map<String, Object> user = new HashMap<>();
-                            user.put("SwitchBoardumber",num);
-                            user.put("combination","4*2");
-                            user.put("type","SwitchBoard");
-                             text1 = editTextswitchdailog2.getText().toString().trim();
-                            if(TextUtils.isEmpty(text1)){
-                                Toast.makeText(getContext(), "Enter Switchname", Toast.LENGTH_SHORT).show();
-                            }
-                            else{  FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text1).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                   // Toast.makeText(getContext(), "Room added", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                                num=String.valueOf(k);
-                                FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child("number").setValue(num).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                      //  Toast.makeText(getContext(), "Room added", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                                Fragment newFragment = new FragmentPredefine();
-                                Bundle arguments = new Bundle();
-                                arguments.putString( "Roomname",Roomname);
-                                arguments.putString( "Switchname",text1);
-                                newFragment.setArguments(arguments);
-                                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                                transaction.replace(R.id.fragment_container,newFragment);
-                                transaction.addToBackStack(null);
-                                transaction.commit();
-                                bottomSheetDialog.cancel();
-                            }
+                        else{
 
-                        } else if(f==3){
-                            /////
-                            k = Integer.valueOf(num);
-                            ++k;
-                            Map<String, Object> user = new HashMap<>();
-                            user.put("SwitchBoardumber",num);
-                            user.put("combination","2*1");
-                            user.put("type","SwitchBoard");
-                            text1 = editTextswitchdailog2.getText().toString().trim();
-                            if(TextUtils.isEmpty(text1)){
-                                Toast.makeText(getContext(), "Enter Switchname", Toast.LENGTH_SHORT).show();
-                            }
-                            else{  FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text1).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                   // Toast.makeText(getContext(), "Room added", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                                num=String.valueOf(k);
-                                FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child("number").setValue(num).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                     //   Toast.makeText(getContext(), "Room added", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                                Fragment newFragment = new FragmentPredefine();
-                                Bundle arguments = new Bundle();
-                                arguments.putString( "Roomname",Roomname);
-                                arguments.putString( "Switchname",text1);
-                                newFragment.setArguments(arguments);
-                                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                                transaction.replace(R.id.fragment_container,newFragment);
-                                transaction.addToBackStack(null);
-                                transaction.commit();
+                            if(text1.equals(num)){
                                 bottomSheetDialog.cancel();
-                            }
-                        } else if(f==4){
-                            /////
-                            k = Integer.valueOf(num);
-                            ++k;
-                            Map<String, Object> user = new HashMap<>();
-                            user.put("SwitchBoardumber",num);
-                            user.put("combination","custom");
-                            user.put("type","SwitchBoard");
-                            text1 = editTextswitchdailog2.getText().toString().trim();
-                            if(TextUtils.isEmpty(text1)){
-                                Toast.makeText(getContext(), "Enter Switchname", Toast.LENGTH_SHORT).show();
-                            }
-                            else{  FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text1).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                   // Toast.makeText(getContext(), "Room added", Toast.LENGTH_SHORT).show();
-                                }
-                            });
+                                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                //main logic
+                                BottomSheetDialog bottomSheetDialog2 = new BottomSheetDialog(getContext());
+                                View parentView = getLayoutInflater().inflate(R.layout.addswitchdailogue, null);
+                                ImageView cancelbutton = (ImageView) parentView.findViewById(R.id.canceldailogaddswitch);
+                                Button buttonaddswitch=(Button)parentView.findViewById(R.id.buttondailogaddswitch);
+                                EditText editTextaddswitch=(EditText)parentView.findViewById(R.id.editTextdailogaddswitch);
 
-                                FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child("number").setValue(k).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                bottomSheetDialog2.setContentView(parentView);
+
+                                bottomSheetDialog2.show();
+                                cancelbutton.setOnClickListener(new View.OnClickListener() {
                                     @Override
-                                    public void onSuccess(Void aVoid) {
-                                     //   Toast.makeText(getContext(), "Room added", Toast.LENGTH_SHORT).show();
+                                    public void onClick(View view) {
+                                        bottomSheetDialog2.cancel();
                                     }
                                 });
-                                Fragment newFragment = new FragmentPredefine();
-                                Bundle arguments = new Bundle();
-                                arguments.putString( "Roomname",Roomname);
-                                arguments.putString( "Switchname",text1);
-                                newFragment.setArguments(arguments);
-                                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                                transaction.replace(R.id.fragment_container,newFragment);
-                                transaction.addToBackStack(null);
-                                transaction.commit();
-                                bottomSheetDialog.cancel();
+
+                                buttonaddswitch.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        switchname= editTextaddswitch.getText().toString().trim();
+
+                                        if(TextUtils.isEmpty(text1)){
+                                            Toast.makeText(getContext(), "Enter Switchname", Toast.LENGTH_SHORT).show();
+                                        }
+                                        else{
+                                            /////////////////////////////////////////////////////////////////
+                                            //Database logic
+
+                                            if(list.contains(switchname)){
+                                                Toast.makeText(getContext(), "Switch already Exist", Toast.LENGTH_SHORT).show();
+                                            }
+                                            else{
+                                                ////////////////////////////////////////
+                                                if(f==1) {
+                                                    /////
+                                                    k = Integer.valueOf(num1);
+                                                    ++k;
+                                                    Map<String, Object> user = new HashMap<>();
+                                                    user.put("SwitchBoardumber",num1);
+                                                    user.put("combination","4*1");
+                                                    user.put("type","SwitchBoard");
+                                                    switchname= editTextaddswitch.getText().toString().trim();
+                                                    FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(switchname).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            Toast.makeText(getContext(), "Room added", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
+
+                                                        num1=String.valueOf(k);
+                                                        FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child("number").setValue(num1).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                            @Override
+                                                            public void onSuccess(Void aVoid) {
+                                                                 Toast.makeText(getContext(), "Room added", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        });
+                                                        Fragment newFragment = new FragmentPredefine();
+                                                        Bundle arguments = new Bundle();
+                                                        arguments.putString( "Roomname",Roomname);
+                                                        arguments.putString( "Switchname",switchname);
+                                                        newFragment.setArguments(arguments);
+                                                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                                                        transaction.replace(R.id.fragment_container,newFragment);
+                                                        transaction.addToBackStack(null);
+                                                        transaction.commit();
+                                                        bottomSheetDialog2.cancel();
+
+
+                                                    /////
+                                                }
+                                                else if(f==2){
+                                                    /////
+                                                    k = Integer.valueOf(num1);
+                                                    ++k;
+                                                    Map<String, Object> user = new HashMap<>();
+                                                    user.put("SwitchBoardumber",num1);
+                                                    user.put("combination","4*2");
+                                                    user.put("type","SwitchBoard");
+                                                    switchname= editTextaddswitch.getText().toString().trim();
+                                                      FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(switchname).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            // Toast.makeText(getContext(), "Room added", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
+                                                        num1=String.valueOf(k);
+                                                        FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child("number").setValue(num1).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                            @Override
+                                                            public void onSuccess(Void aVoid) {
+                                                                //  Toast.makeText(getContext(), "Room added", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        });
+                                                        Fragment newFragment = new FragmentPredefine();
+                                                        Bundle arguments = new Bundle();
+                                                        arguments.putString( "Roomname",Roomname);
+                                                        arguments.putString( "Switchname",switchname);
+                                                        newFragment.setArguments(arguments);
+                                                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                                                        transaction.replace(R.id.fragment_container,newFragment);
+                                                        transaction.addToBackStack(null);
+                                                        transaction.commit();
+                                                        bottomSheetDialog2.cancel();
+
+
+                                                } else if(f==3){
+                                                    /////
+                                                    k = Integer.valueOf(num1);
+                                                    ++k;
+                                                    Map<String, Object> user = new HashMap<>();
+                                                    user.put("SwitchBoardumber",num1);
+                                                    user.put("combination","2*1");
+                                                    user.put("type","SwitchBoard");
+                                                    switchname= editTextaddswitch.getText().toString().trim();
+                                                     FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(switchname).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            // Toast.makeText(getContext(), "Room added", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
+                                                        num1=String.valueOf(k);
+                                                        FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child("number").setValue(num1).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                            @Override
+                                                            public void onSuccess(Void aVoid) {
+                                                                //   Toast.makeText(getContext(), "Room added", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        });
+                                                        Fragment newFragment = new FragmentPredefine();
+                                                        Bundle arguments = new Bundle();
+                                                        arguments.putString( "Roomname",Roomname);
+                                                        arguments.putString( "Switchname",switchname);
+                                                        newFragment.setArguments(arguments);
+                                                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                                                        transaction.replace(R.id.fragment_container,newFragment);
+                                                        transaction.addToBackStack(null);
+                                                        transaction.commit();
+                                                        bottomSheetDialog2.cancel();
+
+                                                } else if(f==4){
+                                                    /////
+                                                    k = Integer.valueOf(num1);
+                                                    ++k;
+                                                    Map<String, Object> user = new HashMap<>();
+                                                    user.put("SwitchBoardumber",num1);
+                                                    user.put("combination","custom");
+                                                    user.put("type","SwitchBoard");
+                                                    switchname= editTextaddswitch.getText().toString().trim();
+                                                     FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(switchname).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            // Toast.makeText(getContext(), "Room added", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
+
+                                                        FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child("number").setValue(num1).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                            @Override
+                                                            public void onSuccess(Void aVoid) {
+                                                                //   Toast.makeText(getContext(), "Room added", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        });
+                                                        Fragment newFragment = new FragmentPredefine();
+                                                        Bundle arguments = new Bundle();
+                                                        arguments.putString( "Roomname",Roomname);
+                                                        arguments.putString( "Switchname",switchname);
+                                                        newFragment.setArguments(arguments);
+                                                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                                                        transaction.replace(R.id.fragment_container,newFragment);
+                                                        transaction.addToBackStack(null);
+                                                        transaction.commit();
+                                                        bottomSheetDialog2.cancel();
+
+
+                                                }
+
+
+                                                ////////////////////////////////////////////////////////////////
+                                            }
+
+                                            }
+
+                                    }
+                                });
+
+                                ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                ///////////////////Important
+
+                                ////////////////////////////////////////////
+
+                            }
+                            else
+                            {
+                                Toast.makeText(getContext(), "Wrong Key", Toast.LENGTH_SHORT).show();
                             }
 
                         }
+
 
 
                     }
@@ -398,6 +466,48 @@ public class FragmentSwitchboard extends DialogFragment {
 
 
 
+    }
+
+    public void dbchange(){
+        DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname);
+        itemsRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                String s1 = dataSnapshot.getKey();
+               // Toast.makeText(getContext(),s1, Toast.LENGTH_SHORT).show();
+                if(s1.equals("number")||s1.equals("roomtype")||s1.equals("")) {
+
+                }
+                else
+                {
+                    list.add(s1);
+                }
+
+
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
 
