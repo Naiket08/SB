@@ -150,10 +150,10 @@ if(category.equals("Light")) {
                                                 if(s6.equals("Light")) {
                                                     categoryname.add(s5);
                                                     if(s7.equals("on")){
-                                                        categorytype.add(R.drawable.powerbuttongreen);
+                                                        categorytype.add(R.drawable.powergreen);
                                                     }
                                                     else {
-                                                        categorytype.add(R.drawable.powerbuttonred);
+                                                        categorytype.add(R.drawable.powerred);
                                                     }
                                                     customAdapter2.notifyDataSetChanged();
                                                 }
@@ -247,10 +247,10 @@ if(category.equals("Light")) {
                                                 if(s6.equals("Light")) {
                                                     categoryname2.add(s5);
                                                     if(s7.equals("on")){
-                                                        categorytype2.add(R.drawable.powerbuttongreen);
+                                                        categorytype2.add(R.drawable.powergreen);
                                                     }
                                                     else {
-                                                        categorytype2.add(R.drawable.powerbuttonred);
+                                                        categorytype2.add(R.drawable.powerred);
                                                     }
                                                     customAdapter3.notifyDataSetChanged();
                                                 }
@@ -347,10 +347,10 @@ if(category.equals("Light")) {
                                                 if(s6.equals("Light")) {
                                                     categoryname3.add(s5);
                                                     if(s7.equals("on")){
-                                                        categorytype3.add(R.drawable.powerbuttongreen);
+                                                        categorytype3.add(R.drawable.powergreen);
                                                     }
                                                     else {
-                                                        categorytype3.add(R.drawable.powerbuttonred);
+                                                        categorytype3.add(R.drawable.powerred);
                                                     }
                                                     customAdapter4.notifyDataSetChanged();
                                                 }
@@ -446,10 +446,10 @@ if(category.equals("Light")) {
                                                 if(s6.equals("Light")) {
                                                     categoryname4.add(s5);
                                                     if(s7.equals("on")){
-                                                        categorytype4.add(R.drawable.powerbuttongreen);
+                                                        categorytype4.add(R.drawable.powergreen);
                                                     }
                                                     else {
-                                                        categorytype4.add(R.drawable.powerbuttonred);
+                                                        categorytype4.add(R.drawable.powerred);
                                                     }
                                                     customAdapter5.notifyDataSetChanged();
                                                 }
@@ -611,10 +611,10 @@ if(category.equals("Light")) {
                                                         if(s6.equals("Fan")) {
                                                             categoryname.add(s5);
                                                             if(s7.equals("on")){
-                                                                categorytype.add(R.drawable.powerbuttongreen);
+                                                                categorytype.add(R.drawable.powergreen);
                                                             }
                                                             else {
-                                                                categorytype.add(R.drawable.powerbuttonred);
+                                                                categorytype.add(R.drawable.powerred);
                                                             }
                                                             customAdapter2.notifyDataSetChanged();
                                                         }
@@ -709,10 +709,10 @@ if(category.equals("Light")) {
                                                         if(s6.equals("Fan")) {
                                                             categoryname2.add(s5);
                                                             if(s7.equals("on")){
-                                                                categorytype2.add(R.drawable.powerbuttongreen);
+                                                                categorytype2.add(R.drawable.powergreen);
                                                             }
                                                             else {
-                                                                categorytype2.add(R.drawable.powerbuttonred);
+                                                                categorytype2.add(R.drawable.powerred);
                                                             }
                                                             customAdapter3.notifyDataSetChanged();
                                                         }
@@ -809,10 +809,10 @@ if(category.equals("Light")) {
                                                         if(s6.equals("Fan")) {
                                                             categoryname3.add(s5);
                                                             if(s7.equals("on")){
-                                                                categorytype3.add(R.drawable.powerbuttongreen);
+                                                                categorytype3.add(R.drawable.powergreen);
                                                             }
                                                             else {
-                                                                categorytype3.add(R.drawable.powerbuttonred);
+                                                                categorytype3.add(R.drawable.powerred);
                                                             }
                                                             customAdapter4.notifyDataSetChanged();
                                                         }
@@ -908,10 +908,10 @@ if(category.equals("Light")) {
                                                         if(s6.equals("Fan")) {
                                                             categoryname4.add(s5);
                                                             if(s7.equals("on")){
-                                                                categorytype4.add(R.drawable.powerbuttongreen);
+                                                                categorytype4.add(R.drawable.powergreen);
                                                             }
                                                             else {
-                                                                categorytype4.add(R.drawable.powerbuttonred);
+                                                                categorytype4.add(R.drawable.powerred);
                                                             }
                                                             customAdapter5.notifyDataSetChanged();
                                                         }
@@ -1073,10 +1073,10 @@ else if(category.equals("Appliance")) {
                                                 if(s6.equals("Appliance")) {
                                                     categoryname.add(s5);
                                                     if(s7.equals("on")){
-                                                        categorytype.add(R.drawable.powerbuttongreen);
+                                                        categorytype.add(R.drawable.powergreen);
                                                     }
                                                     else {
-                                                        categorytype.add(R.drawable.powerbuttonred);
+                                                        categorytype.add(R.drawable.powerred);
                                                     }
                                                     customAdapter2.notifyDataSetChanged();
                                                 }
@@ -1174,10 +1174,10 @@ else if(category.equals("Appliance")) {
                                                 if(s6.equals("Appliance")) {
                                                     categoryname2.add(s5);
                                                     if(s7.equals("on")){
-                                                        categorytype2.add(R.drawable.powerbuttongreen);
+                                                        categorytype2.add(R.drawable.powergreen);
                                                     }
                                                     else {
-                                                        categorytype2.add(R.drawable.powerbuttonred);
+                                                        categorytype2.add(R.drawable.powerred);
                                                     }
                                                     customAdapter3.notifyDataSetChanged();
                                                 }
@@ -1274,10 +1274,10 @@ else if(category.equals("Appliance")) {
                                                 if(s6.equals("Appliance")) {
                                                     categoryname3.add(s5);
                                                     if(s7.equals("on")){
-                                                        categorytype3.add(R.drawable.powerbuttongreen);
+                                                        categorytype3.add(R.drawable.powergreen);
                                                     }
                                                     else {
-                                                        categorytype3.add(R.drawable.powerbuttonred);
+                                                        categorytype3.add(R.drawable.powerred);
                                                     }
                                                     customAdapter4.notifyDataSetChanged();
                                                 }
@@ -1373,10 +1373,10 @@ else if(category.equals("Appliance")) {
                                                 if(s6.equals("Appliance")) {
                                                     categoryname4.add(s5);
                                                     if(s7.equals("on")){
-                                                        categorytype4.add(R.drawable.powerbuttongreen);
+                                                        categorytype4.add(R.drawable.powergreen);
                                                     }
                                                     else {
-                                                        categorytype4.add(R.drawable.powerbuttonred);
+                                                        categorytype4.add(R.drawable.powerred);
                                                     }
                                                     customAdapter5.notifyDataSetChanged();
                                                 }

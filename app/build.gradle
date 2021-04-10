@@ -41,7 +41,9 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
+    //For Dailview Knob
+    implementation 'com.facebook.rebound:rebound:0.3.8'
+    implementation 'com.github.BeppiMenozzi:BalloonPopup:0.2.8'
     //sdp and ssp
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'com.intuit.ssp:ssp-android:1.0.6'

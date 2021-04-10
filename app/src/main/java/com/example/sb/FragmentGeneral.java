@@ -134,29 +134,29 @@ public class FragmentGeneral extends Fragment {
                                             if(s3.contains("Light")){
                                                 GeneralType.add(R.drawable.ic_idea);
                                                 if(s6.equals("on")){
-                                                   GeneralType2.add(R.drawable.powerbuttongreen);
+                                                   GeneralType2.add(R.drawable.powergreen);
                                                 }
                                                 else {
-                                                    GeneralType2.add(R.drawable.powerbuttonred);
+                                                    GeneralType2.add(R.drawable.powerred);
                                                 }
                                                 // Toast.makeText(getContext(),"Entered inside", Toast.LENGTH_SHORT).show();
                                             }
                                             else  if(s3.contains("Fan")){
                                                 GeneralType.add(R.drawable.fan_icon);
                                                 if(s6.equals("on")){
-                                                    GeneralType2.add(R.drawable.powerbuttongreen);
+                                                    GeneralType2.add(R.drawable.powergreen);
                                                 }
                                                 else {
-                                                    GeneralType2.add(R.drawable.powerbuttonred);
+                                                    GeneralType2.add(R.drawable.powerred);
                                                 }
                                             }
                                             else  if(s3.equals("Appliance")) {
                                                 GeneralType.add(R.drawable.appliances_icon);
                                                 if(s6.equals("on")){
-                                                    GeneralType2.add(R.drawable.powerbuttongreen);
+                                                    GeneralType2.add(R.drawable.powergreen);
                                                 }
                                                 else {
-                                                    GeneralType2.add(R.drawable.powerbuttonred);
+                                                    GeneralType2.add(R.drawable.powerred);
                                                 }
                                             }
                                             //Toast.makeText(getContext(), s1, Toast.LENGTH_SHORT).show();

@@ -21,7 +21,7 @@
         android:id="@+id/imageViewInnerSwitchboardInfo"
         android:layout_width="@dimen/_20sdp"
         android:layout_height="@dimen/_20sdp"
-        android:background="@drawable/star"
+        android:background="@drawable/favoriteselect"
         app:layout_constraintEnd_toStartOf="@id/imageViewInnerSwitchboard1"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginEnd="@dimen/_6sdp"

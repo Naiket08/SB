@@ -92,6 +92,7 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
             user.put("mode","off");
             user.put("number",q);
             user.put("category","Light");
+            user.put("Favorite","false");
             db.setValue(user);
             o++;
         }
@@ -106,6 +107,7 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
                 user1.put("mode","off");
                 user1.put("number",q1);
                 user1.put("category","Fan");
+                user1.put("Favorite","false");
                 user1.put("speed","0");
                 db.setValue(user1);
                 p++;
@@ -188,6 +190,7 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
                                         user.put("mode","off");
                                         user.put("number",q);
                                         user.put("category","Light");
+                                        user.put("Favorite","false");
                                         holder.imageviewmain1.setImageResource(R.drawable.idea);
                                         db2.setValue(user);
                                         break;
@@ -201,6 +204,7 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
                                         user1.put("mode","off");
                                         user1.put("number",q2);
                                         user1.put("category","Fan");
+                                        user1.put("Favorite","false");
                                         user1.put("speed","0");
                                         holder.imageviewmain1.setImageResource(R.drawable.fan_icon);
                                         db2.setValue(user1);
@@ -216,6 +220,7 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
                                         user3.put("mode","off");
                                         user3.put("number",q3);
                                         user3.put("category","Appliance");
+                                        user3.put("Favorite","false");
                                         holder.imageviewmain1.setImageResource(R.drawable.appliances_icon);
                                         db2.setValue(user3);
                                         m++;

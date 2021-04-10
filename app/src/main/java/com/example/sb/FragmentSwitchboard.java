@@ -283,7 +283,7 @@ public class FragmentSwitchboard extends DialogFragment {
                                     public void onClick(View view) {
                                         switchname= editTextaddswitch.getText().toString().trim();
 
-                                        if(TextUtils.isEmpty(text1)){
+                                        if(TextUtils.isEmpty(switchname)){
                                             Toast.makeText(getContext(), "Enter Switchname", Toast.LENGTH_SHORT).show();
                                         }
                                         else{

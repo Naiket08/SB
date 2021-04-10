@@ -124,7 +124,7 @@ public class CustomAdapterGeneral extends RecyclerView.Adapter<CustomAdapterGene
                                                                             @Override
                                                                             public void onSuccess(Void aVoid) {
                                                                                 Toast.makeText(context, "OFF", Toast.LENGTH_SHORT).show();
-                                                                                holder.imageViewGeneral1.setImageResource(R.drawable.powerbuttonred);
+                                                                                holder.imageViewGeneral1.setImageResource(R.drawable.powerred);
                                                                             }
                                                                         });
                                                                         db2.child("mode").setValue("off").addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -140,7 +140,7 @@ public class CustomAdapterGeneral extends RecyclerView.Adapter<CustomAdapterGene
                                                                             @Override
                                                                             public void onSuccess(Void aVoid) {
                                                                                 Toast.makeText(context, "ON", Toast.LENGTH_SHORT).show();
-                                                                                holder.imageViewGeneral1.setImageResource(R.drawable.powerbuttongreen);
+                                                                                holder.imageViewGeneral1.setImageResource(R.drawable.powergreen);
                                                                             }
                                                                         });
                                                                         db2.child("mode").setValue("on").addOnSuccessListener(new OnSuccessListener<Void>() {

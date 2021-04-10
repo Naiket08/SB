@@ -36,10 +36,10 @@ public class FragmentInnerSwitchBoard extends Fragment {
 
     TextView textViewRoomNo;
     ImageView imageViewBrownJacket,imageViewWhiteJacket,imageViewAppliances,imageViewBulb;
-    DialView customdial;
+    Knob customdial;
     Button speedcontrol;
 
-    TextView textViewSwitchBoard1;
+    TextView textViewSwitchBoard1,textviewdialview;
     Button buttonLight1,buttonLight2,buttonFan,buttonLight3,buttonSwitchBoardApppliance;
     public String Roomname,text3,fanspeed,textmain;
     ////////////////////////////////////
@@ -53,6 +53,7 @@ public class FragmentInnerSwitchBoard extends Fragment {
     public ArrayList<String> LightName = new ArrayList<String>();
     public ArrayList<Integer> LightType = new ArrayList<Integer>();
     public ArrayList<Integer> LightType2 = new ArrayList<Integer>();
+    public ArrayList<Integer> LightType3 = new ArrayList<Integer>();
 
 
     @Nullable
@@ -68,6 +69,8 @@ public class FragmentInnerSwitchBoard extends Fragment {
 ///////
         textViewRoomNo = (TextView)view.findViewById(R.id.textViewRoomNo);
         textViewRoomNo.setText(Roomname);
+        textviewdialview=(TextView)view.findViewById(R.id.textviewdialview);
+
         imageViewBrownJacket = (ImageView)view.findViewById(R.id.imageViewBrownJacket);
         imageViewWhiteJacket = (ImageView)view.findViewById(R.id.imageViewWhiteJacket);
         imageViewBulb = (ImageView)view.findViewById(R.id.imageViewBulb);
@@ -81,15 +84,24 @@ public class FragmentInnerSwitchBoard extends Fragment {
         buttonLight3 = (Button)view.findViewById(R.id.buttonLight3);
         buttonFan = (Button)view.findViewById(R.id.buttonFan);
         speedcontrol=(Button)view.findViewById(R.id.speedcontrol);
-        customdial=(DialView)view.findViewById(R.id.dialView);
+        customdial=(Knob) view.findViewById(R.id.dialView);
 
-
+        ///For knob in Fan
+        textviewdialview.setText(Integer.toString(customdial.getState()));
+        customdial.setOnStateChanged(new Knob.OnStateChanged() {
+            @Override
+            public void onState(int state) {
+                textviewdialview.setText(Integer.toString(state));
+            }
+        });
+        /////////////////////////////////////////////////////////////
         buttonSwitchBoardApppliance = (Button)view.findViewById(R.id.buttonSwitchBoardAppliance);
-        CustomAdapterInnerSwitchboard customAdapter2 = new CustomAdapterInnerSwitchboard(getActivity(),LightName,LightType,LightType2,mAuth,Roomname,text3,imageViewBrownJacket,imageViewWhiteJacket,imageViewAppliances,imageViewBulb,customdial,speedcontrol);
-        if((LightName!=null&&LightType!=null&&LightType2!=null&&LightName.size()>0&&LightType.size()>0&&LightType2.size()>0)){
+        CustomAdapterInnerSwitchboard customAdapter2 = new CustomAdapterInnerSwitchboard(getActivity(),LightName,LightType,LightType2,LightType3,mAuth,Roomname,text3,textviewdialview,imageViewBrownJacket,imageViewWhiteJacket,imageViewAppliances,imageViewBulb,customdial,speedcontrol);
+        if((LightName!=null&&LightType!=null&&LightType2!=null&&LightType3!=null&&LightName.size()>0&&LightType.size()>0&&LightType2.size()>0&&LightType3.size()>0)){
             LightName.clear();
             LightType.clear();
             LightType2.clear();
+            LightType3.clear();
         }
 
         //////////////////////////////////////////////////
@@ -116,34 +128,56 @@ public class FragmentInnerSwitchBoard extends Fragment {
                     LightName.add(s1);
                     String s2 = dataSnapshot.child("category").getValue(String.class);
                     String s3 = dataSnapshot.child("mode").getValue(String.class);
+                    String s4 = dataSnapshot.child("Favorite").getValue(String.class);
                       //Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();
                     if(s2.equals("Light")){
                         LightType.add(R.drawable.ic_idea);
                         if(s3.equals("on")){
-                            LightType2.add(R.drawable.powerbuttongreen);
+                            LightType2.add(R.drawable.powergreen);
                         }
                         else {
-                            LightType2.add(R.drawable.powerbuttonred);
+                            LightType2.add(R.drawable.powerred);
+                        }
+                        ////////////For favorite
+                        if(s4.equals("false")){
+                            LightType3.add(R.drawable.favoriteselect);
+                        }
+                        else {
+                            LightType3.add(R.drawable.favoriteadded);
                         }
                        // Toast.makeText(getContext(),"Entered inside", Toast.LENGTH_SHORT).show();
                     }
                     else  if(s2.equals("Fan")){
                         LightType.add(R.drawable.fan_icon);
                         if(s3.equals("on")){
-                            LightType2.add(R.drawable.powerbuttongreen);
+                            LightType2.add(R.drawable.powergreen);
                         }
                         else {
-                            LightType2.add(R.drawable.powerbuttonred);
+                            LightType2.add(R.drawable.powerred);
+                        }
+                        ////////////For favorite
+                        if(s4.equals("false")){
+                            LightType3.add(R.drawable.favoriteselect);
+                        }
+                        else {
+                            LightType3.add(R.drawable.favoriteadded);
                         }
 
                     }
                     else  if(s2.equals("Appliance")) {
                         LightType.add(R.drawable.appliances_icon);
                         if(s3.equals("on")){
-                            LightType2.add(R.drawable.powerbuttongreen);
+                            LightType2.add(R.drawable.powergreen);
                         }
                         else {
-                            LightType2.add(R.drawable.powerbuttonred);
+                            LightType2.add(R.drawable.powerred);
+                        }
+                        ////////////For favorite
+                        if(s4.equals("false")){
+                            LightType3.add(R.drawable.favoriteselect);
+                        }
+                        else {
+                            LightType3.add(R.drawable.favoriteadded);
                         }
                     }
                     //Toast.makeText(getContext(), s1, Toast.LENGTH_SHORT).show();
