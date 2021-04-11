@@ -106,15 +106,15 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
                     imageViewAppliances.setVisibility(View.INVISIBLE);
                     customdial.setVisibility(View.VISIBLE);
                     imageViewWhiteJacket.setVisibility(View.VISIBLE);
-                    speedcontrol.setVisibility(View.VISIBLE);
 
 
-                    speedcontrol.setOnClickListener(new View.OnClickListener() {
+                    customdial.setOnStateChanged(new Knob.OnStateChanged() {
                         @Override
-                        public void onClick(View view) {
+                        public void onState(int state) {
+                            textviewdialview.setText(Integer.toString(state));
                             fanspeed=Integer.toString(customdial.getState());
-                        //customdial.fancontroller;
-                           Toast.makeText(context, fanspeed, Toast.LENGTH_SHORT).show();
+                            //customdial.fancontroller;
+                            //Toast.makeText(context, fanspeed, Toast.LENGTH_SHORT).show();
 
                             mAuth = FirebaseAuth.getInstance();
                             String text = holder.textViewInnerSwitchboardSB1.getText().toString();
@@ -165,7 +165,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
                                                                 db.child("speed").setValue(fanspeed).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                     @Override
                                                                     public void onSuccess(Void aVoid) {
-                                                                        Toast.makeText(context, "Speed Changed", Toast.LENGTH_SHORT).show();
+                                                                       // Toast.makeText(context, "Speed Changed", Toast.LENGTH_SHORT).show();
                                                                     }
                                                                 });
 
@@ -259,6 +259,9 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
 
 
                             ////////////////////////////////////////////////////////////////////////////////////
+
+
+
                         }
                     });
 
@@ -321,52 +324,66 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
                 db.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        db.child("Favorite").setValue("true");
-                         x = dataSnapshot.child("name").getValue(String.class);
-                        HashMap<String,Object> values = new HashMap<>();
-                        values.put("name",x);
-                        values.put("mode","on");
-                        FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("favorites").child(Roomname).child(text3).child(s3).setValue(values).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Handler handle = new Handler() {
-                                    @Override
-                                    public void handleMessage(Message msg) {
-                                        super.handleMessage(msg);
-                                        progressDoalog.incrementProgressBy(5);
-                                    }
-                                };
-                                progressDoalog = new ProgressDialog(context);
-                                progressDoalog.setMax(100);
-                                progressDoalog.setTitle("Favorite is Adding" +
-                                        "" +
-                                        "" +
-                                        "");
-                                progressDoalog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-                                progressDoalog.show();
-                                new Thread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        try {
-                                            while (progressDoalog.getProgress() <= progressDoalog
-                                                    .getMax()) {
-                                                Thread.sleep(50);
-                                                handle.sendMessage(handle.obtainMessage());
-                                                if (progressDoalog.getProgress() == progressDoalog
-                                                        .getMax()) {
-                                                    progressDoalog.dismiss();
-                                                }
-                                            }
-                                        } catch (Exception e) {
-                                            e.printStackTrace();
+
+                        String maincheck =dataSnapshot.child("Favorite").getValue(String.class);
+
+                        if(maincheck.equals("false")) {
+                            db.child("Favorite").setValue("true");
+                            String modecheck=dataSnapshot.child("mode").getValue(String.class);
+                            x = dataSnapshot.child("name").getValue(String.class);
+                            HashMap<String, Object> values = new HashMap<>();
+                            values.put("name", x);
+                            values.put("mode", modecheck);
+                            FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("favorites").child(Roomname).child(text3).child(s3).setValue(values).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Handler handle = new Handler() {
+                                        @Override
+                                        public void handleMessage(Message msg) {
+                                            super.handleMessage(msg);
+                                            progressDoalog.incrementProgressBy(5);
                                         }
-                                    }
-                                }).start();
+                                    };
+                                    progressDoalog = new ProgressDialog(context);
+                                    progressDoalog.setMax(100);
+                                    progressDoalog.setTitle("Favorite is Adding" +
+                                            "" +
+                                            "" +
+                                            "");
+                                    progressDoalog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                                    progressDoalog.show();
+                                    new Thread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            try {
+                                                while (progressDoalog.getProgress() <= progressDoalog
+                                                        .getMax()) {
+                                                    Thread.sleep(50);
+                                                    handle.sendMessage(handle.obtainMessage());
+                                                    if (progressDoalog.getProgress() == progressDoalog
+                                                            .getMax()) {
+                                                        progressDoalog.dismiss();
+                                                    }
+                                                }
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    }).start();
 
-                                holder.imageViewInnerSwitchboardInfo.setImageResource(R.drawable.favoriteadded);
+                                    holder.imageViewInnerSwitchboardInfo.setImageResource(R.drawable.favoriteadded);
 
-                            }
-                        });
+                                }
+                            });
+                        }
+                        else{
+                            db.child("Favorite").setValue("false");
+                            DatabaseReference db2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("favorites").child(Roomname).child(text3).child(s3);
+                            db2.removeValue();
+                            holder.imageViewInnerSwitchboardInfo.setImageResource(R.drawable.favoriteselect);
+
+
+                        }
                     }
 
                     @Override
@@ -377,6 +394,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
 
             }
         });
+
         ////Info button
         holder.imageViewInnerSwitchboard1.setOnClickListener(new View.OnClickListener() {
             @Override

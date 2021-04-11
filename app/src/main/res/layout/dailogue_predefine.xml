@@ -47,6 +47,8 @@
             android:fontFamily="@font/muli"
             android:hint="Type here"
             android:paddingStart="@dimen/_10sdp"
+            android:inputType="textPersonName"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:maxLines="1"

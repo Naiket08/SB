@@ -136,7 +136,7 @@ public class FragmentRoomsSecond  extends DialogFragment {
                             FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("User Details").child("Roomfragment").setValue("false").addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Toast.makeText(getContext(), "Room added", Toast.LENGTH_SHORT).show();
+                                  //  Toast.makeText(getContext(), "Room added", Toast.LENGTH_SHORT).show();
                                 }
                             });
 
@@ -207,7 +207,7 @@ public class FragmentRoomsSecond  extends DialogFragment {
                             FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("User Details").child("Roomfragment").setValue("false").addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Toast.makeText(getContext(), "Room added", Toast.LENGTH_SHORT).show();
+                                  //  Toast.makeText(getContext(), "Room added", Toast.LENGTH_SHORT).show();
                                 }
                             });
                             Fragment newFragment = new FragmentSwitchboard();
@@ -279,7 +279,7 @@ public class FragmentRoomsSecond  extends DialogFragment {
                             FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("User Details").child("Roomfragment").setValue("false").addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Toast.makeText(getContext(), "Room added", Toast.LENGTH_SHORT).show();
+                                 //   Toast.makeText(getContext(), "Room added", Toast.LENGTH_SHORT).show();
                                 }
                             });
                             Fragment newFragment = new FragmentSwitchboard();
@@ -348,7 +348,7 @@ public class FragmentRoomsSecond  extends DialogFragment {
                             FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("User Details").child("Roomfragment").setValue("false").addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Toast.makeText(getContext(), "Room added", Toast.LENGTH_SHORT).show();
+                                 //   Toast.makeText(getContext(), "Room added", Toast.LENGTH_SHORT).show();
                                 }
                             });
                             Fragment newFragment = new FragmentSwitchboard();

@@ -252,7 +252,19 @@ public class FragmentGeneral extends Fragment {
         ////////////////////////////////////////////////////////////////////////////////////////////
 
 
+        buttonAddRooms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                Fragment newFragment = new FragmentMyRoom();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                transaction.replace(R.id.fragment_container,newFragment);
+                transaction.addToBackStack(null);
+
+                transaction.commit();
+            }
+        });
 
         buttonCategory.setOnClickListener(new View.OnClickListener() {
             @Override
