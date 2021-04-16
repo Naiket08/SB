@@ -110,7 +110,7 @@ public class FragmentRoomInner extends Fragment{
               //  Toast.makeText(getContext(),s3, Toast.LENGTH_SHORT).show();
 
 
-                if(s1.equals("number")||s1.equals("roomtype")||s1.equals("")) {
+                if(s1.equals("number")||s1.equals("roomtype")||s1.equals("")||s1.equals("name")) {
 
                 }
                 else

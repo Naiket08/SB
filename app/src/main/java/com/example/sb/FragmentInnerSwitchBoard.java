@@ -118,7 +118,7 @@ public class FragmentInnerSwitchBoard extends Fragment {
 
                 String s1 = dataSnapshot.getKey();
                // Toast.makeText(getContext(),s1, Toast.LENGTH_SHORT).show();
-                if(s1.equals("number")||s1.equals("roomtype")||s1.equals("")||s1.equals("SwitchBoardumber")||s1.equals("combination")||s1.equals("type")) {
+                if(s1.equals("number")||s1.equals("roomtype")||s1.equals("")||s1.equals("name")||s1.equals("SwitchBoardumber")||s1.equals("combination")||s1.equals("type")) {
 
                 }
                 else

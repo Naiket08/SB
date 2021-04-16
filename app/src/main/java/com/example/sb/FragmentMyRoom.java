@@ -53,6 +53,7 @@ public class FragmentMyRoom extends Fragment {
     public String rtext,rimg;
 //////////////////////////////////////
     public ArrayList<String> roomNames = new ArrayList<String>();;
+    public ArrayList<String> roomNames2 = new ArrayList<String>();;
     public ArrayList<Integer> roomImages = new ArrayList<Integer>();
 
     @Nullable
@@ -61,9 +62,10 @@ public class FragmentMyRoom extends Fragment {
         View view = inflater.inflate(R.layout.fragment_my_rooms,container,false);
 
         ArrayList dynamicroomname = new ArrayList<>();
-        CustomAdapter customAdapter = new CustomAdapter(getActivity(),roomNames,roomImages);
-        if((roomNames!=null&&roomImages!=null&&roomNames.size()>0&&roomImages.size()>0)){
+        CustomAdapter customAdapter = new CustomAdapter(getActivity(),roomNames,roomNames2,roomImages,mAuth);
+        if((roomNames!=null&&roomNames2!=null&&roomImages!=null&&roomNames.size()>0&&roomNames2.size()>0&&roomImages.size()>0)){
             roomNames.clear();
+            roomNames2.clear();
             roomImages.clear();
         }
 
@@ -75,9 +77,11 @@ public class FragmentMyRoom extends Fragment {
        itemsRef.addChildEventListener(new ChildEventListener() {
            @Override
            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
                String s1 = dataSnapshot.getKey();
-               roomNames.add(s1);
+               roomNames2.add(s1);
+               String s3 = dataSnapshot.child("name").getValue(String.class);
+               //Toast.makeText(getContext(), s3, Toast.LENGTH_SHORT).show();
+               roomNames.add(s3);
                String s2 =dataSnapshot.child("roomtype").getValue(String.class);
                if(s2.equals("Bedroom")){
                    roomImages.add(R.drawable.double_bed_icon);

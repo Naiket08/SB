@@ -46,7 +46,7 @@
             android:background="@drawable/editboxbedrroom"
             android:fontFamily="@font/muli"
             android:inputType="textPersonName"
-            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 "
             android:hint="Type here"
             android:paddingStart="@dimen/_10sdp"
             android:maxLines="1"

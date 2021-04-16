@@ -116,6 +116,7 @@ public class FragmentRoomsSecond  extends DialogFragment {
                         Map<String, Object> user = new HashMap<>();
                         user.put("roomtype","Bedroom");
                         user.put("number","1");
+                        user.put("name",roomname);
                         /////
 
                         roompref = getContext().getSharedPreferences("roomPreference", Context.MODE_PRIVATE);
@@ -191,6 +192,7 @@ public class FragmentRoomsSecond  extends DialogFragment {
                         Map<String, Object> user = new HashMap<>();
                         user.put("roomtype","Bathroom");
                         user.put("number","1");
+                        user.put("name",roomname);
 
                         /////
 
@@ -261,6 +263,7 @@ public class FragmentRoomsSecond  extends DialogFragment {
                         Map<String, Object> user = new HashMap<>();
                         user.put("roomtype","Kitchen");
                         user.put("number","1");
+                        user.put("name",roomname);
 
 
                         /////
@@ -332,6 +335,7 @@ public class FragmentRoomsSecond  extends DialogFragment {
                         Map<String, Object> user = new HashMap<>();
                         user.put("roomtype","Dinning Room");
                         user.put("number","1");
+                        user.put("name",roomname);
                         /////
 
 
