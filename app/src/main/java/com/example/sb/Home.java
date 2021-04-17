@@ -4,8 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -61,6 +64,7 @@ public class Home extends AppCompatActivity {
     String userId;
     String status="false";
     public String roomcheck;
+    Fragment fragment ;
     ////
 
     String UserEmail;
@@ -197,7 +201,7 @@ public class Home extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment fragment = null;
+                 fragment = null;
 
                 switch (item.getItemId()){
                     case R.id.navigation_general:
@@ -255,7 +259,24 @@ void  recheck(){
             drawer.closeDrawer(navigationView);
         }
         else{
-            super.onBackPressed();
+            int fragments = getSupportFragmentManager().getBackStackEntryCount();
+            if (fragments == 0) {
+
+                    new AlertDialog.Builder(this)
+                            .setMessage("Are you sure you want to exit?")
+                            .setCancelable(false)
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    Home.super.onBackPressed();
+                                }
+                            })
+                            .setNegativeButton("No", null)
+                            .show();
+
+            }
+            else {
+                super.onBackPressed();
+            }
         }
     }
 }

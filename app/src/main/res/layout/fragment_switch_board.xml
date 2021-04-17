@@ -51,6 +51,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/llswitch1"
                     android:layout_width="@dimen/_120sdp"
                     android:layout_height="@dimen/_150sdp"
                     android:orientation="vertical"
@@ -101,6 +102,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/llswitch2"
                     android:layout_width="@dimen/_120sdp"
                     android:layout_height="@dimen/_150sdp"
                     android:orientation="vertical"
@@ -166,6 +168,7 @@
                 android:layout_marginBottom="@dimen/_50sdp">
 
                 <LinearLayout
+                    android:id="@+id/llswitch3"
                     android:layout_width="@dimen/_120sdp"
                     android:layout_height="@dimen/_150sdp"
                     android:orientation="vertical"
@@ -216,6 +219,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/llswitch4"
                     android:layout_width="@dimen/_120sdp"
                     android:layout_height="@dimen/_150sdp"
                     android:orientation="vertical"

@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -49,7 +50,7 @@ public class CustomAdapterGeneral extends RecyclerView.Adapter<CustomAdapterGene
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         // infalte the item Layout
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleview_general, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleview_general1, parent, false);
         // set the view's size, margins, paddings and layout parameters
         ViewHolder vh = new ViewHolder(v);
         return vh;
@@ -261,6 +262,16 @@ public class CustomAdapterGeneral extends RecyclerView.Adapter<CustomAdapterGene
         });
 
 
+        holder.imageViewdeleteGeneral.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+            }
+        });
+
+
 
 
     }
@@ -272,7 +283,8 @@ public class CustomAdapterGeneral extends RecyclerView.Adapter<CustomAdapterGene
     }
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // init the item view's
-       ImageView imageViewGeneral1;
+        ConstraintLayout clgeneral;
+       ImageView imageViewGeneral1,imageViewdeleteGeneral;
        ImageButton  buttongeneral1;
        EditText Edittextgeneral1;
 
@@ -283,7 +295,9 @@ public class CustomAdapterGeneral extends RecyclerView.Adapter<CustomAdapterGene
 
 
 
+            clgeneral=(ConstraintLayout)itemView.findViewById(R.id.clgeneral);
             imageViewGeneral1=(ImageView)itemView.findViewById(R.id.imageViewGeneral1);
+            imageViewdeleteGeneral=(ImageView)itemView.findViewById(R.id.imageViewdeleteGeneral);
             buttongeneral1=(ImageButton) itemView.findViewById(R.id.buttongeneral1);
             Edittextgeneral1=(EditText)itemView.findViewById(R.id.Edittextgeneral1);
 

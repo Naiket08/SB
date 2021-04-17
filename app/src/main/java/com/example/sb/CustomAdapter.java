@@ -1,6 +1,8 @@
 package com.example.sb;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -15,7 +17,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -24,6 +28,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -42,6 +47,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     Context context;
     public String s2,s3;
     EditText editTextdailogpredefine;
+    public ArrayList<String> list = new ArrayList<String>();
     public CustomAdapter(Context context, ArrayList roomNames,ArrayList roomNames2, ArrayList roomImages,FirebaseAuth mAuth) {
 
 
@@ -62,6 +68,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         mAuth = FirebaseAuth.getInstance();
+        dbchangemyroom();
         holder.name.setText(String.valueOf(roomNames.get(position)));
         holder.textviewrefence.setText(String.valueOf(roomNames2.get(position)));
 
@@ -71,7 +78,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             @Override
             public void onClick(View view) {
                 String smain= holder.textviewrefence.getText().toString().trim();
-                Toast.makeText(context, smain, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, smain, Toast.LENGTH_SHORT).show();
                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
                 View parentView = LayoutInflater.from(context).inflate(R.layout.dailogue_predefine, null);
                 //View parentView = getLayoutInflater().inflate(R.layout.dailogue_predefine, null);
@@ -111,6 +118,38 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                     }
                 });
 
+            }
+        });
+        //To delete
+        holder.imageViewRecycleViewMyRoomdelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("favorites");
+                DatabaseReference db2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms");
+                new AlertDialog.Builder(context)
+                        .setMessage("Are you sure you want to delete This?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                String mainname= holder.textviewrefence.getText().toString().trim();
+                                        if(list.contains(mainname)) {
+                                            db.child(mainname).removeValue();
+                                            db2.child(mainname).removeValue();
+                                            holder.clmyroom.setVisibility(View.GONE);
+                                            Toast.makeText(context, "Deleted Successfully", Toast.LENGTH_SHORT).show();
+
+                                        }
+                                        else
+                                        {
+                                            db2.child(mainname).removeValue();
+                                            holder.clmyroom.setVisibility(View.GONE);
+                                            Toast.makeText(context, "Deleted Successfully", Toast.LENGTH_SHORT).show();
+                                        }
+
+                            }
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
             }
         });
         holder.imageViewIconMyRoom.setOnClickListener(new View.OnClickListener() {
@@ -156,15 +195,56 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     }*/
 
 
+    public void dbchangemyroom(){
+        DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("favorites");
+        itemsRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
+                String s1 = dataSnapshot.getKey();
+                // Toast.makeText(getContext(),s1, Toast.LENGTH_SHORT).show();
+                if(s1.equals("number")||s1.equals("roomtype")||s1.equals("")||s1.equals("name")) {
+
+                }
+                else
+                {
+                    list.add(s1);
+                }
+
+
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
     public int getItemCount() {
         return roomNames.size();
     }
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // init the item view's
+        ConstraintLayout clmyroom;
         EditText name;
         TextView textviewrefence;
-        ImageView imageViewRecycleViewMyRoomEdit,imageViewIconMyRoom;
+        ImageView imageViewRecycleViewMyRoomEdit,imageViewIconMyRoom,imageViewRecycleViewMyRoomdelete;
         public ViewHolder(View itemView) {
             super(itemView);
             // get the reference of item view's
@@ -172,6 +252,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             imageViewRecycleViewMyRoomEdit = (ImageView)itemView.findViewById(R.id.imageViewRecycleViewMyRoomEdit);
             imageViewIconMyRoom = (ImageView)itemView.findViewById(R.id. imageViewIconMyRoom);
             textviewrefence=(TextView)itemView.findViewById(R.id.Textviewrefence);
+            imageViewRecycleViewMyRoomdelete=(ImageView)itemView.findViewById(R.id.imageViewRecycleViewMyRoomdelete);
+            clmyroom=(ConstraintLayout)itemView.findViewById(R.id.clmyroom);
         }
     }
 }

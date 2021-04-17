@@ -121,6 +121,7 @@ public class FragmentGeneral extends Fragment {
                                            // Toast.makeText(getContext(), s3, Toast.LENGTH_SHORT).show();
                                                     String s5 = dataSnapshot.child("name").getValue(String.class);
                                                     String s6 = dataSnapshot.child("mode").getValue(String.class);
+                                                    String s7 = dataSnapshot.child("category").getValue(String.class);
                                                  //
                                           //  Toast.makeText(getContext(),s5, Toast.LENGTH_SHORT).show();
 
@@ -131,7 +132,7 @@ public class FragmentGeneral extends Fragment {
                                                     }
 
                                                 */
-                                            if(s3.contains("Light")){
+                                            if(s7.contains("Light")){
                                                 GeneralType.add(R.drawable.ic_idea);
                                                 if(s6.equals("on")){
                                                    GeneralType2.add(R.drawable.powergreen);
@@ -141,7 +142,7 @@ public class FragmentGeneral extends Fragment {
                                                 }
                                                 // Toast.makeText(getContext(),"Entered inside", Toast.LENGTH_SHORT).show();
                                             }
-                                            else  if(s3.contains("Fan")){
+                                            else  if(s7.contains("Fan")){
                                                 GeneralType.add(R.drawable.fan_icon);
                                                 if(s6.equals("on")){
                                                     GeneralType2.add(R.drawable.powergreen);
@@ -150,7 +151,7 @@ public class FragmentGeneral extends Fragment {
                                                     GeneralType2.add(R.drawable.powerred);
                                                 }
                                             }
-                                            else  if(s3.equals("Appliance")) {
+                                            else  if(s7.equals("Appliance")) {
                                                 GeneralType.add(R.drawable.appliances_icon);
                                                 if(s6.equals("on")){
                                                     GeneralType2.add(R.drawable.powergreen);

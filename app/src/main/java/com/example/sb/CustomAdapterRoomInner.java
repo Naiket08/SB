@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -127,10 +128,30 @@ public class CustomAdapterRoomInner extends RecyclerView.Adapter<CustomAdapterRo
             }
         });
 
-        holder.roominnerbutton1.setOnClickListener(new View.OnClickListener() {
+        holder.clroominner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                     ///////////IMP
+                s6 = holder.impmain.getText().toString();
+                ///////////////IMP
+                Fragment newFragment = new FragmentInnerSwitchBoard();
+                Bundle arguments = new Bundle();
+                s3=holder.textViewRoomInnerSB1.getText().toString();
+                arguments.putString( "Roomname",Roomname1);
+                arguments.putString( "Switchname",s6);
+                arguments.putString( "Switchnamemain",s3);
+                newFragment.setArguments(arguments);
+                FragmentManager manager = ((AppCompatActivity)context).getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.fragment_container,newFragment).addToBackStack(null)
+                        .commit();
+            }
+        });
+
+        //////////////////////Repeated
+        holder.roominnerbutton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ///////////IMP
                 s6 = holder.impmain.getText().toString();
                 ///////////////IMP
                 Fragment newFragment = new FragmentInnerSwitchBoard();
@@ -212,6 +233,7 @@ public class CustomAdapterRoomInner extends RecyclerView.Adapter<CustomAdapterRo
     }
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // init the item view's
+        ConstraintLayout clroominner;
        ImageView imageViewRoomInnerInfo,imageViewRoomInnerEditSB;
        TextView textViewRoomInnerSBType,impmain;
         EditText textViewRoomInnerSB1;
@@ -225,6 +247,7 @@ public class CustomAdapterRoomInner extends RecyclerView.Adapter<CustomAdapterRo
             textViewRoomInnerSBType=(TextView)itemView.findViewById(R.id.textViewRoomInnerSBType);
             roominnerbutton1=(ImageButton)itemView.findViewById(R.id.roominnerbutton1);
             impmain=(TextView)itemView.findViewById(R.id.impmain);
+            clroominner=(ConstraintLayout)itemView.findViewById(R.id.clroominner);
 
 
         }

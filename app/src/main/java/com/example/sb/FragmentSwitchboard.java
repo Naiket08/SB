@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,6 +50,7 @@ import static com.example.sb.R.id.info;
 public class FragmentSwitchboard extends DialogFragment {
 
     ImageButton switchinfo1, switchinfo2, switchinfo3, switchinfo4, switch1, switch2, switch3, switch4;
+    LinearLayout llswitch1,llswitch2,llswitch3,llswitch4;
     public int i;
     ////////////////////////////////
     private FirebaseAuth mAuth;
@@ -74,6 +76,10 @@ public class FragmentSwitchboard extends DialogFragment {
         switch2 = (ImageButton) v.findViewById(R.id.switch2);
         switch3 = (ImageButton) v.findViewById(R.id.switch3);
         switch4 = (ImageButton) v.findViewById(R.id.switch4);
+        llswitch1=(LinearLayout) v.findViewById(R.id.llswitch1);
+        llswitch2=(LinearLayout) v.findViewById(R.id.llswitch2);
+        llswitch3=(LinearLayout) v.findViewById(R.id.llswitch3);
+        llswitch4=(LinearLayout) v.findViewById(R.id.llswitch4);
 /////////////////////
         mAuth = FirebaseAuth.getInstance();
 
@@ -127,6 +133,36 @@ public class FragmentSwitchboard extends DialogFragment {
             }
         });
 
+        llswitch1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                f=1;
+                switchoptionaldailgue();
+            }
+        });
+        llswitch2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                f=2;
+                switchoptionaldailgue();
+            }
+        });
+        llswitch3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                f=3;
+                switchoptionaldailgue();
+            }
+        });
+        llswitch4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                f=4;
+                switchoptionaldailgue();
+            }
+        });
+
+        ////////////////Repeated
         switch1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -330,10 +330,12 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
                         if(maincheck.equals("false")) {
                             db.child("Favorite").setValue("true");
                             String modecheck=dataSnapshot.child("mode").getValue(String.class);
+                            String catselect=dataSnapshot.child("category").getValue(String.class);
                             x = dataSnapshot.child("name").getValue(String.class);
                             HashMap<String, Object> values = new HashMap<>();
                             values.put("name", x);
                             values.put("mode", modecheck);
+                            values.put("category", catselect);
                             FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("favorites").child(Roomname).child(text3).child(s3).setValue(values).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
