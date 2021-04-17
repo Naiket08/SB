@@ -225,6 +225,21 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
                                         db2.setValue(user3);
                                         m++;
                                         break;
+                                    case R.id.Airconditioner:
+                                        //handle menu2 click
+                                        Map<String, Object> user4 = new HashMap<>();
+                                        String l4 = mAuth.getCurrentUser().getUid();
+                                        String q4=s2.replaceAll("[^0-9]", "");;
+                                        user4.put("UID",l4);
+                                        user4.put("name",s6);
+                                        user4.put("mode","off");
+                                        user4.put("number",q4);
+                                        user4.put("category","AC");
+                                        user4.put("Favorite","false");
+                                        user4.put("Temperature","24");
+                                        holder.imageviewmain1.setImageResource(R.drawable.airconditioner);
+                                        db2.setValue(user4);
+                                        break;
                                     case R.id.Unselect:
                                         holder.imageviewmain1.setImageResource(R.drawable.ideaicon);
                                         db2.removeValue();

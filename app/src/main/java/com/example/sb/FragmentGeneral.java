@@ -160,6 +160,16 @@ public class FragmentGeneral extends Fragment {
                                                     GeneralType2.add(R.drawable.powerred);
                                                 }
                                             }
+                                            else  if(s7.equals("AC")) {
+                                                GeneralType.add(R.drawable.acmain);
+                                                if(s6.equals("on")){
+                                                    GeneralType2.add(R.drawable.powergreen);
+                                                }
+                                                else {
+                                                    GeneralType2.add(R.drawable.powerred);
+                                                }
+                                            }
+
                                             //Toast.makeText(getContext(), s1, Toast.LENGTH_SHORT).show();
                                             // Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();
                                             customAdapter2.notifyDataSetChanged();

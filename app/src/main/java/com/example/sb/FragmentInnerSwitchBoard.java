@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +35,9 @@ import java.util.ArrayList;
 
 public class FragmentInnerSwitchBoard extends Fragment {
 
-    TextView textViewRoomNo;
+    TextView textViewRoomNo,acvalue,acantina;
+    ImageButton acupbutton,acdownbutton;
+    LinearLayout llback;
     ImageView imageViewBrownJacket,imageViewWhiteJacket,imageViewAppliances,imageViewBulb;
     Knob customdial;
     Button speedcontrol;
@@ -51,6 +54,8 @@ public class FragmentInnerSwitchBoard extends Fragment {
     String status="false";
     ////////////////////////
     public ArrayList<String> LightName = new ArrayList<String>();
+    public ArrayList<String> LightName2 = new ArrayList<String>();
+    public ArrayList<String> LightName3 = new ArrayList<String>();
     public ArrayList<Integer> LightType = new ArrayList<Integer>();
     public ArrayList<Integer> LightType2 = new ArrayList<Integer>();
     public ArrayList<Integer> LightType3 = new ArrayList<Integer>();
@@ -67,6 +72,14 @@ public class FragmentInnerSwitchBoard extends Fragment {
         text3= getArguments().getString("Switchname");
        //Toast.makeText(getContext(),text3, Toast.LENGTH_SHORT).show();
 ///////
+
+        //////////AC Layout
+        acantina=(TextView)view.findViewById(R.id.acantina);
+        acvalue=(TextView)view.findViewById(R.id.acvalue);
+        llback=(LinearLayout)view.findViewById(R.id.llback);
+        acupbutton=(ImageButton)view.findViewById(R.id.acupbutton);
+        acdownbutton=(ImageButton)view.findViewById(R.id.acdownbutton);
+        ////////////////////////////
         textViewRoomNo = (TextView)view.findViewById(R.id.textViewRoomNo);
         textViewRoomNo.setText(Roomname);
         textviewdialview=(TextView)view.findViewById(R.id.textviewdialview);
@@ -96,9 +109,11 @@ public class FragmentInnerSwitchBoard extends Fragment {
         });
         /////////////////////////////////////////////////////////////
         buttonSwitchBoardApppliance = (Button)view.findViewById(R.id.buttonSwitchBoardAppliance);
-        CustomAdapterInnerSwitchboard customAdapter2 = new CustomAdapterInnerSwitchboard(getActivity(),LightName,LightType,LightType2,LightType3,mAuth,Roomname,text3,textviewdialview,imageViewBrownJacket,imageViewWhiteJacket,imageViewAppliances,imageViewBulb,customdial,speedcontrol);
-        if((LightName!=null&&LightType!=null&&LightType2!=null&&LightType3!=null&&LightName.size()>0&&LightType.size()>0&&LightType2.size()>0&&LightType3.size()>0)){
+        CustomAdapterInnerSwitchboard customAdapter2 = new CustomAdapterInnerSwitchboard(getActivity(),LightName,LightName2,LightName3,LightType,LightType2,LightType3,mAuth,Roomname,text3,textviewdialview,imageViewBrownJacket,imageViewWhiteJacket,imageViewAppliances,imageViewBulb,customdial,speedcontrol,acantina,llback,acvalue,acupbutton,acdownbutton);
+        if((LightName!=null&&LightName2!=null&&LightName3!=null&&LightType!=null&&LightType2!=null&&LightType3!=null&&LightType3!=null&&LightName.size()>0&&LightName2.size()>0&&LightType.size()>0&&LightType2.size()>0&&LightType3.size()>0)){
             LightName.clear();
+            LightName2.clear();
+            LightName3.clear();
             LightType.clear();
             LightType2.clear();
             LightType3.clear();
@@ -127,8 +142,11 @@ public class FragmentInnerSwitchBoard extends Fragment {
                      //Toast.makeText(getContext(), s1, Toast.LENGTH_SHORT).show();
                     LightName.add(s1);
                     String s2 = dataSnapshot.child("category").getValue(String.class);
+                    LightName3.add(s2);
                     String s3 = dataSnapshot.child("mode").getValue(String.class);
                     String s4 = dataSnapshot.child("Favorite").getValue(String.class);
+                    String s5 = dataSnapshot.child("name").getValue(String.class);
+                    LightName2.add(s5);
                       //Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();
                     if(s2.equals("Light")){
                         LightType.add(R.drawable.ic_idea);
@@ -166,6 +184,22 @@ public class FragmentInnerSwitchBoard extends Fragment {
                     }
                     else  if(s2.equals("Appliance")) {
                         LightType.add(R.drawable.appliances_icon);
+                        if(s3.equals("on")){
+                            LightType2.add(R.drawable.powergreen);
+                        }
+                        else {
+                            LightType2.add(R.drawable.powerred);
+                        }
+                        ////////////For favorite
+                        if(s4.equals("false")){
+                            LightType3.add(R.drawable.favoriteselect);
+                        }
+                        else {
+                            LightType3.add(R.drawable.favoriteadded);
+                        }
+                    }
+                    else  if(s2.equals("AC")) {
+                        LightType.add(R.drawable.acmain);
                         if(s3.equals("on")){
                             LightType2.add(R.drawable.powergreen);
                         }

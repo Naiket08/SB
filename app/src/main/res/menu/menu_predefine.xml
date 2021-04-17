@@ -17,9 +17,18 @@
         android:title="Appliance"/>
 
     <item
+        android:id="@+id/Airconditioner"
+        android:icon="@drawable/airconditioner"
+        android:title="AC"/>
+
+    <item
         android:id="@+id/Unselect"
         android:icon="@drawable/ideaicon"
         android:title="Unselect"/>
+
+
+
+
 
 
 </menu>

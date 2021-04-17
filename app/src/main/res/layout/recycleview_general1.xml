@@ -33,7 +33,7 @@
 
     <ImageButton
         android:id="@+id/buttongeneral1"
-        android:layout_width="@dimen/_48sdp"
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/_60sdp"
         android:layout_marginTop="@dimen/_25sdp"
         android:backgroundTint="@android:color/transparent"
