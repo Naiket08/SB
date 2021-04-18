@@ -43,6 +43,8 @@ public class FragmentGeneral extends Fragment {
     private FirebaseAuth mAuth;
     private FirebaseFirestore db1 = FirebaseFirestore.getInstance();;
     public ArrayList<String> Generalname = new ArrayList<String>();
+    public ArrayList<String> GeneralRname = new ArrayList<String>();
+    public ArrayList<String> GeneralSname = new ArrayList<String>();
     public ArrayList<Integer> GeneralType = new ArrayList<Integer>();
     public ArrayList<Integer> GeneralType2 = new ArrayList<Integer>();
 
@@ -65,9 +67,11 @@ public class FragmentGeneral extends Fragment {
         mAuth = FirebaseAuth.getInstance();
 
 
-        CustomAdapterGeneral customAdapter2 = new CustomAdapterGeneral(getActivity(),Generalname,GeneralType,GeneralType2,mAuth);
-        if((Generalname!=null&&GeneralType!=null&&GeneralType2!=null&&Generalname.size()>0&&GeneralType.size()>0&&GeneralType2.size()>0)){
+        CustomAdapterGeneral customAdapter2 = new CustomAdapterGeneral(getActivity(),Generalname,GeneralRname,GeneralSname,GeneralType,GeneralType2,mAuth);
+        if((Generalname!=null&&GeneralRname!=null&&GeneralSname!=null&&GeneralType!=null&&GeneralType2!=null&&Generalname.size()>0&&GeneralRname.size()>0&&GeneralSname.size()>0&&GeneralType.size()>0&&GeneralType2.size()>0)){
             Generalname.clear();
+            GeneralRname.clear();
+            GeneralSname.clear();
             GeneralType.clear();
             GeneralType2.clear();
         }
@@ -126,6 +130,8 @@ public class FragmentGeneral extends Fragment {
                                           //  Toast.makeText(getContext(),s5, Toast.LENGTH_SHORT).show();
 
                                             Generalname.add(s5);
+
+
                                                    /* if(s6.equals("Light")) {
                                                         categoryname.add(s5);
                                                         customAdapter2.notifyDataSetChanged();
@@ -133,6 +139,8 @@ public class FragmentGeneral extends Fragment {
 
                                                 */
                                             if(s7.contains("Light")){
+                                                GeneralRname.add(s1);
+                                                GeneralSname.add(s2);
                                                 GeneralType.add(R.drawable.ic_idea);
                                                 if(s6.equals("on")){
                                                    GeneralType2.add(R.drawable.powergreen);
@@ -143,6 +151,8 @@ public class FragmentGeneral extends Fragment {
                                                 // Toast.makeText(getContext(),"Entered inside", Toast.LENGTH_SHORT).show();
                                             }
                                             else  if(s7.contains("Fan")){
+                                                GeneralRname.add(s1);
+                                                GeneralSname.add(s2);
                                                 GeneralType.add(R.drawable.fan_icon);
                                                 if(s6.equals("on")){
                                                     GeneralType2.add(R.drawable.powergreen);
@@ -152,6 +162,8 @@ public class FragmentGeneral extends Fragment {
                                                 }
                                             }
                                             else  if(s7.equals("Appliance")) {
+                                                GeneralRname.add(s1);
+                                                GeneralSname.add(s2);
                                                 GeneralType.add(R.drawable.appliances_icon);
                                                 if(s6.equals("on")){
                                                     GeneralType2.add(R.drawable.powergreen);
@@ -161,6 +173,8 @@ public class FragmentGeneral extends Fragment {
                                                 }
                                             }
                                             else  if(s7.equals("AC")) {
+                                                GeneralRname.add(s1);
+                                                GeneralSname.add(s2);
                                                 GeneralType.add(R.drawable.acmain);
                                                 if(s6.equals("on")){
                                                     GeneralType2.add(R.drawable.powergreen);
