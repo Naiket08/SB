@@ -135,16 +135,23 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                                         if(list.contains(mainname)) {
                                             db.child(mainname).removeValue();
                                             db2.child(mainname).removeValue();
-                                            holder.clmyroom.setVisibility(View.GONE);
+                                            roomNames.remove(position);
+                                            roomNames2.remove(position);
+                                            roomImages.remove(position);
+                                            notifyDataSetChanged();
                                             Toast.makeText(context, "Deleted Successfully", Toast.LENGTH_SHORT).show();
 
                                         }
                                         else
                                         {
                                             db2.child(mainname).removeValue();
-                                            holder.clmyroom.setVisibility(View.GONE);
+                                            roomNames.remove(position);
+                                            roomNames2.remove(position);
+                                            roomImages.remove(position);
+                                            notifyDataSetChanged();
                                             Toast.makeText(context, "Deleted Successfully", Toast.LENGTH_SHORT).show();
                                         }
+
 
                             }
                         })
