@@ -85,13 +85,18 @@ public class Home extends AppCompatActivity {
         ///calling
 
         DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("User Details");
-        db.addListenerForSingleValueEvent(new ValueEventListener() {
+        DatabaseReference db2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms");
+        db2.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String s = dataSnapshot.child("Roomfragment").getValue(String.class);
-                //Toast.makeText(Home.this, s, Toast.LENGTH_SHORT).show();
-                roomcheck=s;
-
+                if(dataSnapshot.exists()){
+                    roomcheck="notnull";
+                   // Toast.makeText(Home.this, "Notnull", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    roomcheck="";
+                   // Toast.makeText(Home.this, "null", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
@@ -210,11 +215,11 @@ public class Home extends AppCompatActivity {
                         break;
                     case R.id.navigation_rooms:
                         recheck();
-                        if(roomcheck.equals("true")) {
+                        if(roomcheck.equals("")) {
 
                             fragment = new FragmentRooms();
                         }
-                        else if(roomcheck.equals("false"))
+                        else
                         {
                             fragment = new FragmentMyRoom();
                         }
@@ -226,13 +231,18 @@ public class Home extends AppCompatActivity {
     }
 
 void  recheck(){
-   DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("User Details");
-    db.addListenerForSingleValueEvent(new ValueEventListener() {
+   DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms");
+    db.addValueEventListener(new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            String s1 = dataSnapshot.child("Roomfragment").getValue(String.class);
-            roomcheck=s1;
-
+            if(dataSnapshot.exists()){
+                roomcheck="notnull";
+               // Toast.makeText(Home.this, "Notnull", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                roomcheck="";
+               // Toast.makeText(Home.this, "null", Toast.LENGTH_SHORT).show();
+            }
         }
 
         @Override
