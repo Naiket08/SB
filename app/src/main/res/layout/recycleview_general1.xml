@@ -110,6 +110,29 @@
         android:textSize="@dimen/_12ssp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <EditText
+        android:id="@+id/EdittextgeneralSother"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="124dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:enabled="false"
+        android:visibility="invisible"
+        android:fontFamily="@font/muli"
+        android:gravity="center"
+        android:inputType="none"
+        android:lines="1"
+        android:maxLength="15"
+        android:maxLines="1"
+        android:paddingStart="@dimen/_9sdp"
+        android:scrollbars="none"
+        android:singleLine="true"
+        android:text="Light 1"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

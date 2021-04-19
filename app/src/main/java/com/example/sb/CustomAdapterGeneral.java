@@ -30,19 +30,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CustomAdapterGeneral extends RecyclerView.Adapter<CustomAdapterGeneral.ViewHolder> {
-    ArrayList Generalname,GeneralRname,GeneralSname,GeneralType,GeneralType2;
+    ArrayList Generalname,GeneralRname,GeneralSname,GeneralSSname,GeneralType,GeneralType2;
     String Roomname,s3,text3,num1,num2;
     private FirebaseAuth mAuth;
     Context context;
 
 
-    public CustomAdapterGeneral(Context context, ArrayList Generalname,ArrayList GeneralRname,ArrayList GeneralSname,ArrayList GeneralType,ArrayList GeneralType2,FirebaseAuth mAuth) {
+    public CustomAdapterGeneral(Context context, ArrayList Generalname,ArrayList GeneralRname,ArrayList GeneralSname,ArrayList GeneralSSname,ArrayList GeneralType,ArrayList GeneralType2,FirebaseAuth mAuth) {
 
 
         this.context = context;
         this.Generalname =Generalname;
         this.GeneralRname =GeneralRname;
         this.GeneralSname =GeneralSname;
+        this.GeneralSSname =GeneralSSname;
         this.GeneralType=GeneralType;
         this.GeneralType2=GeneralType2;
         this.mAuth=mAuth;
@@ -66,6 +67,7 @@ public class CustomAdapterGeneral extends RecyclerView.Adapter<CustomAdapterGene
         holder.Edittextgeneral1.setText(String.valueOf(Generalname.get(position)));
         holder.EdittextgeneralRname.setText(String.valueOf(GeneralRname.get(position)));
         holder.EdittextgeneralSname.setText(String.valueOf(GeneralSname.get(position)));
+        holder.EdittextgeneralSother.setText(String.valueOf(GeneralSSname.get(position)));
         holder.buttongeneral1.setImageResource((Integer)GeneralType.get(position));
         holder.imageViewGeneral1.setImageResource((Integer)GeneralType2.get(position));
 
@@ -272,9 +274,9 @@ public class CustomAdapterGeneral extends RecyclerView.Adapter<CustomAdapterGene
         holder.imageViewdeleteGeneral.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String text1 = holder.Edittextgeneral1.getText().toString();
                 String textR = holder.EdittextgeneralRname.getText().toString();
                 String textS = holder.EdittextgeneralSname.getText().toString();
+                String textSS = holder.EdittextgeneralSother.getText().toString();
                 DatabaseReference db3 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("favorites").child(textR).child(textS);
                 DatabaseReference db4 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(textR).child(textS);
                 new AlertDialog.Builder(context)
@@ -282,16 +284,18 @@ public class CustomAdapterGeneral extends RecyclerView.Adapter<CustomAdapterGene
                         .setCancelable(false)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                              db4.child(text1).child("Favorite").setValue("false");
-                              db3.child(text1).removeValue();
-                                Generalname.remove(position);
-                                        GeneralRname.remove(position);
-                                GeneralSname.remove(position);
-                                        GeneralType.remove(position);
-                                GeneralType2.remove(position);
-                                notifyDataSetChanged();
-
-
+                              db4.child(textSS).child("Favorite").setValue("false");
+                              db3.child(textSS).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                  @Override
+                                  public void onSuccess(Void aVoid) {
+                                      Generalname.remove(position);
+                                      GeneralRname.remove(position);
+                                      GeneralSname.remove(position);
+                                      GeneralType.remove(position);
+                                      GeneralType2.remove(position);
+                                      notifyDataSetChanged();
+                                  }
+                              });
                             }
                         })
                         .setNegativeButton("No", null)
@@ -315,7 +319,7 @@ public class CustomAdapterGeneral extends RecyclerView.Adapter<CustomAdapterGene
         ConstraintLayout clgeneral;
        ImageView imageViewGeneral1,imageViewdeleteGeneral;
        ImageButton  buttongeneral1;
-       EditText Edittextgeneral1,EdittextgeneralRname,EdittextgeneralSname;
+       EditText Edittextgeneral1,EdittextgeneralRname,EdittextgeneralSname,EdittextgeneralSother;
 
 
         public ViewHolder(View itemView) {
@@ -331,6 +335,7 @@ public class CustomAdapterGeneral extends RecyclerView.Adapter<CustomAdapterGene
             Edittextgeneral1=(EditText)itemView.findViewById(R.id.Edittextgeneral1);
             EdittextgeneralRname=(EditText)itemView.findViewById(R.id.EdittextgeneralRname);
             EdittextgeneralSname=(EditText)itemView.findViewById(R.id.EdittextgeneralSnmae);
+            EdittextgeneralSother=(EditText)itemView.findViewById(R.id.EdittextgeneralSother);
 
 
 

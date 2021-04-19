@@ -45,6 +45,7 @@ public class FragmentGeneral extends Fragment {
     public ArrayList<String> Generalname = new ArrayList<String>();
     public ArrayList<String> GeneralRname = new ArrayList<String>();
     public ArrayList<String> GeneralSname = new ArrayList<String>();
+    public ArrayList<String> GeneralSSname = new ArrayList<String>();
     public ArrayList<Integer> GeneralType = new ArrayList<Integer>();
     public ArrayList<Integer> GeneralType2 = new ArrayList<Integer>();
 
@@ -67,11 +68,12 @@ public class FragmentGeneral extends Fragment {
         mAuth = FirebaseAuth.getInstance();
 
 
-        CustomAdapterGeneral customAdapter2 = new CustomAdapterGeneral(getActivity(),Generalname,GeneralRname,GeneralSname,GeneralType,GeneralType2,mAuth);
-        if((Generalname!=null&&GeneralRname!=null&&GeneralSname!=null&&GeneralType!=null&&GeneralType2!=null&&Generalname.size()>0&&GeneralRname.size()>0&&GeneralSname.size()>0&&GeneralType.size()>0&&GeneralType2.size()>0)){
+        CustomAdapterGeneral customAdapter2 = new CustomAdapterGeneral(getActivity(),Generalname,GeneralRname,GeneralSname,GeneralSSname,GeneralType,GeneralType2,mAuth);
+        if((Generalname!=null&&GeneralRname!=null&&GeneralSname!=null&&GeneralSSname!=null&&GeneralType!=null&&GeneralType2!=null&&Generalname.size()>0&&GeneralRname.size()>0&&GeneralSname.size()>0&&GeneralSSname.size()>0&&GeneralType.size()>0&&GeneralType2.size()>0)){
             Generalname.clear();
             GeneralRname.clear();
             GeneralSname.clear();
+            GeneralSSname.clear();
             GeneralType.clear();
             GeneralType2.clear();
         }
@@ -141,6 +143,7 @@ public class FragmentGeneral extends Fragment {
                                             if(s7.contains("Light")){
                                                 GeneralRname.add(s1);
                                                 GeneralSname.add(s2);
+                                                GeneralSSname.add(s3);
                                                 GeneralType.add(R.drawable.ic_idea);
                                                 if(s6.equals("on")){
                                                    GeneralType2.add(R.drawable.powergreen);
@@ -153,6 +156,7 @@ public class FragmentGeneral extends Fragment {
                                             else  if(s7.contains("Fan")){
                                                 GeneralRname.add(s1);
                                                 GeneralSname.add(s2);
+                                                GeneralSSname.add(s3);
                                                 GeneralType.add(R.drawable.fan_icon);
                                                 if(s6.equals("on")){
                                                     GeneralType2.add(R.drawable.powergreen);
@@ -164,6 +168,7 @@ public class FragmentGeneral extends Fragment {
                                             else  if(s7.equals("Appliance")) {
                                                 GeneralRname.add(s1);
                                                 GeneralSname.add(s2);
+                                                GeneralSSname.add(s3);
                                                 GeneralType.add(R.drawable.appliances_icon);
                                                 if(s6.equals("on")){
                                                     GeneralType2.add(R.drawable.powergreen);
@@ -175,6 +180,7 @@ public class FragmentGeneral extends Fragment {
                                             else  if(s7.equals("AC")) {
                                                 GeneralRname.add(s1);
                                                 GeneralSname.add(s2);
+                                                GeneralSSname.add(s3);
                                                 GeneralType.add(R.drawable.acmain);
                                                 if(s6.equals("on")){
                                                     GeneralType2.add(R.drawable.powergreen);
