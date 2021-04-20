@@ -42,7 +42,7 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
     private FirebaseAuth mAuth;
     String userId;
     String status="false";
-    public String Roomname,text1,s2,s3,s5,s6;
+    public String Roomname,text1,s2,s3,s5,s6,s9;
     public String[] s4=new String[10];
     public int o=1,p=1,m=1;
     EditText editTextdailogpredefine;
@@ -128,8 +128,9 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
                 editTextdailogpredefine = (EditText) parentView.findViewById(R.id.editTextdailogpredefine);
                 bottomSheetDialog.setContentView(parentView);
                 s5=holder.edittextmain.getText().toString();
+                s9=holder.edittexthint.getText().toString();
                // Toast.makeText(context,s2, Toast.LENGTH_SHORT).show();
-                db3 =  FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text1).child(s5);
+                db3 =  FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text1).child(s9);
                 bottomSheetDialog.show();
 
                 canceldailogpredefine.setOnClickListener(new View.OnClickListener() {

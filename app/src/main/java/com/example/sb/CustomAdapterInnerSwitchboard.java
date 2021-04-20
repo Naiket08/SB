@@ -137,38 +137,10 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
 
                             mAuth = FirebaseAuth.getInstance();
                             String text = holder.textViewInnerSwitchboardSB1.getText().toString();
-                            ////////////////////////////////////////////////////////////////////////////////////
-                            DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms");
-                            itemsRef.addChildEventListener(new ChildEventListener() {
-                                @Override
-                                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                                    String s1 = dataSnapshot.getKey();
-
-                                    //Toast.makeText(getContext(), s1, Toast.LENGTH_SHORT).show();
-                                    ////////////////////////               22222222222222222222222222222222222
 
 
-                                    //////////////////////
-                                    DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
-                                    db.addListenerForSingleValueEvent(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                            // Toast.makeText(context,num1, Toast.LENGTH_SHORT).show();
 
-                                            //This one
-
-                                            /////////////////////////////////////////////
-                                            DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
-                                            itemsRef2.addChildEventListener(new ChildEventListener() {
-                                                @Override
-                                                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                                                    String s2 = dataSnapshot.getKey();
-
-                                                    //Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();
-                                                    //////////////////////// 333333333333333333333333333333333333333333
-                                                    DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1).child(s2);
+                                                    DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text3);
                                                     itemsRef2.addChildEventListener(new ChildEventListener() {
                                                         @Override
                                                         public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -180,7 +152,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
                                                             //  Toast.makeText(context, s5, Toast.LENGTH_SHORT).show();
 
                                                             if (s3.equals(text)) {
-                                                                DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1).child(s2).child(s3);
+                                                                DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text3).child(s3);
                                                                 db.child("speed").setValue(fanspeed).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                     @Override
                                                                     public void onSuccess(Void aVoid) {
@@ -216,65 +188,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
                                                     ////////////////////////////////////////
 
 
-                                                }
 
-                                                @Override
-                                                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                                                }
-
-                                                @Override
-                                                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                                                }
-
-                                                @Override
-                                                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                                                }
-
-                                                @Override
-                                                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                                }
-                                            });
-
-
-///////////////////
-// ////////////////////////////////////
-                                            ////////////////////////////////////////////
-
-                                        }
-
-                                        @Override
-                                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                        }
-                                    });
-
-
-                                }//First ending
-
-                                @Override
-                                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                                }
-
-                                @Override
-                                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                                }
-
-                                @Override
-                                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                }
-                            });
 
 
                             ////////////////////////////////////////////////////////////////////////////////////
@@ -337,44 +251,17 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
 
                     mAuth = FirebaseAuth.getInstance();
                     String text = holder.textViewInnerSwitchboardSB1.getText().toString();
-                    ////////////////////////////////////////////////////////////////////////////////////
-                    DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms");
-                    itemsRef.addChildEventListener(new ChildEventListener() {
-                        @Override
-                        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                            String s1 = dataSnapshot.getKey();
-
-                            //Toast.makeText(getContext(), s1, Toast.LENGTH_SHORT).show();
-                            ////////////////////////               22222222222222222222222222222222222
+                    String text2 = holder.textViewInnerSwitchboardmain.getText().toString();
 
 
-                            //////////////////////
-                            DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
-                            db.addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    // Toast.makeText(context,num1, Toast.LENGTH_SHORT).show();
-
-                                    //This one
-
-                                    /////////////////////////////////////////////
-                                    DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1);
-                                    itemsRef2.addChildEventListener(new ChildEventListener() {
-                                        @Override
-                                        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                                            String s2 = dataSnapshot.getKey();
-
-                                            //Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();
-                                            //////////////////////// 333333333333333333333333333333333333333333
-                                            DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1).child(s2);
+                                            DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text3);
                                             itemsRef2.addChildEventListener(new ChildEventListener() {
                                                 @Override
                                                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
                                                     String s3 = dataSnapshot.getKey();
                                                     String s6=dataSnapshot.child("category").getValue(String.class);
+                                                    String s7=dataSnapshot.child("name").getValue(String.class);
 
                                                     if (s3.equals(text)&&s6.equals("AC")) {
                                                         String s5 = dataSnapshot.child("Temperature").getValue(String.class);
@@ -388,7 +275,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
                                                                 ++temp;
                                                                 String l = String.valueOf(temp);
                                                                 acvalue.setText(l);
-                                                                DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1).child(s2).child(s3);
+                                                                DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text3).child(s3);
                                                                 db.child("Temperature").setValue(l).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                     @Override
                                                                     public void onSuccess(Void aVoid) {
@@ -409,7 +296,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
                                                                 --temp;
                                                                 String l = String.valueOf(temp);
                                                                 acvalue.setText(l);
-                                                                DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1).child(s2).child(s3);
+                                                                DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text3).child(s3);
                                                                 db.child("Temperature").setValue(l).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                     @Override
                                                                     public void onSuccess(Void aVoid) {
@@ -449,68 +336,11 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
                                             ////////////////////////////////////////
 
 
-                                        }
-
-                                        @Override
-                                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                                        }
-
-                                        @Override
-                                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                                        }
-
-                                        @Override
-                                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                                        }
-
-                                        @Override
-                                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                        }
-                                    });
 
 
-///////////////////
-// ////////////////////////////////////
-                                    ////////////////////////////////////////////
-
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                }
-                            });
 
 
-                        }//First ending
 
-                        @Override
-                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                        }
-
-                        @Override
-                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                        }
-
-                        @Override
-                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    });
-
-
-                    ////////////////////////////////////////////////////////////////////////////////////
 
 
 

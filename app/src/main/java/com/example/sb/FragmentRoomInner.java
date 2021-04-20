@@ -80,7 +80,6 @@ public class FragmentRoomInner extends Fragment{
         textViewControlSB = (TextView)view.findViewById(R.id.textViewControlSB);
         textViewRoomInnerRoomNo = (TextView)view.findViewById(R.id.textViewRoomInnerRoomNo);
         textViewRoomInnerRoomNo.setText(Roomname1);
-        textViewRoomInnerRoomNo.setText(Roomname1);
         textViewRoomInnerSB1 = (TextView)view.findViewById(R.id.textViewRoomInnerSB1);
         textViewRoomInnerSBType = (TextView)view.findViewById(R.id.textViewRoomInnerSBType);
         imageViewRoomInnerAddSB=(ImageView)view.findViewById(R.id.imageViewRoomInnerAddSB);
