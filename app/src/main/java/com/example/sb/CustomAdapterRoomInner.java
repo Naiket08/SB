@@ -1,6 +1,8 @@
 package com.example.sb;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -128,6 +130,49 @@ public class CustomAdapterRoomInner extends RecyclerView.Adapter<CustomAdapterRo
             }
         });
 
+        holder.imageViewdeleteroominner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String deletes1=holder.impmain.getText().toString();
+                new AlertDialog.Builder(context)
+                        .setMessage("Are you sure you want to delete This?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                DatabaseReference dbmain = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname1).child(deletes1);
+                                DatabaseReference dbmain2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("favorites").child(Roomname1).child(deletes1);
+                                dbmain2.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        if(dataSnapshot.exists()){
+                                            dbmain2.removeValue();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+                                dbmain.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        SwitchName.remove(position);
+                                        SwitchName2.remove(position);
+                                        SwitchType.remove(position);
+                                        notifyDataSetChanged();
+
+                                    }
+                                });
+
+                            }
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
+
+            }
+        });
+
         holder.clroominner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -234,7 +279,7 @@ public class CustomAdapterRoomInner extends RecyclerView.Adapter<CustomAdapterRo
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // init the item view's
         ConstraintLayout clroominner;
-       ImageView imageViewRoomInnerInfo,imageViewRoomInnerEditSB;
+       ImageView imageViewRoomInnerInfo,imageViewRoomInnerEditSB,imageViewdeleteroominner;
        TextView textViewRoomInnerSBType,impmain;
         EditText textViewRoomInnerSB1;
        ImageButton roominnerbutton1;
@@ -243,6 +288,7 @@ public class CustomAdapterRoomInner extends RecyclerView.Adapter<CustomAdapterRo
             // get the reference of item view's
             imageViewRoomInnerInfo=(ImageView)itemView.findViewById(R.id.imageViewRoomInnerInfo);
             imageViewRoomInnerEditSB=(ImageView)itemView.findViewById(R.id.imageViewRoomInnerEditSB);
+            imageViewdeleteroominner=(ImageView)itemView.findViewById(R.id.imageViewdeleteroominner);
             textViewRoomInnerSB1=(EditText) itemView.findViewById(R.id.textViewRoomInnerSB1);
             textViewRoomInnerSBType=(TextView)itemView.findViewById(R.id.textViewRoomInnerSBType);
             roominnerbutton1=(ImageButton)itemView.findViewById(R.id.roominnerbutton1);
