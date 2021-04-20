@@ -25,8 +25,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.annotations.Nullable;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -48,7 +53,7 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
     EditText editTextdailogpredefine;
     public PopupMenu popup;
     DatabaseReference db,db2,db3;
-
+    public ArrayList<String>  switchnamecheck = new ArrayList<String>();
 
     public CustomAdapterPredefine(Context context, ArrayList itemnames,ArrayList itemtypes,String Roomname,String text1,FirebaseAuth mAuth) {
 
@@ -120,6 +125,7 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
         holder.buttonmain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                databaseevent();
                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
                 View parentView = LayoutInflater.from(context).inflate(R.layout.dailogue_predefine, null);
                 //View parentView = getLayoutInflater().inflate(R.layout.dailogue_predefine, null);
@@ -153,12 +159,17 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
                             Toast.makeText(context, "Enter Text", Toast.LENGTH_SHORT).show();
                         }
                         else{
-                            holder.edittextmain.setText(s3);
-                            s5=s3;
-                            Toast.makeText(context, "Name Changed to : " + s5, Toast.LENGTH_SHORT).show();
-                            // Toast.makeText(context, "new s2"+s2, Toast.LENGTH_SHORT).show();
-                            db3.child("name").setValue(s5);
-                            bottomSheetDialog.cancel();
+                            if(switchnamecheck.contains(s3)){
+                                Toast.makeText(context, "Name Already Exist", Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                holder.edittextmain.setText(s3);
+                                s5 = s3;
+                                Toast.makeText(context, "Name Changed to : " + s5, Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(context, "new s2"+s2, Toast.LENGTH_SHORT).show();
+                                db3.child("name").setValue(s5);
+                                bottomSheetDialog.cancel();
+                            }
                         }
                     }
                 });
@@ -316,6 +327,66 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
             imageviewmain1=(ImageView)itemView.findViewById(R.id.imageviewmain1);
 
         }
+    }
+
+    public void databaseevent(){
+
+                                DatabaseReference itemsRef4 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text1);
+                                itemsRef4.addChildEventListener(new ChildEventListener() {
+                                    @Override
+                                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+
+
+                                        String sn3 = dataSnapshot.getKey();
+
+
+
+                                        if(sn3.equals("SwitchBoardumber")||sn3.equals("combination")||sn3.equals("type")||sn3.equals("")){
+
+                                        }
+                                        else
+                                        {
+                                            String sn5 = dataSnapshot.child("name").getValue(String.class);
+
+                                          //  Toast.makeText(context, sn5, Toast.LENGTH_SHORT).show();
+
+                                            switchnamecheck.add(sn5);
+
+                                        }
+
+
+
+
+                                    }
+
+                                    @Override
+                                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                    }
+
+                                    @Override
+                                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                                    }
+
+                                    @Override
+                                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+                                ////////////////////////////////////////
+
+
+
+
+
+
     }
 
 }

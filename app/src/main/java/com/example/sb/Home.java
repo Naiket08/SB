@@ -29,11 +29,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.annotations.Nullable;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -60,7 +62,7 @@ public class Home extends AppCompatActivity {
     FrameLayout fragment_container;
     ///
     private FirebaseFirestore db1 = FirebaseFirestore.getInstance();;
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();;
+    private FirebaseFirestore db  = FirebaseFirestore.getInstance();;
     String userId;
     String status="false";
     public String roomcheck;
@@ -84,7 +86,7 @@ public class Home extends AppCompatActivity {
         userId = mAuth.getCurrentUser().getUid();
         ///calling
 
-        DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("User Details");
+        DatabaseReference db  = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("User Details");
         DatabaseReference db2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms");
         db2.addValueEventListener(new ValueEventListener() {
             @Override
@@ -115,6 +117,158 @@ public class Home extends AppCompatActivity {
                 });*/
 
         //AppBar Button OnPressed
+        buttonKill.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms");
+                itemsRef.addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                        String sn1 = dataSnapshot.getKey();
+
+                        //Toast.makeText(getContext(), s1, Toast.LENGTH_SHORT).show();
+                        ////////////////////////22222222222222222222222222222222222
+
+
+                        //////////////////////
+                        DatabaseReference itemsRef2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(sn1);
+                        itemsRef2.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                // Toast.makeText(context,num1, Toast.LENGTH_SHORT).show();
+
+                                //This one
+
+                                /////////////////////////////////////////////
+                                DatabaseReference itemsRef3 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(sn1);
+                                itemsRef3.addChildEventListener(new ChildEventListener() {
+                                    @Override
+                                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                        String sn2 = dataSnapshot.getKey();
+
+                                        //Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();
+                                        //////////////////////// 333333333333333333333333333333333333333333
+                                        DatabaseReference itemsRef4 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(sn1).child(sn2);
+                                        itemsRef4.addChildEventListener(new ChildEventListener() {
+                                            @Override
+                                            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                                String sn3 = dataSnapshot.getKey();
+
+                                                //String sn5 = dataSnapshot.child("mode").getValue(String.class);
+                                                //String s6 = dataSnapshot.child("category").getValue(String.class);
+                                                //Toast.makeText(context, sn5, Toast.LENGTH_SHORT).show();
+
+                                                if(sn3.equals("SwitchBoardumber")||sn3.equals("combination")||sn3.equals("type")||sn3.equals("")) {
+                                                }
+                                                else {
+                                                    itemsRef4.child(sn3).child("mode").setValue("off");
+
+                                                    DatabaseReference itemsRef5 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("favorites").child(sn1).child(sn2).child(sn3);
+                                                    itemsRef5.addListenerForSingleValueEvent(new ValueEventListener() {
+                                                        @Override
+                                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                            if(dataSnapshot.exists()){
+                                                                itemsRef5.child("mode").setValue("off");
+                                                                Toast.makeText(Home.this, "Done Please refresh the page", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        }
+
+                                                        @Override
+                                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                                        }
+                                                    });
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                            }
+
+                                            @Override
+                                            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                                            }
+
+                                            @Override
+                                            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                            }
+                                        });
+                                        ////////////////////////////////////////
+
+
+                                    }
+
+                                    @Override
+                                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                    }
+
+                                    @Override
+                                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                                    }
+
+                                    @Override
+                                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+
+
+///////////////////
+// ////////////////////////////////////
+                                ////////////////////////////////////////////
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+
+
+                    }//First ending
+
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+            }
+        });
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
