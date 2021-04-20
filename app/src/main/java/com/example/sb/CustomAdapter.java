@@ -134,21 +134,30 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                                 String mainname= holder.textviewrefence.getText().toString().trim();
                                         if(list.contains(mainname)) {
                                             db.child(mainname).removeValue();
-                                            db2.child(mainname).removeValue();
-                                            roomNames.remove(position);
-                                            roomNames2.remove(position);
-                                            roomImages.remove(position);
-                                            notifyDataSetChanged();
+                                            db2.child(mainname).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+                                                    roomNames.remove(position);
+                                                    roomNames2.remove(position);
+                                                    roomImages.remove(position);
+                                                    notifyDataSetChanged();
+                                                }
+                                            });
                                             Toast.makeText(context, "Deleted Successfully", Toast.LENGTH_SHORT).show();
 
                                         }
                                         else
                                         {
-                                            db2.child(mainname).removeValue();
-                                            roomNames.remove(position);
-                                            roomNames2.remove(position);
-                                            roomImages.remove(position);
-                                            notifyDataSetChanged();
+                                            db2.child(mainname).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+                                                    roomNames.remove(position);
+                                                    roomNames2.remove(position);
+                                                    roomImages.remove(position);
+                                                    notifyDataSetChanged();
+                                                }
+                                            });
+
                                             Toast.makeText(context, "Deleted Successfully", Toast.LENGTH_SHORT).show();
                                         }
 
