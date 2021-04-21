@@ -15,7 +15,7 @@ import androidx.fragment.app.FragmentTransaction;
 public class FragmentCategory extends Fragment {
 
     TextView textViewCategory,textViewAll;
-    Button buttonLights,buttonFans,buttonAppliances;
+    Button buttonLights,buttonFans,buttonAppliances,buttonAc;
     public String ab;
 
     @Nullable
@@ -27,6 +27,7 @@ public class FragmentCategory extends Fragment {
         textViewAll = (TextView)view.findViewById(R.id.textViewAll);
         buttonLights = (Button)view.findViewById(R.id.buttonLights);
         buttonFans = (Button)view.findViewById(R.id.buttonFans);
+        buttonAc = (Button)view.findViewById(R.id.buttonAc);
         buttonAppliances = (Button)view.findViewById(R.id.buttonAppliances);
 
         buttonLights.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +77,23 @@ public class FragmentCategory extends Fragment {
                 transaction.commit();
             }
         });
+        buttonAc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ab="AC";
+                Fragment newFragment = new FragmentInnerCategoryLights();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                Bundle arguments = new Bundle();
+                arguments.putString("category",ab);
+                newFragment.setArguments(arguments);
+
+                transaction.replace(R.id.fragment_container,newFragment);
+                transaction.addToBackStack(null);
+
+                transaction.commit();
+            }
+        });
+
 
         return view;
     }

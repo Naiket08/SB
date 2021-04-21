@@ -78,4 +78,20 @@
         android:paddingTop="@dimen/_20sdp"
         android:background="@drawable/button_pressed"/>
 
+    <Button
+        android:id="@+id/buttonAc"
+        android:layout_width="@dimen/_108sdp"
+        android:layout_height="@dimen/_127sdp"
+        app:layout_constraintTop_toBottomOf="@id/buttonFans"
+        app:layout_constraintStart_toEndOf="@id/buttonLights"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:drawableTop="@drawable/acmain"
+        android:text="@string/fans"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:fontFamily="@font/muli_semibold"
+        android:paddingTop="@dimen/_30sdp"
+        android:background="@drawable/button_pressed"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
