@@ -40,6 +40,7 @@ public class CustomAdapterInnerCategory extends RecyclerView.Adapter<CustomAdapt
     String userId,num1,num2,num3;
     String status="false";
     DatabaseReference db;
+    public ArrayList<String> namecheck = new ArrayList<String>();;
 
 
     public CustomAdapterInnerCategory(Context context, ArrayList categoryname,ArrayList categorytype,FirebaseAuth mAuth) {
@@ -135,6 +136,7 @@ public class CustomAdapterInnerCategory extends RecyclerView.Adapter<CustomAdapt
                                                         } else {
 
                                                             String s5 = dataSnapshot.child("name").getValue(String.class);
+                                                            namecheck.add(s5);
                                                             String s6 = dataSnapshot.child("category").getValue(String.class);
 
                                                             if(s5.equals(text)) {
@@ -172,32 +174,35 @@ public class CustomAdapterInnerCategory extends RecyclerView.Adapter<CustomAdapt
                                                                                 if(TextUtils.isEmpty(num3)){
                                                                                     // Toast.makeText(context, "Enter Text", Toast.LENGTH_SHORT).show();
                                                                                 }
-                                                                                else{
-                                                                                    holder.textViewInnerCategoryLight1.setText(num3);
-                                                                                    // Toast.makeText(context, "new s2"+s2, Toast.LENGTH_SHORT).show();
-                                                                                    if(favcheck.equals("true")){
-                                                                                        db2.child("name").setValue(num3);
-                                                                                        db.child("name").setValue(num3).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                                                            @Override
-                                                                                            public void onSuccess(Void aVoid) {
-                                                                                                Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
-                                                                                                holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerred);
-                                                                                            }
-                                                                                        });
-                                                                                        bottomSheetDialog.cancel();
-                                                                                    }
-                                                                                    else
-                                                                                    {
-                                                                                        db.child("name").setValue(num3).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                                                            @Override
-                                                                                            public void onSuccess(Void aVoid) {
-                                                                                                Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
-                                                                                                holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerred);
-                                                                                            }
-                                                                                        });
-                                                                                        bottomSheetDialog.cancel();
-                                                                                    }
+                                                                                else {
 
+                                                                                    if (namecheck.contains(num3)) {
+                                                                                        Toast.makeText(context, "Name Already Exist", Toast.LENGTH_SHORT).show();
+                                                                                    } else {
+                                                                                        holder.textViewInnerCategoryLight1.setText(num3);
+                                                                                        // Toast.makeText(context, "new s2"+s2, Toast.LENGTH_SHORT).show();
+                                                                                        if (favcheck.equals("true")) {
+                                                                                            db2.child("name").setValue(num3);
+                                                                                            db.child("name").setValue(num3).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                                                @Override
+                                                                                                public void onSuccess(Void aVoid) {
+                                                                                                    Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
+                                                                                                    holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerred);
+                                                                                                }
+                                                                                            });
+                                                                                            bottomSheetDialog.cancel();
+                                                                                        } else {
+                                                                                            db.child("name").setValue(num3).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                                                @Override
+                                                                                                public void onSuccess(Void aVoid) {
+                                                                                                    Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
+                                                                                                    holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerred);
+                                                                                                }
+                                                                                            });
+                                                                                            bottomSheetDialog.cancel();
+                                                                                        }
+
+                                                                                    }
                                                                                 }
                                                                             }
                                                                         });
@@ -293,14 +298,17 @@ public class CustomAdapterInnerCategory extends RecyclerView.Adapter<CustomAdapt
                                                         } else {
 
                                                             String s5 = dataSnapshot.child("name").getValue(String.class);
+                                                            namecheck.add(s5);
                                                             String s6 = dataSnapshot.child("category").getValue(String.class);
 
                                                             if(s5.equals(text)) {
                                                                 DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1).child(s2).child(s3);
+                                                                DatabaseReference db2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("favorites").child(s1).child(s2).child(s3);
                                                                 db.addListenerForSingleValueEvent(new ValueEventListener() {
                                                                     @Override
                                                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                                         num2 = dataSnapshot.child("name").getValue(String.class);
+                                                                        String favcheck = dataSnapshot.child("Favorite").getValue(String.class);
                                                                         //  Toast.makeText(context,num1, Toast.LENGTH_SHORT).show();
                                                                         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
                                                                         View parentView = LayoutInflater.from(context).inflate(R.layout.dailogue_predefine, null);
@@ -328,17 +336,34 @@ public class CustomAdapterInnerCategory extends RecyclerView.Adapter<CustomAdapt
                                                                                 if(TextUtils.isEmpty(num3)){
                                                                                     // Toast.makeText(context, "Enter Text", Toast.LENGTH_SHORT).show();
                                                                                 }
-                                                                                else{
-                                                                                    holder.textViewInnerCategoryLight1.setText(num3);
-                                                                                    // Toast.makeText(context, "new s2"+s2, Toast.LENGTH_SHORT).show();
-                                                                                    db.child("name").setValue(num3).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                                                        @Override
-                                                                                        public void onSuccess(Void aVoid) {
-                                                                                           // Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
-                                                                                            holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerred);
+                                                                                else {
+                                                                                    if (namecheck.contains(num3)) {
+                                                                                        Toast.makeText(context, "Name Already Exist", Toast.LENGTH_SHORT).show();
+                                                                                    } else {
+                                                                                        holder.textViewInnerCategoryLight1.setText(num3);
+                                                                                        // Toast.makeText(context, "new s2"+s2, Toast.LENGTH_SHORT).show();
+                                                                                        if (favcheck.equals("true")) {
+                                                                                            db2.child("name").setValue(num3);
+                                                                                            db.child("name").setValue(num3).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                                                @Override
+                                                                                                public void onSuccess(Void aVoid) {
+                                                                                                    Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
+                                                                                                    holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerred);
+                                                                                                }
+                                                                                            });
+                                                                                            bottomSheetDialog.cancel();
+                                                                                        } else {
+                                                                                            db.child("name").setValue(num3).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                                                @Override
+                                                                                                public void onSuccess(Void aVoid) {
+                                                                                                    Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
+                                                                                                    holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerred);
+                                                                                                }
+                                                                                            });
+                                                                                            bottomSheetDialog.cancel();
                                                                                         }
-                                                                                    });
-                                                                                    bottomSheetDialog.cancel();
+
+                                                                                    }
                                                                                 }
                                                                             }
                                                                         });
@@ -436,14 +461,17 @@ public class CustomAdapterInnerCategory extends RecyclerView.Adapter<CustomAdapt
                                                         } else {
 
                                                             String s5 = dataSnapshot.child("name").getValue(String.class);
+                                                            namecheck.add(s5);
                                                             String s6 = dataSnapshot.child("category").getValue(String.class);
 
                                                             if(s5.equals(text)) {
                                                                 DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1).child(s2).child(s3);
+                                                                DatabaseReference db2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("favorites").child(s1).child(s2).child(s3);
                                                                 db.addListenerForSingleValueEvent(new ValueEventListener() {
                                                                     @Override
                                                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                                         num2 = dataSnapshot.child("name").getValue(String.class);
+                                                                        String favcheck = dataSnapshot.child("Favorite").getValue(String.class);
                                                                         //  Toast.makeText(context,num1, Toast.LENGTH_SHORT).show();
                                                                         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
                                                                         View parentView = LayoutInflater.from(context).inflate(R.layout.dailogue_predefine, null);
@@ -471,17 +499,34 @@ public class CustomAdapterInnerCategory extends RecyclerView.Adapter<CustomAdapt
                                                                                 if(TextUtils.isEmpty(num3)){
                                                                                     // Toast.makeText(context, "Enter Text", Toast.LENGTH_SHORT).show();
                                                                                 }
-                                                                                else{
-                                                                                    holder.textViewInnerCategoryLight1.setText(num3);
-                                                                                    // Toast.makeText(context, "new s2"+s2, Toast.LENGTH_SHORT).show();
-                                                                                    db.child("name").setValue(num3).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                                                        @Override
-                                                                                        public void onSuccess(Void aVoid) {
-                                                                                           // Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
-                                                                                            holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerred);
+                                                                                else {
+                                                                                    if (namecheck.contains(num3)) {
+                                                                                        Toast.makeText(context, "Name Already Exist", Toast.LENGTH_SHORT).show();
+                                                                                    } else {
+                                                                                        holder.textViewInnerCategoryLight1.setText(num3);
+                                                                                        // Toast.makeText(context, "new s2"+s2, Toast.LENGTH_SHORT).show();
+                                                                                        if (favcheck.equals("true")) {
+                                                                                            db2.child("name").setValue(num3);
+                                                                                            db.child("name").setValue(num3).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                                                @Override
+                                                                                                public void onSuccess(Void aVoid) {
+                                                                                                    Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
+                                                                                                    holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerred);
+                                                                                                }
+                                                                                            });
+                                                                                            bottomSheetDialog.cancel();
+                                                                                        } else {
+                                                                                            db.child("name").setValue(num3).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                                                @Override
+                                                                                                public void onSuccess(Void aVoid) {
+                                                                                                    Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
+                                                                                                    holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerred);
+                                                                                                }
+                                                                                            });
+                                                                                            bottomSheetDialog.cancel();
                                                                                         }
-                                                                                    });
-                                                                                    bottomSheetDialog.cancel();
+
+                                                                                    }
                                                                                 }
                                                                             }
                                                                         });
@@ -578,14 +623,17 @@ public class CustomAdapterInnerCategory extends RecyclerView.Adapter<CustomAdapt
                                                         } else {
 
                                                             String s5 = dataSnapshot.child("name").getValue(String.class);
+                                                            namecheck.add(s5);
                                                             String s6 = dataSnapshot.child("category").getValue(String.class);
 
                                                             if(s5.equals(text)) {
                                                                 DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(s1).child(s2).child(s3);
+                                                                DatabaseReference db2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("favorites").child(s1).child(s2).child(s3);
                                                                 db.addListenerForSingleValueEvent(new ValueEventListener() {
                                                                     @Override
                                                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                                         num2 = dataSnapshot.child("name").getValue(String.class);
+                                                                        String favcheck = dataSnapshot.child("Favorite").getValue(String.class);
                                                                         //  Toast.makeText(context,num1, Toast.LENGTH_SHORT).show();
                                                                         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
                                                                         View parentView = LayoutInflater.from(context).inflate(R.layout.dailogue_predefine, null);
@@ -613,17 +661,34 @@ public class CustomAdapterInnerCategory extends RecyclerView.Adapter<CustomAdapt
                                                                                 if(TextUtils.isEmpty(num3)){
                                                                                     // Toast.makeText(context, "Enter Text", Toast.LENGTH_SHORT).show();
                                                                                 }
-                                                                                else{
-                                                                                    holder.textViewInnerCategoryLight1.setText(num3);
-                                                                                    // Toast.makeText(context, "new s2"+s2, Toast.LENGTH_SHORT).show();
-                                                                                    db.child("name").setValue(num3).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                                                        @Override
-                                                                                        public void onSuccess(Void aVoid) {
-                                                                                           // Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
-                                                                                            //holder.imageViewInnerSwitchboard1.setImageResource(R.drawable.powerred);
+                                                                                else {
+                                                                                    if (namecheck.contains(num3)) {
+                                                                                        Toast.makeText(context, "Name Already Exist", Toast.LENGTH_SHORT).show();
+                                                                                    } else {
+                                                                                        holder.textViewInnerCategoryLight1.setText(num3);
+                                                                                        // Toast.makeText(context, "new s2"+s2, Toast.LENGTH_SHORT).show();
+                                                                                        if (favcheck.equals("true")) {
+                                                                                            db2.child("name").setValue(num3);
+                                                                                            db.child("name").setValue(num3).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                                                @Override
+                                                                                                public void onSuccess(Void aVoid) {
+                                                                                                    Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
+                                                                                                    holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerred);
+                                                                                                }
+                                                                                            });
+                                                                                            bottomSheetDialog.cancel();
+                                                                                        } else {
+                                                                                            db.child("name").setValue(num3).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                                                @Override
+                                                                                                public void onSuccess(Void aVoid) {
+                                                                                                    Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
+                                                                                                    holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerred);
+                                                                                                }
+                                                                                            });
+                                                                                            bottomSheetDialog.cancel();
                                                                                         }
-                                                                                    });
-                                                                                    bottomSheetDialog.cancel();
+
+                                                                                    }
                                                                                 }
                                                                             }
                                                                         });

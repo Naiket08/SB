@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.annotation.SuppressLint;
@@ -120,6 +121,7 @@ public class Home extends AppCompatActivity {
         buttonKill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(Home.this, "Done", Toast.LENGTH_SHORT).show();
                 DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms");
                 itemsRef.addChildEventListener(new ChildEventListener() {
                     @Override
@@ -172,7 +174,9 @@ public class Home extends AppCompatActivity {
                                                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                             if(dataSnapshot.exists()){
                                                                 itemsRef5.child("mode").setValue("off");
-                                                                Toast.makeText(Home.this, "Done Please refresh the page", Toast.LENGTH_SHORT).show();
+                                                                Fragment frag = new FragmentGeneral();
+                                                                FragmentManager fragmentManager = getSupportFragmentManager();
+                                                                fragmentManager.beginTransaction().replace(R.id.fragment_container, frag).commit();
                                                             }
                                                         }
 
@@ -269,6 +273,7 @@ public class Home extends AppCompatActivity {
 
             }
         });
+
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -384,7 +389,7 @@ public class Home extends AppCompatActivity {
         });
     }
 
-void  recheck(){
+    void  recheck(){
    DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms");
     db.addValueEventListener(new ValueEventListener() {
         @Override
