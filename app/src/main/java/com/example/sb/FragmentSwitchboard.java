@@ -4,7 +4,9 @@ import android.annotation.SuppressLint;
 import android.app.MediaRouteButton;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -261,6 +263,28 @@ public class FragmentSwitchboard extends DialogFragment {
         bottomSheetDialog.setContentView(parentView);
 
         bottomSheetDialog.show();
+        editTextswitchdailog2.addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after)
+            {
+                if (s.length() == 15)
+                {
+                    // new AlertDialog.Builder(getContext()).setTitle("Character limit exceeded").setMessage("Input cannot exceed more than " + 15 + " characters.").setPositiveButton(android.R.string.ok, null).show();
+                    Toast.makeText(getContext(), "Character Limit Reached ", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count)
+            {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         cancelab2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -307,6 +331,28 @@ public class FragmentSwitchboard extends DialogFragment {
                                 bottomSheetDialog2.setContentView(parentView);
 
                                 bottomSheetDialog2.show();
+                                editTextswitchdailog2.addTextChangedListener(new TextWatcher()
+                                {
+                                    @Override
+                                    public void beforeTextChanged(CharSequence s, int start, int count, int after)
+                                    {
+                                        if (s.length() == 15)
+                                        {
+                                            // new AlertDialog.Builder(getContext()).setTitle("Character limit exceeded").setMessage("Input cannot exceed more than " + 15 + " characters.").setPositiveButton(android.R.string.ok, null).show();
+                                            Toast.makeText(getContext(), "Character Limit Reached ", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onTextChanged(CharSequence s, int start, int before, int count)
+                                    {
+                                    }
+
+                                    @Override
+                                    public void afterTextChanged(Editable editable) {
+
+                                    }
+                                });
                                 cancelbutton.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {

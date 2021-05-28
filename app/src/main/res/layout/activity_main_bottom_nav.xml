@@ -11,7 +11,7 @@
 
     <Button
         android:id="@+id/buttonBack"
-        android:layout_width="@dimen/_15sdp"
+        android:layout_width="@dimen/_20sdp"
         android:layout_height="@dimen/_15sdp"
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginTop= "@dimen/_13sdp"
@@ -21,8 +21,8 @@
 
     <Button
         android:id="@+id/buttonHamburger"
-        android:layout_width="@dimen/_15sdp"
-        android:layout_height="@dimen/_9sdp"
+        android:layout_width="@dimen/_18sdp"
+        android:layout_height="@dimen/_12sdp"
         android:layout_alignTop="@id/buttonBack"
         android:layout_alignBottom="@id/buttonBack"
         android:layout_alignParentEnd="true"
@@ -31,14 +31,14 @@
 
     <Button
         android:id="@+id/buttonKill"
-        android:layout_width="@dimen/_35sdp"
-        android:layout_height="@dimen/_20sdp"
+        android:layout_width="@dimen/_42sdp"
+        android:layout_height="@dimen/_28sdp"
         android:text="Kill"
         android:textColor="#FF2121"
         android:textAllCaps="false"
         android:layout_alignParentTop="true"
         android:layout_toStartOf="@id/buttonHamburger"
-        android:layout_marginTop="@dimen/_13sdp"
+        android:layout_marginTop="@dimen/_7sdp"
         android:layout_marginEnd="@dimen/_15sdp"
         android:background="@drawable/border_kill_button"/>
 

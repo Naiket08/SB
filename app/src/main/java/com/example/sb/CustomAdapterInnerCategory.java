@@ -1,7 +1,9 @@
 package com.example.sb;
 
 import android.content.Context;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -157,6 +159,28 @@ public class CustomAdapterInnerCategory extends RecyclerView.Adapter<CustomAdapt
                                                                         bottomSheetDialog.setContentView(parentView);
                                                                         // Toast.makeText(context,s2, Toast.LENGTH_SHORT).show();
                                                                          bottomSheetDialog.show();
+                                                                        editTextdailogpredefine.addTextChangedListener(new TextWatcher()
+                                                                        {
+                                                                            @Override
+                                                                            public void beforeTextChanged(CharSequence s, int start, int count, int after)
+                                                                            {
+                                                                                if (s.length() == 15)
+                                                                                {
+                                                                                    // new AlertDialog.Builder(getContext()).setTitle("Character limit exceeded").setMessage("Input cannot exceed more than " + 15 + " characters.").setPositiveButton(android.R.string.ok, null).show();
+                                                                                    Toast.makeText(context, "Character Limit Reached ", Toast.LENGTH_SHORT).show();
+                                                                                }
+                                                                            }
+
+                                                                            @Override
+                                                                            public void onTextChanged(CharSequence s, int start, int before, int count)
+                                                                            {
+                                                                            }
+
+                                                                            @Override
+                                                                            public void afterTextChanged(Editable editable) {
+
+                                                                            }
+                                                                        });
 
                                                                         canceldailogpredefine.setOnClickListener(new View.OnClickListener() {
                                                                             @Override
@@ -319,6 +343,28 @@ public class CustomAdapterInnerCategory extends RecyclerView.Adapter<CustomAdapt
                                                                         bottomSheetDialog.setContentView(parentView);
                                                                         // Toast.makeText(context,s2, Toast.LENGTH_SHORT).show();
                                                                         bottomSheetDialog.show();
+                                                                        editTextdailogpredefine.addTextChangedListener(new TextWatcher()
+                                                                        {
+                                                                            @Override
+                                                                            public void beforeTextChanged(CharSequence s, int start, int count, int after)
+                                                                            {
+                                                                                if (s.length() == 15)
+                                                                                {
+                                                                                    // new AlertDialog.Builder(getContext()).setTitle("Character limit exceeded").setMessage("Input cannot exceed more than " + 15 + " characters.").setPositiveButton(android.R.string.ok, null).show();
+                                                                                    Toast.makeText(context, "Character Limit Reached ", Toast.LENGTH_SHORT).show();
+                                                                                }
+                                                                            }
+
+                                                                            @Override
+                                                                            public void onTextChanged(CharSequence s, int start, int before, int count)
+                                                                            {
+                                                                            }
+
+                                                                            @Override
+                                                                            public void afterTextChanged(Editable editable) {
+
+                                                                            }
+                                                                        });
 
                                                                         canceldailogpredefine.setOnClickListener(new View.OnClickListener() {
                                                                             @Override
@@ -482,6 +528,28 @@ public class CustomAdapterInnerCategory extends RecyclerView.Adapter<CustomAdapt
                                                                         bottomSheetDialog.setContentView(parentView);
                                                                         // Toast.makeText(context,s2, Toast.LENGTH_SHORT).show();
                                                                         bottomSheetDialog.show();
+                                                                        editTextdailogpredefine.addTextChangedListener(new TextWatcher()
+                                                                        {
+                                                                            @Override
+                                                                            public void beforeTextChanged(CharSequence s, int start, int count, int after)
+                                                                            {
+                                                                                if (s.length() == 15)
+                                                                                {
+                                                                                    // new AlertDialog.Builder(getContext()).setTitle("Character limit exceeded").setMessage("Input cannot exceed more than " + 15 + " characters.").setPositiveButton(android.R.string.ok, null).show();
+                                                                                    Toast.makeText(context, "Character Limit Reached ", Toast.LENGTH_SHORT).show();
+                                                                                }
+                                                                            }
+
+                                                                            @Override
+                                                                            public void onTextChanged(CharSequence s, int start, int before, int count)
+                                                                            {
+                                                                            }
+
+                                                                            @Override
+                                                                            public void afterTextChanged(Editable editable) {
+
+                                                                            }
+                                                                        });
 
                                                                         canceldailogpredefine.setOnClickListener(new View.OnClickListener() {
                                                                             @Override
@@ -650,6 +718,28 @@ public class CustomAdapterInnerCategory extends RecyclerView.Adapter<CustomAdapt
                                                                             public void onClick(View view) {
                                                                                 num3=s5;
                                                                                 bottomSheetDialog.cancel();
+                                                                                editTextdailogpredefine.addTextChangedListener(new TextWatcher()
+                                                                                {
+                                                                                    @Override
+                                                                                    public void beforeTextChanged(CharSequence s, int start, int count, int after)
+                                                                                    {
+                                                                                        if (s.length() == 15)
+                                                                                        {
+                                                                                            // new AlertDialog.Builder(getContext()).setTitle("Character limit exceeded").setMessage("Input cannot exceed more than " + 15 + " characters.").setPositiveButton(android.R.string.ok, null).show();
+                                                                                            Toast.makeText(context, "Character Limit Reached ", Toast.LENGTH_SHORT).show();
+                                                                                        }
+                                                                                    }
+
+                                                                                    @Override
+                                                                                    public void onTextChanged(CharSequence s, int start, int before, int count)
+                                                                                    {
+                                                                                    }
+
+                                                                                    @Override
+                                                                                    public void afterTextChanged(Editable editable) {
+
+                                                                                    }
+                                                                                });
                                                                             }
                                                                         });
 
