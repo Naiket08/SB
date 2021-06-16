@@ -1,30 +1,22 @@
 package com.example.sb;
 
-import android.app.ActionBar;
 import android.content.Context;
-import android.content.Intent;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -32,15 +24,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.annotations.Nullable;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.zip.Inflater;
 
 public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPredefine.ViewHolder> {
     ArrayList itemnames,itemtypes;
@@ -129,7 +117,7 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
             public void onClick(View view) {
                 databaseevent();
                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
-                View parentView = LayoutInflater.from(context).inflate(R.layout.dailogue_predefine, null);
+                View parentView = LayoutInflater.from(context).inflate(R.layout.dailoguebox_predefine, null);
                 //View parentView = getLayoutInflater().inflate(R.layout.dailogue_predefine, null);
                 ImageView canceldailogpredefine = (ImageView) parentView.findViewById(R.id.canceldailogpredefine);
                 Button buttondailogprtedefine = (Button) parentView.findViewById(R.id.buttondailogpredefine);
@@ -296,10 +284,6 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               /* // open another activity on item click
-                Intent intent = new Intent(context, SecondActivity.class);
-                intent.putExtra("image", personImages.get(position)); // put image data in Intent
-                context.startActivity(intent); // start Intent*/
 
 
 
@@ -311,24 +295,6 @@ public class CustomAdapterPredefine extends RecyclerView.Adapter<CustomAdapterPr
 
     }
 
-
-
-
-    /*public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        holder.name.setText((CharSequence) roomNames.get(position));
-        holder.imageViewIconMyRoom.setImageResource((Integer)roomImages.get(position));
-        // implement setOnClickListener event on item view.
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               *//* // open another activity on item click
-                Intent intent = new Intent(context, SecondActivity.class);
-                intent.putExtra("image", personImages.get(position)); // put image data in Intent
-                context.startActivity(intent); // start Intent*//*
-            }
-        });
-
-    }*/
 
 
     public int getItemCount() {

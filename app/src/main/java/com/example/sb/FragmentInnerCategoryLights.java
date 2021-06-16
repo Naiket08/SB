@@ -7,13 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,7 +23,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class FragmentInnerCategoryLights extends Fragment {
 
@@ -69,10 +66,10 @@ public class FragmentInnerCategoryLights extends Fragment {
 
         }*/
 
-        CustomAdapterInnerCategory customAdapter2 = new CustomAdapterInnerCategory(getActivity(),categoryname,categorytype,mAuth);
-        CustomAdapterInnerCategory2 customAdapter3 = new CustomAdapterInnerCategory2(getActivity(),categoryname2,categorytype2,mAuth);
-        CustomAdapterInnerCategory3 customAdapter4 = new CustomAdapterInnerCategory3(getActivity(),categoryname3,categorytype3,mAuth);
-        CustomAdapterInnerCategory4 customAdapter5 = new CustomAdapterInnerCategory4(getActivity(),categoryname4,categorytype4,mAuth);
+        CustomAdapterInnerCategoryLight customAdapter2 = new CustomAdapterInnerCategoryLight(getActivity(),categoryname,categorytype,mAuth);
+        CustomAdapterInnerCategoryFans customAdapter3 = new CustomAdapterInnerCategoryFans(getActivity(),categoryname2,categorytype2,mAuth);
+        CustomAdapterInnerCategoryAppliances customAdapter4 = new CustomAdapterInnerCategoryAppliances(getActivity(),categoryname3,categorytype3,mAuth);
+        CustomAdapterInnerCategoryAC customAdapter5 = new CustomAdapterInnerCategoryAC(getActivity(),categoryname4,categorytype4,mAuth);
 
         if((categoryname!=null&&categorytype!=null&&categorytype.size()>0&&categoryname.size()>0)){
             categoryname.clear();
@@ -1954,7 +1951,7 @@ else if(category.equals("AC")) {
       /*        final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
                  layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
                 recyclerViewPredefine.setLayoutManager(layoutManager); // set LayoutManager to RecyclerView*/
-                //  call the constructor of CustomAdapter to send the reference and data to Adapter
+                //  call the constructor of CustomAdapterMyrooms to send the reference and data to Adapter
                 recycleviewinnercategory1.setAdapter(customAdapter2); // set the Adapter to RecyclerView
             }
         };
@@ -1969,7 +1966,7 @@ else if(category.equals("AC")) {
       /*        final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
                  layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
                 recyclerViewPredefine.setLayoutManager(layoutManager); // set LayoutManager to RecyclerView*/
-                //  call the constructor of CustomAdapter to send the reference and data to Adapter
+                //  call the constructor of CustomAdapterMyrooms to send the reference and data to Adapter
                 recycleviewinnercategory2.setAdapter(customAdapter3); // set the Adapter to RecyclerView
 
             }
@@ -1985,7 +1982,7 @@ else if(category.equals("AC")) {
       /*        final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
                  layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
                 recyclerViewPredefine.setLayoutManager(layoutManager); // set LayoutManager to RecyclerView*/
-                //  call the constructor of CustomAdapter to send the reference and data to Adapter
+                //  call the constructor of CustomAdapterMyrooms to send the reference and data to Adapter
                 recycleviewinnercategory3.setAdapter(customAdapter4); // set the Adapter to RecyclerView
 
             }
@@ -2001,7 +1998,7 @@ else if(category.equals("AC")) {
       /*        final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
                  layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
                 recyclerViewPredefine.setLayoutManager(layoutManager); // set LayoutManager to RecyclerView*/
-                //  call the constructor of CustomAdapter to send the reference and data to Adapter
+                //  call the constructor of CustomAdapterMyrooms to send the reference and data to Adapter
                 recycleviewinnercategory4.setAdapter(customAdapter5); // set the Adapter to RecyclerView
 
             }

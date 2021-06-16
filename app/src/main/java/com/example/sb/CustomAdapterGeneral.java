@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -27,7 +26,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class CustomAdapterGeneral extends RecyclerView.Adapter<CustomAdapterGeneral.ViewHolder> {
     ArrayList Generalname,GeneralRname,GeneralSname,GeneralSSname,GeneralType,GeneralType2;
@@ -55,7 +53,7 @@ public class CustomAdapterGeneral extends RecyclerView.Adapter<CustomAdapterGene
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         // infalte the item Layout
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleview_general1, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleview_general, parent, false);
         // set the view's size, margins, paddings and layout parameters
         ViewHolder vh = new ViewHolder(v);
         return vh;

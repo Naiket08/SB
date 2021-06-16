@@ -29,7 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class CustomAdapterInnerCategory3 extends RecyclerView.Adapter<CustomAdapterInnerCategory3.ViewHolder> {
+public class CustomAdapterInnerCategoryAppliances extends RecyclerView.Adapter<CustomAdapterInnerCategoryAppliances.ViewHolder> {
     ArrayList categoryname3,categorytype3;
 
     Context context;
@@ -40,7 +40,7 @@ public class CustomAdapterInnerCategory3 extends RecyclerView.Adapter<CustomAdap
     public ArrayList<String> namecheck = new ArrayList<String>();;
 
 
-    public CustomAdapterInnerCategory3(Context context, ArrayList categoryname3,ArrayList categorytype3,FirebaseAuth mAuth) {
+    public CustomAdapterInnerCategoryAppliances(Context context, ArrayList categoryname3, ArrayList categorytype3, FirebaseAuth mAuth) {
 
 
         this.context = context;
@@ -134,7 +134,7 @@ public class CustomAdapterInnerCategory3 extends RecyclerView.Adapter<CustomAdap
 
                                                                         //  Toast.makeText(context,num1, Toast.LENGTH_SHORT).show();
                                                                         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
-                                                                        View parentView = LayoutInflater.from(context).inflate(R.layout.dailogue_predefine, null);
+                                                                        View parentView = LayoutInflater.from(context).inflate(R.layout.dailoguebox_predefine, null);
                                                                         //View parentView = getLayoutInflater().inflate(R.layout.dailogue_predefine, null);
                                                                         ImageView canceldailogpredefine = (ImageView) parentView.findViewById(R.id.canceldailogpredefine);
                                                                         Button buttondailogprtedefine = (Button) parentView.findViewById(R.id.buttondailogpredefine);
@@ -318,7 +318,7 @@ public class CustomAdapterInnerCategory3 extends RecyclerView.Adapter<CustomAdap
 
                                                                         //  Toast.makeText(context,num1, Toast.LENGTH_SHORT).show();
                                                                         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
-                                                                        View parentView = LayoutInflater.from(context).inflate(R.layout.dailogue_predefine, null);
+                                                                        View parentView = LayoutInflater.from(context).inflate(R.layout.dailoguebox_predefine, null);
                                                                         //View parentView = getLayoutInflater().inflate(R.layout.dailogue_predefine, null);
                                                                         ImageView canceldailogpredefine = (ImageView) parentView.findViewById(R.id.canceldailogpredefine);
                                                                         Button buttondailogprtedefine = (Button) parentView.findViewById(R.id.buttondailogpredefine);
@@ -504,7 +504,7 @@ public class CustomAdapterInnerCategory3 extends RecyclerView.Adapter<CustomAdap
 
                                                                         //  Toast.makeText(context,num1, Toast.LENGTH_SHORT).show();
                                                                         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
-                                                                        View parentView = LayoutInflater.from(context).inflate(R.layout.dailogue_predefine, null);
+                                                                        View parentView = LayoutInflater.from(context).inflate(R.layout.dailoguebox_predefine, null);
                                                                         //View parentView = getLayoutInflater().inflate(R.layout.dailogue_predefine, null);
                                                                         ImageView canceldailogpredefine = (ImageView) parentView.findViewById(R.id.canceldailogpredefine);
                                                                         Button buttondailogprtedefine = (Button) parentView.findViewById(R.id.buttondailogpredefine);
@@ -689,7 +689,7 @@ public class CustomAdapterInnerCategory3 extends RecyclerView.Adapter<CustomAdap
 
                                                                         //  Toast.makeText(context,num1, Toast.LENGTH_SHORT).show();
                                                                         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
-                                                                        View parentView = LayoutInflater.from(context).inflate(R.layout.dailogue_predefine, null);
+                                                                        View parentView = LayoutInflater.from(context).inflate(R.layout.dailoguebox_predefine, null);
                                                                         //View parentView = getLayoutInflater().inflate(R.layout.dailogue_predefine, null);
                                                                         ImageView canceldailogpredefine = (ImageView) parentView.findViewById(R.id.canceldailogpredefine);
                                                                         Button buttondailogprtedefine = (Button) parentView.findViewById(R.id.buttondailogpredefine);

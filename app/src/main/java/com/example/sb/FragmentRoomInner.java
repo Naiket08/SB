@@ -256,7 +256,7 @@ public class FragmentRoomInner extends Fragment{
                 //Second fragment after 5 seconds appears
                 recyclerViewRoominner = (RecyclerView)view.findViewById(R.id.recyclerViewRoomInner);
                 recyclerViewRoominner.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true));
-                //  call the constructor of CustomAdapter to send the reference and data to Adapter
+                //  call the constructor of CustomAdapterMyrooms to send the reference and data to Adapter
                 recyclerViewRoominner.setAdapter(customAdapter1); // set the Adapter to RecyclerView
                 getFragmentManager().beginTransaction().commit();
          /*   }

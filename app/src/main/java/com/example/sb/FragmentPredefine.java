@@ -1,24 +1,17 @@
 package com.example.sb;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.text.method.KeyListener;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.SpinnerAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,7 +19,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -39,8 +31,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 
 public class FragmentPredefine extends Fragment {
 
@@ -107,7 +97,7 @@ public class FragmentPredefine extends Fragment {
                 // Main Logic
 
                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getContext());
-                View parentView = getLayoutInflater().inflate(R.layout.dailogue_predefine, null);
+                View parentView = getLayoutInflater().inflate(R.layout.dailoguebox_predefine, null);
                 ImageView canceldailogpredefine = (ImageView) parentView.findViewById(R.id.canceldailogpredefine);
                 Button buttondailogprtedefine=(Button)parentView.findViewById(R.id.buttondailogpredefine);
                 EditText editTextdailogpredefine=(EditText)parentView.findViewById(R.id.editTextdailogpredefine);
@@ -249,7 +239,7 @@ public class FragmentPredefine extends Fragment {
       /*        final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
                  layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
                 recyclerViewPredefine.setLayoutManager(layoutManager); // set LayoutManager to RecyclerView*/
-                //  call the constructor of CustomAdapter to send the reference and data to Adapter
+                //  call the constructor of CustomAdapterMyrooms to send the reference and data to Adapter
                 CustomAdapterPredefine customAdapterPredefine = new CustomAdapterPredefine(getActivity(),itemnames,itemtypes,Roomname,text1,mAuth);
                 recyclerViewPredefine.setAdapter(customAdapterPredefine); // set the Adapter to RecyclerView
             }

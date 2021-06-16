@@ -345,7 +345,7 @@ public class FragmentGeneral extends Fragment {
       /*        final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
                  layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
                 recyclerViewPredefine.setLayoutManager(layoutManager); // set LayoutManager to RecyclerView*/
-                //  call the constructor of CustomAdapter to send the reference and data to Adapter
+                //  call the constructor of CustomAdapterMyrooms to send the reference and data to Adapter
                 recyclerViewGeneral.setAdapter(customAdapter2); // set the Adapter to RecyclerView
 
             }

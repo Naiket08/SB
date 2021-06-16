@@ -32,7 +32,7 @@ import static java.lang.Math.PI;
  * Created by Beppi on 06/12/2016.
  */
 
-public class Knob extends View {
+public class FanKnob extends View {
 
     public static final int SWIPEDIRECTION_NONE = 0;
     public static final int SWIPEDIRECTION_VERTICAL = 1;
@@ -52,23 +52,23 @@ public class Knob extends View {
     public static final int BALLONANIMATION_FADE = 2;
 
     // constructors
-    public Knob(Context context) {
+    public FanKnob(Context context) {
         super(context);
         init(null);
     }
 
-    public Knob(Context context, AttributeSet attrs) {
+    public FanKnob(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(attrs);
     }
 
-    public Knob(Context context, AttributeSet attrs, int defStyleAttr) {
+    public FanKnob(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(attrs);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public Knob(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public FanKnob(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(attrs);
     }
@@ -504,7 +504,7 @@ public class Knob extends View {
                     if (action == MotionEvent.ACTION_DOWN) {
                         swipeY = y;
                         swipeing = false;
-                        disallowParentToHandleTouchEvents(); // needed when Knob's parent is a ScrollView
+                        disallowParentToHandleTouchEvents(); // needed when FanKnob's parent is a ScrollView
                     }
                     else if (action == MotionEvent.ACTION_MOVE) {
                         if (y - swipeY > swipeSensibilityPixels) {
@@ -531,7 +531,7 @@ public class Knob extends View {
                     if (action == MotionEvent.ACTION_DOWN) {
                         swipeX = x;
                         swipeing = false;
-                        disallowParentToHandleTouchEvents(); // needed when Knob's parent is a ScrollView
+                        disallowParentToHandleTouchEvents(); // needed when FanKnob's parent is a ScrollView
                     }
                     else if (action == MotionEvent.ACTION_MOVE) {
                         if (x - swipeX > swipeSensibilityPixels) {
@@ -560,7 +560,7 @@ public class Knob extends View {
                         swipeX = x;
                         swipeY = y;
                         swipeing = false;
-                        disallowParentToHandleTouchEvents(); // needed when Knob's parent is a ScrollView
+                        disallowParentToHandleTouchEvents(); // needed when FanKnob's parent is a ScrollView
                     }
                     else if (action == MotionEvent.ACTION_MOVE) {
                         if (x - swipeX > swipeSensibilityPixels || swipeY - y > swipeSensibilityPixels ) {
@@ -589,7 +589,7 @@ public class Knob extends View {
                     int y = (int) motionEvent.getY();
                     if (action == MotionEvent.ACTION_DOWN) {
                         swipeing = false;
-                        disallowParentToHandleTouchEvents(); // needed when Knob's parent is a ScrollView
+                        disallowParentToHandleTouchEvents(); // needed when FanKnob's parent is a ScrollView
                     }
                     else if (action == MotionEvent.ACTION_MOVE) {
                         double angle = Math.atan2((double)(y-centerY), (double)(x-centerX));

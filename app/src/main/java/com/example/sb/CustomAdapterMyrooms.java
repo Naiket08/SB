@@ -3,7 +3,6 @@ package com.example.sb;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -11,7 +10,6 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -24,7 +22,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -35,13 +32,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.zip.Inflater;
 
-public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
+public class CustomAdapterMyrooms extends RecyclerView.Adapter<CustomAdapterMyrooms.ViewHolder> {
     FirebaseAuth mAuth;
     ArrayList roomNames;
     ArrayList roomNames2;
@@ -50,7 +44,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     public String s2,s3;
     EditText editTextdailogpredefine;
     public ArrayList<String> list = new ArrayList<String>();
-    public CustomAdapter(Context context, ArrayList roomNames,ArrayList roomNames2, ArrayList roomImages,FirebaseAuth mAuth) {
+    public CustomAdapterMyrooms(Context context, ArrayList roomNames, ArrayList roomNames2, ArrayList roomImages, FirebaseAuth mAuth) {
 
 
         this.context = context;
@@ -82,7 +76,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                 String smain= holder.textviewrefence.getText().toString().trim();
                 //Toast.makeText(context, smain, Toast.LENGTH_SHORT).show();
                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
-                View parentView = LayoutInflater.from(context).inflate(R.layout.dailogue_predefine, null);
+                View parentView = LayoutInflater.from(context).inflate(R.layout.dailoguebox_predefine, null);
                 //View parentView = getLayoutInflater().inflate(R.layout.dailogue_predefine, null);
                 ImageView canceldailogpredefine = (ImageView) parentView.findViewById(R.id.canceldailogpredefine);
                 Button buttondailogprtedefine = (Button) parentView.findViewById(R.id.buttondailogpredefine);

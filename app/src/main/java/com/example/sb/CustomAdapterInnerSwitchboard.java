@@ -2,14 +2,12 @@ package com.example.sb;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -22,9 +20,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -49,7 +44,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
     LinearLayout llback;
     ImageView imageViewBrownJacket,imageViewWhiteJacket,imageViewAppliances,imageViewBulb,imageViewMain;
     Button speedcontrol;
-    Knob customdial;
+    FanKnob customdial;
     public String Roomname,s3,text3,num1,num2,x;
     public String fanspeed;
     private FirebaseAuth mAuth;
@@ -58,7 +53,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
     ProgressDialog progressDoalog;
 
 
-    public CustomAdapterInnerSwitchboard(Context context, ArrayList LightName,ArrayList LightName2,ArrayList LightName3, ArrayList LightType, ArrayList LightType2, ArrayList LightType3, FirebaseAuth mAuth, String Roomname, String text3,TextView textviewdialview, ImageView imageViewBrownJacket, ImageView  imageViewWhiteJacket, ImageView imageViewAppliances, ImageView imageViewBulb, Knob customdial, Button speedcontrol,TextView acantina,LinearLayout llback,TextView acvalue,ImageButton acupbutton,ImageButton acdownbutton,ImageView imageViewMain) {
+    public CustomAdapterInnerSwitchboard(Context context, ArrayList LightName, ArrayList LightName2, ArrayList LightName3, ArrayList LightType, ArrayList LightType2, ArrayList LightType3, FirebaseAuth mAuth, String Roomname, String text3, TextView textviewdialview, ImageView imageViewBrownJacket, ImageView  imageViewWhiteJacket, ImageView imageViewAppliances, ImageView imageViewBulb, FanKnob customdial, Button speedcontrol, TextView acantina, LinearLayout llback, TextView acvalue, ImageButton acupbutton, ImageButton acdownbutton, ImageView imageViewMain) {
 
 
         this.context = context;
@@ -131,7 +126,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
                     acdownbutton.setVisibility(View.INVISIBLE);
                     imageViewMain.setVisibility(View.INVISIBLE);
 
-                    customdial.setOnStateChanged(new Knob.OnStateChanged() {
+                    customdial.setOnStateChanged(new FanKnob.OnStateChanged() {
                         @Override
                         public void onState(int state) {
                             textviewdialview.setText(Integer.toString(state));
@@ -459,7 +454,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
             @Override
             public void onClick(View view) {
                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
-                View parentView = LayoutInflater.from(context).inflate(R.layout.dailogue_predefine, null);
+                View parentView = LayoutInflater.from(context).inflate(R.layout.dailoguebox_predefine, null);
                 //View parentView = getLayoutInflater().inflate(R.layout.dailogue_predefine, null);
                 ImageView canceldailogpredefine = (ImageView) parentView.findViewById(R.id.canceldailogpredefine);
                 Button buttondailogprtedefine = (Button) parentView.findViewById(R.id.buttondailogpredefine);

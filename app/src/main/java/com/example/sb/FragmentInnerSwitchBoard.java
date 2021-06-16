@@ -1,17 +1,14 @@
 package com.example.sb;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,16 +16,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -39,7 +32,7 @@ public class FragmentInnerSwitchBoard extends Fragment {
     ImageButton acupbutton,acdownbutton;
     LinearLayout llback;
     ImageView imageViewBrownJacket,imageViewWhiteJacket,imageViewAppliances,imageViewBulb,imageViewMain;
-    Knob customdial;
+    FanKnob customdial;
     Button speedcontrol;
 
     TextView textViewSwitchBoard1,textviewdialview;
@@ -97,11 +90,11 @@ public class FragmentInnerSwitchBoard extends Fragment {
         buttonLight3 = (Button)view.findViewById(R.id.buttonLight3);
         buttonFan = (Button)view.findViewById(R.id.buttonFan);
         speedcontrol=(Button)view.findViewById(R.id.speedcontrol);
-        customdial=(Knob) view.findViewById(R.id.dialView);
+        customdial=(FanKnob) view.findViewById(R.id.dialView);
 
         ///For knob in Fan
         textviewdialview.setText(Integer.toString(customdial.getState()));
-        customdial.setOnStateChanged(new Knob.OnStateChanged() {
+        customdial.setOnStateChanged(new FanKnob.OnStateChanged() {
             @Override
             public void onState(int state) {
                 textviewdialview.setText(Integer.toString(state));
@@ -302,7 +295,7 @@ public class FragmentInnerSwitchBoard extends Fragment {
         recyclerViewInnerSwitchboard = (RecyclerView)view.findViewById(R.id.recyclerViewInnerSwitchboard);
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        //  call the constructor of CustomAdapter to send the reference and data to Adapter
+        //  call the constructor of CustomAdapterMyrooms to send the reference and data to Adapter
         recyclerViewInnerSwitchboard.setAdapter(customAdapter2); // set the Adapter to RecyclerView
         recyclerViewInnerSwitchboard.setLayoutManager(layoutManager);
         //getFragmentManager().beginTransaction().commit();

@@ -63,7 +63,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/textViewRoomNo"
         android:gravity="center">
-    <com.example.sb.Knob
+    <com.example.sb.FanKnob
         android:id="@+id/dialView"
         android:layout_width="@dimen/_150sdp"
         android:layout_height="@dimen/_180sdp"

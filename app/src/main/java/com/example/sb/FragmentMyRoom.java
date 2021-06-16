@@ -1,43 +1,28 @@
 package com.example.sb;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.security.PublicKey;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class FragmentMyRoom extends Fragment {
 
@@ -62,7 +47,7 @@ public class FragmentMyRoom extends Fragment {
         View view = inflater.inflate(R.layout.fragment_my_rooms,container,false);
 
         ArrayList dynamicroomname = new ArrayList<>();
-        CustomAdapter customAdapter = new CustomAdapter(getActivity(),roomNames,roomNames2,roomImages,mAuth);
+        CustomAdapterMyrooms customAdapterMyrooms = new CustomAdapterMyrooms(getActivity(),roomNames,roomNames2,roomImages,mAuth);
         if((roomNames!=null&&roomNames2!=null&&roomImages!=null&&roomNames.size()>0&&roomNames2.size()>0&&roomImages.size()>0)){
             roomNames.clear();
             roomNames2.clear();
@@ -98,7 +83,7 @@ public class FragmentMyRoom extends Fragment {
                }
                //Toast.makeText(getContext(), s1, Toast.LENGTH_SHORT).show();
               // Toast.makeText(getContext(), s2, Toast.LENGTH_SHORT).show();
-               customAdapter.notifyDataSetChanged();
+               customAdapterMyrooms.notifyDataSetChanged();
            }
 
            @Override
@@ -201,8 +186,8 @@ public class FragmentMyRoom extends Fragment {
 
                 GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
                 recyclerViewMyRoom.setLayoutManager(gridLayoutManager); // set LayoutManager to RecyclerView
-                //  call the constructor of CustomAdapter to send the reference and data to Adapter
-                recyclerViewMyRoom.setAdapter(customAdapter); // set the Adapter to RecyclerView
+                //  call the constructor of CustomAdapterMyrooms to send the reference and data to Adapter
+                recyclerViewMyRoom.setAdapter(customAdapterMyrooms); // set the Adapter to RecyclerView
                 getFragmentManager().beginTransaction().commit();
 
 
@@ -229,7 +214,7 @@ public class FragmentMyRoom extends Fragment {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     dynamicroomname.add(snapshot.getKey().toString());
                 }
-                customAdapter.notifyDataSetChanged();
+                customAdapterMyrooms.notifyDataSetChanged();
             }
 
             @Override

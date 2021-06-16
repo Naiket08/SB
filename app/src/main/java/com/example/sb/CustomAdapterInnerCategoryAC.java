@@ -29,8 +29,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class CustomAdapterInnerCategory2 extends RecyclerView.Adapter<CustomAdapterInnerCategory2.ViewHolder> {
-    ArrayList categoryname2,categorytype2;
+public class CustomAdapterInnerCategoryAC extends RecyclerView.Adapter<CustomAdapterInnerCategoryAC.ViewHolder> {
+    ArrayList categoryname4,categorytype4;
 
     Context context;
     private FirebaseAuth mAuth;
@@ -40,12 +40,12 @@ public class CustomAdapterInnerCategory2 extends RecyclerView.Adapter<CustomAdap
     public ArrayList<String> namecheck = new ArrayList<String>();;
 
 
-    public CustomAdapterInnerCategory2(Context context, ArrayList categoryname2,ArrayList categorytype2,FirebaseAuth mAuth) {
+    public CustomAdapterInnerCategoryAC(Context context, ArrayList categoryname4, ArrayList categorytype4, FirebaseAuth mAuth) {
 
 
         this.context = context;
-        this.categorytype2=categorytype2;
-        this.categoryname2=categoryname2;
+        this.categoryname4=categoryname4;
+        this.categorytype4=categorytype4;
         this.mAuth=mAuth;
 
     }
@@ -64,12 +64,12 @@ public class CustomAdapterInnerCategory2 extends RecyclerView.Adapter<CustomAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.textViewInnerCategoryLight1.setText((CharSequence) categoryname2.get(position));
-        holder.buttonOnCategory1Light1.setBackgroundResource((Integer)categorytype2.get(position));
+        holder.textViewInnerCategoryLight1.setText((CharSequence) categoryname4.get(position));
+        holder.buttonOnCategory1Light1.setBackgroundResource((Integer)categorytype4.get(position));
         // implement setOnClickListener event on item view.
 
         ////Demo
-        ///////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////// EDIT TEXTVIEW
         holder.buttonEditCategory1Light1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,7 +133,7 @@ public class CustomAdapterInnerCategory2 extends RecyclerView.Adapter<CustomAdap
                                                                         String favcheck = dataSnapshot.child("Favorite").getValue(String.class);
                                                                         //  Toast.makeText(context,num1, Toast.LENGTH_SHORT).show();
                                                                         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
-                                                                        View parentView = LayoutInflater.from(context).inflate(R.layout.dailogue_predefine, null);
+                                                                        View parentView = LayoutInflater.from(context).inflate(R.layout.dailoguebox_predefine, null);
                                                                         //View parentView = getLayoutInflater().inflate(R.layout.dailogue_predefine, null);
                                                                         ImageView canceldailogpredefine = (ImageView) parentView.findViewById(R.id.canceldailogpredefine);
                                                                         Button buttondailogprtedefine = (Button) parentView.findViewById(R.id.buttondailogpredefine);
@@ -316,7 +316,7 @@ public class CustomAdapterInnerCategory2 extends RecyclerView.Adapter<CustomAdap
                                                                         String favcheck = dataSnapshot.child("Favorite").getValue(String.class);
                                                                         //  Toast.makeText(context,num1, Toast.LENGTH_SHORT).show();
                                                                         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
-                                                                        View parentView = LayoutInflater.from(context).inflate(R.layout.dailogue_predefine, null);
+                                                                        View parentView = LayoutInflater.from(context).inflate(R.layout.dailoguebox_predefine, null);
                                                                         //View parentView = getLayoutInflater().inflate(R.layout.dailogue_predefine, null);
                                                                         ImageView canceldailogpredefine = (ImageView) parentView.findViewById(R.id.canceldailogpredefine);
                                                                         Button buttondailogprtedefine = (Button) parentView.findViewById(R.id.buttondailogpredefine);
@@ -501,7 +501,7 @@ public class CustomAdapterInnerCategory2 extends RecyclerView.Adapter<CustomAdap
                                                                         String favcheck = dataSnapshot.child("Favorite").getValue(String.class);
                                                                         //  Toast.makeText(context,num1, Toast.LENGTH_SHORT).show();
                                                                         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
-                                                                        View parentView = LayoutInflater.from(context).inflate(R.layout.dailogue_predefine, null);
+                                                                        View parentView = LayoutInflater.from(context).inflate(R.layout.dailoguebox_predefine, null);
                                                                         //View parentView = getLayoutInflater().inflate(R.layout.dailogue_predefine, null);
                                                                         ImageView canceldailogpredefine = (ImageView) parentView.findViewById(R.id.canceldailogpredefine);
                                                                         Button buttondailogprtedefine = (Button) parentView.findViewById(R.id.buttondailogpredefine);
@@ -685,7 +685,7 @@ public class CustomAdapterInnerCategory2 extends RecyclerView.Adapter<CustomAdap
                                                                         String favcheck = dataSnapshot.child("Favorite").getValue(String.class);
                                                                         //  Toast.makeText(context,num1, Toast.LENGTH_SHORT).show();
                                                                         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
-                                                                        View parentView = LayoutInflater.from(context).inflate(R.layout.dailogue_predefine, null);
+                                                                        View parentView = LayoutInflater.from(context).inflate(R.layout.dailoguebox_predefine, null);
                                                                         //View parentView = getLayoutInflater().inflate(R.layout.dailogue_predefine, null);
                                                                         ImageView canceldailogpredefine = (ImageView) parentView.findViewById(R.id.canceldailogpredefine);
                                                                         Button buttondailogprtedefine = (Button) parentView.findViewById(R.id.buttondailogpredefine);
@@ -878,8 +878,6 @@ public class CustomAdapterInnerCategory2 extends RecyclerView.Adapter<CustomAdap
 
             }
         });
-
-
 
 
         holder.buttonOnCategory1Light1.setOnClickListener(new View.OnClickListener() {
@@ -1219,12 +1217,12 @@ public class CustomAdapterInnerCategory2 extends RecyclerView.Adapter<CustomAdap
                                                                                     holder.buttonOnCategory1Light1.setBackgroundResource(R.drawable.powerred);
                                                                                 }
                                                                             });
+
                                                                             db2.child("mode").setValue("off").addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                                 @Override
                                                                                 public void onSuccess(Void aVoid) {
                                                                                 }
                                                                             });
-
 
 
                                                                         }
@@ -1525,7 +1523,7 @@ public class CustomAdapterInnerCategory2 extends RecyclerView.Adapter<CustomAdap
 
 
     public int getItemCount() {
-        return categoryname2.size();
+        return categoryname4.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

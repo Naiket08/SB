@@ -34,7 +34,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class CustomAdapterRoomInner extends RecyclerView.Adapter<CustomAdapterRoomInner.ViewHolder> {
     ArrayList SwitchName,SwitchName2;
@@ -89,7 +88,7 @@ public class CustomAdapterRoomInner extends RecyclerView.Adapter<CustomAdapterRo
             @Override
             public void onClick(View view) {
                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
-                View parentView = LayoutInflater.from(context).inflate(R.layout.dailogue_predefine, null);
+                View parentView = LayoutInflater.from(context).inflate(R.layout.dailoguebox_predefine, null);
                 ImageView canceldailogpredefine = (ImageView) parentView.findViewById(R.id.canceldailogpredefine);
                 Button buttondailogprtedefine = (Button) parentView.findViewById(R.id.buttondailogpredefine);
                 EditText editTextdailogpredefine = (EditText) parentView.findViewById(R.id.editTextdailogpredefine);
