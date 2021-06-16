@@ -5,7 +5,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -45,7 +47,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
     TextView acvalue,acantina;
     ImageButton acupbutton,acdownbutton;
     LinearLayout llback;
-    ImageView imageViewBrownJacket,imageViewWhiteJacket,imageViewAppliances,imageViewBulb;
+    ImageView imageViewBrownJacket,imageViewWhiteJacket,imageViewAppliances,imageViewBulb,imageViewMain;
     Button speedcontrol;
     Knob customdial;
     public String Roomname,s3,text3,num1,num2,x;
@@ -56,7 +58,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
     ProgressDialog progressDoalog;
 
 
-    public CustomAdapterInnerSwitchboard(Context context, ArrayList LightName,ArrayList LightName2,ArrayList LightName3, ArrayList LightType, ArrayList LightType2, ArrayList LightType3, FirebaseAuth mAuth, String Roomname, String text3,TextView textviewdialview, ImageView imageViewBrownJacket, ImageView  imageViewWhiteJacket, ImageView imageViewAppliances, ImageView imageViewBulb, Knob customdial, Button speedcontrol,TextView acantina,LinearLayout llback,TextView acvalue,ImageButton acupbutton,ImageButton acdownbutton) {
+    public CustomAdapterInnerSwitchboard(Context context, ArrayList LightName,ArrayList LightName2,ArrayList LightName3, ArrayList LightType, ArrayList LightType2, ArrayList LightType3, FirebaseAuth mAuth, String Roomname, String text3,TextView textviewdialview, ImageView imageViewBrownJacket, ImageView  imageViewWhiteJacket, ImageView imageViewAppliances, ImageView imageViewBulb, Knob customdial, Button speedcontrol,TextView acantina,LinearLayout llback,TextView acvalue,ImageButton acupbutton,ImageButton acdownbutton,ImageView imageViewMain) {
 
 
         this.context = context;
@@ -77,6 +79,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
         this.imageViewWhiteJacket=imageViewWhiteJacket;
         this.imageViewAppliances=imageViewAppliances;
         this.imageViewBulb=imageViewBulb;
+        this.imageViewMain=imageViewMain;
         this.customdial=customdial;
         this.speedcontrol=speedcontrol;
         this.text3=text3;
@@ -126,6 +129,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
                     acvalue.setVisibility(View.INVISIBLE);
                     acupbutton.setVisibility(View.INVISIBLE);
                     acdownbutton.setVisibility(View.INVISIBLE);
+                    imageViewMain.setVisibility(View.INVISIBLE);
 
                     customdial.setOnStateChanged(new Knob.OnStateChanged() {
                         @Override
@@ -230,6 +234,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
                     acvalue.setVisibility(View.INVISIBLE);
                     acupbutton.setVisibility(View.INVISIBLE);
                     acdownbutton.setVisibility(View.INVISIBLE);
+                    imageViewMain.setVisibility(View.INVISIBLE);
 
 
                 }
@@ -242,12 +247,14 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
                     imageViewAppliances.setVisibility(View.INVISIBLE);
                     customdial.setVisibility(View.INVISIBLE);
                     imageViewWhiteJacket.setVisibility(View.VISIBLE);
+                    imageViewMain.setVisibility(View.INVISIBLE);
                     //ac
                     acantina.setVisibility(View.VISIBLE);
                     llback.setVisibility(View.VISIBLE);
                     acvalue.setVisibility(View.VISIBLE);
                     acupbutton.setVisibility(View.VISIBLE);
                     acdownbutton.setVisibility(View.VISIBLE);
+
 
                     mAuth = FirebaseAuth.getInstance();
                     String text = holder.textViewInnerSwitchboardSB1.getText().toString();
@@ -447,6 +454,101 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
 
             }
         });
+        //Edit button
+        holder.SwitchnameChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
+                View parentView = LayoutInflater.from(context).inflate(R.layout.dailogue_predefine, null);
+                //View parentView = getLayoutInflater().inflate(R.layout.dailogue_predefine, null);
+                ImageView canceldailogpredefine = (ImageView) parentView.findViewById(R.id.canceldailogpredefine);
+                Button buttondailogprtedefine = (Button) parentView.findViewById(R.id.buttondailogpredefine);
+                EditText editTextdailogpredefine = (EditText) parentView.findViewById(R.id.editTextdailogpredefine);
+                bottomSheetDialog.setContentView(parentView);
+
+                //retriving data from edittext
+                String currentname= holder.textViewInnerSwitchboardmain.getText().toString();
+                editTextdailogpredefine.setHint(currentname);//hint
+
+                bottomSheetDialog.show();
+                editTextdailogpredefine.addTextChangedListener(new TextWatcher()
+                {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after)
+                    {
+                        if (s.length() == 15)
+                        {
+                            // new AlertDialog.Builder(getContext()).setTitle("Character limit exceeded").setMessage("Input cannot exceed more than " + 15 + " characters.").setPositiveButton(android.R.string.ok, null).show();
+                            Toast.makeText(context, "Character Limit Reached ", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count)
+                    {
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable editable) {
+
+                    }
+                });
+                canceldailogpredefine.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        bottomSheetDialog.cancel();
+                    }
+                });
+                buttondailogprtedefine.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String Namechange= editTextdailogpredefine.getText().toString();
+
+                        //  Toast.makeText(context, s3, Toast.LENGTH_SHORT).show();
+                        if(TextUtils.isEmpty(Namechange)){
+                            Toast.makeText(context, "Enter Text", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            s3=holder.textViewInnerSwitchboardSB1.getText().toString();
+                            mAuth = FirebaseAuth.getInstance();
+                            DatabaseReference db = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(Roomname).child(text3).child(s3);
+                            DatabaseReference db2 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("favorites").child(Roomname).child(text3).child(s3);
+
+                            db.child("name").setValue(Namechange).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    //  Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
+                                    holder.textViewInnerSwitchboardmain.setText(Namechange);
+                                    bottomSheetDialog.cancel();
+                                }
+                            });
+                            db2.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    if(dataSnapshot.exists()){
+                                        db2.child("name").setValue(Namechange).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                //  Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                                    }
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                }
+                            });
+
+
+                        }
+                    }
+                });
+
+            }
+        });
 
         ////Info button
         holder.imageViewInnerSwitchboard1.setOnClickListener(new View.OnClickListener() {
@@ -472,6 +574,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
                             textviewdialview.setVisibility(View.INVISIBLE);
                             imageViewWhiteJacket.setVisibility(View.INVISIBLE);
                             speedcontrol.setVisibility(View.INVISIBLE);
+                            imageViewMain.setVisibility(View.INVISIBLE);
                             db.child("mode").setValue("off").addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
@@ -511,6 +614,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
                             textviewdialview.setVisibility(View.INVISIBLE);
                             imageViewWhiteJacket.setVisibility(View.INVISIBLE);
                             speedcontrol.setVisibility(View.INVISIBLE);
+                            imageViewMain.setVisibility(View.INVISIBLE);
                             db.child("mode").setValue("on").addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
@@ -623,7 +727,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
     }
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // init the item view's
-        ImageView imageViewInnerSwitchboard1,imageViewInnerSwitchboardInfo;
+        ImageView imageViewInnerSwitchboard1,imageViewInnerSwitchboardInfo,SwitchnameChange;
         EditText textViewInnerSwitchboardSB1,textViewInnerSwitchboardmain,textViewInnerSwitchboardcategory;
         ImageButton innerSwitchboardbutton1;
         public ViewHolder(View itemView) {
@@ -637,6 +741,7 @@ public class CustomAdapterInnerSwitchboard extends RecyclerView.Adapter<CustomAd
             textViewInnerSwitchboardmain=(EditText)itemView.findViewById(R.id.textViewInnerSwitchboardmain);
             textViewInnerSwitchboardcategory=(EditText)itemView.findViewById(R.id.textViewInnerSwitchboardcategory);
             innerSwitchboardbutton1=(ImageButton)itemView.findViewById(R.id.innerSwitchboardbutton1);
+            SwitchnameChange=(ImageView)itemView.findViewById(R.id.switchnamechange);
 
 
         }

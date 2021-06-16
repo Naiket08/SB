@@ -23,7 +23,7 @@
         android:id="@+id/imageViewdeleteGeneral"
         android:layout_width="@dimen/_20sdp"
         android:layout_height="@dimen/_20sdp"
-        android:background="@drawable/d3"
+        android:background="@drawable/star"
         android:layout_marginTop="@dimen/_3sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

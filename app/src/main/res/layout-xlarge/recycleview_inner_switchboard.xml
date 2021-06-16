@@ -2,15 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="@dimen/_60sdp"
+    android:layout_width="@dimen/_80sdp"
     android:layout_height="@dimen/_98sdp"
     android:background="@drawable/background_switch_board_inner_room"
     android:layout_marginLeft="@dimen/_5sdp">
 
     <ImageView
         android:id="@+id/imageViewInnerSwitchboard1"
-        android:layout_width="@dimen/_15sdp"
-        android:layout_height="@dimen/_15sdp"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
         android:background="@drawable/powerbuttongreen"
         android:layout_marginTop="@dimen/_3sdp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,18 +19,18 @@
 
     <ImageView
         android:id="@+id/imageViewInnerSwitchboardInfo"
-        android:layout_width="@dimen/_15sdp"
-        android:layout_height="@dimen/_15sdp"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
         android:background="@drawable/favoriteselect"
         app:layout_constraintEnd_toStartOf="@id/imageViewInnerSwitchboard1"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_35sdp"
         android:layout_marginTop="@dimen/_3sdp"/>
 
     <ImageButton
         android:id="@+id/innerSwitchboardbutton1"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/_30sdp"
+        android:layout_height="@dimen/_40sdp"
         android:layout_marginTop="@dimen/_40sdp"
         android:backgroundTint="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/textViewInnerSwitchboardSB1"
@@ -61,29 +61,44 @@
         android:textSize="@dimen/_12ssp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/textViewInnerSwitchboardmain"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_70sdp"
-        android:background="@android:color/transparent"
-        android:ems="10"
-        android:enabled="false"
-        android:fontFamily="@font/muli"
-        android:gravity="center"
-        android:inputType="none"
-        android:lines="1"
-        android:maxLength="15"
-        android:maxLines="1"
-        android:paddingStart="@dimen/_9sdp"
-        android:scrollbars="none"
-        android:singleLine="true"
-        android:text="Light 1"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_12ssp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/_70sdp">
+
+        <EditText
+            android:id="@+id/textViewInnerSwitchboardmain"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_70sdp"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:enabled="false"
+            android:fontFamily="@font/muli"
+            android:gravity="center"
+            android:inputType="none"
+            android:lines="1"
+            android:maxLength="15"
+            android:maxLines="1"
+            android:paddingStart="@dimen/_9sdp"
+            android:scrollbars="none"
+            android:singleLine="true"
+            android:text="Light 1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/switchnamechange"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp"
+            android:background="@drawable/edit"
+            android:layout_marginTop="@dimen/_70sdp"
+            android:layout_marginLeft="@dimen/_5sdp"></ImageView>
+
+    </LinearLayout>
     <EditText
         android:id="@+id/textViewInnerSwitchboardcategory"
         android:layout_width="wrap_content"

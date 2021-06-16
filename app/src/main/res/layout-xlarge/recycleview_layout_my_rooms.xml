@@ -11,18 +11,18 @@
 
     <ImageView
         android:id="@+id/imageViewRecycleViewMyRoomEdit"
-        android:layout_width="@dimen/_18sdp"
-        android:layout_height="@dimen/_18sdp"
-        android:background="@drawable/ic_group_31"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:background="@drawable/editblack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginEnd="@dimen/_5sdp"/>
     <ImageView
         android:id="@+id/imageViewRecycleViewMyRoomdelete"
-        android:layout_width="@dimen/_18sdp"
-        android:layout_height="@dimen/_18sdp"
-        android:background="@drawable/d3"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:background="@drawable/deletemain"
         app:layout_constraintEnd_toEndOf="@id/imageViewRecycleViewMyRoomEdit"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="@dimen/_5sdp"

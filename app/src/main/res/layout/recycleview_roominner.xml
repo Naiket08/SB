@@ -3,15 +3,15 @@
     android:id="@+id/clroominner"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="134dp"
-    android:layout_height="168dp"
+    android:layout_width="@dimen/_100sdp"
+    android:layout_height="wrap_content"
     android:background="@drawable/background_switch_board_inner_room"
-    android:layout_marginLeft="@dimen/_5sdp">
+    android:layout_marginLeft="@dimen/_9sdp">
     <ImageView
         android:id="@+id/imageViewRoomInnerEditSB"
-        android:layout_width="@dimen/_18sdp"
-        android:layout_height="@dimen/_18sdp"
-        android:background="@drawable/ic_group_31"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:background="@drawable/editblack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="@dimen/_5sdp"
@@ -19,21 +19,21 @@
 
     <ImageView
         android:id="@+id/imageViewRoomInnerInfo"
-        android:layout_width="@dimen/_18sdp"
-        android:layout_height="@dimen/_18sdp"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
         android:background="@drawable/info"
         app:layout_constraintEnd_toStartOf="@id/imageViewRoomInnerEditSB"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="@dimen/_5sdp"
-        android:layout_marginEnd="@dimen/_5sdp"/>
+        android:layout_marginEnd="@dimen/_12sdp"/>
 
     <ImageView
         android:id="@+id/imageViewdeleteroominner"
-        android:layout_width="@dimen/_18sdp"
-        android:layout_height="@dimen/_18sdp"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
         android:layout_marginStart="@dimen/_1sdp"
         android:layout_marginTop="@dimen/_3sdp"
-        android:background="@drawable/d3"
+        android:background="@drawable/deletemain"
         app:layout_constraintBottom_toTopOf="@+id/roominnerbutton1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.041"
@@ -44,9 +44,9 @@
         android:id="@+id/roominnerbutton1"
         android:layout_width="@dimen/_42sdp"
         android:layout_height="@dimen/_66sdp"
-        android:layout_marginTop="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_30sdp"
         android:background="@drawable/switchicon"
-        android:layout_marginLeft="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,7 +54,7 @@
         android:id="@+id/textViewRoomInnerSB1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="124dp"
+        android:layout_marginTop="@dimen/_95sdp"
         android:background="@android:color/transparent"
         android:ems="10"
         android:enabled="false"

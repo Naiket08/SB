@@ -195,7 +195,7 @@ public class CustomAdapterGeneral extends RecyclerView.Adapter<CustomAdapterGene
                 DatabaseReference db3 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("favorites").child(textR).child(textS);
                 DatabaseReference db4 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("rooms").child(textR).child(textS);
                 new AlertDialog.Builder(context)
-                        .setMessage("Are you sure you want to delete This?")
+                        .setMessage("Are you sure you want to unfavourite This?")
                         .setCancelable(false)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {

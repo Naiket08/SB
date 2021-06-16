@@ -38,7 +38,7 @@ public class FragmentInnerSwitchBoard extends Fragment {
     TextView textViewRoomNo,acvalue,acantina;
     ImageButton acupbutton,acdownbutton;
     LinearLayout llback;
-    ImageView imageViewBrownJacket,imageViewWhiteJacket,imageViewAppliances,imageViewBulb;
+    ImageView imageViewBrownJacket,imageViewWhiteJacket,imageViewAppliances,imageViewBulb,imageViewMain;
     Knob customdial;
     Button speedcontrol;
 
@@ -87,7 +87,7 @@ public class FragmentInnerSwitchBoard extends Fragment {
         imageViewBrownJacket = (ImageView)view.findViewById(R.id.imageViewBrownJacket);
         imageViewWhiteJacket = (ImageView)view.findViewById(R.id.imageViewWhiteJacket);
         imageViewBulb = (ImageView)view.findViewById(R.id.imageViewBulb);
-
+        imageViewMain=(ImageView)view.findViewById(R.id.imageViewMainSwitch);
         imageViewAppliances = (ImageView)view.findViewById(R.id.imageViewAppliances);
 
         textViewSwitchBoard1 = (TextView)view.findViewById(R.id.textViewSwitchBoard1);
@@ -109,7 +109,7 @@ public class FragmentInnerSwitchBoard extends Fragment {
         });
         /////////////////////////////////////////////////////////////
         buttonSwitchBoardApppliance = (Button)view.findViewById(R.id.buttonSwitchBoardAppliance);
-        CustomAdapterInnerSwitchboard customAdapter2 = new CustomAdapterInnerSwitchboard(getActivity(),LightName,LightName2,LightName3,LightType,LightType2,LightType3,mAuth,Roomname,text3,textviewdialview,imageViewBrownJacket,imageViewWhiteJacket,imageViewAppliances,imageViewBulb,customdial,speedcontrol,acantina,llback,acvalue,acupbutton,acdownbutton);
+        CustomAdapterInnerSwitchboard customAdapter2 = new CustomAdapterInnerSwitchboard(getActivity(),LightName,LightName2,LightName3,LightType,LightType2,LightType3,mAuth,Roomname,text3,textviewdialview,imageViewBrownJacket,imageViewWhiteJacket,imageViewAppliances,imageViewBulb,customdial,speedcontrol,acantina,llback,acvalue,acupbutton,acdownbutton,imageViewMain);
         if((LightName!=null&&LightName2!=null&&LightName3!=null&&LightType!=null&&LightType2!=null&&LightType3!=null&&LightType3!=null&&LightName.size()>0&&LightName2.size()>0&&LightType.size()>0&&LightType2.size()>0&&LightType3.size()>0)){
             LightName.clear();
             LightName2.clear();
