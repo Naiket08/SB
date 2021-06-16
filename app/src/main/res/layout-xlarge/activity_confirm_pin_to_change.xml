@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0B0B0B"
+    tools:context=".PinOne">
+
+    <ImageView
+        android:id="@+id/imageViewWaveTopConfirmPin"
+        android:layout_width="1440dp"
+        android:layout_height="@dimen/_210sdp"
+        android:background="@drawable/ic_wave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="TODO" />
+
+    <TextView
+        android:id="@+id/textViewConfirmPin"
+        android:layout_width="@dimen/_158sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="300dp"
+        android:fontFamily="@font/muli"
+        android:text="Welcome to the Application"
+        android:textColor="#F8B109"
+        android:textSize="@dimen/_18ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewConfirmPinTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_25sdp"
+        android:layout_marginStart="36dp"
+        android:fontFamily="@font/muli"
+        android:text="Confirm Pin To Change Pin"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/_18ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewConfirmPin" />
+
+    <EditText
+        android:id="@+id/edittext1ConfirmPin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_55sdp"
+        android:fontFamily="@font/muli"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/_24sdp"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewConfirmPinTwo"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/edittext2ConfirmPin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_40sdp"
+        android:inputType="number"
+        android:fontFamily="@font/muli"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/_24sdp"
+        app:layout_constraintStart_toEndOf="@+id/edittext1ConfirmPin"
+        app:layout_constraintTop_toBottomOf="@+id/textViewConfirmPinTwo"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/edittext3ConfirmPin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/muli"
+        android:layout_marginStart="@dimen/_40sdp"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/_24sdp"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/edittext2ConfirmPin"
+        android:layout_marginLeft="@dimen/_50sdp"
+        app:layout_constraintTop_toBottomOf="@+id/textViewConfirmPinTwo"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/edittext4ConfirmPin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_40sdp"
+
+        android:layout_marginRight="@dimen/_85sdp"
+        android:fontFamily="@font/muli"
+        android:textColor="#FFFFFF"
+        android:inputType="number"
+        android:textSize="@dimen/_24sdp"
+        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintStart_toEndOf="@+id/edittext3ConfirmPin"
+        app:layout_constraintTop_toBottomOf="@+id/textViewConfirmPinTwo"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/line1ConfirmPin"
+        android:layout_width="@dimen/_41sdp"
+        android:layout_height="@dimen/_3sdp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/line"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="@dimen/_47sdp"
+        app:layout_constraintTop_toBottomOf="@+id/edittext1ConfirmPin"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/line2ConfirmPin"
+        android:layout_width="@dimen/_41sdp"
+        android:layout_height="@dimen/_3sdp"
+        android:layout_marginLeft="@dimen/_8sdp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toEndOf="@+id/line1ConfirmPin"
+        app:layout_constraintTop_toBottomOf="@+id/edittext2ConfirmPin"
+        tools:ignore="MissingConstraints" />
+
+
+    <ImageView
+        android:id="@+id/line3ConfirmPin"
+        android:layout_width="@dimen/_41sdp"
+        android:layout_height="@dimen/_3sdp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/line"
+        app:layout_constraintStart_toEndOf="@+id/line2ConfirmPin"
+        app:layout_constraintTop_toBottomOf="@+id/edittext3ConfirmPin"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/line4ConfirmPin"
+        android:layout_width="@dimen/_41sdp"
+        android:layout_height="@dimen/_3sdp"
+        android:layout_marginLeft="@dimen/_13sdp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.097"
+        app:layout_constraintStart_toEndOf="@+id/line3ConfirmPin"
+        app:layout_constraintTop_toBottomOf="@+id/edittext4ConfirmPin"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/nextbuttonConfirmPin"
+        android:layout_width="112dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/nextbutton"
+        android:foregroundGravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line2ConfirmPin" />
+
+    <ImageButton
+        android:id="@+id/oneConfirmPin"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@drawable/one"
+        android:layout_marginLeft="@dimen/_55sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nextbuttonConfirmPin"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/twoConfirmPin"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_50sdp"
+        android:background="@drawable/two"
+        android:foregroundGravity="center"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:layout_constraintStart_toEndOf="@id/oneConfirmPin"
+        app:layout_constraintTop_toBottomOf="@+id/nextbuttonConfirmPin"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/threeConfirmPin"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/three"
+        android:foregroundGravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.241"
+        app:layout_constraintStart_toEndOf="@id/twoConfirmPin"
+        app:layout_constraintTop_toBottomOf="@+id/nextbuttonConfirmPin"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/fourConfirmPin"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:background="@drawable/four"
+        android:layout_marginLeft="@dimen/_55sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/oneConfirmPin"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/fiveConfirmPin"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_50sdp"
+        android:background="@drawable/five"
+        android:foregroundGravity="center"
+        app:layout_constraintTop_toBottomOf="@id/twoConfirmPin"
+        app:layout_constraintStart_toEndOf="@id/fourConfirmPin"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="501dp" />
+
+
+    <ImageButton
+        android:id="@+id/sixConfirmPin"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="56dp"
+        android:background="@drawable/six"
+        android:foregroundGravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.224"
+        app:layout_constraintStart_toEndOf="@id/fiveConfirmPin"
+        app:layout_constraintTop_toBottomOf="@id/threeConfirmPin"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/sevenConfirmPin"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:background="@drawable/seven"
+        android:layout_marginLeft="@dimen/_55sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fourConfirmPin"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/eightConfirmPin"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_50sdp"
+        android:background="@drawable/eight"
+        android:foregroundGravity="center"
+        app:layout_constraintTop_toBottomOf="@id/fiveConfirmPin"
+        app:layout_constraintStart_toEndOf="@id/sevenConfirmPin"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="501dp" />
+
+    <ImageButton
+        android:id="@+id/nineConfirmPin"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="56dp"
+        android:background="@drawable/nine"
+        android:foregroundGravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.241"
+        app:layout_constraintStart_toEndOf="@id/eightConfirmPin"
+        app:layout_constraintTop_toBottomOf="@id/sixConfirmPin"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/emptyConfirmPin"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:background="@drawable/empty"
+        android:layout_marginLeft="@dimen/_55sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sevenConfirmPin"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/zeroConfirmPin"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_50sdp"
+        android:background="@drawable/zero"
+        android:foregroundGravity="center"
+        app:layout_constraintTop_toBottomOf="@id/eightConfirmPin"
+        app:layout_constraintStart_toEndOf="@id/emptyConfirmPin"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="501dp" />
+
+    <ImageButton
+        android:id="@+id/erazeConfirmPin"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="56dp"
+        android:background="@drawable/eraze"
+        android:foregroundGravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.227"
+        app:layout_constraintStart_toEndOf="@id/zeroConfirmPin"
+        app:layout_constraintTop_toBottomOf="@id/nineConfirmPin"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black">
+
+    <TextView
+        android:id="@+id/textViewFavourite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/favourite"
+        android:textColor="@color/yellow"
+        android:textSize="@dimen/_12ssp"
+        android:fontFamily="@font/muli"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/_59sdp"
+        android:layout_marginStart="@dimen/_22sdp"/>
+    <ImageView
+        android:id="@+id/imageViewNoFavAdded"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_130sdp"
+        android:layout_below="@id/textViewFavourite"
+        android:src="@drawable/nofavadded"
+        android:visibility="visible"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleviewGeneral"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_130sdp"
+        android:layout_below="@id/textViewFavourite"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="-3dp"
+        android:layout_marginTop="-1dp"
+        android:layout_marginEnd="3dp"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/textViewOtherTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/other_title"
+        android:textColor="@color/yellow"
+        android:textSize="@dimen/_13ssp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/textViewFavourite"
+        android:layout_marginStart="@dimen/_22sdp"
+        android:layout_marginTop="@dimen/_135sdp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/textViewOtherTitle"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/_5sdp">
+
+                <Button
+                    android:id="@+id/buttonAddRooms"
+                    android:layout_width="@dimen/_90sdp"
+                    android:layout_height="@dimen/_95sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:drawableTop="@drawable/ic_house"
+                    android:paddingTop="@dimen/_12sdp"
+                    android:text="@string/add_rooms"
+                    android:textColor="#404040"
+                    android:textSize="@dimen/_12ssp"
+                    android:fontFamily="@font/muli_semibold"
+                    android:textAllCaps="false"
+                    android:background="@drawable/button_pressed"/>
+
+                <Button
+                    android:id="@+id/buttonCategory"
+                    android:layout_width="@dimen/_90sdp"
+                    android:layout_height="@dimen/_95sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:drawableTop="@drawable/ic_poll"
+                    android:paddingTop="@dimen/_25sdp"
+                    android:text="@string/category_button"
+                    android:textSize="@dimen/_12ssp"
+                    android:fontFamily="@font/muli_semibold"
+                    android:textColor="#404040"
+                    android:textAllCaps="false"
+                    android:background="@drawable/button_pressed"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/_50sdp"
+                android:padding="@dimen/_5sdp">
+
+                <Button
+                    android:id="@+id/buttonAboutUs"
+                    android:layout_width="@dimen/_90sdp"
+                    android:layout_height="@dimen/_95sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:drawableTop="@drawable/ic_couple_family"
+                    android:paddingTop="@dimen/_9sdp"
+                    android:text="@string/about_us_button"
+                    android:textSize="@dimen/_12ssp"
+                    android:textColor="#404040"
+                    android:fontFamily="@font/muli_semibold"
+                    android:textAllCaps="false"
+                    android:background="@drawable/button_pressed"/>
+
+                <Button
+                    android:id="@+id/buttonContactUs"
+                    android:layout_width="@dimen/_90sdp"
+                    android:layout_height="@dimen/_95sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:drawableTop="@drawable/ic_touchscreen"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:text="@string/contact_us_button"
+                    android:textColor="#404040"
+                    android:textSize="@dimen/_12ssp"
+                    android:fontFamily="@font/muli_semibold"
+                    android:textAllCaps="false"
+                    android:background="@drawable/button_pressed"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

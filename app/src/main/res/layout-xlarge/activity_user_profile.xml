@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserProfile">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayoutTop"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_240sdp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:background="@color/yellow">
+
+        <!--This Portion for AppBar-->
+
+        <Button
+            android:id="@+id/buttonBackUserProfile"
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/backbutton_black"/>
+
+        <Button
+            android:id="@+id/buttonLogoutUserProfile"
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="@dimen/_18sdp"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:background="@drawable/logout_black"/>
+
+        <Button
+            android:id="@+id/buttonKillUserProfile"
+            android:layout_width="@dimen/_42sdp"
+            android:layout_height="@dimen/_28sdp"
+            android:text="Kill"
+            android:textColor="#FF2121"
+            android:textAllCaps="false"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@id/buttonLogoutUserProfile"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_13sdp"
+            android:background="@drawable/border_kill_button"/>
+
+        <TextView
+            android:id="@+id/textViewUserProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User Profile"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_18ssp"
+            android:fontFamily="@font/muli_semibold"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:layout_marginStart="@dimen/_20sdp"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewUserProfile"
+            android:layout_width="@dimen/_92sdp"
+            android:layout_height="@dimen/_92sdp"
+            app:cardCornerRadius="@dimen/_46sdp"
+            android:layout_below="@id/textViewUserProfile"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_10sdp">
+
+            <ImageView
+                android:id="@+id/imageViewUserProfileImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/blackish"
+                android:scaleType="centerCrop"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/textViewUserID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cardViewUserProfile"
+            android:layout_centerHorizontal="true"
+            android:text="User13456"
+            android:textColor="@color/white"
+            android:fontFamily="@font/muli_semibold"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_14ssp"/>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/relativeLayoutTop"
+        android:background="#0B0B0B">
+
+        <RelativeLayout
+            android:id="@+id/relativeLayoutMail"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:background="@drawable/background_textview_user_profile">
+
+            <TextView
+                android:id="@+id/textViewUserProfileMail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mail"
+                android:fontFamily="@font/muli_semibold"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_8ssp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_10sdp"/>
+
+            <TextView
+                android:id="@+id/textViewUserProfileMailValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/muli_semibold"
+                android:textColor="@color/yellow"
+                android:textSize="@dimen/_10ssp"
+                android:layout_below="@id/textViewUserProfileMail"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/_10sdp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayoutPhone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_below="@id/relativeLayoutMail"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:background="@drawable/background_textview_user_profile">
+
+            <TextView
+                android:id="@+id/textViewUserProfilePhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone"
+                android:fontFamily="@font/muli_semibold"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_8ssp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_10sdp"/>
+
+            <TextView
+                android:id="@+id/textViewUserProfilePhoneValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/muli_semibold"
+                android:textColor="@color/yellow"
+                android:textSize="@dimen/_10ssp"
+                android:layout_below="@id/textViewUserProfilePhone"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/_10sdp"/>
+
+        </RelativeLayout>
+
+        <Spinner
+            android:id="@+id/spinnerLoggedInDevices"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_below="@id/relativeLayoutPhone"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_15sdp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

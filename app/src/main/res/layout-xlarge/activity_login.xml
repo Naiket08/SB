@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0B0B0B"
+    tools:context=".Login">
+
+    <ImageView
+        android:id="@+id/imageViewWaveTopPinOne"
+        android:layout_width="1440dp"
+        android:layout_height="@dimen/_210sdp"
+        android:background="@drawable/ic_wave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="TODO" />
+
+    <TextView
+        android:id="@+id/textViewPinOne"
+        android:layout_width="@dimen/_126sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_135sdp"
+        android:fontFamily="@font/muli"
+        android:text="Login"
+        android:textColor="#F8B109"
+        android:textSize="@dimen/_37ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewPinOnetwo"
+        android:layout_width="@dimen/_178sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:fontFamily="@font/muli"
+        android:text="Welcome To The Application "
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/_18ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPinOne" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="@dimen/_229sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:background="@drawable/username"
+        android:fontFamily="@font/muli"
+        android:hint="Username"
+        android:textColorHint="@color/grey"
+        android:paddingStart="@dimen/_12sdp"
+        android:paddingEnd="@dimen/_10sdp"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewPinOnetwo" />
+
+    <EditText
+        android:id="@+id/Password"
+        android:layout_width="@dimen/_229sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/username"
+        android:fontFamily="@font/muli"
+        android:inputType="textPassword"
+        android:hint="Password"
+        android:textColorHint="@color/grey"
+        android:paddingStart="@dimen/_12sdp"
+        android:paddingEnd="@dimen/_10sdp"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/username" />
+
+    <TextView
+        android:id="@+id/forgetpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_1sdp"
+        android:text="Forgot Password?"
+        android:textColor="@color/yellow"
+        android:fontFamily="@font/muli_semibold"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintEnd_toEndOf="@id/Password"
+        app:layout_constraintTop_toBottomOf="@id/Password" />
+
+    <ImageButton
+        android:id="@+id/SubmitButton"
+        android:layout_width="@dimen/_229sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:background="@drawable/login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/forgetpassword"
+        app:layout_constraintEnd_toEndOf="@id/forgetpassword"
+        android:layout_marginBottom="@dimen/_20sdp"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

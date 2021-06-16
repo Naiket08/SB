@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Home">
+
+    <!--This Portion for AppBar-->
+
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop= "@dimen/_13sdp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/backbutton"/>
+
+    <Button
+        android:id="@+id/buttonHamburger"
+        android:layout_width="@dimen/_18sdp"
+        android:layout_height="@dimen/_12sdp"
+        android:layout_alignTop="@id/buttonBack"
+        android:layout_alignBottom="@id/buttonBack"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:background="@drawable/hamburger"/>
+
+    <Button
+        android:id="@+id/buttonKill"
+        android:layout_width="@dimen/_42sdp"
+        android:layout_height="@dimen/_28sdp"
+        android:text="Kill"
+        android:textColor="#FF2121"
+        android:textAllCaps="false"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@id/buttonHamburger"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:background="@drawable/border_kill_button"/>
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@id/navigation"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blackish"
+        app:itemIconTint="@color/yellow"
+        app:itemTextColor="@color/yellow"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/navigation"/>
+
+</RelativeLayout>

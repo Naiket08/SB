@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/repinmain"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0B0B0B"
+    tools:context=".RePin">
+
+    <ImageView
+        android:id="@+id/imageViewWaveRePinOne"
+        android:layout_width="1440dp"
+        android:layout_height="@dimen/_210sdp"
+        android:background="@drawable/ic_wave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="TODO" />
+
+    <TextView
+        android:id="@+id/textViewRePin"
+        android:layout_width="@dimen/_158sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="300dp"
+        android:fontFamily="@font/muli"
+        android:text="Welcome to the Application"
+        android:textColor="#F8B109"
+        android:textSize="@dimen/_18ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewRePintwo"
+        android:layout_width="@dimen/_108sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="36dp"
+        android:fontFamily="@font/muli"
+        android:text="Re Enter Pin"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/_18ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRePin" />
+
+    <EditText
+        android:id="@+id/edittextRepin1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_55sdp"
+        android:fontFamily="@font/muli"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/_24sdp"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRePintwo"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/edittextRepin2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_40sdp"
+        android:inputType="number"
+        android:fontFamily="@font/muli"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/_24sdp"
+        app:layout_constraintStart_toEndOf="@+id/edittextRepin1"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRePintwo"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/edittextRepin3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/muli"
+        android:layout_marginStart="@dimen/_40sdp"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/_24sdp"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/edittextRepin2"
+        android:layout_marginLeft="@dimen/_50sdp"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRePintwo"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/edittextRepin4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_40sdp"
+        android:layout_marginRight="@dimen/_85sdp"
+        android:fontFamily="@font/muli"
+        android:textColor="#FFFFFF"
+        android:inputType="number"
+        android:textSize="@dimen/_24sdp"
+        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintStart_toEndOf="@+id/edittextRepin3"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRePintwo"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/lineRepin1"
+        android:layout_width="@dimen/_41sdp"
+        android:layout_height="@dimen/_3sdp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/line"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="@dimen/_47sdp"
+        app:layout_constraintTop_toBottomOf="@+id/edittextRepin1"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/lineRepin2"
+        android:layout_width="@dimen/_41sdp"
+        android:layout_height="@dimen/_3sdp"
+        android:layout_marginLeft="@dimen/_8sdp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toEndOf="@+id/lineRepin1"
+        app:layout_constraintTop_toBottomOf="@+id/edittextRepin2"
+        tools:ignore="MissingConstraints" />
+
+
+    <ImageView
+        android:id="@+id/lineRepin3"
+        android:layout_width="@dimen/_41sdp"
+        android:layout_height="@dimen/_3sdp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/line"
+        app:layout_constraintStart_toEndOf="@+id/lineRepin2"
+        app:layout_constraintTop_toBottomOf="@+id/edittextRepin3"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/lineRepin4"
+        android:layout_width="@dimen/_41sdp"
+        android:layout_height="@dimen/_3sdp"
+        android:layout_marginLeft="@dimen/_13sdp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.097"
+        app:layout_constraintStart_toEndOf="@+id/lineRepin3"
+        app:layout_constraintTop_toBottomOf="@+id/edittextRepin4"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/create"
+        android:layout_width="112dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/create"
+        android:foregroundGravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lineRepin2" />
+
+    <ImageButton
+        android:id="@+id/oneRepin"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@drawable/one"
+        android:layout_marginLeft="@dimen/_55sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/twoRepin"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_50sdp"
+        android:background="@drawable/two"
+        android:foregroundGravity="center"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:layout_constraintStart_toEndOf="@id/oneRepin"
+        app:layout_constraintTop_toBottomOf="@+id/create"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/threeRepin"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/three"
+        android:foregroundGravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.241"
+        app:layout_constraintStart_toEndOf="@id/twoRepin"
+        app:layout_constraintTop_toBottomOf="@+id/create"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/fourRepin"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:background="@drawable/four"
+        android:layout_marginLeft="@dimen/_55sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/oneRepin"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/fiveRepin"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_50sdp"
+        android:background="@drawable/five"
+        android:foregroundGravity="center"
+        app:layout_constraintTop_toBottomOf="@id/twoRepin"
+        app:layout_constraintStart_toEndOf="@id/fourRepin"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="501dp" />
+
+
+    <ImageButton
+        android:id="@+id/sixRepin"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="56dp"
+        android:background="@drawable/six"
+        android:foregroundGravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.224"
+        app:layout_constraintStart_toEndOf="@id/fiveRepin"
+        app:layout_constraintTop_toBottomOf="@id/threeRepin"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/sevenRepin"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:background="@drawable/seven"
+        android:layout_marginLeft="@dimen/_55sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fourRepin"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/eightRepin"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_50sdp"
+        android:background="@drawable/eight"
+        android:foregroundGravity="center"
+        app:layout_constraintTop_toBottomOf="@id/fiveRepin"
+        app:layout_constraintStart_toEndOf="@id/sevenRepin"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="501dp" />
+
+    <ImageButton
+        android:id="@+id/nineRepin"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="56dp"
+        android:background="@drawable/nine"
+        android:foregroundGravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.206"
+        app:layout_constraintStart_toEndOf="@id/eightRepin"
+        app:layout_constraintTop_toBottomOf="@id/sixRepin"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/emptyRepin"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:background="@drawable/empty"
+        android:layout_marginLeft="@dimen/_55sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sevenRepin"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/zeroRepin"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_50sdp"
+        android:background="@drawable/zero"
+        android:foregroundGravity="center"
+        app:layout_constraintTop_toBottomOf="@id/eightRepin"
+        app:layout_constraintStart_toEndOf="@id/emptyRepin"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="501dp" />
+
+    <ImageButton
+        android:id="@+id/erazeRepin"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="56dp"
+        android:background="@drawable/eraze"
+        android:foregroundGravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.189"
+        app:layout_constraintStart_toEndOf="@id/zeroRepin"
+        app:layout_constraintTop_toBottomOf="@id/nineRepin"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

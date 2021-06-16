@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/yellow">
+
+    <TextView
+        android:id="@+id/textViewRoomNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/room_no"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_20ssp"
+        android:fontFamily="@font/muli_semibold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_15sdp"/>
+
+    <ImageView
+        android:id="@+id/imageViewBrownJacket"
+        android:layout_width="@dimen/_195sdp"
+        android:layout_height="@dimen/_195sdp"
+        android:layout_marginStart="@dimen/_170sdp"
+        android:background="@drawable/lightbrownjacket"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewWhiteJacket"
+        android:layout_width="@dimen/_195sdp"
+        android:layout_height="@dimen/_195sdp"
+        android:layout_marginStart="@dimen/_174sdp"
+        android:background="@drawable/whitejumper"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewBulb"
+        android:layout_width="@dimen/_300sdp"
+        android:layout_height="@dimen/_130sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:src="@drawable/bulboff"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewRoomNo" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textViewRoomNo"
+        android:gravity="center">
+    <com.example.sb.Knob
+        android:id="@+id/dialView"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:visibility="invisible"
+        app:kNumberOfStates="6"
+        app:kBorderWidth="1dp"
+        app:kStateMarkersRelativeLength="0.001"
+        app:kStateMarkersWidth="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingClass"/>
+        <TextView
+            android:id="@+id/textviewdialview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#F8B109"
+            android:textSize="@dimen/_20sdp"
+            android:text=""
+            android:visibility="invisible"
+            android:fontFamily="@font/muli"
+            android:layout_alignBottom="@id/dialView"
+            android:layout_alignLeft="@id/dialView"
+            android:layout_alignRight="@id/dialView"
+            android:layout_alignTop="@id/dialView"
+            android:gravity="center" />
+
+    </RelativeLayout>
+
+
+
+
+<!---For AC -->
+
+        <TextView
+            android:id="@+id/acantina"
+            android:layout_width="@dimen/_39sdp"
+            android:layout_height="@dimen/_39sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@drawable/acantina"
+            android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@id/textViewRoomNo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/llback"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_120sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@drawable/acbackground"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewRoomNo">
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/acupbutton"
+        android:layout_width="@dimen/_26sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@id/textViewRoomNo"
+        android:background="@drawable/acup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingClass"/>
+    <TextView
+        android:id="@+id/acvalue"
+    android:layout_width="@dimen/_16sdp"
+    android:layout_height="@dimen/_17sdp"
+    android:layout_marginTop="@dimen/_72sdp"
+    android:visibility="invisible"
+        android:text="24"
+        android:textSize="@dimen/_8sdp"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/ocr_abt"
+    app:layout_constraintTop_toBottomOf="@id/textViewRoomNo"
+    android:background="@drawable/accenter"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    tools:ignore="MissingClass"/>
+    <ImageButton
+        android:id="@+id/acdownbutton"
+        android:layout_width="@dimen/_26sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_90sdp"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@id/textViewRoomNo"
+        android:background="@drawable/acdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingClass"/>
+
+
+    <ImageView
+        android:id="@+id/imageViewRegulator"
+        android:layout_width="@dimen/_300sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:src="@drawable/ic_group_21"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewRoomNo" />
+
+    <ImageView
+        android:id="@+id/imageViewAppliances"
+        android:layout_width="@dimen/_300sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:layout_marginTop="64dp"
+        android:src="@drawable/ic_appliance"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewRoomNo" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_140sdp"
+        android:background="@drawable/background_switchboard1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewSwitchBoard1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/ocr_abt"
+                    android:text="@string/switch_board_1"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_19ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                ////new one added
+
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewInnerSwitchboard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/textViewTopText"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:orientation="horizontal">
+
+                        </androidx.recyclerview.widget.RecyclerView>
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+                <Button
+                    android:id="@+id/speedcontrol"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginLeft="@dimen/_50sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_50sdp"
+                    android:background="@drawable/speedcontrolbackground"
+                    android:fontFamily="@font/muli"
+                    android:gravity="center"
+                    android:text="Change Speed"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10sdp"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/horizontalinnerswitch" />
+
+            </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

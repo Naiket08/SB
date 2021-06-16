@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#0B0B0B">
+
+    <ImageView
+        android:id="@+id/imageViewRoomInnerLights"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/roombulbs"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/textViewControlSB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Control Your Switch \nBoard"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_30ssp"
+        android:layout_marginStart="@dimen/_18sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/imageViewRoomInnerLights"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/textViewRoomInnerRoomNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Room 1"
+        android:textColor="@color/yellow"
+        android:textSize="@dimen/_18ssp"
+        android:fontFamily="@font/muli"
+        app:layout_constraintTop_toBottomOf="@id/textViewControlSB"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/_18sdp"
+        android:layout_marginTop="@dimen/_5sdp"/>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textViewRoomInnerRoomNo"
+        android:layout_marginStart="@dimen/_18sdp"
+        android:layout_marginEnd="@dimen/_18sdp">
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewRoomInner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true">
+        </androidx.recyclerview.widget.RecyclerView>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_130sdp"
+                    android:background="@drawable/background_switch_board_inner_room"
+                    android:layout_toEndOf="@id/recyclerViewRoomInner"
+                    android:layout_marginTop="@dimen/_18sdp"
+                    android:layout_marginStart="@dimen/_10sdp">
+
+
+                    <ImageView
+                        android:id="@+id/imageViewRoomInnerAddSB"
+                        android:layout_width="@dimen/_45sdp"
+                        android:layout_height="@dimen/_45sdp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:background="@drawable/addbuttonblack"
+                        android:layout_marginTop="@dimen/_22sdp"/>
+
+                    <TextView
+                        android:id="@+id/textViewRoomInnerAddNewSB"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Add new \nSwitch Board"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_11ssp"
+                        android:fontFamily="@font/muli_semibold"
+                        app:layout_constraintTop_toBottomOf="@id/imageViewRoomInnerAddSB"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="@dimen/_5sdp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </RelativeLayout>
+
+
+
+    </HorizontalScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

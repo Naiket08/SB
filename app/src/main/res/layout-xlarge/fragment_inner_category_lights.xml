@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#0B0B0B">
+
+    <ScrollView
+        android:id="@+id/scrollinnercategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="@dimen/_50sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+    <TextView
+        android:id="@+id/textViewCategoryLights"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lights"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15ssp"
+        android:fontFamily="@font/muli"
+        android:layout_marginStart="@dimen/_26sdp"
+        android:layout_marginTop="@dimen/_52sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/textViewInnerCategory1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bedroom  (Box is Scrollable)   "
+        android:textSize="@dimen/_10ssp"
+        android:textColor="#404040"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/_11sdp"
+        android:layout_marginStart="@dimen/_26sdp"
+        app:layout_constraintTop_toBottomOf="@id/textViewCategoryLights"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleviewinnercategory1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_250sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTintMode="src_atop"
+        android:backgroundTint="@color/black"
+        android:background="@drawable/border_inner_category"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        app:layout_constraintTop_toBottomOf="@+id/textViewInnerCategory1" />
+
+
+    <TextView
+        android:id="@+id/textViewInnerCategory2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bathroom  (Box is Scrollable)   "
+        android:textSize="@dimen/_10ssp"
+        android:textColor="#404040"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/_11sdp"
+        android:layout_marginStart="@dimen/_26sdp"
+        app:layout_constraintTop_toBottomOf="@id/recycleviewinnercategory1"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleviewinnercategory2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_250sdp"
+        android:visibility="gone"
+        android:backgroundTintMode="src_atop"
+        android:backgroundTint="@color/black"
+        android:background="@drawable/border_inner_category"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        app:layout_constraintTop_toBottomOf="@+id/textViewInnerCategory2" />
+
+
+    <TextView
+        android:id="@+id/textViewInnerCategory3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kitchen  (Box is Scrollable)   "
+        android:textSize="@dimen/_10ssp"
+        android:textColor="#404040"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/_11sdp"
+        android:layout_marginStart="@dimen/_26sdp"
+        app:layout_constraintTop_toBottomOf="@id/recycleviewinnercategory2"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleviewinnercategory3"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_250sdp"
+        android:visibility="gone"
+        android:backgroundTintMode="src_atop"
+        android:backgroundTint="@color/black"
+        android:background="@drawable/border_inner_category"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        app:layout_constraintTop_toBottomOf="@+id/textViewInnerCategory3" />
+
+            <TextView
+                android:id="@+id/textViewInnerCategory4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dinning Room  (Box is Scrollable)   "
+                android:textSize="@dimen/_10ssp"
+                android:textColor="#404040"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/_11sdp"
+                android:layout_marginStart="@dimen/_26sdp"
+                app:layout_constraintTop_toBottomOf="@id/recycleviewinnercategory3"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycleviewinnercategory4"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_250sdp"
+                android:visibility="gone"
+                android:backgroundTintMode="src_atop"
+                android:backgroundTint="@color/black"
+                android:background="@drawable/border_inner_category"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                app:layout_constraintTop_toBottomOf="@+id/textViewInnerCategory4" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

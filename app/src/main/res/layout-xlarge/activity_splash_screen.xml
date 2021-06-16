@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0B0B0B"
+    tools:context=".SplashScreen">
+
+    <ImageView
+        android:id="@+id/imageViewEllipse11"
+        android:layout_width="@dimen/_540sdp"
+        android:layout_height="@dimen/_540sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.482"
+        app:srcCompat="@drawable/ellipse_11" />
+
+    <ImageView
+        android:id="@+id/imageViewEllipse12"
+        android:layout_width="@dimen/_470sdp"
+        android:layout_height="@dimen/_470sdp"
+        app:layout_constraintBottom_toBottomOf="@id/imageViewEllipse11"
+        app:layout_constraintEnd_toEndOf="@id/imageViewEllipse11"
+        app:layout_constraintStart_toStartOf="@id/imageViewEllipse11"
+        app:layout_constraintTop_toTopOf="@id/imageViewEllipse11"
+        app:srcCompat="@drawable/ellipse_12" />
+
+    <ImageView
+        android:id="@+id/imageViewEllipse13"
+        android:layout_width="@dimen/_395sdp"
+        android:layout_height="@dimen/_395sdp"
+        app:layout_constraintBottom_toBottomOf="@id/imageViewEllipse12"
+        app:layout_constraintEnd_toEndOf="@id/imageViewEllipse12"
+        app:layout_constraintStart_toStartOf="@id/imageViewEllipse12"
+        app:layout_constraintTop_toTopOf="@id/imageViewEllipse12"
+        app:srcCompat="@drawable/ellipse_13" />
+
+    <ImageView
+        android:id="@+id/imageViewEllipse14"
+        android:layout_width="@dimen/_325sdp"
+        android:layout_height="@dimen/_325sdp"
+        app:layout_constraintBottom_toBottomOf="@id/imageViewEllipse13"
+        app:layout_constraintEnd_toEndOf="@id/imageViewEllipse13"
+        app:layout_constraintStart_toStartOf="@id/imageViewEllipse13"
+        app:layout_constraintTop_toTopOf="@id/imageViewEllipse13"
+        app:srcCompat="@drawable/ellipse_14" />
+
+    <ImageView
+        android:id="@+id/imageViewEllipse15"
+        android:layout_width="@dimen/_240sdp"
+        android:layout_height="@dimen/_240sdp"
+        app:layout_constraintBottom_toBottomOf="@id/imageViewEllipse14"
+        app:layout_constraintEnd_toEndOf="@id/imageViewEllipse14"
+        app:layout_constraintStart_toStartOf="@id/imageViewEllipse14"
+        app:layout_constraintTop_toTopOf="@id/imageViewEllipse14"
+        app:srcCompat="@drawable/ellipse_15" />
+
+    <ImageView
+        android:id="@+id/imageViewEllipse16"
+        android:layout_width="@dimen/_160sdp"
+        android:layout_height="@dimen/_160sdp"
+        app:layout_constraintBottom_toBottomOf="@id/imageViewEllipse15"
+        app:layout_constraintEnd_toEndOf="@id/imageViewEllipse15"
+        app:layout_constraintStart_toStartOf="@id/imageViewEllipse15"
+        app:layout_constraintTop_toTopOf="@id/imageViewEllipse15"
+        app:srcCompat="@drawable/ellipse_16" />
+
+    <ImageView
+        android:id="@+id/imageViewLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"
+        app:layout_constraintTop_toTopOf="@id/imageViewEllipse16"
+        app:layout_constraintStart_toStartOf="@id/imageViewEllipse16"
+        app:layout_constraintEnd_toEndOf="@id/imageViewEllipse16"
+        app:layout_constraintBottom_toBottomOf="@id/imageViewEllipse16"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
